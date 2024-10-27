@@ -1,0 +1,57 @@
+[package]
+name = "lldf-bind"
+version = "0.1.0"
+edition = "2021"
+
+build = "build/build.rs"
+exclude = [ "/src/bind" ]
+
+
+publish = false
+[features]
+default = [ "rank_overlord", "plot_50x" ] # DISABLE THIS BEFORE RELEASE
+rank_none     = [ ]
+rank_noble    = [ ]
+rank_emperor  = [ ]
+rank_mythic   = [ ]
+rank_overlord = [ ]
+rank_dev      = [ ]
+plot_50x      = [ ]
+plot_100x     = [ ]
+plot_300x     = [ ]
+plot_1000x    = [ ]
+internals     = [ ]
+
+[package.metadata.docs.rs]
+no-default-features = true
+features = [ "rank_overlord", "plot_1000x", "internals" ]
+
+
+[dependencies.lldf-bind-proc]
+path = "../lldf-bind-proc"
+
+
+[build-dependencies.reqwest]
+version  = "0.11"
+features = [ "json", "blocking" ]
+
+[build-dependencies.serde]
+version  = "1.0"
+features = [ "derive" ]
+[build-dependencies.serde_json]
+version = "1.0"
+
+[build-dependencies.str_inflector]
+version = "0.12"
+
+[build-dependencies.chrono]
+version = "0.4"
+
+[build-dependencies.dirs]
+version = "5.0"
+
+
+[lints.rust]
+internal_features = "allow"
+improper_ctypes   = "allow"
+unused_parens     = "allow"

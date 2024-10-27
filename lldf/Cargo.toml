@@ -1,0 +1,52 @@
+[package]
+name = "lldf"
+version = "0.1.0"
+edition = "2021"
+
+
+[features]
+
+
+[dependencies.serde]
+version  = "1.0"
+features = [ "derive" ]
+
+[dependencies.toml]
+version = "0.8"
+
+[dependencies.clap]
+version  = "4.5"
+features = [ "derive" ]
+
+[dependencies.supports-color]
+version = "3.0"
+
+[dependencies.const-str]
+version = "0.5"
+
+
+[dependencies.str_inflector]
+version = "0.12"
+
+[dependencies.decomp]
+version          = "0.1"
+default-features = false
+features         = [ "llvm-18" ]
+
+[dependencies.llvm-ir]
+version  = "0.11"
+features = [ "llvm-18" ]
+
+
+[dependencies.serde_json]
+version = "1.0"
+
+[dependencies.flate2]
+version = "1.0"
+
+[dependencies.base64]
+version = "0.22"
+
+
+[lints.rust]
+unused_parens = "allow"

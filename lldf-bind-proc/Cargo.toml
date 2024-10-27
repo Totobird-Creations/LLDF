@@ -1,0 +1,19 @@
+[package]
+name = "lldf-bind-proc"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies.syn]
+version  = "2.0"
+features = [ "parsing" ]
+
+[dependencies.quote]
+version = "1.0"
+
+
+[lib]
+proc-macro = true
+
+
+[lints.rust]
+unused_parens = "allow"
