@@ -1,6 +1,6 @@
 mod value;
-use base64::Engine;
 pub use value::*;
+pub mod opt;
 
 
 use std::io::Write;
@@ -9,6 +9,7 @@ use serde_json as json;
 
 use flate2::Compression;
 use flate2::write::GzEncoder;
+use base64::Engine;
 use base64::prelude::BASE64_STANDARD;
 
 
@@ -24,34 +25,46 @@ impl CodeLine {
 #[derive(Debug)]
 pub enum Codeblock {
     Block(CodeblockBlock),
-    Bracket
+    Bracket {
+        kind : BracketKind,
+        side : BracketSide
+    }
 }
-
 #[derive(Debug)]
 pub struct CodeblockBlock {
     pub block  : String,
     pub action : Option<String>,
     pub data   : Option<String>,
-    pub params : Vec<Value>,
-    pub tags   : Vec<Value>
+    pub params : Vec<CodeValue>,
+    pub tags   : Vec<CodeValue>
+}
+#[derive(Debug)]
+pub enum BracketKind {
+    Normal,
+    Repeat
+}
+#[derive(Debug)]
+pub enum BracketSide {
+    Open,
+    Close
 }
 
 
 impl Codeblock {
 
-    pub fn function<S : Into<String>>(data : S, params : Vec<Value>, hidden : bool) -> Self { Self::Block(CodeblockBlock {
+    pub fn function<S : Into<String>>(data : S, params : Vec<CodeValue>, hidden : bool) -> Self { Self::Block(CodeblockBlock {
         block  : String::from("func"),
         action : None,
         data   : Some(data.into()),
         params,
-        tags   : vec![ Value::Actiontag {
+        tags   : vec![ CodeValue::Actiontag {
             kind     : String::from("Is Hidden"),
             value    : String::from(if (hidden) { "True" } else { "False" }),
             variable : None
         } ]
     }) }
 
-    pub fn call_func<S : Into<String>>(data : S, params : Vec<Value>) -> Self { Self::Block(CodeblockBlock {
+    pub fn call_func<S : Into<String>>(data : S, params : Vec<CodeValue>) -> Self { Self::Block(CodeblockBlock {
         block  : String::from("call_func"),
         action : None,
         data   : Some(data.into()),
@@ -59,7 +72,7 @@ impl Codeblock {
         tags   : Vec::new()
     }) }
 
-    pub fn action<C : Into<String>, A : Into<String>>(codeblock : C, action : A, params : Vec<Value>, tags : Vec<Value>) -> Self { Self::Block(CodeblockBlock {
+    pub fn action<C : Into<String>, A : Into<String>>(codeblock : C, action : A, params : Vec<CodeValue>, tags : Vec<CodeValue>) -> Self { Self::Block(CodeblockBlock {
         block  : codeblock.into(),
         action : Some(action.into()),
         data   : None,
@@ -88,7 +101,7 @@ impl CodeLine {
 impl Codeblock {
     pub fn to_json(&self) -> json::Value { match (self) {
         Self::Block(block) => block.to_json(),
-        Self::Bracket => todo!()
+        Self::Bracket { .. } => todo!()
     } }
 }
 impl CodeblockBlock {
@@ -118,7 +131,7 @@ impl CodeblockBlock {
         block
     }
 }
-impl Value {
+impl CodeValue {
     pub fn to_json(&self, codeblock : &str, action : &str) -> json::Value { match (self) {
         Self::String     ( string              ) => json::json!({ "id" : "txt",  "data" : { "name" : string } }),
         Self::Text       ( text                ) => json::json!({ "id" : "comp", "data" : { "name" : text } }),

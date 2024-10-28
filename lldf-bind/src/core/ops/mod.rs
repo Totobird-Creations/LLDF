@@ -7,7 +7,7 @@ pub use index::Index;
 use super::marker::Sized;
 
 
-#[lang = "receiver"]
+#[lang = "legacy_receiver"]
 trait Receiver {}
 impl<T: ?Sized> Receiver for &T {}
 impl<T: ?Sized> Receiver for &mut T {}

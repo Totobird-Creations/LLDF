@@ -1,8 +1,10 @@
 use std::error::Error;
 
+use llvm_ir::Name;
+
 
 #[derive(Debug, Clone)]
-pub enum Value {
+pub enum CodeValue {
     String(String),
     Text(String),
     Int(i64),
@@ -50,7 +52,7 @@ pub enum Value {
     Actiontag {
         kind     : String,
         value    : String,
-        variable : Option<Box<Value>>
+        variable : Option<Box<CodeValue>>
     }
 }
 
@@ -106,17 +108,20 @@ impl AsRef<str> for ParameterType {
 }
 
 
-impl Value {
-    pub fn line_variable<S : Into<String>>(name : S) -> Self {
-        Self::Variable { name : name.into(), scope : VariableScope::Line }
-    }
+impl CodeValue {
     pub fn unsaved_variable<S : Into<String>>(name : S) -> Self {
         Self::Variable { name : name.into(), scope : VariableScope::Unsaved }
     }
+    pub fn line_variable(name : &Name) -> Self {
+        Self::Variable { name : match (name) {
+            Name::Name   (name   ) => format!("local.name.{}",  name    ),
+            Name::Number (number ) => format!("local.number.{}", number )
+        }, scope : VariableScope::Line }
+    }
 }
 
-impl Value {
-    pub fn as_actiontag(&self) -> Result<(String, Option<Value>), Box<dyn Error>> { match (self) {
+impl CodeValue {
+    pub fn as_actiontag(&self) -> Result<(String, Option<CodeValue>), Box<dyn Error>> { match (self) {
         Self::String(string) => Ok((string.clone(), None)),
         var @ Self::Variable { .. } => Ok((String::new(), Some(var.clone()))),
         _ => Err("Non string nor variable value used as tag".into())

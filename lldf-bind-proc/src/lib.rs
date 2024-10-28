@@ -47,6 +47,7 @@ pub fn event(args : TokenStream, input : TokenStream) -> TokenStream {
             #func_ident();
         }
 
+        #[no_mangle]
         #func
 
     }.into()

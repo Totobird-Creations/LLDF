@@ -1,60 +1,51 @@
+mod module;
+pub use module::*;
 mod instr;
-pub use instr::handle_instr;
-mod call;
-pub use call::handle_call;
-mod operand;
-pub use operand::{ handle_operand, handle_constant };
+pub use instr::*;
+mod oper;
+pub use oper::*;
 
+use super::codegen::CodeValue;
 
+use std::error::Error;
 
 use llvm_ir::Name;
 
 
-pub fn name_to_local(name : &Name) -> String { match (name) {
-    Name::Name   (name   ) => format!("local.name.{}",   name   ),
-    Name::Number (number ) => format!("local.number.{}", number )
-} }
+#[derive(Clone, Debug)]
+pub enum Value {
 
-pub fn name_to_global(name : &Name) -> String { match (name) {
-    Name::Name   (name   ) => format!("global.name.{}",   name   ),
-    Name::Number (number ) => format!("global.number.{}", number )
-} }
+    /// Is technically a pointer, but will behave as if it is directly accessing the underlying value.
+    /// Used where the target of the pointer is known at compile-time.
+    PtrImmediate(Box<Value>),
 
+    PtrInteger(Box<Value>),
 
-/*
-pub fn handle_operand(operand : &Operand) -> Result<(), Box<dyn Error>> { match (operand) {
-    Operand::LocalOperand { .. } => todo!(),
-    Operand::ConstantOperand(co) => handle_constant(co),
-    Operand::MetadataOperand => todo!(),
-} }
+    /// A reference to a global.
+    GlobalRef(Name),
 
+    /// Direct access to a local variable.
+    /// **Can NOT be used as a pointer**
+    Local(Name),
 
-pub fn handle_constant(constant : &Constant) -> Result<(), Box<dyn Error>> { match (&*constant) {
-    Constant::Int { .. } => todo!(),
-    Constant::Float(_) => todo!(),
-    Constant::Null(_) => todo!(),
-    Constant::AggregateZero(_) => todo!(),
-    Constant::Struct { .. } => todo!(),
-    Constant::Array { .. } => todo!(),
-    Constant::Undef(_) => todo!(),
-    Constant::Poison(_) => todo!(),
-    Constant::GlobalReference { .. } => todo!(),
-    Constant::Add(_) => todo!(),
-    Constant::Sub(_) => todo!(),
-    Constant::Mul(_) => todo!(),
-    Constant::Xor(_) => todo!(),
-    Constant::Shl(_) => todo!(),
-    Constant::GetElementPtr(_) => todo!(),
-    Constant::Trunc(_) => todo!(),
-    Constant::ICmp(_) => todo!(),
-    Constant::FCmp(_) => todo!(),
+    Constant(CodeValue)
+
+}
 
 
-    Constant::Vector(_) | Constant::ExtractElement(_) | Constant::InsertElement(_) | Constant::ShuffleVector(_) => { Err("SIMD vector constants are unsupported"                .into()) },
-    Constant::BlockAddress                                                                                      => { Err("Block address constants are unsupported"              .into()) },
-    Constant::TokenNone                                                                                         => { Err("Token constants are unsupported"                      .into()) },
-    Constant::PtrToInt(_) | Constant::IntToPtr(_)                                                               => { Err("Pointer-integer conversion constants are unsupported" .into()) }
-    Constant::BitCast(_)                                                                                        => { Err("Bit cast constants are unsupported"                   .into()) },
-    Constant::AddrSpaceCast(_)                                                                                  => { Err("Address space cast constants are unsupported"         .into()) },
-} }
-*/
+impl Value {
+    pub fn to_codevalue(&self, module : &ParsedModule) -> Result<CodeValue, Box<dyn Error>> { match (self) {
+        Self::PtrImmediate (value) => value.to_codevalue(module),
+        Self::PtrInteger   (value) => value.to_codevalue(module),
+        Self::GlobalRef(name) => {
+            match (&module.globals[&name]) {
+                Global::NoopFunction             => Err("Function can not be used as a value".into()),
+                Global::UserFunction      { .. } => Err("Function can not be used as a value".into()),
+                Global::ActionFunction    { .. } => Err("Function can not be used as a value".into()),
+                Global::GamevalueFunction { .. } => Err("Function can not be used as a value".into()),
+            }
+        },
+        Self::Local    (name  ) => Ok(CodeValue::line_variable(name)),
+        Self::Constant (value ) => Ok(value.clone())
+    } }
+}

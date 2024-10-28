@@ -1,5 +1,6 @@
-cd ../lldf-bind &&
-../lldf-bind/build.sh &&
-cd ../lldf &&
-cargo run -- build ../lldf-bind/target/wasm32-unknown-unknown/release/examples/hello_world-e11014e55926950f.ll --iapi
-# Basically needs to be changed every recompile. Need to find a better way to automate this.
+# Build the `hello_world` example in `lldf-bind`.
+cd ../lldf-bind && ./build.sh && cd ../lldf &&
+# Find the location of the emitted llvm ir file.
+path=$(ls -l ../lldf-bind/target/wasm32-unknown-unknown/release/examples/*.ll | awk '{print $9}') &&
+# Build the template.
+cargo run -- build $path --iapi
