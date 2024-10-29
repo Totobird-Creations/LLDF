@@ -144,10 +144,15 @@ pub fn parse_module(module : &Module) -> Result<ParsedModule, Box<dyn Error>> {
     println!();
     for module_function in &module.functions {
         let mut parsed_function = parse_function(&function, module_function)?;
-        println!("{}", module_function.name);
+        println!("\x1b[96m\x1b[1m{}\x1b[0m", module_function.name);
         codegen::opt::dead_selections(&mut parsed_function.line);
         for block in &parsed_function.line.blocks {
-            println!("  {:?}", block);
+            println!("  \x1b[36m{:?}\x1b[0m", block);
+        }
+        { // TODO: Here for testing, remove
+            parsed_function.line.blocks.insert(0, Codeblock::function(module_function.name.clone(), vec![], false));
+            let data = "minecraft:ender_chest{PublicBukkitValues:{\"hypercube:codetemplatedata\":'{\"author\":\"TotobirdCreation\",\"name\":\"&b&lFunction &3» &bUnnamed\",\"version\":1,\"code\":\"[INSERT]\"}'},display:{Name:'{\"text\":\"\",\"extra\":[{\"text\":\"Function \",\"obfuscated\":false,\"italic\":false,\"underlined\":false,\"strikethrough\":false,\"color\":\"aqua\",\"bold\":true},{\"text\":\"» \",\"italic\":false,\"color\":\"dark_aqua\",\"bold\":false},{\"text\":\"Unnamed\",\"italic\":false,\"color\":\"aqua\"}]}'}}";
+            println!("\x1b[92m{}\x1b[0m", data.replace("[INSERT]", &parsed_function.line.to_b64()));
         }
         println!();
         function.functions.insert(module_function.name.clone(), parsed_function);
@@ -230,6 +235,8 @@ pub fn parse_function<'l>(module : &ParsedModule, function : &'l Function) -> Re
     };
 
     parse_cfr_groups(module, &mut parsed, cfr)?;
+
+    // TODO: Function head block
 
     Ok(parsed)
 }

@@ -21,12 +21,12 @@ impl<T : DFValue> Clone for List<T> {
 impl<T : DFValue, U : Into<UInt>> Index<U> for List<T> {
     type Output = T;
     fn index(&self, index : U) -> &Self::Output { unsafe {
-        &*(DF_ACTIONPTR__SetVariable_GetListValue__SetVariable_SetListValue(self as *const _ as *mut DFOpaqueValue, index.into()) as *const T)
+        &*(DF_ACTIONPTR__SetVariable_GetListValue__SetVariable_SetListValue(self as *const _ as *mut DFOpaqueValue, index.into() + 1usize) as *const T)
     } }
 }
 impl<T : DFValue, U : Into<UInt>> IndexMut<U> for List<T> {
     fn index_mut(&mut self, index : U) -> &mut Self::Output { unsafe {
-        &mut *(DF_ACTIONPTR__SetVariable_GetListValue__SetVariable_SetListValue(self as *mut _ as *mut DFOpaqueValue, index.into()) as *mut T)
+        &mut *(DF_ACTIONPTR__SetVariable_GetListValue__SetVariable_SetListValue(self as *mut _ as *mut DFOpaqueValue, index.into() + 1usize) as *mut T)
     } }
 }
 
