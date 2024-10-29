@@ -16,13 +16,11 @@ use super::codegen::{CodeValue, Codeblock};
 pub enum Value {
 
     /// A reference to a global value.
-    GlobalReference(Name),
+    GlobalRef(Name),
 
     /// A 'faked' pointer with known get and set behaviour.
-    SetGetPtr {
-        getter_codeblock : String,
-        getter_action    : String,
-        getter_tags      : Vec<CodeValue>,
+    GetSetPtr {
+        getter           : GSPGetter,
         setter_codeblock : String,
         setter_action    : String,
         setter_tags      : Vec<CodeValue>,
@@ -30,7 +28,7 @@ pub enum Value {
     },
 
     /// Direct access to a local value.
-    /// Should NEVER be a pointer.
+    /// Should NEVER be used as a pointer.
     Local(Name),
 
     /// A DiamondFire code value.
@@ -38,21 +36,24 @@ pub enum Value {
 
 }
 
+
+#[derive(Clone, Debug)]
+pub enum GSPGetter {
+    Codeblock {
+        codeblock : String,
+        action    : String,
+        tags      : Vec<CodeValue>
+    },
+    Local(Name)
+}
+
+
 impl Value {
     pub fn to_codevalue(&self, module : &ParsedModule, function : &mut ParsedFunction) -> Result<CodeValue, Box<dyn Error>> { match (self) {
 
-        Value::GlobalReference(name) => todo!(),
+        Value::GlobalRef(_) => todo!(),
 
-        Value::SetGetPtr { getter_codeblock, getter_action, getter_tags, parameters, .. } => { // This is a read-from-ptr operation.
-            let temp_var = CodeValue::line_variable(function.create_temp_var_name());
-            let mut params = Vec::with_capacity(parameters.len() + 1);
-            params.push(temp_var.clone());
-            for param in parameters {
-                params.push(param.to_codevalue(module, function)?);
-            }
-            function.line.blocks.push(Codeblock::action(getter_codeblock, getter_action, params, getter_tags.clone())); // TODO: params
-            Ok(temp_var)
-        },
+        Value::GetSetPtr { getter, parameters, .. } => getter.to_codevalue(module, function, parameters),
 
         Value::Local(name) => {
             let Some(value) = function.locals.get(name) else { return Err(format!("Unknown local {}", name).into()) };
@@ -60,6 +61,27 @@ impl Value {
         },
 
         Value::CodeValue(value) => Ok(value.clone())
+
+    } }
+}
+
+
+impl GSPGetter {
+    pub fn to_codevalue(&self, module : &ParsedModule, function : &mut ParsedFunction, parameters : &Vec<Value>) -> Result<CodeValue, Box<dyn Error>> { match (self) {
+        // This is a ptr-load operation.
+
+        GSPGetter::Codeblock { codeblock, action, tags } => {
+            let dest = CodeValue::line_variable(function.create_temp_var_name());
+            let mut params = Vec::with_capacity(parameters.len() + 1);
+            params.push(dest.clone());
+            for param in parameters {
+                params.push(param.to_codevalue(module, function)?);
+            }
+            function.line.blocks.push(Codeblock::action(codeblock, action, params, tags.clone()));
+            Ok(dest)
+        },
+
+        GSPGetter::Local(name) => Ok(CodeValue::line_variable_name(name)),
 
     } }
 }

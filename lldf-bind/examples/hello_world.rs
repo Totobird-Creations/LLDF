@@ -12,10 +12,11 @@ fn player_join() {
     let default_player = Game::default_player();
     let all_players = Game::all_players();
 
-    //let player_uuid = &default_player.uuids()[0usize];
-    let player_name = &default_player.names()[0usize];
+    let mut player_name = default_player.names().clone();
 
-    //all_players.send_message("Hello,");
-    //all_players.send_message(player_uuid);
-    all_players.send_message(player_name);
+    all_players.send_message(player_name[0usize]);
+
+    player_name[0usize] = player_name[1usize];
+
+    all_players.send_message(player_name[0usize]);
 }

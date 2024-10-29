@@ -27,11 +27,45 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
     Instruction::ExtractValue(_) => todo!(),
     Instruction::InsertValue(_) => todo!(),
 
-    Instruction::Alloca(Alloca { dest, .. }) => todo!(),
 
-    Instruction::Load(Load { address, dest, .. }) => todo!(),
+    Instruction::Alloca(Alloca { dest, .. }) => {
+        function.locals.insert(dest.clone(), Value::GetSetPtr {
+            getter           : GSPGetter::Local(dest.clone()),
+            setter_codeblock : String::from("set_var"),
+            setter_action    : String::from("="),
+            setter_tags      : Vec::new(),
+            parameters       : vec![ Value::CodeValue(CodeValue::line_variable_name(dest)) ],
+        });
+        Ok(())
+    },
 
-    Instruction::Store(_) => todo!(),
+
+    Instruction::Load(Load { address, dest, .. }) => {
+        match (parse_oper(module, function, address)?) {
+
+            Value::GlobalRef(_) => todo!(),
+
+            Value::GetSetPtr { getter, parameters, .. } => {
+                let dest_value = getter.to_codevalue(module, function, &parameters)?;
+                function.locals.insert(dest.clone(), Value::CodeValue(dest_value));
+                Ok(())
+            },
+
+            Value::Local(_) => todo!(),
+
+            Value::CodeValue(_) => todo!()
+
+        }
+    },
+
+
+    Instruction::Store(Store { address, value, .. }) => {
+        let     value   = parse_oper(module, function, value   )?;
+        let mut address = parse_oper(module, function, address )?;
+        handle_store(module, function, &mut address, &value)
+    },
+
+
     Instruction::GetElementPtr(_) => todo!(),
     Instruction::Trunc(_) => todo!(),
     Instruction::ZExt(_) => todo!(),
@@ -49,11 +83,12 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
     Instruction::Phi(_) => todo!(),
     Instruction::Select(_) => todo!(),
 
+
     Instruction::Call(Call { function : calling, arguments, dest, .. }) => {
         let Some(calling) = calling.as_ref().right() else { return Err("Inline assembly is unsupported".into()) };
         match (parse_oper(module, function, calling)?) {
 
-            Value::GlobalReference(global) => {
+            Value::GlobalRef(global) => {
                 let Some(global) = module.globals.get(&global) else { return Err(format!("Unknown global {}", global).into()) };
                 match (global) {
                     Global::NoopFunction => { Ok(()) },
@@ -77,10 +112,12 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
                         for (arg, _) in arguments {
                             parameters.push(parse_oper(module, function, arg)?);
                         }
-                        let value = Value::SetGetPtr {
-                            getter_codeblock : getter_codeblock .clone(),
-                            getter_action    : getter_action    .clone(),
-                            getter_tags      : getter_tags      .clone(),
+                        let value = Value::GetSetPtr {
+                            getter : GSPGetter::Codeblock {
+                                codeblock : getter_codeblock .clone(),
+                                action    : getter_action    .clone(),
+                                tags      : getter_tags      .clone()
+                            },
                             setter_codeblock : setter_codeblock .clone(),
                             setter_action    : setter_action    .clone(),
                             setter_tags      : setter_tags      .clone(),
@@ -100,7 +137,7 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
                 }
             },
 
-            Value::SetGetPtr { .. } => { Err("Can not call a pointer".into()) }, // TODO: function-pointer, maybe?
+            Value::GetSetPtr { .. } => { Err("Can not call a pointer".into()) }, // TODO: function-pointer, maybe?
 
             Value::Local(_) => { Err("Can not call a local".into()) },
 
@@ -119,3 +156,34 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
     Instruction::VAArg(_)                                                                          => Err("Variadic argument instructions are unsupported"  .into()),
     Instruction::LandingPad(_) | Instruction::CatchPad(_) | Instruction::CleanupPad(_)             => Err("Exception handling instructions are unsupported" .into()),
 } }
+
+
+
+
+
+fn handle_store(module : &ParsedModule, function : &mut ParsedFunction, address : &mut Value, value : &Value) -> Result<(), Box<dyn Error>> {
+    match (address) {
+
+        Value::GlobalRef(_) => todo!(),
+
+        Value::GetSetPtr { getter, setter_codeblock, setter_action, setter_tags, parameters, .. } => {
+            let mut params = Vec::with_capacity(parameters.len() + 1);
+            for param in parameters {
+                params.push(param.to_codevalue(module, function)?);
+            }
+            params.push(value.to_codevalue(module, function)?);
+            function.line.blocks.push(Codeblock::action(setter_codeblock.clone(), setter_action.clone(), params, setter_tags.clone()));
+            *getter = GSPGetter::Codeblock {
+                codeblock : String::from("set_var"),
+                action    : String::from("="),
+                tags      : vec![ ]
+            };
+            Ok(())
+        },
+
+        Value::Local(_) => todo!(),
+
+        Value::CodeValue(_) => todo!()
+
+    }
+}

@@ -170,7 +170,7 @@ fn linked_name_to_codeblock(codeblock : &str) -> String {
     }
 }
 fn linked_name_to_action(action : &str) -> String {
-    action.to_title_case().replace(" ", "")
+    names_to_symbols(&action.to_title_case().replace(" ", ""))
 }
 fn linked_name_to_actiontag_kind(actiontag_kind : &str) -> String {
     actiontag_kind.to_title_case()
@@ -203,6 +203,21 @@ fn linked_name_to_gamevalue_kind(gamevalue_kind : &str) -> String {
 }
 fn linked_name_to_gamevalue_target(gamevalue_kind : &str) -> String {
     gamevalue_kind.to_title_case()
+}
+pub fn names_to_symbols(from : &str) -> String {
+    // Yes, I know this sucks. No, I'm not going to find something better.
+    from.replace("SpecialcharPlus"             , "+")
+        .replace("SpecialcharMinus"            , "-")
+        .replace("SpecialcharSlash"            , "/")
+        .replace("SpecialcharPercent"          , "%")
+        .replace("SpecialcharExclamation"      , "!")
+        .replace("SpecialcharEquals"           , "=")
+        .replace("SpecialcharLeftbracket"      , "[")
+        .replace("SpecialcharRightbracket"     , "]")
+        .replace("SpecialcharLeftangle"        , "<")
+        .replace("SpecialcharRightangle"       , ">")
+        .replace("SpecialcharLeftparenthesis"  , "(")
+        .replace("SpecialcharRightparenthesis" , ")")
 }
 
 

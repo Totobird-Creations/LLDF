@@ -7,9 +7,12 @@ use llvm_ir::constant::*;
 
 
 pub fn parse_oper(module : &ParsedModule, function : &mut ParsedFunction, oper : &Operand) -> Result<Value, Box<dyn Error>> { match (oper) {
-    Operand::LocalOperand    { name, .. } => Ok(function.locals[name].clone()),
-    Operand::ConstantOperand ( cor      ) => parse_const(module, function, cor),
-    Operand::MetadataOperand              => Err("Metadata operands are unsupported".into()),
+    Operand::LocalOperand { name, .. } => {
+        let Some(value) = function.locals.get(name) else { return Err(format!("Unknown local {}", name).into()) };
+        Ok(value.clone())
+    },
+    Operand::ConstantOperand(cor) => parse_const(module, function, cor),
+    Operand::MetadataOperand      => Err("Metadata operands are unsupported".into()),
 } }
 
 
@@ -25,7 +28,7 @@ pub fn parse_const(module : &ParsedModule, function : &mut ParsedFunction, cor :
     Constant::Undef(_) => todo!(),
     Constant::Poison(_) => todo!(),
 
-    Constant::GlobalReference { name, .. } => Ok(Value::GlobalReference(name.clone())),
+    Constant::GlobalReference { name, .. } => Ok(Value::GlobalRef(name.clone())),
 
     Constant::Add(_) => todo!(),
     Constant::Sub(_) => todo!(),
