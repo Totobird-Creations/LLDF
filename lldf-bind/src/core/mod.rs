@@ -40,7 +40,7 @@ pub macro compile_error(&msg:expr $(,)?) {
 pub mod prelude {
     pub use super::clone;
     pub use super::clone::Clone;
-    pub use super::convert::{ Into, From };
+    pub use super::convert::{ Into, From, AsRef, AsMut };
     pub use super::macros::derive;
     pub use super::marker;
     pub use super::marker::Copy;

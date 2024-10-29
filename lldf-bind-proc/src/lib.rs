@@ -43,11 +43,12 @@ pub fn event(args : TokenStream, input : TokenStream) -> TokenStream {
 
         #[no_mangle]
         #[inline(always)]
-        pub extern "C" fn #extern_ident() {
+        pub fn #extern_ident() {
             #func_ident();
         }
 
         #[no_mangle]
+        #[inline(never)]
         #func
 
     }.into()

@@ -1,7 +1,9 @@
 mod arith;
-pub use arith::Add;
+pub use arith::*;
+mod deref;
+pub use deref::*;
 mod index;
-pub use index::Index;
+pub use index::*;
 
 
 use super::marker::Sized;

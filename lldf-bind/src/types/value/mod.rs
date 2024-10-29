@@ -14,6 +14,6 @@ pub mod dict;
 use crate::prelude::*;
 
 
-pub unsafe trait DFValue : Clone + Copy { }
+pub unsafe trait DFValue : Clone { }
 
 unsafe impl<T : DFValue> DFValue for &T { }

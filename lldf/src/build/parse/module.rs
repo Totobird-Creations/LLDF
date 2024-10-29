@@ -5,7 +5,7 @@ use std::collections::HashMap;
 
 use decomp::{ cfa::CFAPrim, cfg::ControlFlowGraph, cfr::{ CFRGroup, CFRGroups } };
 use inflector::Inflector;
-use llvm_ir::{ module::GlobalVariable, Function, Module };
+use llvm_ir::{ Function, Module };
 
 
 
@@ -14,11 +14,29 @@ pub struct ParsedModule<'l> {
     pub globals   : HashMap<Name, Global>,
     pub functions : HashMap<String, ParsedFunction<'l>>
 }
+#[derive(Debug)]
 pub enum Global {
     NoopFunction,
-    UserFunction      { name : String },
-    ActionFunction    { codeblock : String, action : String, tags : Vec<String> },
-    GamevalueFunction { kind : String, target : String }
+    UserFunction {
+        name : String
+    },
+    ActionFunction {
+        codeblock : String,
+        action    : String,
+        tags      : Vec<(String, String)>
+    },
+    ActionPtrFunction {
+        getter_codeblock : String,
+        getter_action    : String,
+        getter_tags      : Vec<(String, String)>,
+        setter_codeblock : String,
+        setter_action    : String,
+        setter_tags      : Vec<(String, String)>
+    },
+    GamevalueFunction {
+        kind : String,
+        target : String
+    }
 }
 
 pub fn parse_module(module : &Module) -> Result<ParsedModule, Box<dyn Error>> {
@@ -47,39 +65,81 @@ pub fn parse_module(module : &Module) -> Result<ParsedModule, Box<dyn Error>> {
 
         if (function.name == "llvm.lifetime.start.p0" || function.name == "llvm.lifetime.end.p0") {
             parsed.globals.insert(Name::Name(Box::new(function.name.clone())), Global::NoopFunction);
+            continue;
         }
 
-        else if (function.name.starts_with("DF_ACTION_")) {
-            let mut parts = function.name.split("_").skip(2);
-            let Some(codeblock ) = parts.next() else { return Err(format!("Externally linked function {} missing required data for action", function.name).into()) };
-            let Some(action    ) = parts.next() else { return Err(format!("Externally linked function {} missing required data for action", function.name).into()) };
-            let mut codeblock = codeblock.to_snake_case();
-            codeblock = match (codeblock.as_str()) {
-                "select_object" => String::from("select_obj" ),
-                "set_variable"  => String::from("set_var"    ),
-                _               => codeblock
-            };
-            let action = action.to_class_case();
-            let tags   = parts.map(|t| fix_title_case(t.to_title_case())).collect::<Vec<_>>();
-            parsed.globals.insert(Name::Name(Box::new(function.name.clone())), Global::ActionFunction { codeblock, action, tags });
-        } 
+        let mut parts = function.name.split("__");
+        match (parts.next()) {
 
-        else if (function.name.starts_with("DF_GAMEVALUE_")) {
-            let mut parts = function.name.split("_").skip(2);
-            let Some(kind   ) = parts.next() else { return Err(format!("Externally linked function {} missing required data for game value", function.name).into()) };
-            let Some(target ) = parts.next() else { return Err(format!("Externally linked function {} missing required data for game value", function.name).into()) };
-            let kind   = fix_title_case(kind.to_title_case());
-            let target = target.to_class_case();
-            parsed.globals.insert(Name::Name(Box::new(function.name.clone())), Global::GamevalueFunction { kind, target });
+            Some("DF_ACTION") => {
+                if let (Some(executor), None) = (parts.next(), parts.next()) {
+                    let mut executor_parts = executor.split("_");
+                    if let (Some(codeblock), Some(action)) = (executor_parts.next(), executor_parts.next()) {
+                        let codeblock = linked_name_to_codeblock (codeblock );
+                        let action    = linked_name_to_action    (action    );
+                        parsed.globals.insert(Name::Name(Box::new(function.name.clone())), Global::ActionFunction {
+                            codeblock, action,
+                            tags : collect_actiontag_parts(executor_parts)
+                        });
+                        continue;
+                    }
+                }
+            },
+
+            Some("DF_ACTIONPTR") => {
+                if let (Some(getter), Some(setter), None) = (parts.next(), parts.next(), parts.next()) {
+                    let mut getter_parts = getter.split("_");
+                    let mut setter_parts = setter.split("_");
+                    if let (Some(getter_codeblock), Some(getter_action), Some(setter_codeblock), Some(setter_action))
+                        = (getter_parts.next(), getter_parts.next(), setter_parts.next(), setter_parts.next())
+                    {
+                        let getter_codeblock = linked_name_to_codeblock (getter_codeblock );
+                        let getter_action    = linked_name_to_action    (getter_action    );
+                        let setter_codeblock = linked_name_to_codeblock (setter_codeblock );
+                        let setter_action    = linked_name_to_action    (setter_action    );
+                        parsed.globals.insert(Name::Name(Box::new(function.name.clone())), Global::ActionPtrFunction {
+                            getter_codeblock, getter_action,
+                            getter_tags : collect_actiontag_parts(getter_parts),
+                            setter_codeblock, setter_action,
+                            setter_tags : collect_actiontag_parts(setter_parts)
+                        });
+                        continue;
+                    }
+                }
+            },
+
+            Some("DF_GAMEVALUE") => {
+                if let (Some(getter), None) = (parts.next(), parts.next()) {
+                    let mut getter_parts = getter.split("_");
+                    if let (Some(kind), Some(target)) = (getter_parts.next(), getter_parts.next())
+                    {
+                        let kind   = linked_name_to_gamevalue_kind   (kind   );
+                        let target = linked_name_to_gamevalue_target (target );
+                        parsed.globals.insert(Name::Name(Box::new(function.name.clone())), Global::GamevalueFunction { kind, target });
+                        continue;
+                    }
+                }
+            }
+
+            _ => { }
         }
 
-        else { return Err(format!("Unrecognised externally linked function {}", function.name).into()); }
+        //else if (function.name.starts_with("DF_GAMEVALUE_")) {
+        //    let mut parts = function.name.split("_").skip(2);
+        //    let Some(kind   ) = parts.next() else { return Err(format!("Externally linked function {} missing required data for game value", function.name).into()) };
+        //    let Some(target ) = parts.next() else { return Err(format!("Externally linked function {} missing required data for game value", function.name).into()) };
+        //    let kind   = fix_title_case(kind.to_title_case());
+        //    let target = target.to_class_case();
+        //    parsed.globals.insert(Name::Name(Box::new(function.name.clone())), Global::GamevalueFunction { kind, target });
+        //}
+
+        return Err(format!("Unrecognised externally linked function {}", function.name).into());
     }
 
     // Collect global variables.
-    for GlobalVariable { name, is_constant, initializer, .. } in &module.global_vars {
-        println!("{name} {is_constant}");
-    }
+    //for GlobalVariable { name, is_constant, initializer, .. } in &module.global_vars {
+    //    println!("{name} {is_constant}");
+    //}
 
     println!();
     for function in &module.functions {
@@ -94,6 +154,47 @@ pub fn parse_module(module : &Module) -> Result<ParsedModule, Box<dyn Error>> {
     }
 
     Ok(parsed)
+}
+
+fn linked_name_to_codeblock(codeblock : &str) -> String {
+    let codeblock = codeblock.to_snake_case();
+    match (codeblock.as_str()) {
+        "select_object" => String::from("select_obj" ),
+        "set_variable"  => String::from("set_var"    ),
+        _               => codeblock
+    }
+}
+fn linked_name_to_action(action : &str) -> String {
+    action.to_title_case().replace(" ", "")
+}
+fn linked_name_to_actiontag_kind(actiontag_kind : &str) -> String {
+    actiontag_kind.to_title_case()
+}
+fn linked_name_to_actiontag_value(actiontag_value : &str) -> String {
+    actiontag_value.to_sentence_case()
+}
+fn collect_actiontag_parts<'l>(actiontag_parts : impl Iterator<Item = &'l str>) -> Vec<(String, String)> {
+    actiontag_parts.array_chunks::<2>()
+        .map(|[kind, value]| (linked_name_to_actiontag_kind(kind), linked_name_to_actiontag_value(value)))
+        .collect::<Vec<_>>()
+}
+fn linked_name_to_gamevalue_kind(gamevalue_kind : &str) -> String {
+    let string = gamevalue_kind.to_title_case();
+    let mut out = string.split(" ").intersperse(" ")
+        .map_windows::<_, _, 3>(|[a, b, c]| if (*b == " " && a.chars().last().unwrap().is_uppercase() && c.chars().next().unwrap().is_uppercase()) { None } else { Some(*b) })
+        .filter_map(|b| b)
+        .collect::<String>();
+    let mut split = string.split(" ");
+    if let Some(part) = split.next() {
+        out.insert_str(0, part);
+    }
+    if let Some(part) = split.last() {
+        out.push_str(part);
+    }
+    out
+}
+fn linked_name_to_gamevalue_target(gamevalue_kind : &str) -> String {
+    gamevalue_kind.to_title_case()
 }
 
 
@@ -159,27 +260,4 @@ pub fn parse_block(module : &ParsedModule, parsed : &mut ParsedFunction, block :
     }
     // TODO: Terminator? This might not be needed if it's part of CFR groups.
     Ok(())
-}
-
-
-
-
-
-
-
-
-fn fix_title_case<S : AsRef<str>>(string : S) -> String {
-    let string = string.as_ref();
-    let mut out = string.split(" ").intersperse(" ")
-        .map_windows::<_, _, 3>(|[a, b, c]| if (*b == " " && a.chars().last().unwrap().is_uppercase() && c.chars().next().unwrap().is_uppercase()) { None } else { Some(*b) })
-        .filter_map(|b| b)
-        .collect::<String>();
-    let mut split = string.split(" ");
-    if let Some(part) = split.next() {
-        out.insert_str(0, part);
-    }
-    if let Some(part) = split.last() {
-        out.push_str(part);
-    }
-    out
 }

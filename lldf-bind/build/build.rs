@@ -28,7 +28,7 @@ fn main() -> Result<(), Box<dyn Error>> {
 
 
     // Sounds
-    out.sounds.sort_by(|a, b| a.sound.cmp(&b.sound));
+    /*out.sounds.sort_by(|a, b| a.sound.cmp(&b.sound));
     out.sounds.dedup_by(|a, b| a.sound == b.sound);
     {
         let mut file = File::create(cwd.join("src/bind/sound.rs"))?;
@@ -87,11 +87,11 @@ fn main() -> Result<(), Box<dyn Error>> {
 
         }
         writeln!(file, "}}")?;
-    }
+    }*/
 
 
     // Particles
-    out.particles.sort_by(|a, b| a.particle.cmp(&b.particle));
+    /*out.particles.sort_by(|a, b| a.particle.cmp(&b.particle));
     out.particles.dedup_by(|a, b| a.particle == b.particle);
     {
         let mut file = File::create(cwd.join("src/bind/particle.rs"))?;
@@ -173,11 +173,11 @@ fn main() -> Result<(), Box<dyn Error>> {
 
         }
         writeln!(file, "}}")?;
-    }
+    }*/
 
 
     // Actions
-    for action in &mut out.actions {
+    /*for action in &mut out.actions {
         action.name = action.name.trim().to_string();
     }
     out.actions.sort_by(|a, b| a.name.cmp(&b.name));
@@ -230,7 +230,7 @@ fn main() -> Result<(), Box<dyn Error>> {
             writeln!(file)?;
         }
         writeln!(file, "}}")?;
-    }
+    }*/
 
 
     // Game Values
@@ -264,7 +264,7 @@ fn main() -> Result<(), Box<dyn Error>> {
                     &game_value.icon.required_rank,
                     &autogen_message
                 )?;
-                writeln!(file, "    pub fn DF_GAMEVALUE_{}_{}() -> crate::bind::DFOpaqueValue;", name, target)?;
+                writeln!(file, "    pub fn DF_GAMEVALUE__{}_{}() -> *const crate::bind::DFOpaqueValue;", name, target)?;
                 if (game_value.category == "Plot Values" || game_value.category == "Event Values") { break; }
             }
 

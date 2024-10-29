@@ -1,28 +1,45 @@
+use crate::bind::DFOpaqueValue;
 use crate::prelude::*;
+use crate::core::ops::{ Index, IndexMut };
 use crate::core::marker::PhantomData;
-use crate::core::ops::Index;
-use crate::core::mem::{ transmute_unchecked, MaybeUninit };
+use crate::core::mem::MaybeUninit;
 
 
-#[derive(Clone, Copy)]
 pub struct List<T : DFValue> {
     _opaque_type : u8,
     _ph          : PhantomData<T>
 }
 
-impl<T : DFValue> List<T> {
-    pub fn get<U : Into<UInt>>(&self, index : U) -> T { unsafe {
-        let mut out : T = MaybeUninit::uninit().assume_init();
-        crate::bind::action::DF_ACTION_SetVariable_GetListValue(&mut out, *self, index.into() + 1usize);
-        out
+impl<T : DFValue> Clone for List<T> {
+    fn clone(&self) -> Self { unsafe {
+        let mut out : MaybeUninit<List<T>> = MaybeUninit::uninit();
+        DF_ACTION__SetVariable_SpecialcharEquals((&mut out) as *mut _ as *mut DFOpaqueValue, self as *const _ as *const DFOpaqueValue);
+        out.assume_init()
     } }
 }
 
 impl<T : DFValue, U : Into<UInt>> Index<U> for List<T> {
     type Output = T;
     fn index(&self, index : U) -> &Self::Output { unsafe {
-        transmute_unchecked::<_, &_>(&self.get(index))
+        &*(DF_ACTIONPTR__SetVariable_GetListValue__SetVariable_SetListValue(self as *const _ as *mut DFOpaqueValue, index.into()) as *const T)
+    } }
+}
+impl<T : DFValue, U : Into<UInt>> IndexMut<U> for List<T> {
+    fn index_mut(&mut self, index : U) -> &mut Self::Output { unsafe {
+        &mut *(DF_ACTIONPTR__SetVariable_GetListValue__SetVariable_SetListValue(self as *mut _ as *mut DFOpaqueValue, index.into()) as *mut T)
     } }
 }
 
-unsafe impl<T : DFValue> DFValue for List<T> {}
+unsafe impl<T : DFValue> DFValue for List<T> { }
+
+
+
+
+
+extern "C" {
+
+    fn DF_ACTION__SetVariable_SpecialcharEquals( dest : *mut DFOpaqueValue, value : *const DFOpaqueValue ) -> ();
+
+    fn DF_ACTIONPTR__SetVariable_GetListValue__SetVariable_SetListValue( list : *mut DFOpaqueValue, index : UInt ) -> *mut DFOpaqueValue;
+
+}

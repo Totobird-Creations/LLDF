@@ -16,7 +16,7 @@ pub fn parse_oper(module : &ParsedModule, parsed : &mut ParsedFunction, oper : &
 
 
 pub fn parse_const(module : &ParsedModule, parsed : &mut ParsedFunction, cor : &Constant) -> Result<Value, Box<dyn Error>> { match (cor) {
-    Constant::Int { value, .. } => Ok(Value::Constant(CodeValue::Int(*value as i64))),
+    Constant::Int { value, .. } => todo!(),
     Constant::Float(_) => todo!(),
     Constant::Null(_) => todo!(),
     Constant::AggregateZero(_) => todo!(),
@@ -26,7 +26,7 @@ pub fn parse_const(module : &ParsedModule, parsed : &mut ParsedFunction, cor : &
     Constant::Undef(_) => todo!(),
     Constant::Poison(_) => todo!(),
     Constant::BlockAddress => todo!(),
-    Constant::GlobalReference { name, .. } => Ok(Value::GlobalRef(name.clone())),
+    Constant::GlobalReference { name, .. } => todo!(),
     Constant::TokenNone => todo!(),
     Constant::Add(_) => todo!(),
     Constant::Sub(_) => todo!(),
@@ -38,7 +38,7 @@ pub fn parse_const(module : &ParsedModule, parsed : &mut ParsedFunction, cor : &
     Constant::ShuffleVector(_) => todo!(),
     Constant::GetElementPtr(_) => todo!(),
     Constant::Trunc(_) => todo!(),
-    Constant::PtrToInt(PtrToInt { operand, .. }) => Ok(Value::PtrInteger(Box::new(parse_const(module, parsed, operand)?))),
+    Constant::PtrToInt(PtrToInt { operand, .. }) => todo!(),
     Constant::IntToPtr(_) => todo!(),
     Constant::BitCast(_) => todo!(),
     Constant::AddrSpaceCast(_) => todo!(),

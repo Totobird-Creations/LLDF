@@ -1,5 +1,4 @@
 use crate::prelude::*;
-use crate::core::mem::transmute_unchecked;
 
 
 pub enum Game { /* Unconstructable */ }
@@ -9,18 +8,17 @@ impl Game {
 
     #[inline(always)]
     pub fn all_players() -> PlayerSel { unsafe {
-        crate::bind::action::DF_ACTION_SelectObject_AllPlayers();
-        let uuids = *transmute_unchecked::<_, &_>(&crate::bind::gamevalue::DF_GAMEVALUE_SelectionTargetUUIDs_Default());
-        crate::bind::action::DF_ACTION_SelectObject_Reset();
+        DF_ACTION__SelectObject_AllPlayers();
+        let uuids = crate::bind::gamevalue::DF_GAMEVALUE__SelectionTargetUUIDs_Default() as *const List<String>;
+        DF_ACTION__SelectObject_Reset();
         PlayerSel { uuids }
     } }
 
     #[inline(always)]
     pub fn default_player() -> PlayerSel { unsafe {
-        //crate::bind::action::DF_ACTION_SelectObject_DefaultPlayer();
-        crate::bind::action::DF_ACTION_SelectObject_EventTarget_EventTarget("Default".into());
-        let uuids = *transmute_unchecked::<_, &_>(&crate::bind::gamevalue::DF_GAMEVALUE_SelectionTargetUUIDs_Default());
-        crate::bind::action::DF_ACTION_SelectObject_Reset();
+        DF_ACTION__SelectObject_EventTarget_EventTarget_Default();
+        let uuids = crate::bind::gamevalue::DF_GAMEVALUE__SelectionTargetUUIDs_Default() as *const List<String>;
+        DF_ACTION__SelectObject_Reset();
         PlayerSel { uuids }
     } }
 
@@ -31,12 +29,21 @@ impl Game {
 
     #[inline(always)]
     pub fn player_count() -> UInt { unsafe {
-        *transmute_unchecked::<_, &_>(&crate::bind::gamevalue::DF_GAMEVALUE_PlayerCount_Default())
+        *(crate::bind::gamevalue::DF_GAMEVALUE__PlayerCount_Default() as *const UInt)
     } }
 
-    #[inline(always)]
-    pub fn sleep<U : Into<UInt>>(amount : U) -> () { unsafe {
-        crate::bind::action::DF_ACTION_Control_Wait_TimeUnit("Ticks".into(), amount);
-    } }
+}
+
+
+
+
+
+extern "C" {
+
+    fn DF_ACTION__SelectObject_EventTarget_EventTarget_Default( ) -> ();
+
+    fn DF_ACTION__SelectObject_AllPlayers( ) -> ();
+
+    fn DF_ACTION__SelectObject_Reset( ) -> ();
 
 }

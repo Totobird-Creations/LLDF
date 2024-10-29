@@ -3,7 +3,7 @@ use crate::prelude::*;
 
 #[repr(transparent)]
 pub struct EntitySel {
-    pub(in super::super) uuids : List<String>
+    pub(in super::super) uuids : *const List<String>
 }
 
 #[allow(deprecated)]
