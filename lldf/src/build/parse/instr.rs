@@ -1,7 +1,6 @@
-use crate::build::codegen::{CodeValue, Codeblock};
 use super::*;
 
-use llvm_ir::{function::ParameterAttribute, instruction::*, Operand};
+use llvm_ir::instruction::*;
 
 
 
@@ -17,18 +16,12 @@ pub fn parse_instr(module : &ParsedModule, parsed : &mut ParsedFunction, instr :
     Instruction::And(_) => todo!(),
     Instruction::Or(_) => todo!(),
     Instruction::Xor(_) => todo!(),
-    Instruction::Shl(_) => todo!(),
-    Instruction::LShr(_) => todo!(),
-    Instruction::AShr(_) => todo!(),
     Instruction::FAdd(_) => todo!(),
     Instruction::FSub(_) => todo!(),
     Instruction::FMul(_) => todo!(),
     Instruction::FDiv(_) => todo!(),
     Instruction::FRem(_) => todo!(),
     Instruction::FNeg(_) => todo!(),
-    Instruction::ExtractElement(_) => todo!(),
-    Instruction::InsertElement(_) => todo!(),
-    Instruction::ShuffleVector(_) => todo!(),
     Instruction::ExtractValue(_) => todo!(),
     Instruction::InsertValue(_) => todo!(),
 
@@ -37,9 +30,6 @@ pub fn parse_instr(module : &ParsedModule, parsed : &mut ParsedFunction, instr :
     Instruction::Load(Load { address, dest, .. }) => todo!(),
 
     Instruction::Store(_) => todo!(),
-    Instruction::Fence(_) => todo!(),
-    Instruction::CmpXchg(_) => todo!(),
-    Instruction::AtomicRMW(_) => todo!(),
     Instruction::GetElementPtr(_) => todo!(),
     Instruction::Trunc(_) => todo!(),
     Instruction::ZExt(_) => todo!(),
@@ -52,13 +42,10 @@ pub fn parse_instr(module : &ParsedModule, parsed : &mut ParsedFunction, instr :
     Instruction::SIToFP(_) => todo!(),
     Instruction::PtrToInt(_) => todo!(),
     Instruction::IntToPtr(_) => todo!(),
-    Instruction::BitCast(_) => todo!(),
-    Instruction::AddrSpaceCast(_) => todo!(),
     Instruction::ICmp(_) => todo!(),
     Instruction::FCmp(_) => todo!(),
     Instruction::Phi(_) => todo!(),
     Instruction::Select(_) => todo!(),
-    Instruction::Freeze(_) => todo!(),
 
     Instruction::Call(Call { function, arguments, dest, .. }) => {
         let Some(function) = function.as_ref().right() else { return Err("Inline assembly is unsupported".into()) };
@@ -66,8 +53,13 @@ pub fn parse_instr(module : &ParsedModule, parsed : &mut ParsedFunction, instr :
         todo!()
     },
 
-    Instruction::VAArg(_) => todo!(),
-    Instruction::LandingPad(_) => todo!(),
-    Instruction::CatchPad(_) => todo!(),
-    Instruction::CleanupPad(_) => todo!(),
+
+    Instruction::Shl(_) | Instruction::LShr(_) | Instruction::AShr(_)                              => Err("Bit shift instructions are unsupported"          .into()),
+    Instruction::ExtractElement(_) | Instruction::InsertElement(_) | Instruction::ShuffleVector(_) => Err("Vector instructions are unsupported"             .into()),
+    Instruction::Fence(_) | Instruction::CmpXchg(_) | Instruction::AtomicRMW(_)                    => Err("Atomic instructions are unsupported"             .into()),
+    Instruction::BitCast(_)                                                                        => Err("Bit cast instructions are unsupported"           .into()),
+    Instruction::AddrSpaceCast(_)                                                                  => Err("Address space cast instructions are unsupported" .into()),
+    Instruction::Freeze(_)                                                                         => Err("Propagation freeze instructions are unsupported" .into()),
+    Instruction::VAArg(_)                                                                          => Err("Variadic argument instructions are unsupported"  .into()),
+    Instruction::LandingPad(_) | Instruction::CatchPad(_) | Instruction::CleanupPad(_)             => Err("Exception handling instructions are unsupported" .into()),
 } }
