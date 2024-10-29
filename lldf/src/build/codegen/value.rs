@@ -109,16 +109,20 @@ impl AsRef<str> for ParameterType {
 
 
 impl CodeValue {
-    pub fn unsaved_variable<S : Into<String>>(name : S) -> Self {
-        Self::Variable { name : name.into(), scope : VariableScope::Unsaved }
-    }
-    pub fn line_variable(name : &Name) -> Self {
+
+    pub fn line_variable_name(name : &Name) -> Self {
         Self::Variable { name : match (name) {
             Name::Name   (name   ) => format!("local.name.{}",  name    ),
             Name::Number (number ) => format!("local.number.{}", number )
         }, scope : VariableScope::Line }
     }
+
+    pub fn line_variable<S : Into<String>>(name : S) -> Self {
+        Self::Variable { name : name.into(), scope : VariableScope::Line }
+    }
+
 }
+
 
 impl CodeValue {
     pub fn as_actiontag(&self) -> Result<(String, Option<CodeValue>), Box<dyn Error>> { match (self) {

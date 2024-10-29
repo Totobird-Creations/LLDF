@@ -23,15 +23,15 @@ pub enum Global {
     ActionFunction {
         codeblock : String,
         action    : String,
-        tags      : Vec<(String, String)>
+        tags      : Vec<CodeValue>
     },
     ActionPtrFunction {
         getter_codeblock : String,
         getter_action    : String,
-        getter_tags      : Vec<(String, String)>,
+        getter_tags      : Vec<CodeValue>,
         setter_codeblock : String,
         setter_action    : String,
-        setter_tags      : Vec<(String, String)>
+        setter_tags      : Vec<CodeValue>
     },
     GamevalueFunction {
         kind : String,
@@ -49,26 +49,26 @@ pub fn parse_module(module : &Module) -> Result<ParsedModule, Box<dyn Error>> {
         eprintln!("warning: Target triple of module {:?} is not known.", module.name);
     }
 
-    let mut parsed = ParsedModule {
+    let mut function = ParsedModule {
         module,
         globals   : HashMap::new(),
         functions : HashMap::new()
     };
 
     // Collect user defined functions.
-    for function in &module.functions {
-        parsed.globals.insert(Name::Name(Box::new(function.name.clone())), Global::UserFunction { name : function.name.clone() });
+    for module_function in &module.functions {
+        function.globals.insert(Name::Name(Box::new(module_function.name.clone())), Global::UserFunction { name : module_function.name.clone() });
     }
 
     // Collect externally linked functions.
-    for function in &module.func_declarations {
+    for module_function in &module.func_declarations {
 
-        if (function.name == "llvm.lifetime.start.p0" || function.name == "llvm.lifetime.end.p0") {
-            parsed.globals.insert(Name::Name(Box::new(function.name.clone())), Global::NoopFunction);
+        if (module_function.name == "llvm.lifetime.start.p0" || module_function.name == "llvm.lifetime.end.p0") {
+            function.globals.insert(Name::Name(Box::new(module_function.name.clone())), Global::NoopFunction);
             continue;
         }
 
-        let mut parts = function.name.split("__");
+        let mut parts = module_function.name.split("__");
         match (parts.next()) {
 
             Some("DF_ACTION") => {
@@ -77,7 +77,7 @@ pub fn parse_module(module : &Module) -> Result<ParsedModule, Box<dyn Error>> {
                     if let (Some(codeblock), Some(action)) = (executor_parts.next(), executor_parts.next()) {
                         let codeblock = linked_name_to_codeblock (codeblock );
                         let action    = linked_name_to_action    (action    );
-                        parsed.globals.insert(Name::Name(Box::new(function.name.clone())), Global::ActionFunction {
+                        function.globals.insert(Name::Name(Box::new(module_function.name.clone())), Global::ActionFunction {
                             codeblock, action,
                             tags : collect_actiontag_parts(executor_parts)
                         });
@@ -97,7 +97,7 @@ pub fn parse_module(module : &Module) -> Result<ParsedModule, Box<dyn Error>> {
                         let getter_action    = linked_name_to_action    (getter_action    );
                         let setter_codeblock = linked_name_to_codeblock (setter_codeblock );
                         let setter_action    = linked_name_to_action    (setter_action    );
-                        parsed.globals.insert(Name::Name(Box::new(function.name.clone())), Global::ActionPtrFunction {
+                        function.globals.insert(Name::Name(Box::new(module_function.name.clone())), Global::ActionPtrFunction {
                             getter_codeblock, getter_action,
                             getter_tags : collect_actiontag_parts(getter_parts),
                             setter_codeblock, setter_action,
@@ -115,7 +115,7 @@ pub fn parse_module(module : &Module) -> Result<ParsedModule, Box<dyn Error>> {
                     {
                         let kind   = linked_name_to_gamevalue_kind   (kind   );
                         let target = linked_name_to_gamevalue_target (target );
-                        parsed.globals.insert(Name::Name(Box::new(function.name.clone())), Global::GamevalueFunction { kind, target });
+                        function.globals.insert(Name::Name(Box::new(module_function.name.clone())), Global::GamevalueFunction { kind, target });
                         continue;
                     }
                 }
@@ -133,7 +133,7 @@ pub fn parse_module(module : &Module) -> Result<ParsedModule, Box<dyn Error>> {
         //    parsed.globals.insert(Name::Name(Box::new(function.name.clone())), Global::GamevalueFunction { kind, target });
         //}
 
-        return Err(format!("Unrecognised externally linked function {}", function.name).into());
+        return Err(format!("Unrecognised externally linked function {}", module_function.name).into());
     }
 
     // Collect global variables.
@@ -142,18 +142,18 @@ pub fn parse_module(module : &Module) -> Result<ParsedModule, Box<dyn Error>> {
     //}
 
     println!();
-    for function in &module.functions {
-        let mut parsed_function = parse_function(&parsed, function)?;
-        println!("{}", function.name);
+    for module_function in &module.functions {
+        let mut parsed_function = parse_function(&function, module_function)?;
+        println!("{}", module_function.name);
         codegen::opt::dead_selections(&mut parsed_function.line);
         for block in &parsed_function.line.blocks {
             println!("  {:?}", block);
         }
         println!();
-        parsed.functions.insert(function.name.clone(), parsed_function);
+        function.functions.insert(module_function.name.clone(), parsed_function);
     }
 
-    Ok(parsed)
+    Ok(function)
 }
 
 fn linked_name_to_codeblock(codeblock : &str) -> String {
@@ -173,10 +173,13 @@ fn linked_name_to_actiontag_kind(actiontag_kind : &str) -> String {
 fn linked_name_to_actiontag_value(actiontag_value : &str) -> String {
     actiontag_value.to_sentence_case()
 }
-fn collect_actiontag_parts<'l>(actiontag_parts : impl Iterator<Item = &'l str>) -> Vec<(String, String)> {
+fn collect_actiontag_parts<'l>(actiontag_parts : impl Iterator<Item = &'l str>) -> Vec<CodeValue> {
     actiontag_parts.array_chunks::<2>()
-        .map(|[kind, value]| (linked_name_to_actiontag_kind(kind), linked_name_to_actiontag_value(value)))
-        .collect::<Vec<_>>()
+        .map(|[kind, value]| CodeValue::Actiontag {
+            kind     : linked_name_to_actiontag_kind(kind),
+            value    : linked_name_to_actiontag_value(value),
+            variable : None
+        }).collect::<Vec<_>>()
 }
 fn linked_name_to_gamevalue_kind(gamevalue_kind : &str) -> String {
     let string = gamevalue_kind.to_title_case();
@@ -207,10 +210,10 @@ pub struct ParsedFunction<'l> {
     pub next_temp : usize
 }
 impl ParsedFunction<'_> {
-    pub fn create_temp_var(&mut self) -> Name {
+    pub fn create_temp_var_name(&mut self) -> String {
         let temp_var = self.next_temp;
         self.next_temp += 1;
-        Name::Name(Box::new(format!("local.temp.{}", temp_var)))
+        format!("local.temp.{}", temp_var)
     }
 }
 
