@@ -1,7 +1,7 @@
 use crate::prelude::*;
 
 
-#[derive(Clone, Copy)]
+#[derive(Clone)]
 pub struct Item {
     _opaque_type : u8
 }

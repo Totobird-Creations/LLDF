@@ -51,6 +51,8 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
                 Ok(())
             },
 
+            Value::IntPtr(_) => todo!(),
+
             Value::Local(_) => todo!(),
 
             Value::CodeValue(_) => todo!()
@@ -91,12 +93,15 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
             Value::GlobalRef(global) => {
                 let Some(global) = module.globals.get(&global) else { return Err(format!("Unknown global {}", global).into()) };
                 match (global) {
-                    Global::NoopFunction => { Ok(()) },
+
+                    Global::NoopFunction => Ok(()),
+
                     Global::UserFunction { name } => {
                         let block = Codeblock::call_func(name, vec![]); // TODO: params & return value
                         function.line.blocks.push(block);
                         Ok(())
                     },
+
                     Global::ActionFunction { codeblock, action, tags } => {
                         let mut params = Vec::with_capacity(arguments.len());
                         for (arg, _) in arguments {
@@ -106,6 +111,7 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
                         function.line.blocks.push(block);
                         Ok(())
                     },
+
                     Global::ActionPtrFunction { getter_codeblock, getter_action, getter_tags, setter_codeblock, setter_action, setter_tags } => {
                         let Some(dest) = dest else { return Err("Action pointer function return value must be assigned to a local".into()) };
                         let mut parameters = Vec::with_capacity(arguments.len());
@@ -126,6 +132,7 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
                         function.locals.insert(dest.clone(), value);
                         Ok(())
                     },
+
                     Global::GamevalueFunction { kind, target } => {
                         let Some(dest) = dest else { return Err("Game value function return value must be assigned to a local".into()) };
                         let dest_var = CodeValue::line_variable_name(dest);
@@ -133,11 +140,16 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
                         function.line.blocks.push(Codeblock::action("set_var", "=", params, vec![]));
                         function.locals.insert(dest.clone(), Value::CodeValue(dest_var));
                         Ok(())
-                    }
+                    },
+
+                    Global::Constant(_) => todo!()
+
                 }
             },
 
             Value::GetSetPtr { .. } => { Err("Can not call a pointer".into()) }, // TODO: function-pointer, maybe?
+
+            Value::IntPtr(_) => todo!(),
 
             Value::Local(_) => { Err("Can not call a local".into()) },
 
@@ -180,6 +192,8 @@ fn handle_store(module : &ParsedModule, function : &mut ParsedFunction, address 
             };
             Ok(())
         },
+
+        Value::IntPtr(_) => todo!(),
 
         Value::Local(_) => todo!(),
 

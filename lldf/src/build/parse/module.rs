@@ -5,14 +5,15 @@ use std::collections::HashMap;
 
 use decomp::{ cfa::CFAPrim, cfg::ControlFlowGraph, cfr::{ CFRGroup, CFRGroups } };
 use inflector::Inflector;
-use llvm_ir::{ Function, Module };
+use llvm_ir::{ module::GlobalVariable, Function, Module };
 
 
 
 pub struct ParsedModule<'l> {
-    pub module    : &'l Module,
-    pub globals   : HashMap<Name, Global>,
-    pub functions : HashMap<String, ParsedFunction<'l>>
+    pub module        : &'l Module,
+    pub globals       : HashMap<Name, Global>,
+    pub init_function : Option<ParsedFunction<'l>>,
+    pub functions     : HashMap<String, ParsedFunction<'l>>
 }
 #[derive(Debug)]
 pub enum Global {
@@ -36,7 +37,8 @@ pub enum Global {
     GamevalueFunction {
         kind : String,
         target : String
-    }
+    },
+    Constant(Value)
 }
 
 pub fn parse_module(module : &Module) -> Result<ParsedModule, Box<dyn Error>> {
@@ -49,22 +51,23 @@ pub fn parse_module(module : &Module) -> Result<ParsedModule, Box<dyn Error>> {
         eprintln!("warning: Target triple of module {:?} is not known.", module.name);
     }
 
-    let mut function = ParsedModule {
+    let mut parsed = ParsedModule {
         module,
-        globals   : HashMap::new(),
-        functions : HashMap::new()
+        globals       : HashMap::new(),
+        init_function : None,
+        functions     : HashMap::new()
     };
 
     // Collect user defined functions.
     for module_function in &module.functions {
-        function.globals.insert(Name::Name(Box::new(module_function.name.clone())), Global::UserFunction { name : module_function.name.clone() });
+        parsed.globals.insert(Name::Name(Box::new(module_function.name.clone())), Global::UserFunction { name : module_function.name.clone() });
     }
 
     // Collect externally linked functions.
     for module_function in &module.func_declarations {
 
         if (module_function.name == "llvm.lifetime.start.p0" || module_function.name == "llvm.lifetime.end.p0") {
-            function.globals.insert(Name::Name(Box::new(module_function.name.clone())), Global::NoopFunction);
+            parsed.globals.insert(Name::Name(Box::new(module_function.name.clone())), Global::NoopFunction);
             continue;
         }
 
@@ -77,7 +80,7 @@ pub fn parse_module(module : &Module) -> Result<ParsedModule, Box<dyn Error>> {
                     if let (Some(codeblock), Some(action)) = (executor_parts.next(), executor_parts.next()) {
                         let codeblock = linked_name_to_codeblock (codeblock );
                         let action    = linked_name_to_action    (action    );
-                        function.globals.insert(Name::Name(Box::new(module_function.name.clone())), Global::ActionFunction {
+                        parsed.globals.insert(Name::Name(Box::new(module_function.name.clone())), Global::ActionFunction {
                             codeblock, action,
                             tags : collect_actiontag_parts(executor_parts)
                         });
@@ -97,7 +100,7 @@ pub fn parse_module(module : &Module) -> Result<ParsedModule, Box<dyn Error>> {
                         let getter_action    = linked_name_to_action    (getter_action    );
                         let setter_codeblock = linked_name_to_codeblock (setter_codeblock );
                         let setter_action    = linked_name_to_action    (setter_action    );
-                        function.globals.insert(Name::Name(Box::new(module_function.name.clone())), Global::ActionPtrFunction {
+                        parsed.globals.insert(Name::Name(Box::new(module_function.name.clone())), Global::ActionPtrFunction {
                             getter_codeblock, getter_action,
                             getter_tags : collect_actiontag_parts(getter_parts),
                             setter_codeblock, setter_action,
@@ -115,7 +118,7 @@ pub fn parse_module(module : &Module) -> Result<ParsedModule, Box<dyn Error>> {
                     {
                         let kind   = linked_name_to_gamevalue_kind   (kind   );
                         let target = linked_name_to_gamevalue_target (target );
-                        function.globals.insert(Name::Name(Box::new(module_function.name.clone())), Global::GamevalueFunction { kind, target });
+                        parsed.globals.insert(Name::Name(Box::new(module_function.name.clone())), Global::GamevalueFunction { kind, target });
                         continue;
                     }
                 }
@@ -124,41 +127,55 @@ pub fn parse_module(module : &Module) -> Result<ParsedModule, Box<dyn Error>> {
             _ => { }
         }
 
-        //else if (function.name.starts_with("DF_GAMEVALUE_")) {
-        //    let mut parts = function.name.split("_").skip(2);
-        //    let Some(kind   ) = parts.next() else { return Err(format!("Externally linked function {} missing required data for game value", function.name).into()) };
-        //    let Some(target ) = parts.next() else { return Err(format!("Externally linked function {} missing required data for game value", function.name).into()) };
-        //    let kind   = fix_title_case(kind.to_title_case());
-        //    let target = target.to_class_case();
-        //    parsed.globals.insert(Name::Name(Box::new(function.name.clone())), Global::GamevalueFunction { kind, target });
-        //}
-
         return Err(format!("Unrecognised externally linked function {}", module_function.name).into());
     }
 
     // Collect global variables.
-    //for GlobalVariable { name, is_constant, initializer, .. } in &module.global_vars {
-    //    println!("{name} {is_constant}");
-    //}
+    let mut init_function = ParsedFunction::new(None);
+    for GlobalVariable { name, is_constant, initializer : init, .. } in &module.global_vars {
+        let mut is_constant = *is_constant;
+        let var = CodeValue::unsaved_variable_name(name);
+        if let Some(init) = init {
+            let block_count = init_function.line.blocks.len();
+            let mut value = parse_const(&parsed, &mut init_function, init)?; // TODO: Detect strings.
+            let code_value = value.to_codevalue(&parsed, &mut init_function)?;
+            if (init_function.line.blocks.len() != block_count) {
+                is_constant = false;
+            }
+            if let CodeValue::Variable { .. } = &code_value { is_constant = false; }
+            if (! is_constant) {
+                let params = vec![ var.clone(), code_value ];
+                init_function.line.blocks.push(Codeblock::action("set_var", "=", params, vec![]));
+                value = Value::CodeValue(var);
+            }
+            parsed.globals.insert(name.clone(), Global::Constant(value));
+        } else {
+            parsed.globals.insert(name.clone(), Global::Constant(Value::CodeValue(var)));
+        }
+    }
+    parsed.init_function = Some(init_function);
 
+    // Parse user defined functions.
     println!();
     for module_function in &module.functions {
-        let mut parsed_function = parse_function(&function, module_function)?;
+        let mut parsed_function = parse_function(&parsed, module_function)?;
         println!("\x1b[96m\x1b[1m{}\x1b[0m", module_function.name);
         codegen::opt::dead_selections(&mut parsed_function.line);
+        codegen::opt::duplicate_selections(&mut parsed_function.line);
+        codegen::opt::dead_equals(&mut parsed_function.line);
         for block in &parsed_function.line.blocks {
             println!("  \x1b[36m{:?}\x1b[0m", block);
         }
-        { // TODO: Here for testing, remove
+        { // TODO: Here for testing, remove later.
             parsed_function.line.blocks.insert(0, Codeblock::function(module_function.name.clone(), vec![], false));
             let data = "minecraft:ender_chest{PublicBukkitValues:{\"hypercube:codetemplatedata\":'{\"author\":\"TotobirdCreation\",\"name\":\"&b&lFunction &3» &bUnnamed\",\"version\":1,\"code\":\"[INSERT]\"}'},display:{Name:'{\"text\":\"\",\"extra\":[{\"text\":\"Function \",\"obfuscated\":false,\"italic\":false,\"underlined\":false,\"strikethrough\":false,\"color\":\"aqua\",\"bold\":true},{\"text\":\"» \",\"italic\":false,\"color\":\"dark_aqua\",\"bold\":false},{\"text\":\"Unnamed\",\"italic\":false,\"color\":\"aqua\"}]}'}}";
             println!("\x1b[92m{}\x1b[0m", data.replace("[INSERT]", &parsed_function.line.to_b64()));
         }
         println!();
-        function.functions.insert(module_function.name.clone(), parsed_function);
+        parsed.functions.insert(module_function.name.clone(), parsed_function);
     }
 
-    Ok(function)
+    Ok(parsed)
 }
 
 fn linked_name_to_codeblock(codeblock : &str) -> String {
@@ -224,12 +241,18 @@ pub fn names_to_symbols(from : &str) -> String {
 
 
 pub struct ParsedFunction<'l> {
-    pub function  : &'l Function,
+    pub function  : Option<&'l Function>,
     pub locals    : HashMap<Name, Value>,
     pub line      : CodeLine,
     pub next_temp : usize
 }
-impl ParsedFunction<'_> {
+impl<'l> ParsedFunction<'l> {
+    pub fn new(function : Option<&'l Function>) -> Self { Self {
+        function,
+        locals    : HashMap::new(),
+        line      : CodeLine::new(),
+        next_temp : 0
+    } }
     pub fn create_temp_var_name(&mut self) -> String {
         let temp_var = self.next_temp;
         self.next_temp += 1;
@@ -238,12 +261,7 @@ impl ParsedFunction<'_> {
 }
 
 pub fn parse_function<'l>(module : &ParsedModule, function : &'l Function) -> Result<ParsedFunction<'l>, Box<dyn Error>> {
-    let mut parsed = ParsedFunction {
-        function,
-        locals    : HashMap::new(),
-        line      : CodeLine::new(),
-        next_temp : 0
-    };
+    let mut parsed = ParsedFunction::new(Some(function));
 
     let Some(cfr) = CFAPrim::find_all(ControlFlowGraph::new(function)).map(|cfa| CFRGroups::new(&cfa)).flatten() else {
         return Err(format!("Failed to recover control flow primitives of function `{}`.", function.name).into())
@@ -279,7 +297,7 @@ pub fn parse_cfr_group(module : &ParsedModule, parsed : &mut ParsedFunction, gro
 
 
 pub fn parse_block(module : &ParsedModule, parsed : &mut ParsedFunction, block : Name) -> Result<(), Box<dyn Error>> {
-    let block = parsed.function.basic_blocks.iter().find(|bb| bb.name == block).unwrap();
+    let block = parsed.function.unwrap().basic_blocks.iter().find(|bb| bb.name == block).unwrap();
     for instr in &block.instrs {
         parse_instr(module, parsed, instr)?;
     }

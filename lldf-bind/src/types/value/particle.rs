@@ -1,7 +1,7 @@
 use crate::prelude::*;
 
 
-#[derive(Clone, Copy)]
+#[derive(Clone)]
 pub struct Particle {
     _opaque_type : u8
 }

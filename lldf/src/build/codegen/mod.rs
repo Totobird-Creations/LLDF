@@ -30,7 +30,7 @@ pub enum Codeblock {
         side : BracketSide
     }
 }
-#[derive(Debug)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct CodeblockBlock {
     pub block  : String,
     pub action : Option<String>,
@@ -99,12 +99,26 @@ impl CodeLine {
     }
 }
 impl Codeblock {
+    pub fn contains_line_var(&self, check : &str) -> bool {
+        if let Codeblock::Block(block) = self { block.contains_line_var(check) }
+        else { false }
+    }
+    pub fn replace_line_var(&mut self, check : &str, with : &str) -> () {
+        if let Codeblock::Block(block) = self { block.replace_line_var(check, with) }
+    }
     pub fn to_json(&self) -> json::Value { match (self) {
         Self::Block(block) => block.to_json(),
         Self::Bracket { .. } => todo!()
     } }
 }
 impl CodeblockBlock {
+    pub fn contains_line_var(&self, check : &str) -> bool {
+        self.params.iter().any(|p| p.contains_line_var(check)) || self.tags.iter().any(|t| t.contains_line_var(check))
+    }
+    pub fn replace_line_var(&mut self, check : &str, with : &str) -> () {
+        for p in &mut self.params { p.replace_line_var(check, with); }
+        for t in &mut self.tags   { t.replace_line_var(check, with); }
+    }
     pub fn to_json(&self) -> json::Value {
         let mut items = Vec::new();
         for (i, param) in self.params.iter().enumerate() {

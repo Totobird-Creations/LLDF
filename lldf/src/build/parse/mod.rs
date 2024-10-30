@@ -27,6 +27,11 @@ pub enum Value {
         parameters       : Vec<Value>
     },
 
+    /// A pointer that was converted to an integer.
+    /// Due to DiamondFire restrictions, can not be used as
+    ///   an integer, but can be converted back to a pointer.
+    IntPtr(Box<Value>),
+
     /// Direct access to a local value.
     /// Should NEVER be used as a pointer.
     Local(Name),
@@ -51,9 +56,14 @@ pub enum GSPGetter {
 impl Value {
     pub fn to_codevalue(&self, module : &ParsedModule, function : &mut ParsedFunction) -> Result<CodeValue, Box<dyn Error>> { match (self) {
 
-        Value::GlobalRef(_) => todo!(),
+        Value::GlobalRef(name) => {
+            let Some(global) = module.globals.get(name) else { return Err(format!("Unknown global {}", name).into()) };
+            todo!("{:?}", global)
+        },
 
         Value::GetSetPtr { getter, parameters, .. } => getter.to_codevalue(module, function, parameters),
+
+        Value::IntPtr(value) => value.to_codevalue(module, function),
 
         Value::Local(name) => {
             let Some(value) = function.locals.get(name) else { return Err(format!("Unknown local {}", name).into()) };

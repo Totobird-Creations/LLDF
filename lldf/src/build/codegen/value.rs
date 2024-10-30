@@ -3,7 +3,7 @@ use std::error::Error;
 use llvm_ir::Name;
 
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum CodeValue {
     String(String),
     Text(String),
@@ -57,7 +57,7 @@ pub enum CodeValue {
 }
 
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum VariableScope {
     Unsaved,
     Saved,
@@ -73,7 +73,7 @@ impl AsRef<str> for VariableScope {
     } }
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum ParameterType {
     String,
     Text,
@@ -121,10 +121,31 @@ impl CodeValue {
         Self::Variable { name : name.into(), scope : VariableScope::Line }
     }
 
+    pub fn unsaved_variable_name(name : &Name) -> Self {
+        Self::Variable { name : match (name) {
+            Name::Name   (name   ) => format!("global.name.{}",  name    ),
+            Name::Number (number ) => format!("global.number.{}", number )
+        }, scope : VariableScope::Unsaved }
+    }
+
+    pub fn unsaved_variable<S : Into<String>>(name : S) -> Self {
+        Self::Variable { name : name.into(), scope : VariableScope::Unsaved }
+    }
+
 }
 
 
 impl CodeValue {
+    pub fn contains_line_var(&self, check : &str) -> bool { match (self) {
+        Self::Variable { name, scope : VariableScope::Line } => { name == check },
+        Self::Actiontag { variable : Some(variable), .. } => { variable.contains_line_var(check) },
+        _ => false
+    } }
+    pub fn replace_line_var(&mut self, check : &str, with : &str) -> () { match (self) {
+        Self::Variable { name, scope : VariableScope::Line } => { if (name == check) { *name = with.to_string() } },
+        Self::Actiontag { variable : Some(variable), .. } => { variable.replace_line_var(check, with) },
+        _ => { }
+    } }
     pub fn as_actiontag(&self) -> Result<(String, Option<CodeValue>), Box<dyn Error>> { match (self) {
         Self::String(string) => Ok((string.clone(), None)),
         var @ Self::Variable { .. } => Ok((String::new(), Some(var.clone()))),
