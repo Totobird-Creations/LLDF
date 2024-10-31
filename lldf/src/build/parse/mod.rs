@@ -58,7 +58,21 @@ impl Value {
 
         Value::GlobalRef(name) => {
             let Some(global) = module.globals.get(name) else { return Err(format!("Unknown global {}", name).into()) };
-            todo!("{:?}", global)
+            match (global) {
+                
+                Global::NoopFunction => Err("No-op function can not be converted to a code value".into()),
+
+                Global::UserFunction { .. } => Err("Function can not be converted to a code value".into()),
+
+                Global::ActionFunction { .. } => Err("Action function can not be converted to a code value".into()),
+
+                Global::ActionPtrFunction { .. } => Err("Action-pointer function can not be converted to a code value".into()),
+
+                Global::GamevalueFunction { .. } => Err("Gamevalue function can not be converted to a code value".into()),
+
+                Global::Constant(value) => value.to_codevalue(module, function),
+
+            }
         },
 
         Value::GetSetPtr { getter, parameters, .. } => getter.to_codevalue(module, function, parameters),

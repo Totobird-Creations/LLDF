@@ -6,8 +6,12 @@ pub trait Into<T> : Sized {
     #[must_use]
     fn into(self) -> T;
 }
-impl<T> Into<T> for T {
-    fn into(self) -> T { self }
+impl<T, U : From<T>> Into<U> for T {
+    #[inline]
+    #[track_caller]
+    fn into(self) -> U {
+        U::from(self)
+    }
 }
 
 
@@ -16,6 +20,9 @@ pub trait From<T> : Sized {
     #[must_use]
     fn from(value : T) -> Self;
 }
+//impl<T> From<T> for T {
+//    fn from(value : T) -> Self { value }
+//}
 
 
 pub trait AsRef<T : ?Sized> {

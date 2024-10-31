@@ -32,8 +32,6 @@ macro feature_require_one {
 }
 // Error if the number of enabled server rank features is not exactly one.
 feature_require_one!{ "server rank" => "rank_none", "rank_noble", "rank_emperor", "rank_mythic", "rank_overlord", "rank_dev" }
-// Error if the number of enabled plot size features is not exactly one.
-feature_require_one!{ "plot size" => "plot_50x", "plot_100x", "plot_300x", "plot_1000x" }
 
 // Warn if dev rank is enabled.
 #[cfg(feature = "rank_dev")]
@@ -63,6 +61,7 @@ pub mod types;
 
 /// The essentials.
 pub mod prelude {
+    pub use crate::core;
     pub use crate::core::prelude::*;
 
     pub use lldf_bind_proc::event;
@@ -87,3 +86,10 @@ pub mod prelude {
 
     pub use crate::types::game::Game;
 }
+
+
+
+
+
+#[doc(hidden)]
+pub mod __private;

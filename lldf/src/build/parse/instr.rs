@@ -27,7 +27,6 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
     Instruction::ExtractValue(_) => todo!(),
     Instruction::InsertValue(_) => todo!(),
 
-
     Instruction::Alloca(Alloca { dest, .. }) => {
         function.locals.insert(dest.clone(), Value::GetSetPtr {
             getter           : GSPGetter::Local(dest.clone()),
@@ -39,11 +38,32 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
         Ok(())
     },
 
-
     Instruction::Load(Load { address, dest, .. }) => {
         match (parse_oper(module, function, address)?) {
 
-            Value::GlobalRef(_) => todo!(),
+            Value::GlobalRef(name) => {
+                let Some(global) = module.globals.get(&name) else { return Err(format!("Unknown global {}", name).into()) };
+                match (global) {
+
+                    Global::NoopFunction => Err("Can not load a no-op function".into()),
+
+                    Global::UserFunction { .. } => Err("Can not load a function".into()),
+
+                    Global::ActionFunction { .. } => Err("Can not load an action function".into()),
+
+                    Global::ActionPtrFunction { .. } => Err("Can not load an action-pointer function".into()),
+
+                    Global::GamevalueFunction { .. } => Err("Can not load a gamevalue function".into()),
+
+                    Global::Constant(value) => {
+                        let params = vec![ CodeValue::line_variable_name(dest), value.to_codevalue(module, function)? ];
+                        function.line.blocks.push(Codeblock::action("set_var", "=", params, vec![]));
+                        function.locals.insert(dest.clone(), value.clone());
+                        Ok(())
+                    },
+
+                }
+            },
 
             Value::GetSetPtr { getter, parameters, .. } => {
                 let dest_value = getter.to_codevalue(module, function, &parameters)?;
@@ -60,13 +80,11 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
         }
     },
 
-
     Instruction::Store(Store { address, value, .. }) => {
         let     value   = parse_oper(module, function, value   )?;
         let mut address = parse_oper(module, function, address )?;
         handle_store(module, function, &mut address, &value)
     },
-
 
     Instruction::GetElementPtr(_) => todo!(),
     Instruction::Trunc(_) => todo!(),
@@ -84,7 +102,6 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
     Instruction::FCmp(_) => todo!(),
     Instruction::Phi(_) => todo!(),
     Instruction::Select(_) => todo!(),
-
 
     Instruction::Call(Call { function : calling, arguments, dest, .. }) => {
         let Some(calling) = calling.as_ref().right() else { return Err("Inline assembly is unsupported".into()) };
@@ -158,7 +175,6 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
         }
     },
 
-
     Instruction::Shl(_) | Instruction::LShr(_) | Instruction::AShr(_)                              => Err("Bit shift instructions are unsupported"          .into()),
     Instruction::ExtractElement(_) | Instruction::InsertElement(_) | Instruction::ShuffleVector(_) => Err("Vector instructions are unsupported"             .into()),
     Instruction::Fence(_) | Instruction::CmpXchg(_) | Instruction::AtomicRMW(_)                    => Err("Atomic instructions are unsupported"             .into()),
@@ -176,7 +192,12 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
 fn handle_store(module : &ParsedModule, function : &mut ParsedFunction, address : &mut Value, value : &Value) -> Result<(), Box<dyn Error>> {
     match (address) {
 
-        Value::GlobalRef(_) => todo!(),
+        Value::GlobalRef(name) => {
+            let params = vec![ CodeValue::unsaved_variable_name(name), value.to_codevalue(module, function)? ];
+            function.line.blocks.push(Codeblock::action("set_var", "=", params, vec![]));
+            function.locals.insert(name.clone(), value.clone());
+            Ok(())
+        },
 
         Value::GetSetPtr { getter, setter_codeblock, setter_action, setter_tags, parameters, .. } => {
             let mut params = Vec::with_capacity(parameters.len() + 1);

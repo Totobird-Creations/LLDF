@@ -1,5 +1,7 @@
 mod arith;
 pub use arith::*;
+mod bit;
+pub use bit::*;
 mod deref;
 pub use deref::*;
 mod index;

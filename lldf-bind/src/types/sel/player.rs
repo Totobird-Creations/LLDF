@@ -4,7 +4,7 @@ use crate::bind::DFOpaqueValue;
 
 #[repr(transparent)]
 pub struct PlayerSel {
-    pub(in super::super) uuids : *const List<String>
+    pub(crate) uuids : *const List<String>
 }
 
 #[allow(deprecated)]
@@ -42,6 +42,7 @@ unsafe impl DFSel for PlayerSel {}
 
 
 
+#[allow(clashing_extern_declarations)]
 extern "C" {
 
     fn DF_ACTION__SelectObject_PlayerName( target : *const DFOpaqueValue ) -> ();

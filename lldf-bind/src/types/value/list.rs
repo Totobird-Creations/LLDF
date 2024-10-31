@@ -39,6 +39,7 @@ unsafe impl<T : DFValue> DFValue for List<T> { }
 
 
 
+#[allow(clashing_extern_declarations)]
 extern "C" {
 
     fn DF_ACTION__SetVariable_SpecialcharEquals( dest : *mut DFOpaqueValue, value : *const DFOpaqueValue ) -> ();

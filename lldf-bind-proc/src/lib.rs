@@ -4,9 +4,8 @@
 use proc_macro::TokenStream;
 use proc_macro::Span;
 use syn::parse;
-use syn::LitStr;
-use syn::Ident;
-use syn::ItemFn;
+use syn::{ FnArg, Ident, ItemFn, LitStr, Pat, Path, PathArguments, PathSegment, PatType, PatWild, Type, TypePath };
+use syn::punctuated::Punctuated;
 use quote::quote;
 
 
@@ -27,7 +26,7 @@ pub fn compile_warning(input : TokenStream) -> TokenStream {
 
 #[proc_macro_attribute]
 pub fn event(args : TokenStream, input : TokenStream) -> TokenStream {
-    let Ok(func) = parse::<ItemFn>(input.clone().into()) else {
+    let Ok(mut func) = parse::<ItemFn>(input.clone().into()) else {
         Span::call_site().error("#[event(...)] can only be applied to functions").emit();
         return input;
     };
@@ -35,20 +34,38 @@ pub fn event(args : TokenStream, input : TokenStream) -> TokenStream {
         Span::call_site().error("Event trigger must be an identifier").emit();
         return input;
     };
+    let cs = Span::call_site().into();
 
-    let func_ident = &func.sig.ident;
-    let extern_ident = Ident::new(&format!("DF_EVENT_{}", trigger.to_string()), trigger.span());
+    let original_func_ident = &func.sig.ident;
+
+    // Add an argument to the function which prevents it from being called.
+    func.sig.inputs.insert(0, FnArg::Typed(PatType {
+        attrs : vec![],
+        pat   : Box::new(Pat::Wild(PatWild {
+            attrs            : vec![],
+            underscore_token : Default::default()
+        })),
+        colon_token : Default::default(),
+        ty          : Box::new(Type::Path(TypePath {
+            qself : None,
+            path  : Path {
+                leading_colon : Some(Default::default()),
+                segments      : {
+                    let mut path = Punctuated::new();
+                    path.push(PathSegment { ident : Ident::new("lldf_bind", cs), arguments : PathArguments::None });
+                    path.push(PathSegment { ident : Ident::new("__private", cs), arguments : PathArguments::None });
+                    path.push(PathSegment { ident : Ident::new("Calling_an_event_trigger_is_not_allowed", cs), arguments : PathArguments::None });
+                    path
+                }
+            }
+        }))
+    }));
 
     quote!{
 
-        #[no_mangle]
-        #[inline(always)]
-        pub fn #extern_ident() {
-            #func_ident();
-        }
+        ::lldf_bind::__private::event_trigger!{ #trigger, #original_func_ident }
 
-        #[no_mangle]
-        #[inline(never)]
+        #[inline(always)]
         #func
 
     }.into()

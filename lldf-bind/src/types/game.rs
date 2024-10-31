@@ -16,14 +16,6 @@ impl Game {
     } }
 
     #[inline(always)]
-    pub fn default_player() -> PlayerSel { unsafe {
-        DF_ACTION__SelectObject_EventTarget_EventTarget_Default();
-        let uuids = crate::bind::gamevalue::DF_GAMEVALUE__SelectionTargetUUIDs_Default() as *const List<String>;
-        DF_ACTION__SelectObject_Reset();
-        PlayerSel { uuids }
-    } }
-
-    #[inline(always)]
     pub fn player_by_uuid<T : AsRef<String>>(uuid : T) -> PlayerSel { unsafe {
         DF_ACTION__SelectObject_PlayerName(uuid.as_ref() as *const _ as *const _);
         let uuids = crate::bind::gamevalue::DF_GAMEVALUE__SelectionTargetUUIDs_Default() as *const List<String>;
@@ -47,11 +39,9 @@ impl Game {
 
 
 
+#[allow(clashing_extern_declarations)]
 extern "C" {
 
-    fn DF_ACTION__SelectObject_EventTarget_EventTarget_Default( ) -> ();
-
-    // TODO: Tags
     fn DF_ACTION__SelectObject_PlayerName( target : *const DFOpaqueValue ) -> ();
 
     fn DF_ACTION__SelectObject_AllPlayers( ) -> ();

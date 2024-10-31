@@ -3,21 +3,30 @@ use crate::dbc::{ DBCRank, DBCValueType, DBCActionTag };
 use std::io;
 
 
+#[track_caller]
 pub fn symbols_to_names(from : &str) -> String {
     let mut out = String::with_capacity(from.len());
     for ch in from.chars() { match (ch) {
-        '+' => out.push_str("SpecialcharPlus"),
-        '-' => out.push_str("SpecialcharMinus"),
-        '/' => out.push_str("SpecialcharSlash"),
-        '%' => out.push_str("SpecialcharPercent"),
-        '!' => out.push_str("SpecialcharExclamation"),
-        '=' => out.push_str("SpecialcharEquals"),
-        '[' => out.push_str("SpecialcharLeftbracket"),
-        ']' => out.push_str("SpecialcharRightbracket"),
-        '<' => out.push_str("SpecialcharLeftangle"),
-        '>' => out.push_str("SpecialcharRightangle"),
-        '(' => out.push_str("SpecialcharLeftparenthesis"),
-        ')' => out.push_str("SpecialcharRightparenthesis"),
+        '+'  => out.push_str("SpecialcharPlus"),
+        '-'  => out.push_str("SpecialcharMinus"),
+        '/'  => out.push_str("SpecialcharSlash"),
+        '%'  => out.push_str("SpecialcharPercent"),
+        '!'  => out.push_str("SpecialcharExclamation"),
+        '='  => out.push_str("SpecialcharEquals"),
+        '['  => out.push_str("SpecialcharLeftbracket"),
+        ']'  => out.push_str("SpecialcharRightbracket"),
+        '<'  => out.push_str("SpecialcharLeftangle"),
+        '>'  => out.push_str("SpecialcharRightangle"),
+        '('  => out.push_str("SpecialcharLeftparenthesis"),
+        ')'  => out.push_str("SpecialcharRightparenthesis"),
+        '\'' => out.push_str("SpecialcharApostrophe"),
+        ','  => out.push_str("SpecialcharComma"),
+        '|'  => out.push_str("SpecialcharPipe"),
+        '&'  => out.push_str("SpecialcharAmpersand"),
+        '~'  => out.push_str("SpecialcharTilde"),
+        '^'  => out.push_str("SpecialcharCaret"),
+        ':'  => out.push_str("SpecialcharColon"),
+        '.'  => out.push_str("SpecialcharPeriod"),
         'a'..='z' | 'A'..='Z' | '0'..='9' | '_' | ' ' => out.push(ch),
         _ => { panic!("Could not convert symbol character {:?} to a name.", ch) }
     } }

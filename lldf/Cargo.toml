@@ -29,7 +29,7 @@ version = "0.5"
 version = "0.12"
 
 [dependencies.decomp]
-version          = "0.1"
+version          = ">=0.1.4"
 default-features = false
 features         = [ "llvm-18" ]
 
@@ -46,6 +46,12 @@ version = "1.0"
 
 [dependencies.base64]
 version = "0.22"
+
+[dependencies.uuid]
+version = "1.11"
+
+[dependencies.tungstenite]
+version = "0.24"
 
 
 [lints.rust]

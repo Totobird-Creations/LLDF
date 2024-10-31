@@ -9,22 +9,18 @@ exclude = [ "/src/bind" ]
 
 publish = false
 [features]
-default = [ "rank_overlord", "plot_50x" ] # DISABLE THIS BEFORE RELEASE
+default = [ "rank_overlord" ] # DISABLE THIS BEFORE RELEASE
 rank_none     = [ ]
 rank_noble    = [ ]
 rank_emperor  = [ ]
 rank_mythic   = [ ]
 rank_overlord = [ ]
 rank_dev      = [ ]
-plot_50x      = [ ]
-plot_100x     = [ ]
-plot_300x     = [ ]
-plot_1000x    = [ ]
 internals     = [ ]
 
 [package.metadata.docs.rs]
 no-default-features = true
-features = [ "rank_overlord", "plot_1000x", "internals" ]
+features = [ "rank_overlord", "internals" ]
 
 
 [dependencies.lldf-bind-proc]
@@ -55,3 +51,11 @@ version = "5.0"
 internal_features = "allow"
 improper_ctypes   = "allow"
 unused_parens     = "allow"
+
+
+
+[profile.release]
+strip     = true
+opt-level = "z"
+lto       = true
+panic     = "abort"

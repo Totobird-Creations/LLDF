@@ -10,9 +10,7 @@ use std::io::Write;
 use std::error::Error;
 
 use dirs::download_dir;
-
 use chrono::Utc;
-
 use inflector::Inflector;
 
 
@@ -177,13 +175,13 @@ fn main() -> Result<(), Box<dyn Error>> {
 
 
     // Actions
-    /*for action in &mut out.actions {
+    for action in &mut out.actions {
         action.name = action.name.trim().to_string();
     }
     out.actions.sort_by(|a, b| a.name.cmp(&b.name));
     out.actions.dedup_by(|a, b| (a.code_block_name == b.code_block_name) && (a.name == b.name));
     {
-        let mut file = File::create(cwd.join("src/bind/action.rs"))?;
+        let mut file = File::create(cwd.join("src/bind/_action.rs"))?;
         writeln!(file, "//! {}", autogen_message)?;
         writeln!(file)?;
         writeln!(file, "#[allow(unused_imports)]")?;
@@ -196,6 +194,9 @@ fn main() -> Result<(), Box<dyn Error>> {
             if (action.code_block_name == "PLAYER EVENT" || action.code_block_name == "ENTITY EVENT" || action.name == "dynamic") {
                 continue;
             }
+
+            // Skip the actions that have tags.
+            if (! action.tags.is_empty()) { continue; }
 
             util::write_doc_comment(&mut file, "    ",
                 &format!("{}: {}",
@@ -214,23 +215,18 @@ fn main() -> Result<(), Box<dyn Error>> {
             )?;
 
             write!(file,
-                "    pub fn DF_ACTION_{}_{}",
+                "    pub fn DF_ACTION__{}_{}",
                 action.code_block_name.to_class_case(),
                 util::symbols_to_names(&action.name).replace(" ", "")
             )?;
-            for tag in &action.tags {
-                write!(file, "_{}", util::symbols_to_names(&tag.name.replace(" ", "")))?;
-            }
             write!(file, "( ")?;
-            for tag in &action.tags {
-                write!(file, "r#{} : String, ", util::symbols_to_names(&tag.name.replace(" ", "_").to_lowercase()))?;
-            }
             writeln!(file, "... ) -> ();")?;
 
             writeln!(file)?;
+
         }
         writeln!(file, "}}")?;
-    }*/
+    }
 
 
     // Game Values

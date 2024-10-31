@@ -13,8 +13,8 @@ impl<T : DFValue> From<T> for String {
     fn from(value : T) -> String { unsafe {
         let mut out : MaybeUninit<String> = MaybeUninit::uninit();
         DF_ACTION__SetVariable_String(
-            (&mut out) as *mut _ as *mut String,
-            &value as *const _ as *const DFOpaqueValue
+            (&mut out) as *mut _ as *mut _,
+            &value as *const _ as *const _
         );
         out.assume_init()
     } }

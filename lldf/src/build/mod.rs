@@ -6,11 +6,15 @@ use std::fs;
 use std::path::Path;
 use std::process::{ self, Command };
 use std::error::Error;
+use std::collections::HashMap;
 
+use codegen::{CodeLine, Codeblock};
 use llvm_ir::Module;
 
+use parse::ParsedModule;
 use serde::Deserialize as Deser;
 use toml;
+use tungstenite as ws;
 
 
 #[derive(Deser)]
@@ -60,22 +64,113 @@ pub fn load_module<P : AsRef<Path>>(path : P) -> Result<Module, String> {
 
 pub fn run<P : AsRef<Path>>(path : P) -> () {
     // Get the module.
-    let module = match (crate::build::load_module(path)) {
+    let module = match (load_module(path)) {
         Err(err) => { eprintln!("error: {}", err); process::exit(1) },
         Ok(module) => module
     };
 
-    if let Err(e) = build_modules(&vec![ module ]) {
-        eprintln!("error: {}", e);
-        process::exit(1);
-    }
+    let modules = vec![ module ];
+
+    let modules = match (build_modules(&modules)) {
+        Err(err) => { eprintln!("error: {}", err); process::exit(1) },
+        Ok(modules) => modules
+    };
+
+    let templates = match (build_templates(modules)) {
+        Err(err) => { eprintln!("error: {}", err); process::exit(1) },
+        Ok(modules) => modules
+    };
+
+    match (submit_templates(&templates)) {
+        Err(err) => { eprintln!("error: {}", err); process::exit(1) },
+        Ok(_) => { }
+    };
 }
 
 
 
-pub fn build_modules(modules : &Vec<Module>) -> Result<(), Box<dyn Error>> {
+pub fn build_modules(modules : &Vec<Module>) -> Result<Vec<ParsedModule>, Box<dyn Error>> {
+    let mut parsed = Vec::new();
     for module in modules {
-        parse::parse_module(module)?;
+        parsed.push(parse::parse_module(module)?);
     }
+    Ok(parsed)
+}
+
+
+
+pub fn build_templates(modules : Vec<ParsedModule>) -> Result<Vec<CodeLine>, Box<dyn Error>> {
+    let mut templates = HashMap::new();
+
+    let init_template = "DF_EVENT__Special_Init".to_string();
+
+    for module in modules {
+        if let Some(function) = module.init_function {
+            if (! function.line.blocks.is_empty()) {
+                templates.entry(init_template.clone()).or_insert_with(|| CodeLine::new()).blocks.extend(function.line.blocks);
+            }
+        }
+        for (name, function) in module.functions {
+            if (! function.line.blocks.is_empty()) {
+                templates.entry(name).or_insert_with(|| CodeLine::new()).blocks.extend(function.line.blocks);
+            }
+        }
+    }
+
+    // TODO: Handle events and magic functions.
+    for (name, mut template) in &mut templates {
+        template.blocks.insert(0, Codeblock::function(name, vec![], false)); // TODO: params
+        codegen::opt::optimise(&mut template);
+    }
+
+    Ok(templates.into_values().collect())
+}
+
+
+
+pub fn submit_templates(templates : &Vec<CodeLine>) -> Result<(), Box<dyn Error>> {
+
+    eprint!("Connecting to CCAPI... ");
+    let Ok((mut sock, _)) = ws::connect("ws://localhost:31375") else { return Err("Failed to connect to CCAPI".into()) };
+    eprintln!("Done");
+
+    // Request required codeclient permissions.
+    eprint!("Requesting CCAPI required permissions... ");
+    let Ok(_) = sock.send(ws::Message::Text("scopes read_plot write_code clear_plot".to_string())) else { return Err("Failed to request required CCAPI permissions".into()) };
+    let Ok(ws::Message::Text(resp)) = sock.read() else { return Err("Required CCAPI permissions rejected".into()) };
+    if (resp != "auth") { return Err("Required CCAPI permission rejected".into()) }
+    eprintln!("Done");
+
+    // Get plot size.
+    eprint!("Getting plot size... ");
+    let Ok(_) = sock.send(ws::Message::Text("size".to_string())) else { return Err("Failed to get plot size".into()) };
+    let Ok(ws::Message::Text(size)) = sock.read() else { return Err("Failed to get plot size".into()) };
+    let size = match (size.as_str()) {
+        "BASIC"   => 50,
+        "LARGE"   => 100,
+        "MASSIVE" => 300,
+        "MEGA"    => 1000,
+        _ => { return Err("Failed to get plot size".into()) }
+    };
+    eprintln!("Done");
+
+    // Clear codespace.
+    eprint!("Clearing the codespace... ");
+    let Ok(_) = sock.send(ws::Message::Text("clear".to_string())) else { return Err("Failed to clear plot".into()) };
+    eprintln!("Done");
+
+    // Place templaces.
+    eprint!("Queueing templates... ");
+    for template in templates {
+        // TODO: split template to plot size.
+        let Ok(_) = sock.send(ws::Message::Text(format!("place {}", template.to_b64()))) else { return Err("Failed to queue template".into()) };
+    }
+    eprintln!("Done");
+    eprint!("Placing templates... ");
+    let Ok(_) = sock.send(ws::Message::Text("place go".to_string())) else { return Err("Failed to place templates".into()) };
+    let Ok(ws::Message::Text(resp)) = sock.read() else { return Err("Failed to place templates".into()) };
+    if (resp != "place go") { return Err("Failed to place templates".into()) }
+    eprintln!("Done");
+
     Ok(())
 }

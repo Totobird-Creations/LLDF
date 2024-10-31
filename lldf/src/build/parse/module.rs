@@ -155,23 +155,8 @@ pub fn parse_module(module : &Module) -> Result<ParsedModule, Box<dyn Error>> {
     }
     parsed.init_function = Some(init_function);
 
-    // Parse user defined functions.
-    println!();
     for module_function in &module.functions {
-        let mut parsed_function = parse_function(&parsed, module_function)?;
-        println!("\x1b[96m\x1b[1m{}\x1b[0m", module_function.name);
-        codegen::opt::dead_selections(&mut parsed_function.line);
-        codegen::opt::duplicate_selections(&mut parsed_function.line);
-        codegen::opt::dead_equals(&mut parsed_function.line);
-        for block in &parsed_function.line.blocks {
-            println!("  \x1b[36m{:?}\x1b[0m", block);
-        }
-        { // TODO: Here for testing, remove later.
-            parsed_function.line.blocks.insert(0, Codeblock::function(module_function.name.clone(), vec![], false));
-            let data = "minecraft:ender_chest{PublicBukkitValues:{\"hypercube:codetemplatedata\":'{\"author\":\"TotobirdCreation\",\"name\":\"&b&lFunction &3» &bUnnamed\",\"version\":1,\"code\":\"[INSERT]\"}'},display:{Name:'{\"text\":\"\",\"extra\":[{\"text\":\"Function \",\"obfuscated\":false,\"italic\":false,\"underlined\":false,\"strikethrough\":false,\"color\":\"aqua\",\"bold\":true},{\"text\":\"» \",\"italic\":false,\"color\":\"dark_aqua\",\"bold\":false},{\"text\":\"Unnamed\",\"italic\":false,\"color\":\"aqua\"}]}'}}";
-            println!("\x1b[92m{}\x1b[0m", data.replace("[INSERT]", &parsed_function.line.to_b64()));
-        }
-        println!();
+        let parsed_function = parse_function(&parsed, module_function)?;
         parsed.functions.insert(module_function.name.clone(), parsed_function);
     }
 
@@ -190,10 +175,10 @@ fn linked_name_to_action(action : &str) -> String {
     names_to_symbols(&action.to_title_case().replace(" ", ""))
 }
 fn linked_name_to_actiontag_kind(actiontag_kind : &str) -> String {
-    actiontag_kind.to_title_case()
+    names_to_symbols(&actiontag_kind.to_title_case().replace(" ", "")).to_title_case()
 }
 fn linked_name_to_actiontag_value(actiontag_value : &str) -> String {
-    actiontag_value.to_sentence_case()
+    names_to_symbols(&actiontag_value.to_title_case().replace(" ", "")).to_sentence_case()
 }
 fn collect_actiontag_parts<'l>(actiontag_parts : impl Iterator<Item = &'l str>) -> Vec<CodeValue> {
     actiontag_parts.array_chunks::<2>()
@@ -219,7 +204,7 @@ fn linked_name_to_gamevalue_kind(gamevalue_kind : &str) -> String {
     out
 }
 fn linked_name_to_gamevalue_target(gamevalue_kind : &str) -> String {
-    gamevalue_kind.to_title_case()
+    names_to_symbols(&gamevalue_kind.to_title_case().replace(" ", "")).to_title_case()
 }
 pub fn names_to_symbols(from : &str) -> String {
     // Yes, I know this sucks. No, I'm not going to find something better.
@@ -235,6 +220,14 @@ pub fn names_to_symbols(from : &str) -> String {
         .replace("SpecialcharRightangle"       , ">")
         .replace("SpecialcharLeftparenthesis"  , "(")
         .replace("SpecialcharRightparenthesis" , ")")
+        .replace("SpecialcharApostrophe"       , "'")
+        .replace("SpecialcharComma"            , ",")
+        .replace("SpecialcharPipe"             , "|")
+        .replace("SpecialcharAmpersand"        , "&")
+        .replace("SpecialcharTilde"            , "~")
+        .replace("SpecialcharCaret"            , "^")
+        .replace("SpecialcharColon"            , ":")
+        .replace("SpecialcharPeriod"           , ".")
 }
 
 
@@ -267,7 +260,7 @@ pub fn parse_function<'l>(module : &ParsedModule, function : &'l Function) -> Re
         return Err(format!("Failed to recover control flow primitives of function `{}`.", function.name).into())
     };
 
-    parse_cfr_groups(module, &mut parsed, cfr)?;
+    parse_cfr_groups(module, &mut parsed, &cfr)?;
 
     // TODO: Function head block
 
@@ -277,29 +270,36 @@ pub fn parse_function<'l>(module : &ParsedModule, function : &'l Function) -> Re
 
 
 
-pub fn parse_cfr_groups(module : &ParsedModule, parsed : &mut ParsedFunction, groups : CFRGroups) -> Result<(), Box<dyn Error>> {
-    for group in groups.groups {
-        parse_cfr_group(module, parsed, group)?;
+pub fn parse_cfr_groups(module : &ParsedModule, function : &mut ParsedFunction, groups : &CFRGroups) -> Result<(), Box<dyn Error>> {
+    for group in &groups.groups {
+        parse_cfr_group(module, function, group)?;
     }
     Ok(())
 }
 
-pub fn parse_cfr_group(module : &ParsedModule, parsed : &mut ParsedFunction, group : CFRGroup) -> Result<(), Box<dyn Error>> { match (group) {
-    CFRGroup::Block(name) => parse_block(module, parsed, name),
+pub fn parse_cfr_group(module : &ParsedModule, function : &mut ParsedFunction, group : &CFRGroup) -> Result<(), Box<dyn Error>> { match (group) {
+
+    CFRGroup::Block(name) => parse_block(module, function, name),
+
     CFRGroup::PreconditionLoop { cond, body } => todo!("precondition-loop {} {}", cond, body),
+
     CFRGroup::PostconditionLoop { cond } => todo!("postcondition-loop {}", cond),
+
     CFRGroup::OnewayConditional { cond, body } => todo!("oneway-conditional {} {}", cond, body),
+
     CFRGroup::OnewayReturnConditional { cond, body } => todo!("oneway-return-conditional {} {}", cond, body),
+
     CFRGroup::TwowayConditional { cond, body_true, body_false } => todo!("twoway-conditional {} {} {}", cond, body_true, body_false),
+
 } }
 
 
 
 
-pub fn parse_block(module : &ParsedModule, parsed : &mut ParsedFunction, block : Name) -> Result<(), Box<dyn Error>> {
-    let block = parsed.function.unwrap().basic_blocks.iter().find(|bb| bb.name == block).unwrap();
+pub fn parse_block(module : &ParsedModule, function : &mut ParsedFunction, block : &Name) -> Result<(), Box<dyn Error>> {
+    let block = function.function.unwrap().basic_blocks.iter().find(|bb| &bb.name == block).unwrap();
     for instr in &block.instrs {
-        parse_instr(module, parsed, instr)?;
+        parse_instr(module, function, instr)?;
     }
     // TODO: Terminator? This might not be needed if it's part of CFR groups.
     Ok(())

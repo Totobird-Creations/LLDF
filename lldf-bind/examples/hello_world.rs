@@ -7,17 +7,18 @@
 use lldf_bind::prelude::*;
 
 
-#[event(PlayerJoin)]
-fn player_join() {
-    let a = String::from("Test");
-    let b = Text::from(a);
+//#[event(Join)]
+//fn player_join(default : PlayerSel) {
+//    let number = Text::from(UInt::from(10usize));
+//    let mut i = 0;
+//    while (i < 50) {
+//        default.send_message(&number);
+//        i = i + 1;
+//    }
+//}
 
-    let all_players = Game::all_players();
 
-    //let uuids = all_players.uuids();
-
-    all_players.send_message(b);
-    //all_players.send_message(Text::from(&uuids[0usize]));
-    //all_players.send_message(Text::from(&uuids[1usize]));
-
+#[event(Join)]
+fn player_join(default : PlayerSel) {
+    default.send_message("Welcome to the plot!");
 }
