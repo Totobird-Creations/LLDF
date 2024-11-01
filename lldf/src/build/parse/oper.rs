@@ -20,7 +20,7 @@ pub fn parse_oper(module : &ParsedModule, function : &mut ParsedFunction, oper :
 
 pub fn parse_const(module : &ParsedModule, function : &mut ParsedFunction, cor : &Constant) -> Result<Value, Box<dyn Error>> { match (cor) {
 
-    Constant::Int { value, .. } => Ok(Value::CodeValue(CodeValue::Int(*value as i64))), // TODO: Signed vs Unsigned
+    Constant::Int { value, .. } => Ok(Value::CodeValue(CodeValue::Number(*value as f64))), // TODO: Signed vs Unsigned
 
     Constant::Float(_) => todo!(),
     Constant::Null(_) => todo!(),

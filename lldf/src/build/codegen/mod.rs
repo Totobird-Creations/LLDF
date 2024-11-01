@@ -52,6 +52,17 @@ pub enum BracketSide {
 
 impl Codeblock {
 
+    pub const OPEN_COND_BRACKET  : Self = Self::Bracket { kind : BracketKind::Normal, side : BracketSide::Open  };
+    pub const CLOSE_COND_BRACKET : Self = Self::Bracket { kind : BracketKind::Normal, side : BracketSide::Close };
+
+    pub fn event<C : Into<String>, A : Into<String>>(codeblock : C, action : A) -> Self { Self::Block(CodeblockBlock {
+        block  : codeblock.into(),
+        action : Some(action.into()),
+        data   : None,
+        params : vec![],
+        tags   : vec![]
+    }) }
+
     pub fn function<S : Into<String>>(data : S, params : Vec<CodeValue>, hidden : bool) -> Self { Self::Block(CodeblockBlock {
         block  : String::from("func"),
         action : None,
@@ -99,26 +110,12 @@ impl CodeLine {
     }
 }
 impl Codeblock {
-    pub fn contains_line_var(&self, check : &str) -> bool {
-        if let Codeblock::Block(block) = self { block.contains_line_var(check) }
-        else { false }
-    }
-    pub fn replace_line_var(&mut self, check : &str, with : &str) -> () {
-        if let Codeblock::Block(block) = self { block.replace_line_var(check, with) }
-    }
     pub fn to_json(&self) -> json::Value { match (self) {
         Self::Block(block) => block.to_json(),
         Self::Bracket { .. } => todo!()
     } }
 }
 impl CodeblockBlock {
-    pub fn contains_line_var(&self, check : &str) -> bool {
-        self.params.iter().any(|p| p.contains_line_var(check)) || self.tags.iter().any(|t| t.contains_line_var(check))
-    }
-    pub fn replace_line_var(&mut self, check : &str, with : &str) -> () {
-        for p in &mut self.params { p.replace_line_var(check, with); }
-        for t in &mut self.tags   { t.replace_line_var(check, with); }
-    }
     pub fn to_json(&self) -> json::Value {
         let mut items = Vec::new();
         for (i, param) in self.params.iter().enumerate() {
@@ -149,8 +146,7 @@ impl CodeValue {
     pub fn to_json(&self, codeblock : &str, action : &str) -> json::Value { match (self) {
         Self::String     ( string              ) => json::json!({ "id" : "txt",  "data" : { "name" : string } }),
         Self::Text       ( text                ) => json::json!({ "id" : "comp", "data" : { "name" : text } }),
-        Self::Int        ( num                 ) => json::json!({ "id" : "num",  "data" : { "name" : num.to_string() } }),
-        Self::Float      ( num                 ) => json::json!({ "id" : "num",  "data" : { "name" : num.to_string() } }),
+        Self::Number     ( num                 ) => json::json!({ "id" : "num",  "data" : { "name" : num.to_string() } }),
         Self::Location   { x, y, z, pitch, yaw } => json::json!({ "id" : "loc",  "data" : { "isBlock" : false, "loc" : { "x" : x, "y" : y, "z" : z, "pitch" : pitch, "yaw" : yaw } } }),
         Self::Vector     { x, y, z             } => json::json!({ "id" : "vec",  "data" : { "x" : x, "y" : y, "z" : z } }),
         Self::SoundNamed { name, volume, pitch } => json::json!({ "id" : "snd",  "data" : { "sound" : name, "vol" : volume, "pitch" : pitch } }),

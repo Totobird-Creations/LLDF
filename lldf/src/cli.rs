@@ -38,9 +38,9 @@ pub enum Command {
         #[arg(requires = "endpoint")]
         path : PathBuf,
 
-        /// Send the DiamondFire code to IAPI as a template. https://modrinth.com/mod/iapi
+        /// Dumps the DiamondFire code to the console.
         #[arg(long, group = "endpoint")]
-        iapi : bool,
+        dump : bool,
 
         /// Send the DiamondFire code to CCAPI as a placement order. https://modrinth.com/mod/codeclient
         #[arg(long, group = "endpoint")]
@@ -87,9 +87,9 @@ fn get_styles() -> clap::builder::Styles {
     c
 }
 pub(crate) macro c {
-    ($($code:expr),*) => {
+    ($($code:tt),*) => {
         if (crate::cli::enable_colour()) {
-            ::const_str::concat!($("\x1b[", ::const_str::to_str!(::khi_error::coerce_tostr($code)), "m"),*)
+            ::const_str::concat!($("\x1b[", stringify!($code), "m"),*)
         } else { "" }
     },
     (@ $($code:expr),*) => {
@@ -105,7 +105,26 @@ pub(crate) macro c {
 impl Cli { pub fn run(&self) -> () {
     match (&self.command) {
 
-        Command::Build { path, iapi : _, ccapi : _ } => { crate::build::run(path); }
+        Command::Build { path, dump, ccapi } => { match ((dump, ccapi)) {
+
+            // Dump
+            (true, false) => crate::build::run(path, |templates| {
+                for template in templates {
+                    println!();
+                    for (i, codeblock) in template.blocks.iter().enumerate() {
+                        if (i > 0) { print!("  "); }
+                        else { print!("{}", c!(1)) }
+                        println!("{}{:?}{}", c!(96), codeblock, c!(0));
+                    }
+                }
+                Ok(())
+            }),
+
+            // CCAPI
+            (false, true) => crate::build::run(path, |templates| crate::build::ccapi_submit_templates(&templates)),
+
+            _ => unreachable!()
+        } }
 
     }
 } }

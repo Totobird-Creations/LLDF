@@ -1,4 +1,4 @@
-use crate::build::codegen::{ self, CodeLine };
+use crate::build::codegen::CodeLine;
 use super::*;
 
 use std::collections::HashMap;
@@ -114,7 +114,7 @@ pub fn parse_module(module : &Module) -> Result<ParsedModule, Box<dyn Error>> {
             Some("DF_GAMEVALUE") => {
                 if let (Some(getter), None) = (parts.next(), parts.next()) {
                     let mut getter_parts = getter.split("_");
-                    if let (Some(kind), Some(target)) = (getter_parts.next(), getter_parts.next())
+                    if let (Some(kind), Some(target), None) = (getter_parts.next(), getter_parts.next(), getter_parts.next())
                     {
                         let kind   = linked_name_to_gamevalue_kind   (kind   );
                         let target = linked_name_to_gamevalue_target (target );
@@ -163,7 +163,7 @@ pub fn parse_module(module : &Module) -> Result<ParsedModule, Box<dyn Error>> {
     Ok(parsed)
 }
 
-fn linked_name_to_codeblock(codeblock : &str) -> String {
+pub fn linked_name_to_codeblock(codeblock : &str) -> String {
     let codeblock = codeblock.to_snake_case();
     match (codeblock.as_str()) {
         "select_object" => String::from("select_obj" ),
@@ -171,16 +171,16 @@ fn linked_name_to_codeblock(codeblock : &str) -> String {
         _               => codeblock
     }
 }
-fn linked_name_to_action(action : &str) -> String {
+pub fn linked_name_to_action(action : &str) -> String {
     names_to_symbols(&action.to_title_case().replace(" ", ""))
 }
-fn linked_name_to_actiontag_kind(actiontag_kind : &str) -> String {
+pub fn linked_name_to_actiontag_kind(actiontag_kind : &str) -> String {
     names_to_symbols(&actiontag_kind.to_title_case().replace(" ", "")).to_title_case()
 }
-fn linked_name_to_actiontag_value(actiontag_value : &str) -> String {
+pub fn linked_name_to_actiontag_value(actiontag_value : &str) -> String {
     names_to_symbols(&actiontag_value.to_title_case().replace(" ", "")).to_sentence_case()
 }
-fn collect_actiontag_parts<'l>(actiontag_parts : impl Iterator<Item = &'l str>) -> Vec<CodeValue> {
+pub fn collect_actiontag_parts<'l>(actiontag_parts : impl Iterator<Item = &'l str>) -> Vec<CodeValue> {
     actiontag_parts.array_chunks::<2>()
         .map(|[kind, value]| CodeValue::Actiontag {
             kind     : linked_name_to_actiontag_kind(kind),
@@ -188,7 +188,7 @@ fn collect_actiontag_parts<'l>(actiontag_parts : impl Iterator<Item = &'l str>) 
             variable : None
         }).collect::<Vec<_>>()
 }
-fn linked_name_to_gamevalue_kind(gamevalue_kind : &str) -> String {
+pub fn linked_name_to_gamevalue_kind(gamevalue_kind : &str) -> String {
     let string = gamevalue_kind.to_title_case();
     let mut out = string.split(" ").intersperse(" ")
         .map_windows::<_, _, 3>(|[a, b, c]| if (*b == " " && a.chars().last().unwrap().is_uppercase() && c.chars().next().unwrap().is_uppercase()) { None } else { Some(*b) })
@@ -203,7 +203,7 @@ fn linked_name_to_gamevalue_kind(gamevalue_kind : &str) -> String {
     }
     out
 }
-fn linked_name_to_gamevalue_target(gamevalue_kind : &str) -> String {
+pub fn linked_name_to_gamevalue_target(gamevalue_kind : &str) -> String {
     names_to_symbols(&gamevalue_kind.to_title_case().replace(" ", "")).to_title_case()
 }
 pub fn names_to_symbols(from : &str) -> String {

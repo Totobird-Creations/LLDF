@@ -1,4 +1,4 @@
-//! *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+//! *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
 
 #[allow(unused_imports)]
 use crate::prelude::*;
@@ -13,7 +13,7 @@ extern "C" {
     /// equal another value.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__IfVariable_SpecialcharExclamationSpecialcharEquals( ... ) -> ();
 
@@ -24,7 +24,7 @@ extern "C" {
     /// the given numbers.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_SpecialcharPlus( ... ) -> ();
 
@@ -35,7 +35,7 @@ extern "C" {
     /// by 1 or more other numbers.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_SpecialcharPlusSpecialcharEquals( ... ) -> ();
 
@@ -46,7 +46,7 @@ extern "C" {
     /// between the given numbers.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_SpecialcharMinus( ... ) -> ();
 
@@ -57,7 +57,7 @@ extern "C" {
     /// by 1 or more other numbers.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_SpecialcharMinusSpecialcharEquals( ... ) -> ();
 
@@ -68,7 +68,7 @@ extern "C" {
     /// less than another number.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__IfVariable_SpecialcharLeftangle( ... ) -> ();
 
@@ -80,7 +80,7 @@ extern "C" {
     /// number.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__IfVariable_SpecialcharLeftangleSpecialcharEquals( ... ) -> ();
 
@@ -90,7 +90,7 @@ extern "C" {
     /// Sets a variable to a value.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_SpecialcharEquals( ... ) -> ();
 
@@ -101,7 +101,7 @@ extern "C" {
     /// to one of the given values.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__IfVariable_SpecialcharEquals( ... ) -> ();
 
@@ -112,7 +112,7 @@ extern "C" {
     /// greater than another number.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__IfVariable_SpecialcharRightangle( ... ) -> ();
 
@@ -124,7 +124,7 @@ extern "C" {
     /// another number.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__IfVariable_SpecialcharRightangleSpecialcharEquals( ... ) -> ();
 
@@ -135,7 +135,7 @@ extern "C" {
     /// if it is negative.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_AbsoluteValue( ... ) -> ();
 
@@ -145,7 +145,7 @@ extern "C" {
     /// Adds an enchantment to an item.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_AddItemEnchant( ... ) -> ();
 
@@ -155,7 +155,7 @@ extern "C" {
     /// Adds lines to an item's lore.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_AddItemLore( ... ) -> ();
 
@@ -166,7 +166,7 @@ extern "C" {
     /// of the given vectors.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_AddVectors( ... ) -> ();
 
@@ -177,7 +177,7 @@ extern "C" {
     /// mode to Adventure.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__PlayerAction_AdventureMode( ... ) -> ();
 
@@ -188,7 +188,7 @@ extern "C" {
     /// nearest axis.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_AlignVector( ... ) -> ();
 
@@ -199,7 +199,7 @@ extern "C" {
     /// all entities in the game.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SelectObject_AllEntities( ... ) -> ();
 
@@ -212,7 +212,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__SelectObject_AllMobs( ... ) -> ();
@@ -224,7 +224,7 @@ extern "C" {
     /// all players in the game.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SelectObject_AllPlayers( ... ) -> ();
 
@@ -237,7 +237,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__PlayerAction_AllowDrops( ... ) -> ();
@@ -249,7 +249,7 @@ extern "C" {
     /// dictionary into the other.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_AppendDict( ... ) -> ();
 
@@ -260,7 +260,7 @@ extern "C" {
     /// another list variable.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_AppendList( ... ) -> ();
 
@@ -276,7 +276,7 @@ extern "C" {
     /// to the list (a nested list).
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_AppendValue( ... ) -> ();
 
@@ -300,7 +300,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Overlord</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_overlord"))]
     pub fn DF_ACTION__GameAction_ApplyTransaction( ... ) -> ();
@@ -312,7 +312,7 @@ extern "C" {
     /// is critical.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__IfGame_AttackIsCrit( ... ) -> ();
 
@@ -323,7 +323,7 @@ extern "C" {
     /// of the given numbers.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_Average( ... ) -> ();
 
@@ -339,7 +339,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Mythic</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_mythic"))]
     pub fn DF_ACTION__EntityAction_BDisplayBlock( ... ) -> ();
@@ -352,7 +352,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Overlord</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_overlord"))]
     pub fn DF_ACTION__EntityAction_BlockDisguise( ... ) -> ();
@@ -365,7 +365,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Overlord</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_overlord"))]
     pub fn DF_ACTION__PlayerAction_BlockDisguise( ... ) -> ();
@@ -377,7 +377,7 @@ extern "C" {
     /// as items when broken.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__GameAction_BlockDropsOff( ... ) -> ();
 
@@ -388,7 +388,7 @@ extern "C" {
     /// as items when broken.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__GameAction_BlockDropsOn( ... ) -> ();
 
@@ -403,7 +403,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Emperor</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_emperor"))]
     #[deprecated] 
@@ -416,7 +416,7 @@ extern "C" {
     /// is the given block.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__IfGame_BlockEquals( ... ) -> ();
 
@@ -426,7 +426,7 @@ extern "C" {
     /// Gets a block's hardness value.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_BlockHardness( ... ) -> ();
 
@@ -437,7 +437,7 @@ extern "C" {
     /// with entities.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__IfVariable_BlockIsSolid( ... ) -> ();
 
@@ -447,7 +447,7 @@ extern "C" {
     /// Gets a block's blast resistance.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_BlockResistance( ... ) -> ();
 
@@ -462,7 +462,7 @@ extern "C" {
     /// gliding with an elytra.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__PlayerAction_BoostElytra( ... ) -> ();
 
@@ -479,7 +479,7 @@ extern "C" {
     /// - BounceNum(-9, 0, 7) = 5
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_BounceNum( ... ) -> ();
 
@@ -490,7 +490,7 @@ extern "C" {
     /// as if it was broken by a player.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__GameAction_BreakBlock( ... ) -> ();
 
@@ -505,7 +505,7 @@ extern "C" {
     /// after a Control: Wait block.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__GameAction_CancelEvent( ... ) -> ();
 
@@ -521,7 +521,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Overlord</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_overlord"))]
     pub fn DF_ACTION__PlayerAction_ChatStyle( ... ) -> ();
@@ -534,7 +534,7 @@ extern "C" {
     /// if not, sets it to the nearest.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_ClampNumber( ... ) -> ();
 
@@ -547,7 +547,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__PlayerAction_ClearChat( ... ) -> ();
@@ -558,7 +558,7 @@ extern "C" {
     /// Empties a container at a location.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__GameAction_ClearContainer( ... ) -> ();
 
@@ -569,7 +569,7 @@ extern "C" {
     /// a dictionary.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_ClearDict( ... ) -> ();
 
@@ -583,7 +583,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Noble</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_noble"))]
     pub fn DF_ACTION__PlayerAction_ClearDispBlock( ... ) -> ();
@@ -594,7 +594,7 @@ extern "C" {
     /// Removes enchantments from an item.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_ClearEnchants( ... ) -> ();
 
@@ -605,7 +605,7 @@ extern "C" {
     /// given styled text.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_ClearFormatting( ... ) -> ();
 
@@ -615,7 +615,7 @@ extern "C" {
     /// Removes all item custom tags.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_ClearItemTag( ... ) -> ();
 
@@ -626,7 +626,7 @@ extern "C" {
     /// the container at a location.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__GameAction_ClearItems( ... ) -> ();
 
@@ -637,7 +637,7 @@ extern "C" {
     /// a player.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__PlayerAction_ClearItems( ... ) -> ();
 
@@ -651,7 +651,7 @@ extern "C" {
     /// - Any Mob
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__EntityAction_ClearPotions( ... ) -> ();
 
@@ -662,7 +662,7 @@ extern "C" {
     /// effects from a player.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__PlayerAction_ClearPotions( ... ) -> ();
 
@@ -675,7 +675,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__GameAction_ClearScBoard( ... ) -> ();
@@ -687,7 +687,7 @@ extern "C" {
     /// the scoreboard.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__PlayerAction_ClearScoreboard( ... ) -> ();
 
@@ -699,7 +699,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Emperor</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_emperor"))]
     pub fn DF_ACTION__PlayerAction_CloseInv( ... ) -> ();
@@ -716,7 +716,7 @@ extern "C" {
     /// needs to have one of them.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__IfGame_ContainerHas( ... ) -> ();
 
@@ -728,7 +728,7 @@ extern "C" {
     /// items.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__IfGame_ContainerHasAll( ... ) -> ();
 
@@ -747,7 +747,7 @@ extern "C" {
     /// is not lockable.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_ContainerLock( ... ) -> ();
 
@@ -758,7 +758,7 @@ extern "C" {
     /// a location.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_ContainerName( ... ) -> ();
 
@@ -770,7 +770,7 @@ extern "C" {
     /// formatting tags.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_ContentLength( ... ) -> ();
 
@@ -781,7 +781,7 @@ extern "C" {
     /// given keys and values.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_CreateDict( ... ) -> ();
 
@@ -796,7 +796,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Mythic</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_mythic"))]
     #[deprecated] 
@@ -809,7 +809,7 @@ extern "C" {
     /// values.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_CreateList( ... ) -> ();
 
@@ -820,7 +820,7 @@ extern "C" {
     /// mode to Creative.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__PlayerAction_CreativeMode( ... ) -> ();
 
@@ -831,7 +831,7 @@ extern "C" {
     /// product of two vectors.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_CrossProduct( ... ) -> ();
 
@@ -853,7 +853,7 @@ extern "C" {
     /// item, not the item that was clicked.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__IfPlayer_CursorItem( ... ) -> ();
 
@@ -866,7 +866,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__SelectObject_Damager( ... ) -> ();
@@ -880,7 +880,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__PlayerAction_DeathDrops( ... ) -> ();
@@ -896,7 +896,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Dev</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(feature = "rank_dev")]
     #[doc(cfg(feature = "rank_dev"))]
     #[deprecated] 
@@ -913,7 +913,7 @@ extern "C" {
     /// a value is kept.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_DedupList( ... ) -> ();
 
@@ -926,7 +926,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__SelectObject_DefaultEntity( ... ) -> ();
@@ -940,7 +940,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__SelectObject_DefaultPlayer( ... ) -> ();
@@ -952,7 +952,7 @@ extern "C" {
     /// the given key.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__IfVariable_DictHasKey( ... ) -> ();
 
@@ -964,7 +964,7 @@ extern "C" {
     /// any of the given values.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__IfVariable_DictValueEquals( ... ) -> ();
 
@@ -975,7 +975,7 @@ extern "C" {
     /// of the direction of a vector.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_DirectionName( ... ) -> ();
 
@@ -986,7 +986,7 @@ extern "C" {
     /// and breaking certain blocks.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__PlayerAction_DisableBlocks( ... ) -> ();
 
@@ -999,7 +999,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__PlayerAction_DisableFlight( ... ) -> ();
@@ -1013,7 +1013,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__EntityAction_DisableGlowing( ... ) -> ();
@@ -1027,7 +1027,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__PlayerAction_DisablePvp( ... ) -> ();
@@ -1041,7 +1041,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__PlayerAction_DisallowDrops( ... ) -> ();
@@ -1055,7 +1055,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Overlord</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_overlord"))]
     pub fn DF_ACTION__GameAction_DiscordWebhook( ... ) -> ();
@@ -1080,7 +1080,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Noble</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_noble"))]
     pub fn DF_ACTION__PlayerAction_DispHeadTexture( ... ) -> ();
@@ -1098,7 +1098,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Mythic</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_mythic"))]
     pub fn DF_ACTION__EntityAction_DispInterpolation( ... ) -> ();
@@ -1113,7 +1113,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Mythic</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_mythic"))]
     pub fn DF_ACTION__EntityAction_DispTPDuration( ... ) -> ();
@@ -1130,7 +1130,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Mythic</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_mythic"))]
     pub fn DF_ACTION__EntityAction_DispTranslation( ... ) -> ();
@@ -1152,7 +1152,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Noble</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_noble"))]
     pub fn DF_ACTION__PlayerAction_DisplayBlock( ... ) -> ();
@@ -1169,7 +1169,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Mythic</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_mythic"))]
     pub fn DF_ACTION__EntityAction_DisplayBrightness( ... ) -> ();
@@ -1187,7 +1187,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Mythic</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_mythic"))]
     pub fn DF_ACTION__EntityAction_DisplayCullingSize( ... ) -> ();
@@ -1217,7 +1217,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Mythic</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_mythic"))]
     pub fn DF_ACTION__PlayerAction_DisplayEquipment( ... ) -> ();
@@ -1235,7 +1235,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Mythic</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_mythic"))]
     pub fn DF_ACTION__EntityAction_DisplayGlowColor( ... ) -> ();
@@ -1254,7 +1254,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Emperor</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_emperor"))]
     pub fn DF_ACTION__PlayerAction_DisplayHologram( ... ) -> ();
@@ -1266,7 +1266,7 @@ extern "C" {
     /// effect to a player.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__PlayerAction_DisplayLightning( ... ) -> ();
 
@@ -1282,7 +1282,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Mythic</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_mythic"))]
     pub fn DF_ACTION__EntityAction_DisplayMatrix( ... ) -> ();
@@ -1299,7 +1299,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Mythic</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_mythic"))]
     pub fn DF_ACTION__EntityAction_DisplayScale( ... ) -> ();
@@ -1316,7 +1316,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Mythic</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_mythic"))]
     pub fn DF_ACTION__EntityAction_DisplayShadow( ... ) -> ();
@@ -1333,7 +1333,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Mythic</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_mythic"))]
     pub fn DF_ACTION__EntityAction_DisplayViewRange( ... ) -> ();
@@ -1345,7 +1345,7 @@ extern "C" {
     /// product of two vectors.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_DotProduct( ... ) -> ();
 
@@ -1358,7 +1358,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__EntityAction_DropItems( ... ) -> ();
@@ -1374,7 +1374,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Noble</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_noble"))]
     #[deprecated] 
@@ -1387,7 +1387,7 @@ extern "C" {
     /// and break certain blocks.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__PlayerAction_EnableBlocks( ... ) -> ();
 
@@ -1400,7 +1400,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__PlayerAction_EnableFlight( ... ) -> ();
@@ -1414,7 +1414,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__EntityAction_EnableGlowing( ... ) -> ();
@@ -1428,7 +1428,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__PlayerAction_EnablePvp( ... ) -> ();
@@ -1448,7 +1448,7 @@ extern "C" {
     /// if they have left the game.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__Control_End( ... ) -> ();
 
@@ -1468,7 +1468,7 @@ extern "C" {
     /// block.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__EntityAction_EndCrystalBeam( ... ) -> ();
 
@@ -1484,7 +1484,7 @@ extern "C" {
     /// NOT Arrow.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SelectObject_EntitiesCond( ... ) -> ();
 
@@ -1499,7 +1499,7 @@ extern "C" {
     /// - Click Events
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__IfGame_EventBlockEquals( ... ) -> ();
 
@@ -1510,7 +1510,7 @@ extern "C" {
     /// event is cancelled.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__IfGame_EventCancelled( ... ) -> ();
 
@@ -1525,7 +1525,7 @@ extern "C" {
     /// still remain in selections.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__IfEntity_Exists( ... ) -> ();
 
@@ -1539,7 +1539,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Emperor</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_emperor"))]
     pub fn DF_ACTION__PlayerAction_ExpandInv( ... ) -> ();
@@ -1556,7 +1556,7 @@ extern "C" {
     /// - Firework
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__EntityAction_Explode( ... ) -> ();
 
@@ -1566,7 +1566,7 @@ extern "C" {
     /// Creates an explosion at a location.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__GameAction_Explosion( ... ) -> ();
 
@@ -1577,7 +1577,7 @@ extern "C" {
     /// of an exponent.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_Exponent( ... ) -> ();
 
@@ -1589,7 +1589,7 @@ extern "C" {
     /// teleporting them.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__PlayerAction_FaceLocation( ... ) -> ();
 
@@ -1600,7 +1600,7 @@ extern "C" {
     /// with items.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__GameAction_FillContainer( ... ) -> ();
 
@@ -1616,7 +1616,7 @@ extern "C" {
     /// NOT Arrow.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SelectObject_FilterCondition( ... ) -> ();
 
@@ -1628,7 +1628,7 @@ extern "C" {
     /// more objects from it.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SelectObject_FilterRandom( ... ) -> ();
 
@@ -1641,7 +1641,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__GameAction_FireworkEffect( ... ) -> ();
@@ -1657,7 +1657,7 @@ extern "C" {
     /// - \[\[1, 2\], 5, \[3, 4\]\] becomes \[1, 2, 5, 3, 4\]
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_FlattenList( ... ) -> ();
 
@@ -1668,7 +1668,7 @@ extern "C" {
     /// a dictionary
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__Repeat_ForEachEntry( ... ) -> ();
 
@@ -1682,7 +1682,7 @@ extern "C" {
     /// be used for a delay.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__Repeat_Forever( ... ) -> ();
 
@@ -1693,7 +1693,7 @@ extern "C" {
     /// on an entity.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__EntityAction_GetAllEntityTags( ... ) -> ();
 
@@ -1704,7 +1704,7 @@ extern "C" {
     /// on an item.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_GetAllItemTags( ... ) -> ();
 
@@ -1722,7 +1722,7 @@ extern "C" {
     /// Always returns a string value.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_GetBlockData( ... ) -> ();
 
@@ -1742,7 +1742,7 @@ extern "C" {
     /// block.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_GetBlockDrops( ... ) -> ();
 
@@ -1753,7 +1753,7 @@ extern "C" {
     /// power level.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_GetBlockPower( ... ) -> ();
 
@@ -1763,7 +1763,7 @@ extern "C" {
     /// Gets a book's text.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_GetBookText( ... ) -> ();
 
@@ -1777,7 +1777,7 @@ extern "C" {
     /// Output is in arbitrary order.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_GetCanDestroy( ... ) -> ();
 
@@ -1791,7 +1791,7 @@ extern "C" {
     /// Output is in arbitrary order.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_GetCanPlaceOn( ... ) -> ();
 
@@ -1802,7 +1802,7 @@ extern "C" {
     /// of the given locations.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_GetCenterLoc( ... ) -> ();
 
@@ -1815,7 +1815,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__SetVariable_GetContainerName( ... ) -> ();
@@ -1826,7 +1826,7 @@ extern "C" {
     /// Gets the key of a custom sound.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_GetCustomSound( ... ) -> ();
 
@@ -1837,7 +1837,7 @@ extern "C" {
     /// entity tag.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__EntityAction_GetCustomTag( ... ) -> ();
 
@@ -1848,7 +1848,7 @@ extern "C" {
     /// in this dictionary.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_GetDictKeys( ... ) -> ();
 
@@ -1859,7 +1859,7 @@ extern "C" {
     /// in a dictionary.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_GetDictSize( ... ) -> ();
 
@@ -1874,7 +1874,7 @@ extern "C" {
     /// contain the key, 0 is returned.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_GetDictValue( ... ) -> ();
 
@@ -1885,7 +1885,7 @@ extern "C" {
     /// in this dictionary.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_GetDictValues( ... ) -> ();
 
@@ -1895,7 +1895,7 @@ extern "C" {
     /// Gets an item's stack size.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_GetItemAmount( ... ) -> ();
 
@@ -1911,7 +1911,7 @@ extern "C" {
     /// - Filled Maps
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_GetItemColor( ... ) -> ();
 
@@ -1926,7 +1926,7 @@ extern "C" {
     /// of the given type.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__PlayerAction_GetItemCooldown( ... ) -> ();
 
@@ -1947,7 +1947,7 @@ extern "C" {
     /// are multiplied by 8.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_GetItemEffects( ... ) -> ();
 
@@ -1960,7 +1960,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__SetVariable_GetItemEnchants( ... ) -> ();
@@ -1974,7 +1974,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__SetVariable_GetItemLore( ... ) -> ();
@@ -1988,7 +1988,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__SetVariable_GetItemLoreLine( ... ) -> ();
@@ -2003,7 +2003,7 @@ extern "C" {
     /// component is used.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_GetItemName( ... ) -> ();
 
@@ -2021,7 +2021,7 @@ extern "C" {
     /// by its enchantments and type.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_GetItemRarity( ... ) -> ();
 
@@ -2036,7 +2036,7 @@ extern "C" {
     /// not present.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_GetItemTag( ... ) -> ();
 
@@ -2047,7 +2047,7 @@ extern "C" {
     /// Lectern at a location.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_GetLecternBook( ... ) -> ();
 
@@ -2058,7 +2058,7 @@ extern "C" {
     /// number of a Lectern.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_GetLecternPage( ... ) -> ();
 
@@ -2076,7 +2076,7 @@ extern "C" {
     /// given list, 0 is returned.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_GetListValue( ... ) -> ();
 
@@ -2086,7 +2086,7 @@ extern "C" {
     /// Gets a compass's lodestone location.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_GetLodestoneLoc( ... ) -> ();
 
@@ -2097,7 +2097,7 @@ extern "C" {
     /// an item's lore.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_GetLoreLine( ... ) -> ();
 
@@ -2107,7 +2107,7 @@ extern "C" {
     /// Gets an item's maximum stack size.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_GetMaxItemAmount( ... ) -> ();
 
@@ -2124,7 +2124,7 @@ extern "C" {
     /// several adjacent "&lt;color&ht;" tags.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_GetMiniMessageExpr( ... ) -> ();
 
@@ -2135,7 +2135,7 @@ extern "C" {
     /// amount.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_GetParticleAmount( ... ) -> ();
 
@@ -2146,7 +2146,7 @@ extern "C" {
     /// color.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_GetParticleColor( ... ) -> ();
 
@@ -2157,7 +2157,7 @@ extern "C" {
     /// fade color.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_GetParticleFade( ... ) -> ();
 
@@ -2168,7 +2168,7 @@ extern "C" {
     /// display material.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_GetParticleMat( ... ) -> ();
 
@@ -2179,7 +2179,7 @@ extern "C" {
     /// motion.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_GetParticleMotion( ... ) -> ();
 
@@ -2189,7 +2189,7 @@ extern "C" {
     /// Gets a particle effect's roll.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_GetParticleRoll( ... ) -> ();
 
@@ -2200,7 +2200,7 @@ extern "C" {
     /// size.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_GetParticleSize( ... ) -> ();
 
@@ -2210,7 +2210,7 @@ extern "C" {
     /// Gets a particle effect's type.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_GetParticleType( ... ) -> ();
 
@@ -2220,7 +2220,7 @@ extern "C" {
     /// Gets a potion effect's amplifier.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_GetPotionAmp( ... ) -> ();
 
@@ -2230,7 +2230,7 @@ extern "C" {
     /// Gets a potion effect's duration.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_GetPotionDur( ... ) -> ();
 
@@ -2240,7 +2240,7 @@ extern "C" {
     /// Gets a potion effect's type.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_GetPotionType( ... ) -> ();
 
@@ -2250,7 +2250,7 @@ extern "C" {
     /// Gets the given sound's type.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_GetSoundType( ... ) -> ();
 
@@ -2260,7 +2260,7 @@ extern "C" {
     /// Gets the variant of a sound.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_GetSoundVariant( ... ) -> ();
 
@@ -2282,7 +2282,7 @@ extern "C" {
     /// loudness at its origin decreases.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_GetSoundVolume( ... ) -> ();
 
@@ -2292,7 +2292,7 @@ extern "C" {
     /// Adds exhaustion to a player.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__PlayerAction_GiveExhaustion( ... ) -> ();
 
@@ -2302,7 +2302,7 @@ extern "C" {
     /// Adds food to a player.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__PlayerAction_GiveFood( ... ) -> ();
 
@@ -2313,7 +2313,7 @@ extern "C" {
     /// items in the chest.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__PlayerAction_GiveItems( ... ) -> ();
 
@@ -2326,7 +2326,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__PlayerAction_GiveRngItem( ... ) -> ();
@@ -2337,7 +2337,7 @@ extern "C" {
     /// Adds saturation to a player.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__PlayerAction_GiveSaturation( ... ) -> ();
 
@@ -2352,7 +2352,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Overlord</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_overlord"))]
     #[deprecated] 
@@ -2367,7 +2367,7 @@ extern "C" {
     /// first to the second location.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__Repeat_Grid( ... ) -> ();
 
@@ -2378,7 +2378,7 @@ extern "C" {
     /// saturation, and brightness.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_HSBColor( ... ) -> ();
 
@@ -2389,7 +2389,7 @@ extern "C" {
     /// saturation, and lightness.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_HSLColor( ... ) -> ();
 
@@ -2402,7 +2402,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__IfPlayer_HasAllItems( ... ) -> ();
@@ -2416,7 +2416,7 @@ extern "C" {
     /// matches the given value.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__IfEntity_HasCustomTag( ... ) -> ();
 
@@ -2428,7 +2428,7 @@ extern "C" {
     /// given name or UUID.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__IfGame_HasPlayer( ... ) -> ();
 
@@ -2439,7 +2439,7 @@ extern "C" {
     /// in the given inventory slot.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__IfPlayer_HasSlotItem( ... ) -> ();
 
@@ -2452,7 +2452,7 @@ extern "C" {
     /// - Any Mob
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__EntityAction_Heal( ... ) -> ();
 
@@ -2465,7 +2465,7 @@ extern "C" {
     /// Triggers the Heal Event.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__PlayerAction_Heal( ... ) -> ();
 
@@ -2480,7 +2480,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Overlord</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_overlord"))]
     #[deprecated] 
@@ -2495,7 +2495,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__EntityAction_HideName( ... ) -> ();
@@ -2509,7 +2509,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__GameAction_HideSidebar( ... ) -> ();
@@ -2523,7 +2523,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Noble</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_noble"))]
     pub fn DF_ACTION__PlayerAction_HurtAnimation( ... ) -> ();
@@ -2540,7 +2540,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Mythic</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_mythic"))]
     pub fn DF_ACTION__EntityAction_IDisplayItem( ... ) -> ();
@@ -2556,7 +2556,7 @@ extern "C" {
     /// - Creeper
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__EntityAction_IgniteCreeper( ... ) -> ();
 
@@ -2567,7 +2567,7 @@ extern "C" {
     /// the hitbox of the nearest block.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__IfGame_InBlock( ... ) -> ();
 
@@ -2580,7 +2580,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Emperor</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_emperor"))]
     pub fn DF_ACTION__IfPlayer_InWorldBorder( ... ) -> ();
@@ -2594,7 +2594,7 @@ extern "C" {
     /// the right.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_InsertListValue( ... ) -> ();
 
@@ -2608,7 +2608,7 @@ extern "C" {
     /// - Interaction Entity
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__EntityAction_InteractionSize( ... ) -> ();
 
@@ -2630,7 +2630,7 @@ extern "C" {
     /// entities are selected.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SelectObject_Invert( ... ) -> ();
 
@@ -2641,7 +2641,7 @@ extern "C" {
     /// blocking with a shield.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__IfPlayer_IsBlocking( ... ) -> ();
 
@@ -2652,7 +2652,7 @@ extern "C" {
     /// is currently loaded.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__IfGame_IsChunkLoaded( ... ) -> ();
 
@@ -2662,7 +2662,7 @@ extern "C" {
     /// Checks if a player is flying.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__IfPlayer_IsFlying( ... ) -> ();
 
@@ -2673,7 +2673,7 @@ extern "C" {
     /// gliding with elytra.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__IfPlayer_IsGliding( ... ) -> ();
 
@@ -2684,7 +2684,7 @@ extern "C" {
     /// supported by a block.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__IfPlayer_IsGrounded( ... ) -> ();
 
@@ -2695,7 +2695,7 @@ extern "C" {
     /// supported by a block.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__IfEntity_IsGrounded( ... ) -> ();
 
@@ -2708,7 +2708,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__IfPlayer_IsHoldingMain( ... ) -> ();
@@ -2722,7 +2722,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__IfPlayer_IsHoldingOff( ... ) -> ();
@@ -2734,7 +2734,7 @@ extern "C" {
     /// is an item.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__IfEntity_IsItem( ... ) -> ();
 
@@ -2745,7 +2745,7 @@ extern "C" {
     /// is a mob.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__IfEntity_IsMob( ... ) -> ();
 
@@ -2758,7 +2758,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__IfVariable_IsNear( ... ) -> ();
@@ -2770,7 +2770,7 @@ extern "C" {
     /// is a projectile.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__IfEntity_IsProj( ... ) -> ();
 
@@ -2784,7 +2784,7 @@ extern "C" {
     /// - Sheep
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__IfEntity_IsSheared( ... ) -> ();
 
@@ -2794,7 +2794,7 @@ extern "C" {
     /// Checks if a player is sneaking.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__IfPlayer_IsSneaking( ... ) -> ();
 
@@ -2805,7 +2805,7 @@ extern "C" {
     /// or using the sprint key to swim.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__IfPlayer_IsSprinting( ... ) -> ();
 
@@ -2822,7 +2822,7 @@ extern "C" {
     /// swimming animation.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__IfPlayer_IsSwimming( ... ) -> ();
 
@@ -2833,7 +2833,7 @@ extern "C" {
     /// given type.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__IfEntity_IsType( ... ) -> ();
 
@@ -2844,7 +2844,7 @@ extern "C" {
     /// using an item (eg. bow).
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__IfPlayer_IsUsingItem( ... ) -> ();
 
@@ -2855,7 +2855,7 @@ extern "C" {
     /// is a boat or minecart.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__IfEntity_IsVehicle( ... ) -> ();
 
@@ -2868,7 +2868,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__IfPlayer_ItemEquals( ... ) -> ();
@@ -2886,7 +2886,7 @@ extern "C" {
     /// for any level.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__IfVariable_ItemHasEnchant( ... ) -> ();
 
@@ -2899,7 +2899,7 @@ extern "C" {
     /// matches the given value.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__IfVariable_ItemHasTag( ... ) -> ();
 
@@ -2910,7 +2910,7 @@ extern "C" {
     /// able to be placed.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__IfVariable_ItemIsBlock( ... ) -> ();
 
@@ -2924,7 +2924,7 @@ extern "C" {
     /// between each of the joined strings.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_JoinString( ... ) -> ();
 
@@ -2937,7 +2937,7 @@ extern "C" {
     /// - Any Mob
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__EntityAction_Jump( ... ) -> ();
 
@@ -2950,7 +2950,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__PlayerAction_KeepInv( ... ) -> ();
@@ -2964,7 +2964,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Noble</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_noble"))]
     pub fn DF_ACTION__PlayerAction_Kick( ... ) -> ();
@@ -2978,7 +2978,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__SelectObject_Killer( ... ) -> ();
@@ -2994,7 +2994,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Noble</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_noble"))]
     #[deprecated] 
@@ -3009,7 +3009,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__EntityAction_LSetArmor( ... ) -> ();
@@ -3022,7 +3022,7 @@ extern "C" {
     /// entity.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SelectObject_LastEntity( ... ) -> ();
 
@@ -3035,7 +3035,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__SelectObject_LastMob( ... ) -> ();
@@ -3049,7 +3049,7 @@ extern "C" {
     /// - Any Mob
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__EntityAction_LaunchProj( ... ) -> ();
 
@@ -3059,7 +3059,7 @@ extern "C" {
     /// Launches a projectile.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__GameAction_LaunchProj( ... ) -> ();
 
@@ -3070,7 +3070,7 @@ extern "C" {
     /// a player.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__PlayerAction_LaunchProj( ... ) -> ();
 
@@ -3083,7 +3083,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__IfVariable_LegacySpecialcharExclamationSpecialcharEquals( ... ) -> ();
@@ -3097,7 +3097,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__IfVariable_LegacySpecialcharEquals( ... ) -> ();
@@ -3113,7 +3113,7 @@ extern "C" {
     /// damage event cause.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__GameAction_Lightning( ... ) -> ();
 
@@ -3123,7 +3123,7 @@ extern "C" {
     /// Checks if a list is empty.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__IfVariable_ListIsEmpty( ... ) -> ();
 
@@ -3134,7 +3134,7 @@ extern "C" {
     /// a list has.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_ListLength( ... ) -> ();
 
@@ -3145,7 +3145,7 @@ extern "C" {
     /// index is equal to a value.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__IfVariable_ListValueEq( ... ) -> ();
 
@@ -3170,7 +3170,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Noble</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_noble"))]
     pub fn DF_ACTION__PlayerAction_LoadInv( ... ) -> ();
@@ -3186,7 +3186,7 @@ extern "C" {
     /// the item used to open the container.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__GameAction_LockContainer( ... ) -> ();
 
@@ -3203,7 +3203,7 @@ extern "C" {
     /// is undefined, 0 will be returned.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_Logarithm( ... ) -> ();
 
@@ -3214,7 +3214,7 @@ extern "C" {
     /// number in a set.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_MaxNumber( ... ) -> ();
 
@@ -3226,7 +3226,7 @@ extern "C" {
     /// an item in the given slot.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__IfPlayer_MenuSlotEquals( ... ) -> ();
 
@@ -3237,7 +3237,7 @@ extern "C" {
     /// number in a set.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_MinNumber( ... ) -> ();
 
@@ -3249,7 +3249,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Overlord</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_overlord"))]
     pub fn DF_ACTION__EntityAction_MobDisguise( ... ) -> ();
@@ -3262,7 +3262,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Overlord</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_overlord"))]
     pub fn DF_ACTION__PlayerAction_MobDisguise( ... ) -> ();
@@ -3276,7 +3276,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__SelectObject_MobName( ... ) -> ();
@@ -3290,7 +3290,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__SelectObject_MobsCond( ... ) -> ();
@@ -3306,7 +3306,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Overlord</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_overlord"))]
     #[deprecated] 
@@ -3325,7 +3325,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Overlord</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_overlord"))]
     pub fn DF_ACTION__EntityAction_MoveToLoc( ... ) -> ();
@@ -3336,7 +3336,7 @@ extern "C" {
     /// Repeats code multiple times.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__Repeat_Multiple( ... ) -> ();
 
@@ -3347,7 +3347,7 @@ extern "C" {
     /// by a number.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_MultiplyVector( ... ) -> ();
 
@@ -3362,7 +3362,7 @@ extern "C" {
     /// Works with UUIDs.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__IfPlayer_NameEquals( ... ) -> ();
 
@@ -3375,7 +3375,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__PlayerAction_NatRegen( ... ) -> ();
@@ -3391,7 +3391,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Noble</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_noble"))]
     #[deprecated] 
@@ -3406,7 +3406,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__PlayerAction_NoDeathDrops( ... ) -> ();
@@ -3420,7 +3420,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__EntityAction_NoDrops( ... ) -> ();
@@ -3436,7 +3436,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Overlord</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_overlord"))]
     #[deprecated] 
@@ -3454,7 +3454,7 @@ extern "C" {
     /// cooldown.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__IfPlayer_NoItemCooldown( ... ) -> ();
 
@@ -3467,7 +3467,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__PlayerAction_NoKeepInv( ... ) -> ();
@@ -3481,7 +3481,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__PlayerAction_NoNatRegen( ... ) -> ();
@@ -3495,7 +3495,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__EntityAction_NoProjColl( ... ) -> ();
@@ -3509,7 +3509,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__PlayerAction_NoProjColl( ... ) -> ();
@@ -3523,7 +3523,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Emperor</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_emperor"))]
     pub fn DF_ACTION__PlayerAction_OpenBlockInv( ... ) -> ();
@@ -3541,7 +3541,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Emperor</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_emperor"))]
     pub fn DF_ACTION__PlayerAction_OpenBook( ... ) -> ();
@@ -3557,7 +3557,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Mythic</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_mythic"))]
     #[deprecated] 
@@ -3572,7 +3572,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__GameAction_PFXPath( ... ) -> ();
@@ -3587,7 +3587,7 @@ extern "C" {
     /// number, the result is 0.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_ParseNumber( ... ) -> ();
 
@@ -3600,7 +3600,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__SetVariable_ParsePitch( ... ) -> ();
@@ -3614,7 +3614,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__SetVariable_ParseX( ... ) -> ();
@@ -3628,7 +3628,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__SetVariable_ParseY( ... ) -> ();
@@ -3642,7 +3642,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__SetVariable_ParseYaw( ... ) -> ();
@@ -3656,7 +3656,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__SetVariable_ParseZ( ... ) -> ();
@@ -3668,7 +3668,7 @@ extern "C" {
     /// to a player.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__PlayerAction_Particle( ... ) -> ();
 
@@ -3683,7 +3683,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Noble</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_noble"))]
     #[deprecated] 
@@ -3698,7 +3698,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Noble</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_noble"))]
     pub fn DF_ACTION__PlayerAction_ParticleCircle( ... ) -> ();
@@ -3714,7 +3714,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Mythic</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_mythic"))]
     #[deprecated] 
@@ -3729,7 +3729,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Mythic</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_mythic"))]
     pub fn DF_ACTION__PlayerAction_ParticleCircleA( ... ) -> ();
@@ -3745,7 +3745,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Noble</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_noble"))]
     #[deprecated] 
@@ -3760,7 +3760,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__GameAction_ParticleEffect( ... ) -> ();
@@ -3774,7 +3774,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__PlayerAction_ParticleEffect( ... ) -> ();
@@ -3788,7 +3788,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__GameAction_ParticleLine( ... ) -> ();
@@ -3801,7 +3801,7 @@ extern "C" {
     /// a player.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__PlayerAction_ParticleLine( ... ) -> ();
 
@@ -3816,7 +3816,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Mythic</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_mythic"))]
     #[deprecated] 
@@ -3832,7 +3832,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Mythic</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_mythic"))]
     pub fn DF_ACTION__PlayerAction_ParticleLineA( ... ) -> ();
@@ -3846,7 +3846,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__GameAction_ParticleRay( ... ) -> ();
@@ -3858,7 +3858,7 @@ extern "C" {
     /// to a player.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__PlayerAction_ParticleRay( ... ) -> ();
 
@@ -3873,7 +3873,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Noble</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_noble"))]
     #[deprecated] 
@@ -3888,7 +3888,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Noble</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_noble"))]
     pub fn DF_ACTION__PlayerAction_ParticleSphere( ... ) -> ();
@@ -3904,7 +3904,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Noble</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_noble"))]
     #[deprecated] 
@@ -3919,7 +3919,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Noble</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_noble"))]
     pub fn DF_ACTION__PlayerAction_ParticleSpiral( ... ) -> ();
@@ -3935,7 +3935,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Mythic</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_mythic"))]
     #[deprecated] 
@@ -3950,7 +3950,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Mythic</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_mythic"))]
     pub fn DF_ACTION__PlayerAction_ParticleSpiralA( ... ) -> ();
@@ -3967,7 +3967,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Overlord</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_overlord"))]
     pub fn DF_ACTION__EntityAction_PlayerDisguise( ... ) -> ();
@@ -3985,7 +3985,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Overlord</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_overlord"))]
     pub fn DF_ACTION__PlayerAction_PlayerDisguise( ... ) -> ();
@@ -3998,7 +3998,7 @@ extern "C" {
     /// name or UUID matches.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SelectObject_PlayerName( ... ) -> ();
 
@@ -4014,7 +4014,7 @@ extern "C" {
     /// NOT Arrow.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SelectObject_PlayersCond( ... ) -> ();
 
@@ -4032,7 +4032,7 @@ extern "C" {
     /// given list, 0 is returned.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_PopListValue( ... ) -> ();
 
@@ -4045,7 +4045,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__EntityAction_ProjColl( ... ) -> ();
@@ -4059,7 +4059,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__PlayerAction_ProjColl( ... ) -> ();
@@ -4073,7 +4073,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__SelectObject_Projectile( ... ) -> ();
@@ -4099,7 +4099,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Noble</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_noble"))]
     pub fn DF_ACTION__EntityAction_ProjectileItem( ... ) -> ();
@@ -4111,7 +4111,7 @@ extern "C" {
     /// green, and blue channels.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_RGBColor( ... ) -> ();
 
@@ -4124,7 +4124,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__SelectObject_RandomEntity( ... ) -> ();
@@ -4136,7 +4136,7 @@ extern "C" {
     /// location between two locations.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_RandomLoc( ... ) -> ();
 
@@ -4148,7 +4148,7 @@ extern "C" {
     /// players in the game.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SelectObject_RandomPlayer( ... ) -> ();
 
@@ -4159,7 +4159,7 @@ extern "C" {
     /// value from a set.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_RandomValue( ... ) -> ();
 
@@ -4170,7 +4170,7 @@ extern "C" {
     /// list variable's values.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_RandomizeList( ... ) -> ();
 
@@ -4183,7 +4183,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__Repeat_Range( ... ) -> ();
@@ -4197,7 +4197,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__SetVariable_RaycastEntity( ... ) -> ();
@@ -4210,7 +4210,7 @@ extern "C" {
     /// vector.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_ReflectVector( ... ) -> ();
 
@@ -4220,7 +4220,7 @@ extern "C" {
     /// Removes an enchantment from an item.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_RemItemEnchant( ... ) -> ();
 
@@ -4230,7 +4230,7 @@ extern "C" {
     /// Deletes an entity.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__EntityAction_Remove( ... ) -> ();
 
@@ -4241,7 +4241,7 @@ extern "C" {
     /// from an entity.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__EntityAction_RemoveCustomTag( ... ) -> ();
 
@@ -4252,7 +4252,7 @@ extern "C" {
     /// with the given key.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_RemoveDictEntry( ... ) -> ();
 
@@ -4267,7 +4267,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Mythic</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_mythic"))]
     #[deprecated] 
@@ -4279,7 +4279,7 @@ extern "C" {
     /// Removes a custom item tag.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_RemoveItemTag( ... ) -> ();
 
@@ -4290,7 +4290,7 @@ extern "C" {
     /// at a location.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__GameAction_RemoveItems( ... ) -> ();
 
@@ -4300,7 +4300,7 @@ extern "C" {
     /// Removes items from a player.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__PlayerAction_RemoveItems( ... ) -> ();
 
@@ -4312,7 +4312,7 @@ extern "C" {
     /// after it to the left.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_RemoveListIndex( ... ) -> ();
 
@@ -4331,7 +4331,7 @@ extern "C" {
     /// are disregarded.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__EntityAction_RemovePotion( ... ) -> ();
 
@@ -4347,7 +4347,7 @@ extern "C" {
     /// are disregarded.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__PlayerAction_RemovePotion( ... ) -> ();
 
@@ -4360,7 +4360,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__GameAction_RemoveScore( ... ) -> ();
@@ -4372,7 +4372,7 @@ extern "C" {
     /// the scoreboard.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__PlayerAction_RemoveScore( ... ) -> ();
 
@@ -4383,7 +4383,7 @@ extern "C" {
     /// of times.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_RepeatString( ... ) -> ();
 
@@ -4394,7 +4394,7 @@ extern "C" {
     /// at a location with the given item.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__GameAction_ReplaceItems( ... ) -> ();
 
@@ -4405,7 +4405,7 @@ extern "C" {
     /// inventory with the given item.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__PlayerAction_ReplaceItems( ... ) -> ();
 
@@ -4418,7 +4418,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__PlayerAction_ReplaceProj( ... ) -> ();
@@ -4431,7 +4431,7 @@ extern "C" {
     /// normally with event targets.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SelectObject_Reset( ... ) -> ();
 
@@ -4451,7 +4451,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Overlord</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_overlord"))]
     pub fn DF_ACTION__PlayerAction_ResourcePack( ... ) -> ();
@@ -4467,7 +4467,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Mythic</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_mythic"))]
     #[deprecated] 
@@ -4485,7 +4485,7 @@ extern "C" {
     /// at the end of a Function.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__Control_Return( ... ) -> ();
 
@@ -4498,7 +4498,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__Control_ReturnNTimes( ... ) -> ();
@@ -4510,7 +4510,7 @@ extern "C" {
     /// list variable's values.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_ReverseList( ... ) -> ();
 
@@ -4522,7 +4522,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Emperor</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_emperor"))]
     pub fn DF_ACTION__PlayerAction_RmWorldBorder( ... ) -> ();
@@ -4547,7 +4547,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Overlord</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_overlord"))]
     pub fn DF_ACTION__PlayerAction_RollbackBlocks( ... ) -> ();
@@ -4558,7 +4558,7 @@ extern "C" {
     /// Takes the root of a number.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_Root( ... ) -> ();
 
@@ -4572,7 +4572,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Noble</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_noble"))]
     pub fn DF_ACTION__PlayerAction_SaveInv( ... ) -> ();
@@ -4586,7 +4586,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__PlayerAction_SendHover( ... ) -> ();
@@ -4600,7 +4600,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Emperor</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_emperor"))]
     pub fn DF_ACTION__PlayerAction_SendTitle( ... ) -> ();
@@ -4618,7 +4618,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Emperor</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_emperor"))]
     pub fn DF_ACTION__PlayerAction_SendToPlot( ... ) -> ();
@@ -4637,7 +4637,7 @@ extern "C" {
     /// have an absorption effect.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__EntityAction_SetAbsorption( ... ) -> ();
 
@@ -4652,7 +4652,7 @@ extern "C" {
     /// have an absorption effect.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__PlayerAction_SetAbsorption( ... ) -> ();
 
@@ -4665,7 +4665,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__EntityAction_SetAgeSpecialcharSlashSize( ... ) -> ();
@@ -4681,7 +4681,7 @@ extern "C" {
     /// to 30 air ticks.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__PlayerAction_SetAirTicks( ... ) -> ();
 
@@ -4702,7 +4702,7 @@ extern "C" {
     /// in the 'helmet' slot.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__EntityAction_SetArmor( ... ) -> ();
 
@@ -4720,7 +4720,7 @@ extern "C" {
     /// in the 'helmet' slot.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__PlayerAction_SetArmor( ... ) -> ();
 
@@ -4743,7 +4743,7 @@ extern "C" {
     /// Total Arrow Damage: ||velocity|| x base
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__EntityAction_SetArrowDamage( ... ) -> ();
 
@@ -4761,7 +4761,7 @@ extern "C" {
     /// the sound are ignored.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__EntityAction_SetArrowHitSound( ... ) -> ();
 
@@ -4777,7 +4777,7 @@ extern "C" {
     /// - Arrows
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__EntityAction_SetArrowPierce( ... ) -> ();
 
@@ -4793,7 +4793,7 @@ extern "C" {
     /// used or picked up.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__PlayerAction_SetArrowsStuck( ... ) -> ();
 
@@ -4808,7 +4808,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Mythic</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_mythic"))]
     #[deprecated] 
@@ -4830,7 +4830,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Noble</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_noble"))]
     pub fn DF_ACTION__GameAction_SetBiome( ... ) -> ();
@@ -4846,7 +4846,7 @@ extern "C" {
     /// save CPU.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__GameAction_SetBlock( ... ) -> ();
 
@@ -4856,7 +4856,7 @@ extern "C" {
     /// Sets a book's text.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_SetBookText( ... ) -> ();
 
@@ -4867,7 +4867,7 @@ extern "C" {
     /// suspicious sand or gravel.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__GameAction_SetBrushableItem( ... ) -> ();
 
@@ -4878,7 +4878,7 @@ extern "C" {
     /// can break in Adventure Mode.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_SetCanDestroy( ... ) -> ();
 
@@ -4889,7 +4889,7 @@ extern "C" {
     /// can be placed on in Adventure Mode.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_SetCanPlaceOn( ... ) -> ();
 
@@ -4905,7 +4905,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Mythic</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_mythic"))]
     pub fn DF_ACTION__PlayerAction_SetChatTag( ... ) -> ();
@@ -4917,7 +4917,7 @@ extern "C" {
     /// radius and shrinking speed.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__EntityAction_SetCloudRadius( ... ) -> ();
 
@@ -4928,7 +4928,7 @@ extern "C" {
     /// point to for a player.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__PlayerAction_SetCompass( ... ) -> ();
 
@@ -4939,7 +4939,7 @@ extern "C" {
     /// at a location.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__GameAction_SetContainer( ... ) -> ();
 
@@ -4950,7 +4950,7 @@ extern "C" {
     /// at a location.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__GameAction_SetContainerName( ... ) -> ();
 
@@ -4963,7 +4963,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__SetVariable_SetCoords( ... ) -> ();
@@ -4979,7 +4979,7 @@ extern "C" {
     /// - Creeper
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__EntityAction_SetCreeperFuse( ... ) -> ();
 
@@ -4994,7 +4994,7 @@ extern "C" {
     /// - Creeper
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__EntityAction_SetCreeperPower( ... ) -> ();
 
@@ -5005,7 +5005,7 @@ extern "C" {
     /// player's cursor.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__PlayerAction_SetCursorItem( ... ) -> ();
 
@@ -5015,7 +5015,7 @@ extern "C" {
     /// Sets the key of a custom sound.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_SetCustomSound( ... ) -> ();
 
@@ -5026,7 +5026,7 @@ extern "C" {
     /// a custom tag value.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__EntityAction_SetCustomTag( ... ) -> ();
 
@@ -5040,7 +5040,7 @@ extern "C" {
     /// key, will overwrite the old value.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_SetDictValue( ... ) -> ();
 
@@ -5051,7 +5051,7 @@ extern "C" {
     /// (pitch and yaw) to a direction.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_SetDirection( ... ) -> ();
 
@@ -5066,7 +5066,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Noble</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_noble"))]
     pub fn DF_ACTION__EntityAction_SetEndermanBlock( ... ) -> ();
@@ -5081,7 +5081,7 @@ extern "C" {
     /// - Damage Events
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__GameAction_SetEventDamage( ... ) -> ();
 
@@ -5095,7 +5095,7 @@ extern "C" {
     /// - Player Heal Event
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__GameAction_SetEventHeal( ... ) -> ();
 
@@ -5109,7 +5109,7 @@ extern "C" {
     /// - Shoot Bow Event
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__GameAction_SetEventProj( ... ) -> ();
 
@@ -5124,7 +5124,7 @@ extern "C" {
     /// - Entity Death Events
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__GameAction_SetEventSound( ... ) -> ();
 
@@ -5139,7 +5139,7 @@ extern "C" {
     /// - Fish Event
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__GameAction_SetEventXP( ... ) -> ();
 
@@ -5153,7 +5153,7 @@ extern "C" {
     /// - Exhaustion Events
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__GameAction_SetExhaustion( ... ) -> ();
 
@@ -5163,7 +5163,7 @@ extern "C" {
     /// Sets a player's exhaustion level.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__PlayerAction_SetExhaustion( ... ) -> ();
 
@@ -5175,7 +5175,7 @@ extern "C" {
     /// landing.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__EntityAction_SetFallDistance( ... ) -> ();
 
@@ -5187,7 +5187,7 @@ extern "C" {
     /// landing.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__PlayerAction_SetFallDistance( ... ) -> ();
 
@@ -5210,7 +5210,7 @@ extern "C" {
     /// display the fire effect.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__EntityAction_SetFireTicks( ... ) -> ();
 
@@ -5225,7 +5225,7 @@ extern "C" {
     /// not on fire.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__PlayerAction_SetFireTicks( ... ) -> ();
 
@@ -5240,7 +5240,7 @@ extern "C" {
     /// - Fishing Hook
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__EntityAction_SetFishingTime( ... ) -> ();
 
@@ -5257,7 +5257,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Noble</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_noble"))]
     pub fn DF_ACTION__PlayerAction_SetFogDistance( ... ) -> ();
@@ -5268,7 +5268,7 @@ extern "C" {
     /// Sets a player's food hunger level.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__PlayerAction_SetFoodLevel( ... ) -> ();
 
@@ -5293,7 +5293,7 @@ extern "C" {
     /// by cooking time.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__GameAction_SetFurnaceSpeed( ... ) -> ();
 
@@ -5307,7 +5307,7 @@ extern "C" {
     /// - Glow Squid
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__EntityAction_SetGlowSquidDark( ... ) -> ();
 
@@ -5318,7 +5318,7 @@ extern "C" {
     /// to a player head.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__GameAction_SetHead( ... ) -> ();
 
@@ -5330,7 +5330,7 @@ extern "C" {
     /// or custom texture.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_SetHeadTexture( ... ) -> ();
 
@@ -5344,7 +5344,7 @@ extern "C" {
     /// - Any Mob
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__EntityAction_SetHealth( ... ) -> ();
 
@@ -5359,7 +5359,7 @@ extern "C" {
     /// or damage event.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__PlayerAction_SetHealth( ... ) -> ();
 
@@ -5375,7 +5375,7 @@ extern "C" {
     /// - Llama
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__EntityAction_SetHorseJump( ... ) -> ();
 
@@ -5386,7 +5386,7 @@ extern "C" {
     /// hotbar.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__PlayerAction_SetHotbar( ... ) -> ();
 
@@ -5397,7 +5397,7 @@ extern "C" {
     /// upper inventory.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__PlayerAction_SetInventory( ... ) -> ();
 
@@ -5413,7 +5413,7 @@ extern "C" {
     /// upon taking damage.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__EntityAction_SetInvulTicks( ... ) -> ();
 
@@ -5429,7 +5429,7 @@ extern "C" {
     /// upon taking damage.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__PlayerAction_SetInvulTicks( ... ) -> ();
 
@@ -5443,7 +5443,7 @@ extern "C" {
     /// - Dropped Item
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__EntityAction_SetItem( ... ) -> ();
 
@@ -5453,7 +5453,7 @@ extern "C" {
     /// Sets an item's stack size.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_SetItemAmount( ... ) -> ();
 
@@ -5469,7 +5469,7 @@ extern "C" {
     /// - Filled Maps
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_SetItemColor( ... ) -> ();
 
@@ -5484,7 +5484,7 @@ extern "C" {
     /// of the given type.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__PlayerAction_SetItemCooldown( ... ) -> ();
 
@@ -5505,7 +5505,7 @@ extern "C" {
     /// are divided by 8.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_SetItemEffects( ... ) -> ();
 
@@ -5518,7 +5518,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__SetVariable_SetItemEnchants( ... ) -> ();
@@ -5530,7 +5530,7 @@ extern "C" {
     /// container at a location.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__GameAction_SetItemInSlot( ... ) -> ();
 
@@ -5543,7 +5543,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__SetVariable_SetItemLore( ... ) -> ();
@@ -5557,7 +5557,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__SetVariable_SetItemName( ... ) -> ();
@@ -5571,7 +5571,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__EntityAction_SetItemOwner( ... ) -> ();
@@ -5583,7 +5583,7 @@ extern "C" {
     /// a custom stored tag value.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_SetItemTag( ... ) -> ();
 
@@ -5593,7 +5593,7 @@ extern "C" {
     /// Sets an item's material.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_SetItemType( ... ) -> ();
 
@@ -5606,7 +5606,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__PlayerAction_SetItems( ... ) -> ();
@@ -5618,7 +5618,7 @@ extern "C" {
     /// displayed page of a Lectern.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__GameAction_SetLecternBook( ... ) -> ();
 
@@ -5638,7 +5638,7 @@ extern "C" {
     /// list bounds.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_SetListValue( ... ) -> ();
 
@@ -5656,7 +5656,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Emperor</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_emperor"))]
     pub fn DF_ACTION__SetVariable_SetMapTexture( ... ) -> ();
@@ -5671,7 +5671,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Emperor</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_emperor"))]
     pub fn DF_ACTION__PlayerAction_SetMenuItem( ... ) -> ();
@@ -5689,7 +5689,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Noble</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_noble"))]
     pub fn DF_ACTION__EntityAction_SetMinecartBlock( ... ) -> ();
@@ -5701,7 +5701,7 @@ extern "C" {
     /// used in resource packs.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_SetModelData( ... ) -> ();
 
@@ -5715,7 +5715,7 @@ extern "C" {
     /// - Panda
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__EntityAction_SetPandaSadTicks( ... ) -> ();
 
@@ -5726,7 +5726,7 @@ extern "C" {
     /// amount.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_SetParticleAmount( ... ) -> ();
 
@@ -5737,7 +5737,7 @@ extern "C" {
     /// color and color variation.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_SetParticleColor( ... ) -> ();
 
@@ -5748,7 +5748,7 @@ extern "C" {
     /// fade color.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_SetParticleFade( ... ) -> ();
 
@@ -5759,7 +5759,7 @@ extern "C" {
     /// display material.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_SetParticleMat( ... ) -> ();
 
@@ -5770,7 +5770,7 @@ extern "C" {
     /// motion and motion variation.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_SetParticleMotion( ... ) -> ();
 
@@ -5780,7 +5780,7 @@ extern "C" {
     /// Sets a particle effect's roll.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_SetParticleRoll( ... ) -> ();
 
@@ -5791,7 +5791,7 @@ extern "C" {
     /// size and size variation.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_SetParticleSize( ... ) -> ();
 
@@ -5802,7 +5802,7 @@ extern "C" {
     /// and vertical spread.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_SetParticleSprd( ... ) -> ();
 
@@ -5812,7 +5812,7 @@ extern "C" {
     /// Sets a particle effect's type.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_SetParticleType( ... ) -> ();
 
@@ -5829,7 +5829,7 @@ extern "C" {
     /// immediately.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__EntityAction_SetPickupDelay( ... ) -> ();
 
@@ -5842,7 +5842,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__SetVariable_SetPitch( ... ) -> ();
@@ -5858,7 +5858,7 @@ extern "C" {
     /// one moon phase.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__PlayerAction_SetPlayerTime( ... ) -> ();
 
@@ -5868,7 +5868,7 @@ extern "C" {
     /// Sets a potion effect's amplifier.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_SetPotionAmp( ... ) -> ();
 
@@ -5878,7 +5878,7 @@ extern "C" {
     /// Sets a potion effect's duration.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_SetPotionDur( ... ) -> ();
 
@@ -5888,7 +5888,7 @@ extern "C" {
     /// Sets a potion effect's type.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_SetPotionType( ... ) -> ();
 
@@ -5903,7 +5903,7 @@ extern "C" {
     /// set to Downfall to take effect.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__PlayerAction_SetRainLevel( ... ) -> ();
 
@@ -5922,7 +5922,7 @@ extern "C" {
     /// SetBlock in certain situations.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__GameAction_SetRegion( ... ) -> ();
 
@@ -5933,7 +5933,7 @@ extern "C" {
     /// yaw without teleporting it.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__EntityAction_SetRotation( ... ) -> ();
 
@@ -5944,7 +5944,7 @@ extern "C" {
     /// yaw.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__PlayerAction_SetRotation( ... ) -> ();
 
@@ -5955,7 +5955,7 @@ extern "C" {
     /// level.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__PlayerAction_SetSaturation( ... ) -> ();
 
@@ -5968,7 +5968,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__GameAction_SetScObj( ... ) -> ();
@@ -5982,7 +5982,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__GameAction_SetScore( ... ) -> ();
@@ -5994,7 +5994,7 @@ extern "C" {
     /// scoreboard.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__PlayerAction_SetScore( ... ) -> ();
 
@@ -6005,7 +6005,7 @@ extern "C" {
     /// scoreboard sidebar.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__PlayerAction_SetScoreObj( ... ) -> ();
 
@@ -6023,7 +6023,7 @@ extern "C" {
     /// - Pufferfish
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__EntityAction_SetSize( ... ) -> ();
 
@@ -6040,7 +6040,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Overlord</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_overlord"))]
     pub fn DF_ACTION__PlayerAction_SetSkin( ... ) -> ();
@@ -6052,7 +6052,7 @@ extern "C" {
     /// hotbar slot.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__PlayerAction_SetSlot( ... ) -> ();
 
@@ -6063,7 +6063,7 @@ extern "C" {
     /// of a player's inventory.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__PlayerAction_SetSlotItem( ... ) -> ();
 
@@ -6073,7 +6073,7 @@ extern "C" {
     /// Sets a sound's pitch or note
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_SetSoundPitch( ... ) -> ();
 
@@ -6083,7 +6083,7 @@ extern "C" {
     /// Sets a sound's type.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_SetSoundType( ... ) -> ();
 
@@ -6093,7 +6093,7 @@ extern "C" {
     /// Sets the variant of a sound.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_SetSoundVariant( ... ) -> ();
 
@@ -6115,7 +6115,7 @@ extern "C" {
     /// loudness at its origin decreases.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_SetSoundVolume( ... ) -> ();
 
@@ -6126,7 +6126,7 @@ extern "C" {
     /// spawn when they die and respawn.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__PlayerAction_SetSpawnPoint( ... ) -> ();
 
@@ -6145,7 +6145,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Emperor</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_emperor"))]
     pub fn DF_ACTION__PlayerAction_SetStatus( ... ) -> ();
@@ -6158,7 +6158,7 @@ extern "C" {
     /// character model.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__PlayerAction_SetStingsStuck( ... ) -> ();
 
@@ -6180,7 +6180,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Noble</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_noble"))]
     pub fn DF_ACTION__PlayerAction_SetTickRate( ... ) -> ();
@@ -6196,7 +6196,7 @@ extern "C" {
     /// of zero will not be affected.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_SetVectorLength( ... ) -> ();
 
@@ -6218,7 +6218,7 @@ extern "C" {
     /// ■ 250: Master
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__EntityAction_SetVillagerExp( ... ) -> ();
 
@@ -6237,7 +6237,7 @@ extern "C" {
     /// an explosion occurs.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__EntityAction_SetWitherInvul( ... ) -> ();
 
@@ -6250,7 +6250,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Emperor</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_emperor"))]
     pub fn DF_ACTION__PlayerAction_SetWorldBorder( ... ) -> ();
@@ -6264,7 +6264,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__SetVariable_SetX( ... ) -> ();
@@ -6276,7 +6276,7 @@ extern "C" {
     /// to a certain percentage.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__PlayerAction_SetXPProg( ... ) -> ();
 
@@ -6289,7 +6289,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__SetVariable_SetY( ... ) -> ();
@@ -6303,7 +6303,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__SetVariable_SetYaw( ... ) -> ();
@@ -6317,7 +6317,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__SetVariable_SetZ( ... ) -> ();
@@ -6332,7 +6332,7 @@ extern "C" {
     /// - Sheep
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__EntityAction_ShearSheep( ... ) -> ();
 
@@ -6346,7 +6346,7 @@ extern "C" {
     /// - Sheep
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__EntityAction_SheepEat( ... ) -> ();
 
@@ -6357,7 +6357,7 @@ extern "C" {
     /// on the X, Y, and Z axes.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_ShiftAllAxes( ... ) -> ();
 
@@ -6368,7 +6368,7 @@ extern "C" {
     /// based on its rotation.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_ShiftAllDirections( ... ) -> ();
 
@@ -6379,7 +6379,7 @@ extern "C" {
     /// location by the given distance.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_ShiftToward( ... ) -> ();
 
@@ -6392,7 +6392,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Emperor</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_emperor"))]
     pub fn DF_ACTION__PlayerAction_ShiftWorldBorder( ... ) -> ();
@@ -6406,7 +6406,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__SelectObject_Shooter( ... ) -> ();
@@ -6422,7 +6422,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Overlord</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_overlord"))]
     #[deprecated] 
@@ -6437,7 +6437,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Emperor</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_emperor"))]
     pub fn DF_ACTION__PlayerAction_ShowInv( ... ) -> ();
@@ -6451,7 +6451,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__EntityAction_ShowName( ... ) -> ();
@@ -6465,7 +6465,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__GameAction_ShowSidebar( ... ) -> ();
@@ -6476,7 +6476,7 @@ extern "C" {
     /// Spawns a shulker bullet at a location.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__GameAction_ShulkerBullet( ... ) -> ();
 
@@ -6491,7 +6491,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Noble</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_noble"))]
     #[deprecated] 
@@ -6508,7 +6508,7 @@ extern "C" {
     /// - Repeat
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__Control_Skip( ... ) -> ();
 
@@ -6520,7 +6520,7 @@ extern "C" {
     /// given slot ID.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__IfPlayer_SlotEquals( ... ) -> ();
 
@@ -6536,7 +6536,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Mythic</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_mythic"))]
     pub fn DF_ACTION__GameAction_SpawnBlockDisp( ... ) -> ();
@@ -6548,7 +6548,7 @@ extern "C" {
     /// a location.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__GameAction_SpawnExpOrb( ... ) -> ();
 
@@ -6564,7 +6564,7 @@ extern "C" {
     /// second later.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__GameAction_SpawnFangs( ... ) -> ();
 
@@ -6580,7 +6580,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Mythic</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_mythic"))]
     pub fn DF_ACTION__GameAction_SpawnItemDisp( ... ) -> ();
@@ -6596,7 +6596,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Mythic</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_mythic"))]
     #[deprecated] 
@@ -6615,7 +6615,7 @@ extern "C" {
     /// Leggings, Boots, Off Hand
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__GameAction_SpawnMob( ... ) -> ();
 
@@ -6629,7 +6629,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Mythic</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_mythic"))]
     pub fn DF_ACTION__GameAction_SpawnPotionCloud( ... ) -> ();
@@ -6640,7 +6640,7 @@ extern "C" {
     /// Spawns primed TNT at a location.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__GameAction_SpawnTNT( ... ) -> ();
 
@@ -6650,7 +6650,7 @@ extern "C" {
     /// Spawns a vehicle at a location.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__GameAction_SpawnVehicle( ... ) -> ();
 
@@ -6663,7 +6663,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Mythic</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_mythic"))]
     pub fn DF_ACTION__PlayerAction_SpectatorMode( ... ) -> ();
@@ -6678,7 +6678,7 @@ extern "C" {
     /// are removed from the result.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_SplitString( ... ) -> ();
 
@@ -6691,7 +6691,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__IfPlayer_StandingOn( ... ) -> ();
@@ -6705,7 +6705,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__IfEntity_StandingOn( ... ) -> ();
@@ -6719,7 +6719,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__GameAction_StartLoop( ... ) -> ();
@@ -6733,7 +6733,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__GameAction_StopLoop( ... ) -> ();
@@ -6748,7 +6748,7 @@ extern "C" {
     /// - Repeat
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__Control_StopRepeat( ... ) -> ();
 
@@ -6759,7 +6759,7 @@ extern "C" {
     /// a string has.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_StringLength( ... ) -> ();
 
@@ -6770,7 +6770,7 @@ extern "C" {
     /// between the given vectors.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_SubtractVectors( ... ) -> ();
 
@@ -6781,7 +6781,7 @@ extern "C" {
     /// mode to Survival.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__PlayerAction_SurvivalMode( ... ) -> ();
 
@@ -6797,7 +6797,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Mythic</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_mythic"))]
     pub fn DF_ACTION__EntityAction_TDispBackground( ... ) -> ();
@@ -6814,7 +6814,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Mythic</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_mythic"))]
     pub fn DF_ACTION__EntityAction_TDisplayLineWidth( ... ) -> ();
@@ -6831,7 +6831,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Mythic</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_mythic"))]
     pub fn DF_ACTION__EntityAction_TDisplayOpacity( ... ) -> ();
@@ -6850,7 +6850,7 @@ extern "C" {
     /// - Any Horse
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__EntityAction_Tame( ... ) -> ();
 
@@ -6862,7 +6862,7 @@ extern "C" {
     /// block update.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__GameAction_TickBlock( ... ) -> ();
 
@@ -6876,7 +6876,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Noble</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_noble"))]
     pub fn DF_ACTION__PlayerAction_TpSequence( ... ) -> ();
@@ -6888,7 +6888,7 @@ extern "C" {
     /// at the given indices.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_TrimList( ... ) -> ();
 
@@ -6899,7 +6899,7 @@ extern "C" {
     /// at the given positions.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_TrimString( ... ) -> ();
 
@@ -6910,7 +6910,7 @@ extern "C" {
     /// leaving all formatting in place.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_TrimStyledText( ... ) -> ();
 
@@ -6925,7 +6925,7 @@ extern "C" {
     /// after a Control: Wait block.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__GameAction_UncancelEvent( ... ) -> ();
 
@@ -6937,7 +6937,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Overlord</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_overlord"))]
     pub fn DF_ACTION__EntityAction_Undisguise( ... ) -> ();
@@ -6950,7 +6950,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Overlord</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_overlord"))]
     pub fn DF_ACTION__PlayerAction_Undisguise( ... ) -> ();
@@ -6966,7 +6966,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Noble</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_noble"))]
     #[deprecated] 
@@ -6982,7 +6982,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Overlord</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_overlord"))]
     pub fn DF_ACTION__IfPlayer_UsingPack( ... ) -> ();
@@ -6993,7 +6993,7 @@ extern "C" {
     /// Checks if a variable exists.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__IfVariable_VarExists( ... ) -> ();
 
@@ -7003,7 +7003,7 @@ extern "C" {
     /// Sets a variable to a vector.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_Vector( ... ) -> ();
 
@@ -7014,7 +7014,7 @@ extern "C" {
     /// between two locations.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_VectorBetween( ... ) -> ();
 
@@ -7025,7 +7025,7 @@ extern "C" {
     /// vibration to a player.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__PlayerAction_Vibration( ... ) -> ();
 
@@ -7038,7 +7038,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__SelectObject_Victim( ... ) -> ();
@@ -7052,7 +7052,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Noble</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_noble"))]
     pub fn DF_ACTION__PlayerAction_WakeUpAnimation( ... ) -> ();
@@ -7066,7 +7066,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Noble</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_noble"))]
     pub fn DF_ACTION__PlayerAction_WalkSpeed( ... ) -> ();
@@ -7080,7 +7080,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__PlayerAction_WeatherClear( ... ) -> ();
@@ -7094,7 +7094,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__PlayerAction_WeatherRain( ... ) -> ();
@@ -7106,7 +7106,7 @@ extern "C" {
     /// condition is true.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__Repeat_While( ... ) -> ();
 
@@ -7123,7 +7123,7 @@ extern "C" {
     /// - WrapNum(-2, 0, 7) = 5
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_WrapNum( ... ) -> ();
 
@@ -7136,7 +7136,7 @@ extern "C" {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[deprecated] 
     pub fn DF_ACTION__SetVariable_WrapNumber( ... ) -> ();
@@ -7155,7 +7155,7 @@ extern "C" {
     /// ##### Requires Rank: **<u>Overlord</u>**
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_overlord", feature = "rank_dev"))]
     #[doc(cfg(feature = "rank_overlord"))]
     pub fn DF_ACTION__GameAction_WriteTransaction( ... ) -> ();
@@ -7167,7 +7167,7 @@ extern "C" {
     /// of the given numbers.
     /// 
     /// ## 
-    /// *\[2024-10-31 21:13:54 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-10-31 22:52:59 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     pub fn DF_ACTION__SetVariable_x( ... ) -> ();
 

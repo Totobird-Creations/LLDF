@@ -7,8 +7,7 @@ use llvm_ir::Name;
 pub enum CodeValue {
     String(String),
     Text(String),
-    Int(i64),
-    Float(f64),
+    Number(f64),
     Location { x : f64, y : f64, z : f64, pitch : f64, yaw : f64 },
     Vector { x : f64, y : f64, z : f64 },
     SoundNamed { name : String, volume : f64, pitch : f64 },
@@ -136,19 +135,11 @@ impl CodeValue {
 
 
 impl CodeValue {
-    pub fn contains_line_var(&self, check : &str) -> bool { match (self) {
-        Self::Variable { name, scope : VariableScope::Line } => { name == check },
-        Self::Actiontag { variable : Some(variable), .. } => { variable.contains_line_var(check) },
-        _ => false
-    } }
-    pub fn replace_line_var(&mut self, check : &str, with : &str) -> () { match (self) {
-        Self::Variable { name, scope : VariableScope::Line } => { if (name == check) { *name = with.to_string() } },
-        Self::Actiontag { variable : Some(variable), .. } => { variable.replace_line_var(check, with) },
-        _ => { }
-    } }
+
     pub fn as_actiontag(&self) -> Result<(String, Option<CodeValue>), Box<dyn Error>> { match (self) {
         Self::String(string) => Ok((string.clone(), None)),
         var @ Self::Variable { .. } => Ok((String::new(), Some(var.clone()))),
         _ => Err("Non string nor variable value used as tag".into())
     } }
+
 }

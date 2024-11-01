@@ -11,3 +11,6 @@
 pub mod cli;
 
 pub mod build;
+
+
+pub const MODULE_NAME : &'static str = module_path!();

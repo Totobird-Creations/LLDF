@@ -8,13 +8,14 @@ use std::process::{ self, Command };
 use std::error::Error;
 use std::collections::HashMap;
 
-use codegen::{CodeLine, Codeblock};
+use codegen::{CodeLine, CodeValue, Codeblock};
 use llvm_ir::Module;
 
 use parse::ParsedModule;
 use serde::Deserialize as Deser;
 use toml;
 use tungstenite as ws;
+use const_str::concat;
 
 
 #[derive(Deser)]
@@ -62,7 +63,7 @@ pub fn load_module<P : AsRef<Path>>(path : P) -> Result<Module, String> {
 }
 
 
-pub fn run<P : AsRef<Path>>(path : P) -> () {
+pub fn run<P : AsRef<Path>, F : Fn(Vec<CodeLine>) -> Result<(), Box<dyn Error>>>(path : P, submit : F) -> () {
     // Get the module.
     let module = match (load_module(path)) {
         Err(err) => { eprintln!("error: {}", err); process::exit(1) },
@@ -81,7 +82,7 @@ pub fn run<P : AsRef<Path>>(path : P) -> () {
         Ok(modules) => modules
     };
 
-    match (submit_templates(&templates)) {
+    match (submit(templates)) {
         Err(err) => { eprintln!("error: {}", err); process::exit(1) },
         Ok(_) => { }
     };
@@ -102,7 +103,7 @@ pub fn build_modules(modules : &Vec<Module>) -> Result<Vec<ParsedModule>, Box<dy
 pub fn build_templates(modules : Vec<ParsedModule>) -> Result<Vec<CodeLine>, Box<dyn Error>> {
     let mut templates = HashMap::new();
 
-    let init_template = "DF_EVENT__Special_Init".to_string();
+    let init_template = "DF_INIT".to_string();
 
     for module in modules {
         if let Some(function) = module.init_function {
@@ -117,9 +118,39 @@ pub fn build_templates(modules : Vec<ParsedModule>) -> Result<Vec<CodeLine>, Box
         }
     }
 
-    // TODO: Handle events and magic functions.
+    // Handle init template.
+    if let Some(mut template) = templates.remove(&init_template) {
+        let init_var = CodeValue::unsaved_variable(concat!(crate::MODULE_NAME, ".init"));
+        let one      = CodeValue::Number(1.0);
+        let params   = vec![ init_var, one ];
+        template.blocks.insert(0, Codeblock::action("set_var", "=", params.clone(), vec![]));
+        template.blocks.insert(0, Codeblock::OPEN_COND_BRACKET);
+        template.blocks.insert(0, Codeblock::action("if_var", "=", params, vec![])); // TOOD: NOT and tags
+        template.blocks.push(Codeblock::CLOSE_COND_BRACKET);
+        templates.entry(String::from("DF_EVENT__Event_Join")).or_insert_with(|| CodeLine::new()).blocks.splice(0..0, template.blocks);
+    }
+
     for (name, mut template) in &mut templates {
-        template.blocks.insert(0, Codeblock::function(name, vec![], false)); // TODO: params
+        let mut parts = name.split("__");
+        let mut head_block = Codeblock::function(name, vec![], true);
+        match (parts.next()) {
+
+            Some("DF_EVENT") => {
+                // TODO: LS-CANCEL
+                if let (Some(trigger), None) = (parts.next(), parts.next()) {
+                    let mut trigger_parts = trigger.split("_");
+                    if let (Some(codeblock), Some(action), None) = (trigger_parts.next(), trigger_parts.next(), trigger_parts.next()) {
+                        let codeblock = parse::linked_name_to_codeblock (codeblock );
+                        let action    = parse::linked_name_to_action    (action    );
+                        head_block = Codeblock::event(codeblock, action);
+                    }
+                }
+            },
+
+            _ => { }
+        };
+        template.blocks.insert(0, head_block);
+        // TODO: split template.
         codegen::opt::optimise(&mut template);
     }
 
@@ -128,7 +159,7 @@ pub fn build_templates(modules : Vec<ParsedModule>) -> Result<Vec<CodeLine>, Box
 
 
 
-pub fn submit_templates(templates : &Vec<CodeLine>) -> Result<(), Box<dyn Error>> {
+pub fn ccapi_submit_templates(templates : &Vec<CodeLine>) -> Result<(), Box<dyn Error>> {
 
     eprint!("Connecting to CCAPI... ");
     let Ok((mut sock, _)) = ws::connect("ws://localhost:31375") else { return Err("Failed to connect to CCAPI".into()) };
@@ -145,7 +176,7 @@ pub fn submit_templates(templates : &Vec<CodeLine>) -> Result<(), Box<dyn Error>
     eprint!("Getting plot size... ");
     let Ok(_) = sock.send(ws::Message::Text("size".to_string())) else { return Err("Failed to get plot size".into()) };
     let Ok(ws::Message::Text(size)) = sock.read() else { return Err("Failed to get plot size".into()) };
-    let size = match (size.as_str()) {
+    let _size = match (size.as_str()) {
         "BASIC"   => 50,
         "LARGE"   => 100,
         "MASSIVE" => 300,
@@ -169,7 +200,7 @@ pub fn submit_templates(templates : &Vec<CodeLine>) -> Result<(), Box<dyn Error>
     eprint!("Placing templates... ");
     let Ok(_) = sock.send(ws::Message::Text("place go".to_string())) else { return Err("Failed to place templates".into()) };
     let Ok(ws::Message::Text(resp)) = sock.read() else { return Err("Failed to place templates".into()) };
-    if (resp != "place go") { return Err("Failed to place templates".into()) }
+    if (resp != "place done") { return Err("Failed to place templates".into()) }
     eprintln!("Done");
 
     Ok(())
