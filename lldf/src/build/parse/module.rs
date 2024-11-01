@@ -136,18 +136,24 @@ pub fn parse_module(module : &Module) -> Result<ParsedModule, Box<dyn Error>> {
         let mut is_constant = *is_constant;
         let var = CodeValue::unsaved_variable_name(name);
         if let Some(init) = init {
-            let block_count = init_function.line.blocks.len();
-            let mut value = parse_const(&parsed, &mut init_function, init)?; // TODO: Detect strings.
-            let code_value = value.to_codevalue(&parsed, &mut init_function)?;
-            if (init_function.line.blocks.len() != block_count) {
-                is_constant = false;
-            }
-            if let CodeValue::Variable { .. } = &code_value { is_constant = false; }
-            if (! is_constant) {
-                let params = vec![ var.clone(), code_value ];
-                init_function.line.blocks.push(Codeblock::action("set_var", "=", params, vec![]));
-                value = Value::CodeValue(var);
-            }
+            // Handle special cases like strings.
+            let value = if let Some(value) = parse_special_const(&init) {
+                value
+            } else { // Otherwise just create a global.
+                let block_count = init_function.line.blocks.len();
+                let mut value = parse_const(&parsed, &mut init_function, init)?;
+                let code_value = value.to_codevalue(&parsed, &mut init_function)?;
+                if (init_function.line.blocks.len() != block_count) {
+                    is_constant = false;
+                }
+                if let CodeValue::Variable { .. } = &code_value { is_constant = false; }
+                if (! is_constant) {
+                    let params = vec![ var.clone(), code_value ];
+                    init_function.line.blocks.push(Codeblock::action("set_var", "=", params, vec![]));
+                    value = Value::CodeValue(var);
+                }
+                value
+            };
             parsed.globals.insert(name.clone(), Global::Constant(value));
         } else {
             parsed.globals.insert(name.clone(), Global::Constant(Value::CodeValue(var)));
@@ -168,6 +174,7 @@ pub fn linked_name_to_codeblock(codeblock : &str) -> String {
     match (codeblock.as_str()) {
         "select_object" => String::from("select_obj" ),
         "set_variable"  => String::from("set_var"    ),
+        "if_variable"   => String::from("if_var"     ),
         _               => codeblock
     }
 }

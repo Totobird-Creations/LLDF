@@ -77,3 +77,27 @@ pub fn parse_aggregate(module : &ParsedModule, function : &mut ParsedFunction, v
     }
     Ok(Value::CodeValue(var))
 }
+
+
+
+
+pub fn parse_special_const(value : &ConstantRef) -> Option<Value> {
+
+    // Strings
+    'string_failed : loop {
+        if let Constant::Struct { values, is_packed : true, .. } = &**value {
+            if (values.len() == 1) { if let Constant::Array { elements, .. } = &*values[0] {
+                let mut bytes = Vec::with_capacity(elements.len());
+                for element in elements { if let Constant::Int { bits : 8, value } = &**element {
+                    bytes.push(*value as u8);
+                } else { break 'string_failed; } }
+                if let Ok(string) = String::from_utf8(bytes) {
+                    return Some(Value::CodeValue(CodeValue::String(string)));
+                }
+            }}
+        }
+        break 'string_failed;
+    }
+
+    None
+}
