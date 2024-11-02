@@ -20,7 +20,9 @@ pub enum Value {
 
     /// A 'faked' pointer with known get and set behaviour.
     GetSetPtr {
-        getter           : GSPGetter,
+        getter_codeblock : String,
+        getter_action    : String,
+        getter_tags      : Vec<CodeValue>,
         setter_codeblock : String,
         setter_action    : String,
         setter_tags      : Vec<CodeValue>,
@@ -39,17 +41,6 @@ pub enum Value {
     /// A DiamondFire code value.
     CodeValue(CodeValue)
 
-}
-
-
-#[derive(Clone, Debug)]
-pub enum GSPGetter {
-    Codeblock {
-        codeblock : String,
-        action    : String,
-        tags      : Vec<CodeValue>
-    },
-    Local(Name)
 }
 
 
@@ -75,7 +66,16 @@ impl Value {
             }
         },
 
-        Value::GetSetPtr { getter, params, .. } => getter.to_codevalue(module, function, params),
+        Value::GetSetPtr { getter_codeblock, getter_action, getter_tags, params, .. } => {
+            let dest = CodeValue::line_variable(function.create_temp_var_name());
+            let mut final_params = Vec::with_capacity(params.len() + 1);
+            final_params.push(dest.clone());
+            for param in params {
+                final_params.push(param.to_codevalue(module, function)?);
+            }
+            function.line.blocks.push(Codeblock::action(getter_codeblock, getter_action, final_params, getter_tags.clone()));
+            Ok(dest)
+        },
 
         Value::IntPtr(value) => value.to_codevalue(module, function),
 
@@ -85,27 +85,6 @@ impl Value {
         },
 
         Value::CodeValue(value) => Ok(value.clone())
-
-    } }
-}
-
-
-impl GSPGetter {
-    pub fn to_codevalue(&self, module : &ParsedModule, function : &mut ParsedFunction, params : &Vec<Value>) -> Result<CodeValue, Box<dyn Error>> { match (self) {
-        // This is a ptr-load operation.
-
-        GSPGetter::Codeblock { codeblock, action, tags } => {
-            let dest = CodeValue::line_variable(function.create_temp_var_name());
-            let mut final_params = Vec::with_capacity(params.len() + 1);
-            final_params.push(dest.clone());
-            for param in params {
-                final_params.push(param.to_codevalue(module, function)?);
-            }
-            function.line.blocks.push(Codeblock::action(codeblock, action, final_params, tags.clone()));
-            Ok(dest)
-        },
-
-        GSPGetter::Local(name) => Ok(CodeValue::line_variable_name(name)),
 
     } }
 }

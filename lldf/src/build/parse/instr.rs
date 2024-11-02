@@ -3,9 +3,7 @@ use crate::build::codegen::{CodeValue, Codeblock};
 use super::*;
 
 use llvm_ir::instruction::*;
-use llvm_ir::ConstantRef;
-use llvm_ir::Operand;
-
+use llvm_ir::{ Constant, ConstantRef, Operand, Type };
 
 
 
@@ -57,13 +55,28 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
 
     Instruction::InsertValue(_) => todo!(),
 
-    Instruction::Alloca(Alloca { dest, .. }) => {
+    Instruction::Alloca(Alloca { allocated_type, dest, .. }) => {
+        let count = match (&**allocated_type) {
+            Type::VoidType                          => 1,
+            Type::IntegerType { ..                } => 1,
+            Type::PointerType { ..                } => 1,
+            Type::FPType      { ..                } => 1,
+            Type::FuncType    { ..                } => 1,
+            Type::VectorType  { ..                } => { return Err("SIMD vectors are unsupported".into()) },
+            Type::ArrayType   { num_elements, ..  } => *num_elements,
+            Type::StructType  { element_types, .. } => element_types.len(),
+            Type::NamedStructType { .. } => todo!(),
+            _ => { return Err(format!("Can not allocate stack space for unsupported type {}", allocated_type).into()); }
+        }; // TODO: Handle case when count = 1
+        let value = handle_aggregate(Some(CodeValue::line_variable_name(dest)), module, function, &(0..count).map(|_| ConstantRef::new(Constant::Int { bits : 0, value : 0 })).collect())?;
         function.locals.insert(dest.clone(), Value::GetSetPtr {
-            getter           : GSPGetter::Local(dest.clone()),
+            getter_codeblock : String::from("set_var"),
+            getter_action    : String::from("GetListValue"),
+            getter_tags      : vec![ ],
             setter_codeblock : String::from("set_var"),
-            setter_action    : String::from("="),
-            setter_tags      : Vec::new(),
-            params           : vec![ Value::CodeValue(CodeValue::line_variable_name(dest)) ],
+            setter_action    : String::from("SetListValue"),
+            setter_tags      : vec![ ],
+            params           : vec![ value, Value::CodeValue(CodeValue::Number(1.0)) ],
         });
         Ok(())
     },
@@ -95,8 +108,8 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
                 }
             },
 
-            Value::GetSetPtr { getter, params, .. } => {
-                let dest_value = getter.to_codevalue(module, function, &params)?;
+            gsp @ Value::GetSetPtr { .. } => {
+                let dest_value = gsp.to_codevalue(module, function)?;
                 function.locals.insert(dest.clone(), Value::CodeValue(dest_value));
                 Ok(())
             },
@@ -125,16 +138,21 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
 
     Instruction::GetElementPtr(GetElementPtr { address, indices, dest, .. }) => {
         if (indices.len() != 1) { return Err("Multi-index GEP instructions are unsupported".into()); }
+        let index_var = CodeValue::line_variable(function.create_temp_var_name());
+        let params    = vec![
+            index_var.clone(),
+            parse_oper(module, function, &indices[0])?.to_codevalue(module, function)?,
+            CodeValue::Number(1.0)
+        ];
+        function.line.blocks.push(Codeblock::action("set_var", "+", params, vec![ ]));
         let params = vec![
             parse_oper(module, function, address)?,
-            parse_oper(module, function, &indices[0])?
+            Value::CodeValue(index_var)
         ];
         let value = Value::GetSetPtr {
-            getter : GSPGetter::Codeblock {
-                codeblock : "set_var".to_string(),
-                action    : "GetListValue".to_string(),
-                tags      : vec![ ]
-            },
+            getter_codeblock : "set_var".to_string(),
+            getter_action    : "GetListValue".to_string(),
+            getter_tags      : vec![ ],
             setter_codeblock : "set_var".to_string(),
             setter_action    : "SetListValue".to_string(),
             setter_tags      : vec![ ],
@@ -144,7 +162,11 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
         Ok(())
     },
 
-    Instruction::Trunc(_) => todo!(),
+    Instruction::Trunc(Trunc { operand, dest, .. }) => {
+        let value = parse_oper(module, function, operand)?;
+        function.locals.insert(dest.clone(), value);
+        Ok(())
+    },
 
     Instruction::ZExt(_) => todo!(),
 
@@ -162,7 +184,11 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
 
     Instruction::SIToFP(_) => todo!(),
 
-    Instruction::PtrToInt(_) => todo!(),
+    Instruction::PtrToInt(PtrToInt { operand, dest, .. }) => {
+        let value = Value::IntPtr(Box::new(parse_oper(module, function, operand)?));
+        function.locals.insert(dest.clone(), value);
+        Ok(())
+    },
 
     Instruction::IntToPtr(_) => todo!(),
 
@@ -185,7 +211,11 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
                     Global::NoopFunction => Ok(()),
 
                     Global::UserFunction { name } => {
-                        let block = Codeblock::call_func(name, vec![]); // TODO: params & return value
+                        let mut params = Vec::with_capacity(arguments.len());
+                        for (arg, _) in arguments {
+                            params.push(parse_oper(module, function, arg)?.to_codevalue(module, function)?);
+                        }
+                        let block = Codeblock::call_func(name, params);
                         function.line.blocks.push(block);
                         Ok(())
                     },
@@ -207,11 +237,9 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
                             params.push(parse_oper(module, function, arg)?);
                         }
                         let value = Value::GetSetPtr {
-                            getter : GSPGetter::Codeblock {
-                                codeblock : getter_codeblock .clone(),
-                                action    : getter_action    .clone(),
-                                tags      : getter_tags      .clone()
-                            },
+                            getter_codeblock : getter_codeblock .clone(),
+                            getter_action    : getter_action    .clone(),
+                            getter_tags      : getter_tags      .clone(),
                             setter_codeblock : setter_codeblock .clone(),
                             setter_action    : setter_action    .clone(),
                             setter_tags      : setter_tags      .clone(),
@@ -284,18 +312,16 @@ fn handle_store(module : &ParsedModule, function : &mut ParsedFunction, address 
             Ok(())
         },
 
-        Value::GetSetPtr { getter, setter_codeblock, setter_action, setter_tags, params, .. } => {
+        Value::GetSetPtr { getter_codeblock, getter_action, getter_tags, setter_codeblock, setter_action, setter_tags, params, .. } => {
             let mut final_params = Vec::with_capacity(params.len() + 1);
             for param in params {
                 final_params.push(param.to_codevalue(module, function)?);
             }
             final_params.push(value.to_codevalue(module, function)?);
             function.line.blocks.push(Codeblock::action(setter_codeblock.clone(), setter_action.clone(), final_params, setter_tags.clone()));
-            *getter = GSPGetter::Codeblock {
-                codeblock : String::from("set_var"),
-                action    : String::from("="),
-                tags      : vec![ ]
-            };
+            *getter_codeblock = String::from("set_var");
+            *getter_action    = String::from("=");
+            *getter_tags      = vec![ ];
             Ok(())
         },
 

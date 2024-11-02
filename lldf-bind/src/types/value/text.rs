@@ -28,13 +28,13 @@ impl From<&str> for Text {
         Self::from(String::from(value))
     }
 }
-
 impl AsRef<Text> for &str {
     #[inline(always)]
     fn as_ref(&self) -> &Text { unsafe {
         transmute_unchecked(&Text::from(*self))
     } }
 }
+
 
 unsafe impl DFValue for Text {}
 

@@ -1,3 +1,4 @@
+rm ./rustc-ice-*.txt
 # Build the `hello_world` example in `lldf-bind`.
 cd ../lldf-bind && ./build.sh && cd ../lldf &&
 # Find the location of the emitted llvm ir file.

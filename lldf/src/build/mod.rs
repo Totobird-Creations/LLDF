@@ -108,12 +108,15 @@ pub fn build_templates(modules : Vec<ParsedModule>) -> Result<Vec<CodeLine>, Box
     for module in modules {
         if let Some(function) = module.init_function {
             if (! function.line.blocks.is_empty()) {
-                templates.entry(init_template.clone()).or_insert_with(|| CodeLine::new()).blocks.extend(function.line.blocks);
+                templates.entry(init_template.clone()).or_insert_with(|| (vec![ ], CodeLine::new())).1.blocks.extend(function.line.blocks);
             }
         }
         for (name, function) in module.functions {
             if (! function.line.blocks.is_empty()) {
-                templates.entry(name).or_insert_with(|| CodeLine::new()).blocks.extend(function.line.blocks);
+                let params = function.function.map(|function| function.parameters.iter().map(
+                    |param| CodeValue::param_name(&param.name, format!("Type: {}", param.ty), format!("{}", param.name))
+                ).collect()).unwrap_or_else(|| vec![ ]);
+                templates.entry(name).or_insert_with(|| (params, CodeLine::new())).1.blocks.extend(function.line.blocks);
             }
         }
     }
@@ -123,16 +126,16 @@ pub fn build_templates(modules : Vec<ParsedModule>) -> Result<Vec<CodeLine>, Box
         let init_var = CodeValue::unsaved_variable(concat!(crate::MODULE_NAME, ".init"));
         let one      = CodeValue::Number(1.0);
         let params   = vec![ init_var, one ];
-        template.blocks.insert(0, Codeblock::action("set_var", "=", params.clone(), vec![]));
-        template.blocks.insert(0, Codeblock::OPEN_COND_BRACKET);
-        template.blocks.insert(0, Codeblock::action("if_var", "=", params, vec![])); // TOOD: NOT and tags
-        template.blocks.push(Codeblock::CLOSE_COND_BRACKET);
-        templates.entry(String::from("DF_EVENT__Event_Join")).or_insert_with(|| CodeLine::new()).blocks.splice(0..0, template.blocks);
+        template.1.blocks.insert(0, Codeblock::action("set_var", "=", params.clone(), vec![]));
+        template.1.blocks.insert(0, Codeblock::OPEN_COND_BRACKET);
+        template.1.blocks.insert(0, Codeblock::action("if_var", "=", params, vec![])); // TOOD: NOT and tags
+        template.1.blocks.push(Codeblock::CLOSE_COND_BRACKET);
+        templates.entry(String::from("DF_EVENT__Event_Join")).or_insert_with(|| (vec![ ], CodeLine::new())).1.blocks.splice(0..0, template.1.blocks);
     }
 
-    for (name, mut template) in &mut templates {
+    for (name, (params, ref mut template)) in &mut templates {
         let mut parts = name.split("__");
-        let mut head_block = Codeblock::function(name, vec![], true);
+        let mut head_block = Codeblock::function(name, params.clone(), true);
         match (parts.next()) {
 
             Some("DF_EVENT") => {
@@ -150,10 +153,10 @@ pub fn build_templates(modules : Vec<ParsedModule>) -> Result<Vec<CodeLine>, Box
             _ => { }
         };
         template.blocks.insert(0, head_block);
-        codegen::opt::optimise(&mut template);
+        codegen::opt::optimise(template);
     }
 
-    Ok(templates.into_values().collect())
+    Ok(templates.into_values().map(|(_, template)| template).collect())
 }
 
 

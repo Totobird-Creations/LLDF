@@ -267,6 +267,18 @@ impl<'l> ParsedFunction<'l> {
 pub fn parse_function<'l>(module : &ParsedModule, function : &'l Function) -> Result<ParsedFunction<'l>, Box<dyn Error>> {
     let mut parsed = ParsedFunction::new(Some(function));
 
+    for param in &function.parameters {
+        parsed.locals.insert(param.name.clone(), Value::GetSetPtr {
+            getter_codeblock : "set_var".to_string(),
+            getter_action    : "=".to_string(),
+            getter_tags      : vec![ ],
+            setter_codeblock : "set_var".to_string(),
+            setter_action    : "=".to_string(),
+            setter_tags      : vec![ ],
+            params : vec![ Value::CodeValue(CodeValue::line_variable_name(&param.name)) ]
+        });
+    }
+
     let Some(cfr) = CFAPrim::find_all(ControlFlowGraph::new(function)).map(|cfa| CFRGroups::new(&cfa)).flatten() else {
         return Err(format!("Failed to recover control flow primitives of function `{}`.", function.name).into())
     };

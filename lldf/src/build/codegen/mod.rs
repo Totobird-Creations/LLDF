@@ -127,6 +127,16 @@ impl Codeblock {
         _ => false
     } }
 
+    pub fn contains_param(&self, var_name : &str) -> bool { match (self) {
+        Codeblock::Block(block) => block.contains_param(var_name),
+        _ => false
+    } }
+
+    pub fn is_call_func(&self) -> bool { match (self) {
+        Codeblock::Block(block) => block.is_call_func(),
+        _ => false
+    } }
+
 }
 
 impl CodeblockBlock {
@@ -169,6 +179,15 @@ impl CodeblockBlock {
     pub fn contains_line_var(&self, var_name : &str) -> bool {
         self.params.iter().any(|param| param.contains_line_var(var_name))
             || self.tags.iter().any(|tag| tag.contains_line_var(var_name))
+    }
+
+    pub fn contains_param(&self, var_name : &str) -> bool {
+        self.params.iter().any(|param| param.contains_param(var_name))
+            || self.tags.iter().any(|tag| tag.contains_param(var_name))
+    }
+
+    pub fn is_call_func(&self) -> bool {
+        self.block == "call_func"
     }
 
 }

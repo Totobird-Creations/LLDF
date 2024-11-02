@@ -132,6 +132,20 @@ impl CodeValue {
         Self::Variable { name : name.into(), scope : VariableScope::Unsaved }
     }
 
+    pub fn param_name<N : Into<String>, D : Into<String>>(name : &Name, note : N, description : D) -> Self {
+        Self::Parameter {
+            name : match (name) {
+                Name::Name   (name   ) => format!("local.name.{}",  name    ),
+                Name::Number (number ) => format!("local.number.{}", number )
+            },
+            typ         : ParameterType::Variable,
+            plural      : false,
+            optional    : false,
+            description : Some(description.into()),
+            note        : Some(note.into()),
+        }
+    }
+
 
     pub fn is_constant(&self) -> bool { match (self) {
         CodeValue::String     ( _  ) => true,
@@ -147,6 +161,11 @@ impl CodeValue {
         CodeValue::Gamevalue  { .. } => false,
         CodeValue::Parameter  { .. } => false,
         CodeValue::Actiontag  { .. } => false,
+    } }
+
+    pub fn is_variable(&self) -> bool { match (self) {
+        CodeValue::Variable { .. } => true,
+        _                          => false
     } }
 
 }
@@ -171,6 +190,11 @@ impl CodeValue {
         CodeValue::Variable  { name, scope : VariableScope::Line } => name == var_name,
         CodeValue::Parameter { name, ..                          } => name == var_name,
         CodeValue::Actiontag { variable : Some(variable), ..     } => variable.contains_line_var(var_name),
+        _ => false
+    } }
+
+    pub fn contains_param(&self, var_name : &str) -> bool { match (self) {
+        CodeValue::Parameter { name, .. } => name == var_name,
         _ => false
     } }
 
