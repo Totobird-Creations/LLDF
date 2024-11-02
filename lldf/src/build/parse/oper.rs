@@ -31,17 +31,32 @@ pub fn parse_const(module : &ParsedModule, function : &mut ParsedFunction, cor :
     Constant::Array { elements, .. } => parse_aggregate(module, function, elements),
 
     Constant::Undef(_) => todo!(),
+
     Constant::Poison(_) => todo!(),
 
     Constant::GlobalReference { name, .. } => Ok(Value::GlobalRef(name.clone())),
 
     Constant::Add(_) => todo!(),
-    Constant::Sub(_) => todo!(),
-    Constant::Mul(_) => todo!(),
+
+    Constant::Sub(Sub { operand0, operand1 }) => {
+        let var = CodeValue::line_variable(function.create_temp_var_name());
+        let params = vec![ var.clone(), parse_const(module, function, operand0)?.to_codevalue(module, function)?, parse_const(module, function, operand1)?.to_codevalue(module, function)? ];
+        function.line.blocks.push(Codeblock::action("set_var", "-", params, vec![]));
+        Ok(Value::CodeValue(var))
+    },
+
+    Constant::Mul(Mul { operand0, operand1 }) => {
+        let var = CodeValue::line_variable(function.create_temp_var_name());
+        let params = vec![ var.clone(), parse_const(module, function, operand0)?.to_codevalue(module, function)?, parse_const(module, function, operand1)?.to_codevalue(module, function)? ];
+        function.line.blocks.push(Codeblock::action("set_var", "x", params, vec![]));
+        Ok(Value::CodeValue(var))
+    },
+
     Constant::Xor(_) => todo!(),
     Constant::Shl(_) => todo!(),
     Constant::GetElementPtr(_) => todo!(),
-    Constant::Trunc(_) => todo!(),
+
+    Constant::Trunc(Trunc { operand, .. }) => parse_const(module, function, operand),
 
     Constant::PtrToInt(PtrToInt { operand, .. }) => Ok(Value::IntPtr(Box::new(parse_const(module, function, operand)?))),
 
@@ -70,9 +85,9 @@ pub fn parse_aggregate(module : &ParsedModule, function : &mut ParsedFunction, v
             params.push(parse_const(module, function, param)?.to_codevalue(module, function)?);
         }
         function.line.blocks.push(Codeblock::action("set_var",
-        if (first) { "CreateList" } else { "AppendValue" },
-        params, vec![]
-    ));
+            if (first) { "CreateList" } else { "AppendValue" },
+            params, vec![]
+        ));
         if (first) { first = false; }
     }
     Ok(Value::CodeValue(var))

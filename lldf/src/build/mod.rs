@@ -150,7 +150,6 @@ pub fn build_templates(modules : Vec<ParsedModule>) -> Result<Vec<CodeLine>, Box
             _ => { }
         };
         template.blocks.insert(0, head_block);
-        // TODO: split template.
         codegen::opt::optimise(&mut template);
     }
 

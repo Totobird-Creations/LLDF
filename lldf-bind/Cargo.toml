@@ -56,6 +56,6 @@ unused_parens     = "allow"
 
 [profile.release]
 strip     = true
-opt-level = "z"
+opt-level = "s"
 lto       = true
 panic     = "abort"

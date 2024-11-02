@@ -7,18 +7,18 @@
 use lldf_bind::prelude::*;
 
 
-//#[event(SwapHands)]
-//fn swap_hands(default : PlayerSel) {
-//    let number = Text::from(UInt::from(10usize));
-//    let mut i = 0;
-//    while (i < 50) {
-//        default.send_message(&number);
-//        i = i + 1;
-//    }
-//}
+struct Potato {
+    a : &'static str,
+    b : &'static str
+}
 
 
-#[event(SwapHands)]
-fn swap_hands(default : PlayerSel) {
-    default.send_message("Welcome to the plot!");
+#[event(PlayerSwapHands)]
+fn player_swap_hands(default : PlayerSel) {
+    let mut p = Potato { a : "Hello,", b : "World!" };
+    default.send_message(p.a);
+    default.send_message(p.b);
+    p.a = "LLDF!";
+    default.send_message(p.a);
+    default.send_message(p.b);
 }

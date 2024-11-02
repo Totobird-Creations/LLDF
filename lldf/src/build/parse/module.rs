@@ -66,7 +66,11 @@ pub fn parse_module(module : &Module) -> Result<ParsedModule, Box<dyn Error>> {
     // Collect externally linked functions.
     for module_function in &module.func_declarations {
 
-        if (module_function.name == "llvm.lifetime.start.p0" || module_function.name == "llvm.lifetime.end.p0") {
+        if (
+            module_function.name == "llvm.lifetime.start.p0"
+            || module_function.name == "llvm.lifetime.end.p0"
+            || module_function.name == "llvm.assume"
+        ) {
             parsed.globals.insert(Name::Name(Box::new(module_function.name.clone())), Global::NoopFunction);
             continue;
         }
@@ -215,26 +219,26 @@ pub fn linked_name_to_gamevalue_target(gamevalue_kind : &str) -> String {
 }
 pub fn names_to_symbols(from : &str) -> String {
     // Yes, I know this sucks. No, I'm not going to find something better.
-    from.replace("SpecialcharPlus"             , "+")
-        .replace("SpecialcharMinus"            , "-")
-        .replace("SpecialcharSlash"            , "/")
-        .replace("SpecialcharPercent"          , "%")
-        .replace("SpecialcharExclamation"      , "!")
-        .replace("SpecialcharEquals"           , "=")
-        .replace("SpecialcharLeftbracket"      , "[")
-        .replace("SpecialcharRightbracket"     , "]")
-        .replace("SpecialcharLeftangle"        , "<")
-        .replace("SpecialcharRightangle"       , ">")
-        .replace("SpecialcharLeftparenthesis"  , "(")
-        .replace("SpecialcharRightparenthesis" , ")")
-        .replace("SpecialcharApostrophe"       , "'")
-        .replace("SpecialcharComma"            , ",")
-        .replace("SpecialcharPipe"             , "|")
-        .replace("SpecialcharAmpersand"        , "&")
-        .replace("SpecialcharTilde"            , "~")
-        .replace("SpecialcharCaret"            , "^")
-        .replace("SpecialcharColon"            , ":")
-        .replace("SpecialcharPeriod"           , ".")
+    from.replace("Specialcharplus"             , "+")
+        .replace("Specialcharminus"            , "-")
+        .replace("Specialcharslash"            , "/")
+        .replace("Specialcharpercent"          , "%")
+        .replace("Specialcharexclamation"      , "!")
+        .replace("Specialcharequals"           , "=")
+        .replace("Specialcharleftbracket"      , "[")
+        .replace("Specialcharrightbracket"     , "]")
+        .replace("Specialcharleftangle"        , "<")
+        .replace("Specialcharrightangle"       , ">")
+        .replace("Specialcharleftparenthesis"  , "(")
+        .replace("Specialcharrightparenthesis" , ")")
+        .replace("Specialcharapostrophe"       , "'")
+        .replace("Specialcharcomma"            , ",")
+        .replace("Specialcharpipe"             , "|")
+        .replace("Specialcharampersand"        , "&")
+        .replace("Specialchartilde"            , "~")
+        .replace("Specialcharcaret"            , "^")
+        .replace("Specialcharcolon"            , ":")
+        .replace("Specialcharperiod"           , ".")
 }
 
 
@@ -268,8 +272,6 @@ pub fn parse_function<'l>(module : &ParsedModule, function : &'l Function) -> Re
     };
 
     parse_cfr_groups(module, &mut parsed, &cfr)?;
-
-    // TODO: Function head block
 
     Ok(parsed)
 }

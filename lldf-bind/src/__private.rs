@@ -13,7 +13,7 @@ pub enum Calling_an_event_trigger_is_not_allowed {}
 pub macro event_trigger {
 
 
-    { Join, $original_func_ident:ident } => { event_trigger_inner!{ DF_EVENT__Event_Join, $original_func_ident, {
+    { PlayerJoin, $original_func_ident:ident } => { event_trigger_inner!{ DF_EVENT__Event_Join, $original_func_ident, {
         {
             unsafe{ ::lldf_bind::__private::bind::action::DF_ACTION__SelectObject_EventTarget_EventTarget_Default(); }
             let uuids = unsafe{ ::lldf_bind::__private::bind::gamevalue::DF_GAMEVALUE__SelectionTargetUUIDs_Default() } as *const List<String>;
@@ -22,7 +22,7 @@ pub macro event_trigger {
         }
     }} },
 
-    { Leave, $original_func_ident:ident } => { event_trigger_inner!{ DF_EVENT__Event_Leave, $original_func_ident, {
+    { PlayerLeave, $original_func_ident:ident } => { event_trigger_inner!{ DF_EVENT__Event_Leave, $original_func_ident, {
         {
             unsafe{ ::lldf_bind::__private::bind::action::DF_ACTION__SelectObject_EventTarget_EventTarget_Default(); }
             let uuids = unsafe{ ::lldf_bind::__private::bind::gamevalue::DF_GAMEVALUE__SelectionTargetUUIDs_Default() } as *const List<String>;
@@ -41,7 +41,7 @@ pub macro event_trigger {
     }} },
 
 
-    { SwapHands, $original_func_ident:ident } => { event_trigger_inner!{ DF_EVENT__Event_SwapHands, $original_func_ident, {
+    { PlayerSwapHands, $original_func_ident:ident } => { event_trigger_inner!{ DF_EVENT__Event_SwapHands, $original_func_ident, {
         {
             unsafe{ ::lldf_bind::__private::bind::action::DF_ACTION__SelectObject_EventTarget_EventTarget_Default(); }
             let uuids = unsafe{ ::lldf_bind::__private::bind::gamevalue::DF_GAMEVALUE__SelectionTargetUUIDs_Default() } as *const List<String>;

@@ -9,9 +9,7 @@ impl Game {
 
     #[inline(always)]
     pub fn all_players() -> PlayerSel { unsafe {
-        DF_ACTION__SelectObject_AllPlayers();
-        let uuids = crate::bind::gamevalue::DF_GAMEVALUE__SelectionTargetUUIDs_Default() as *const List<String>;
-        DF_ACTION__SelectObject_Reset();
+        let uuids = crate::bind::gamevalue::DF_GAMEVALUE__PlotPlayerUUIDs_Default() as *const List<String>;
         PlayerSel { uuids }
     } }
 
@@ -43,8 +41,6 @@ impl Game {
 extern "C" {
 
     fn DF_ACTION__SelectObject_PlayerName( target : *const DFOpaqueValue ) -> ();
-
-    fn DF_ACTION__SelectObject_AllPlayers( ) -> ();
 
     fn DF_ACTION__SelectObject_Reset( ) -> ();
 

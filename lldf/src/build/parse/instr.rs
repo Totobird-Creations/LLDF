@@ -9,22 +9,50 @@ use llvm_ir::instruction::*;
 
 pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr : &Instruction) -> Result<(), Box<dyn Error>> { match (instr) {
     Instruction::Add(_) => todo!(),
+
     Instruction::Sub(_) => todo!(),
+
     Instruction::Mul(_) => todo!(),
+
     Instruction::UDiv(_) => todo!(),
+
     Instruction::SDiv(_) => todo!(),
+
     Instruction::URem(_) => todo!(),
+
     Instruction::SRem(_) => todo!(),
+
     Instruction::And(_) => todo!(),
+
     Instruction::Or(_) => todo!(),
+
     Instruction::Xor(_) => todo!(),
+
     Instruction::FAdd(_) => todo!(),
+
     Instruction::FSub(_) => todo!(),
+
     Instruction::FMul(_) => todo!(),
+
     Instruction::FDiv(_) => todo!(),
-    Instruction::FRem(_) => todo!(),
+
+    Instruction::FRem(FRem { operand0, operand1, dest, .. }) => { // TODO: error on div by zero.
+        let dest_var = CodeValue::line_variable_name(dest);
+        let params = vec![
+            dest_var.clone(),
+            parse_oper(module, function, operand0)?.to_codevalue(module, function)?,
+            parse_oper(module, function, operand1)?.to_codevalue(module, function)?
+        ];
+        let tags   = vec![ CodeValue::Actiontag { kind : "Remainder Mode".to_string(), value : "Remainder".to_string(), variable : None } ];
+        function.line.blocks.push(Codeblock::action("set_var", "%", params, tags));
+        function.locals.insert(dest.clone(), Value::CodeValue(dest_var));
+        Ok(())
+    },
+
     Instruction::FNeg(_) => todo!(),
+
     Instruction::ExtractValue(_) => todo!(),
+
     Instruction::InsertValue(_) => todo!(),
 
     Instruction::Alloca(Alloca { dest, .. }) => {
@@ -33,7 +61,7 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
             setter_codeblock : String::from("set_var"),
             setter_action    : String::from("="),
             setter_tags      : Vec::new(),
-            parameters       : vec![ Value::CodeValue(CodeValue::line_variable_name(dest)) ],
+            params           : vec![ Value::CodeValue(CodeValue::line_variable_name(dest)) ],
         });
         Ok(())
     },
@@ -45,15 +73,15 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
                 let Some(global) = module.globals.get(&name) else { return Err(format!("Unknown global {}", name).into()) };
                 match (global) {
 
-                    Global::NoopFunction => Err("Can not load a no-op function".into()),
+                    Global::NoopFunction => Err("Can not load from a no-op function".into()),
 
-                    Global::UserFunction { .. } => Err("Can not load a function".into()),
+                    Global::UserFunction { .. } => Err("Can not load from a function".into()),
 
-                    Global::ActionFunction { .. } => Err("Can not load an action function".into()),
+                    Global::ActionFunction { .. } => Err("Can not load from an action function".into()),
 
-                    Global::ActionPtrFunction { .. } => Err("Can not load an action-pointer function".into()),
+                    Global::ActionPtrFunction { .. } => Err("Can not load from an action-pointer function".into()),
 
-                    Global::GamevalueFunction { .. } => Err("Can not load a gamevalue function".into()),
+                    Global::GamevalueFunction { .. } => Err("Can not load from a gamevalue function".into()),
 
                     Global::Constant(value) => {
                         let params = vec![ CodeValue::line_variable_name(dest), value.to_codevalue(module, function)? ];
@@ -65,17 +93,24 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
                 }
             },
 
-            Value::GetSetPtr { getter, parameters, .. } => {
-                let dest_value = getter.to_codevalue(module, function, &parameters)?;
+            Value::GetSetPtr { getter, params, .. } => {
+                let dest_value = getter.to_codevalue(module, function, &params)?;
                 function.locals.insert(dest.clone(), Value::CodeValue(dest_value));
                 Ok(())
             },
 
             Value::IntPtr(_) => todo!(),
 
-            Value::Local(_) => todo!(),
+            Value::Local(name) => {
+                let Some(value) = function.locals.get(&name) else { return Err("".into()) };
+                let value = value.clone();
+                let params = vec![ CodeValue::line_variable_name(dest), value.to_codevalue(module, function)? ];
+                function.line.blocks.push(Codeblock::action("set_var", "=", params, vec![]));
+                function.locals.insert(dest.clone(), value);
+                Ok(())
+            },
 
-            Value::CodeValue(_) => todo!()
+            Value::CodeValue(_) => Err("Can not load from a code value".into())
 
         }
     },
@@ -86,21 +121,55 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
         handle_store(module, function, &mut address, &value)
     },
 
-    Instruction::GetElementPtr(_) => todo!(),
+    Instruction::GetElementPtr(GetElementPtr { address, indices, dest, .. }) => {
+        if (indices.len() != 1) { return Err("Multi-index GEP instructions are unsupported".into()); }
+        let params = vec![
+            parse_oper(module, function, address)?,
+            parse_oper(module, function, &indices[0])?
+        ];
+        let value = Value::GetSetPtr {
+            getter : GSPGetter::Codeblock {
+                codeblock : "set_var".to_string(),
+                action    : "GetListValue".to_string(),
+                tags      : vec![ ]
+            },
+            setter_codeblock : "set_var".to_string(),
+            setter_action    : "SetListValue".to_string(),
+            setter_tags      : vec![ ],
+            params
+        };
+        function.locals.insert(dest.clone(), value);
+        Ok(())
+    },
+
     Instruction::Trunc(_) => todo!(),
+
     Instruction::ZExt(_) => todo!(),
+
     Instruction::SExt(_) => todo!(),
+
     Instruction::FPTrunc(_) => todo!(),
+
     Instruction::FPExt(_) => todo!(),
+
     Instruction::FPToUI(_) => todo!(),
+
     Instruction::FPToSI(_) => todo!(),
+
     Instruction::UIToFP(_) => todo!(),
+
     Instruction::SIToFP(_) => todo!(),
+
     Instruction::PtrToInt(_) => todo!(),
+
     Instruction::IntToPtr(_) => todo!(),
+
     Instruction::ICmp(_) => todo!(),
+
     Instruction::FCmp(_) => todo!(),
+
     Instruction::Phi(_) => todo!(),
+
     Instruction::Select(_) => todo!(),
 
     Instruction::Call(Call { function : calling, arguments, dest, .. }) => {
@@ -131,9 +200,9 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
 
                     Global::ActionPtrFunction { getter_codeblock, getter_action, getter_tags, setter_codeblock, setter_action, setter_tags } => {
                         let Some(dest) = dest else { return Err("Action pointer function return value must be assigned to a local".into()) };
-                        let mut parameters = Vec::with_capacity(arguments.len());
+                        let mut params = Vec::with_capacity(arguments.len());
                         for (arg, _) in arguments {
-                            parameters.push(parse_oper(module, function, arg)?);
+                            params.push(parse_oper(module, function, arg)?);
                         }
                         let value = Value::GetSetPtr {
                             getter : GSPGetter::Codeblock {
@@ -144,7 +213,7 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
                             setter_codeblock : setter_codeblock .clone(),
                             setter_action    : setter_action    .clone(),
                             setter_tags      : setter_tags      .clone(),
-                            parameters
+                            params
                         };
                         function.locals.insert(dest.clone(), value);
                         Ok(())
@@ -166,7 +235,7 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
 
             Value::GetSetPtr { .. } => { Err("Can not call a pointer".into()) }, // TODO: function-pointer, maybe?
 
-            Value::IntPtr(_) => todo!(),
+            Value::IntPtr(_) => { Err("Can not call an integer".into()) },
 
             Value::Local(_) => { Err("Can not call a local".into()) },
 
@@ -199,13 +268,13 @@ fn handle_store(module : &ParsedModule, function : &mut ParsedFunction, address 
             Ok(())
         },
 
-        Value::GetSetPtr { getter, setter_codeblock, setter_action, setter_tags, parameters, .. } => {
-            let mut params = Vec::with_capacity(parameters.len() + 1);
-            for param in parameters {
-                params.push(param.to_codevalue(module, function)?);
+        Value::GetSetPtr { getter, setter_codeblock, setter_action, setter_tags, params, .. } => {
+            let mut final_params = Vec::with_capacity(params.len() + 1);
+            for param in params {
+                final_params.push(param.to_codevalue(module, function)?);
             }
-            params.push(value.to_codevalue(module, function)?);
-            function.line.blocks.push(Codeblock::action(setter_codeblock.clone(), setter_action.clone(), params, setter_tags.clone()));
+            final_params.push(value.to_codevalue(module, function)?);
+            function.line.blocks.push(Codeblock::action(setter_codeblock.clone(), setter_action.clone(), final_params, setter_tags.clone()));
             *getter = GSPGetter::Codeblock {
                 codeblock : String::from("set_var"),
                 action    : String::from("="),

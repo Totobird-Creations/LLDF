@@ -24,7 +24,7 @@ pub enum Value {
         setter_codeblock : String,
         setter_action    : String,
         setter_tags      : Vec<CodeValue>,
-        parameters       : Vec<Value>
+        params           : Vec<Value>
     },
 
     /// A pointer that was converted to an integer.
@@ -75,7 +75,7 @@ impl Value {
             }
         },
 
-        Value::GetSetPtr { getter, parameters, .. } => getter.to_codevalue(module, function, parameters),
+        Value::GetSetPtr { getter, params, .. } => getter.to_codevalue(module, function, params),
 
         Value::IntPtr(value) => value.to_codevalue(module, function),
 
@@ -91,17 +91,17 @@ impl Value {
 
 
 impl GSPGetter {
-    pub fn to_codevalue(&self, module : &ParsedModule, function : &mut ParsedFunction, parameters : &Vec<Value>) -> Result<CodeValue, Box<dyn Error>> { match (self) {
+    pub fn to_codevalue(&self, module : &ParsedModule, function : &mut ParsedFunction, params : &Vec<Value>) -> Result<CodeValue, Box<dyn Error>> { match (self) {
         // This is a ptr-load operation.
 
         GSPGetter::Codeblock { codeblock, action, tags } => {
             let dest = CodeValue::line_variable(function.create_temp_var_name());
-            let mut params = Vec::with_capacity(parameters.len() + 1);
-            params.push(dest.clone());
-            for param in parameters {
-                params.push(param.to_codevalue(module, function)?);
+            let mut final_params = Vec::with_capacity(params.len() + 1);
+            final_params.push(dest.clone());
+            for param in params {
+                final_params.push(param.to_codevalue(module, function)?);
             }
-            function.line.blocks.push(Codeblock::action(codeblock, action, params, tags.clone()));
+            function.line.blocks.push(Codeblock::action(codeblock, action, final_params, tags.clone()));
             Ok(dest)
         },
 
