@@ -2,6 +2,7 @@ use super::*;
 
 use llvm_ir::operand::*;
 use llvm_ir::constant::*;
+use llvm_ir::Type;
 
 
 
@@ -24,11 +25,27 @@ pub fn parse_const(module : &ParsedModule, function : &mut ParsedFunction, cor :
 
     Constant::Float(_) => todo!(),
     Constant::Null(_) => todo!(),
-    Constant::AggregateZero(_) => todo!(),
 
-    Constant::Struct { values, .. } => parse_aggregate(module, function, values),
+    Constant::AggregateZero(typ) => {
+        match (&**typ) {
+            Type::IntegerType { ..                } => Ok(Value::CodeValue(CodeValue::Number(0.0))),
+            Type::FPType      ( _                 ) => Ok(Value::CodeValue(CodeValue::Number(0.0))),
+            Type::ArrayType   { num_elements, ..  } => {
+                let values = (0..*num_elements).map(|_| ConstantRef::new(Constant::Int { bits : 0, value : 0 })).collect();
+                handle_aggregate(module, function, &values)
+            },
+            Type::StructType { element_types, .. } => {
+                let values = (0..element_types.len()).map(|_| ConstantRef::new(Constant::Int { bits : 0, value : 0 })).collect();
+                handle_aggregate(module, function, &values)
+            },
+            Type::NamedStructType { .. } => todo!(),
+            _ => Err(format!("Can not create a zero-initialised non-aggrerate {}", typ).into())
+        }
+    },
 
-    Constant::Array { elements, .. } => parse_aggregate(module, function, elements),
+    Constant::Struct { values, .. } => handle_aggregate(module, function, values),
+
+    Constant::Array { elements, .. } => handle_aggregate(module, function, elements),
 
     Constant::Undef(_) => todo!(),
 
@@ -75,7 +92,8 @@ pub fn parse_const(module : &ParsedModule, function : &mut ParsedFunction, cor :
 
 
 
-pub fn parse_aggregate(module : &ParsedModule, function : &mut ParsedFunction, values : &Vec<ConstantRef>) -> Result<Value, Box<dyn Error>> {
+
+pub fn handle_aggregate(module : &ParsedModule, function : &mut ParsedFunction, values : &Vec<ConstantRef>) -> Result<Value, Box<dyn Error>> {
     let var = CodeValue::line_variable(function.create_temp_var_name());
     let mut first = true;
     for chunk in values.chunks(26) {
@@ -95,8 +113,7 @@ pub fn parse_aggregate(module : &ParsedModule, function : &mut ParsedFunction, v
 
 
 
-
-pub fn parse_special_const(value : &ConstantRef) -> Option<Value> {
+pub fn handle_special_const(value : &ConstantRef) -> Option<Value> {
 
     // Strings
     'string_failed : loop {

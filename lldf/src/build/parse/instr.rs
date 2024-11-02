@@ -3,6 +3,8 @@ use crate::build::codegen::{CodeValue, Codeblock};
 use super::*;
 
 use llvm_ir::instruction::*;
+use llvm_ir::ConstantRef;
+use llvm_ir::Operand;
 
 
 
@@ -28,13 +30,13 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
 
     Instruction::Xor(_) => todo!(),
 
-    Instruction::FAdd(_) => todo!(),
+    Instruction::FAdd(FAdd { operand0, operand1, dest, .. }) => handle_binop(module, function, dest, operand0, operand1, "+"),
 
-    Instruction::FSub(_) => todo!(),
+    Instruction::FSub(FSub { operand0, operand1, dest, .. }) => handle_binop(module, function, dest, operand0, operand1, "-"),
 
-    Instruction::FMul(_) => todo!(),
+    Instruction::FMul(FMul { operand0, operand1, dest, .. }) => handle_binop(module, function, dest, operand0, operand1, "x"),
 
-    Instruction::FDiv(_) => todo!(),
+    Instruction::FDiv(FDiv { operand0, operand1, dest, .. }) => handle_binop(module, function, dest, operand0, operand1, "/"), // TODO: error on div by zero
 
     Instruction::FRem(FRem { operand0, operand1, dest, .. }) => { // TODO: error on div by zero.
         let dest_var = CodeValue::line_variable_name(dest);
@@ -49,7 +51,7 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
         Ok(())
     },
 
-    Instruction::FNeg(_) => todo!(),
+    Instruction::FNeg(FNeg { operand, dest, .. }) => handle_binop(module, function, dest, &Operand::ConstantOperand(ConstantRef::new(llvm_ir::Constant::Int { bits : 0, value : 0 })), operand, "+"),
 
     Instruction::ExtractValue(_) => todo!(),
 
@@ -239,7 +241,7 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
 
             Value::Local(_) => { Err("Can not call a local".into()) },
 
-            Value::CodeValue(_) => { Err("Can not call a code value".into()) } // TODO: function-pointer, maybe?
+            Value::CodeValue(_) => { Err("Can not call a code value".into()) }
 
         }
     },
@@ -255,6 +257,20 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
 } }
 
 
+
+
+
+fn handle_binop(module : &ParsedModule, function : &mut ParsedFunction, dest : &Name, operand0 : &Operand, operand1 : &Operand, op : &str) -> Result<(), Box<dyn Error>> {
+    let dest_var = CodeValue::line_variable_name(dest);
+    let params = vec![
+        dest_var.clone(),
+        parse_oper(module, function, operand0)?.to_codevalue(module, function)?,
+        parse_oper(module, function, operand1)?.to_codevalue(module, function)?
+    ];
+    function.line.blocks.push(Codeblock::action("set_var", op, params, vec![]));
+    function.locals.insert(dest.clone(), Value::CodeValue(dest_var));
+    Ok(())
+}
 
 
 
@@ -283,11 +299,11 @@ fn handle_store(module : &ParsedModule, function : &mut ParsedFunction, address 
             Ok(())
         },
 
-        Value::IntPtr(_) => todo!(),
+        Value::IntPtr(_) => Err("Can not store to an integer".into()),
 
-        Value::Local(_) => todo!(),
+        Value::Local(_) => Err("Can not store to a local".into()), // TODO: Pointer?
 
-        Value::CodeValue(_) => todo!()
+        Value::CodeValue(_) => Err("Can not store to a code value".into())
 
     }
 }

@@ -141,7 +141,7 @@ pub fn parse_module(module : &Module) -> Result<ParsedModule, Box<dyn Error>> {
         let var = CodeValue::unsaved_variable_name(name);
         if let Some(init) = init {
             // Handle special cases like strings.
-            let value = if let Some(value) = parse_special_const(&init) {
+            let value = if let Some(value) = handle_special_const(&init) {
                 value
             } else { // Otherwise just create a global.
                 let block_count = init_function.line.blocks.len();
