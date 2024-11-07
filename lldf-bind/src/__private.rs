@@ -14,40 +14,41 @@ pub macro event_trigger {
 
 
     { PlayerJoin, $original_func_ident:ident } => { event_trigger_inner!{ DF_EVENT__Event_Join, $original_func_ident, {
-        {
-            unsafe{ ::lldf_bind::__private::bind::action::DF_ACTION__SelectObject_EventTarget_EventTarget_Default(); }
-            let uuids = unsafe{ ::lldf_bind::__private::bind::gamevalue::DF_GAMEVALUE__SelectionTargetUUIDs_Default() } as *const List<String>;
-            unsafe{ ::lldf_bind::__private::bind::action::DF_ACTION__SelectObject_Reset(); }
-            ::lldf_bind::types::sel::player::PlayerSel { uuids }
-        }
+        { unsafe {
+            ::lldf_bind::__private::bind::action::DF_ACTION__SelectObject_EventTarget_EventTarget_Default();
+            let uuids = ::lldf_bind::__private::bind::gamevalue::DF_GAMEVALUE__SelectionTargetUUIDs_Default();
+            ::lldf_bind::__private::bind::action::DF_ACTION__SelectObject_Reset();
+            ::lldf_bind::types::sel::player::PlayerSel::from_uuids(uuids)
+        } }
     }} },
 
     { PlayerLeave, $original_func_ident:ident } => { event_trigger_inner!{ DF_EVENT__Event_Leave, $original_func_ident, {
-        {
-            unsafe{ ::lldf_bind::__private::bind::action::DF_ACTION__SelectObject_EventTarget_EventTarget_Default(); }
-            let uuids = unsafe{ ::lldf_bind::__private::bind::gamevalue::DF_GAMEVALUE__SelectionTargetUUIDs_Default() } as *const List<String>;
-            unsafe{ ::lldf_bind::__private::bind::action::DF_ACTION__SelectObject_Reset(); }
-            ::lldf_bind::types::sel::player::PlayerSel { uuids }
-        }
+        { unsafe {
+            ::lldf_bind::__private::bind::action::DF_ACTION__SelectObject_EventTarget_EventTarget_Default();
+            let uuids = ::lldf_bind::__private::bind::gamevalue::DF_GAMEVALUE__SelectionTargetUUIDs_Default();
+            ::lldf_bind::__private::bind::action::DF_ACTION__SelectObject_Reset();
+            ::lldf_bind::types::sel::player::PlayerSel::from_uuids(uuids)
+        } }
     }} },
 
+    // TODO: command
     { Command, $original_func_ident:ident } => { event_trigger_inner!{ DF_EVENT__Event_Command, $original_func_ident, {
-        {
-            unsafe{ ::lldf_bind::__private::bind::action::DF_ACTION__SelectObject_EventTarget_EventTarget_Default(); }
-            let uuids = unsafe{ ::lldf_bind::__private::bind::gamevalue::DF_GAMEVALUE__SelectionTargetUUIDs_Default() } as *const List<String>;
-            unsafe{ ::lldf_bind::__private::bind::action::DF_ACTION__SelectObject_Reset(); }
-            ::lldf_bind::types::sel::player::PlayerSel { uuids }
-        }
+        { unsafe {
+            ::lldf_bind::__private::bind::action::DF_ACTION__SelectObject_EventTarget_EventTarget_Default();
+            let uuids = ::lldf_bind::__private::bind::gamevalue::DF_GAMEVALUE__SelectionTargetUUIDs_Default();
+            ::lldf_bind::__private::bind::action::DF_ACTION__SelectObject_Reset();
+            ::lldf_bind::types::sel::player::PlayerSel::from_uuids(uuids)
+        } }
     }} },
 
 
     { PlayerSwapHands, $original_func_ident:ident } => { event_trigger_inner!{ DF_EVENT__Event_SwapHands, $original_func_ident, {
-        {
-            unsafe{ ::lldf_bind::__private::bind::action::DF_ACTION__SelectObject_EventTarget_EventTarget_Default(); }
-            let uuids = unsafe{ ::lldf_bind::__private::bind::gamevalue::DF_GAMEVALUE__SelectionTargetUUIDs_Default() } as *const List<String>;
-            unsafe{ ::lldf_bind::__private::bind::action::DF_ACTION__SelectObject_Reset(); }
-            ::lldf_bind::types::sel::player::PlayerSel { uuids }
-        }
+        { unsafe {
+            ::lldf_bind::__private::bind::action::DF_ACTION__SelectObject_EventTarget_EventTarget_Default();
+            let uuids = ::lldf_bind::__private::bind::gamevalue::DF_GAMEVALUE__SelectionTargetUUIDs_Default();
+            ::lldf_bind::__private::bind::action::DF_ACTION__SelectObject_Reset();
+            ::lldf_bind::types::sel::player::PlayerSel::from_uuids(uuids)
+        } }
     }} },
 
 

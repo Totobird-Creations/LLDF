@@ -12,8 +12,16 @@ pub mod list;
 pub mod dict;
 
 use crate::prelude::*;
+use crate::bind::DFOpaqueValue;
 
 
-pub unsafe trait DFValue : Clone { }
+pub unsafe trait DFValue : Clone {
+    unsafe fn to_opaque(self) -> DFOpaqueValue;
+}
 
-unsafe impl<T : DFValue> DFValue for &T { }
+unsafe impl<T : DFValue> DFValue for &T {
+    #[inline(always)]
+    unsafe fn to_opaque(self) -> DFOpaqueValue {
+        self.clone().to_opaque()
+    }
+}

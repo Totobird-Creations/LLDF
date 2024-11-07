@@ -1,11 +1,12 @@
-use crate::build::codegen::CodeLine;
+use crate::build::codegen::{CodeLine, Codeblock};
 use super::*;
 
 use std::collections::HashMap;
 
 use decomp::{ cfa::CFAPrim, cfg::ControlFlowGraph, cfr::{ CFRGroup, CFRGroups } };
 use inflector::Inflector;
-use llvm_ir::{ module::GlobalVariable, Function, Module };
+use llvm_ir::{ Function, Module };
+use llvm_ir::module::GlobalVariable;
 
 
 
@@ -78,6 +79,11 @@ pub fn parse_module(module : &Module) -> Result<ParsedModule, Box<dyn Error>> {
         let mut parts = module_function.name.split("__");
         match (parts.next()) {
 
+            Some("DF_TRANSMUTE") => {
+                parsed.globals.insert(Name::Name(Box::new(module_function.name.clone())), Global::NoopFunction);
+                continue;
+            }
+
             Some("DF_ACTION") => {
                 if let (Some(executor), None) = (parts.next(), parts.next()) {
                     let mut executor_parts = executor.split("_");
@@ -138,29 +144,34 @@ pub fn parse_module(module : &Module) -> Result<ParsedModule, Box<dyn Error>> {
     let mut init_function = ParsedFunction::new(None);
     for GlobalVariable { name, is_constant, initializer : init, .. } in &module.global_vars {
         let mut is_constant = *is_constant;
-        let var = CodeValue::unsaved_variable_name(name);
+        let var = CodeValue::Variable {
+            name  : format!("global.{}", name_to_global(name)),
+            scope : VariableScope::Unsaved
+        };
         if let Some(init) = init {
             // Handle special cases like strings.
             let value = if let Some(value) = handle_special_const(&init) {
                 value
             } else { // Otherwise just create a global.
-                let block_count = init_function.line.blocks.len();
-                let mut value = parse_const(&parsed, &mut init_function, init)?;
-                let code_value = value.to_codevalue(&parsed, &mut init_function)?;
-                if (init_function.line.blocks.len() != block_count) {
-                    is_constant = false;
-                }
-                if let CodeValue::Variable { .. } = &code_value { is_constant = false; }
-                if (! is_constant) {
-                    let params = vec![ var.clone(), code_value ];
-                    init_function.line.blocks.push(Codeblock::action("set_var", "=", params, vec![]));
-                    value = Value::CodeValue(var);
-                }
-                value
+                todo!()
+                //let block_count = init_function.line.blocks.len();
+                //let mut value = parse_const(&parsed, &mut init_function, init)?;
+                //let code_value = value.to_codevalue(&parsed, &mut init_function)?;
+                //if (init_function.line.blocks.len() != block_count) {
+                //    is_constant = false;
+                //}
+                //if let CodeValue::Variable { .. } = &code_value { is_constant = false; }
+                //if (! is_constant) {
+                //    let params = vec![ var.clone(), code_value ];
+                //    init_function.line.blocks.push(Codeblock::action("set_var", "=", params, vec![]));
+                //    value = Value::CodeValue(var);
+                //}
+                //value
             };
             parsed.globals.insert(name.clone(), Global::Constant(value));
         } else {
-            parsed.globals.insert(name.clone(), Global::Constant(Value::CodeValue(var)));
+            todo!()
+            //parsed.globals.insert(name.clone(), Global::Constant(Value::CodeValue(var)));
         }
     }
     parsed.init_function = Some(init_function);
@@ -245,17 +256,19 @@ pub fn names_to_symbols(from : &str) -> String {
 
 
 pub struct ParsedFunction<'l> {
-    pub function  : Option<&'l Function>,
-    pub locals    : HashMap<Name, Value>,
-    pub line      : CodeLine,
-    pub next_temp : usize
+    pub function    : Option<&'l Function>,
+    pub locals      : HashMap<Name, Value>,
+    pub line        : CodeLine,
+    pub next_temp   : usize,
+    pub needs_frame : bool
 }
 impl<'l> ParsedFunction<'l> {
     pub fn new(function : Option<&'l Function>) -> Self { Self {
         function,
-        locals    : HashMap::new(),
-        line      : CodeLine::new(),
-        next_temp : 0
+        locals      : HashMap::new(),
+        line        : CodeLine::new(),
+        next_temp   : 0,
+        needs_frame : false
     } }
     pub fn create_temp_var_name(&mut self) -> String {
         let temp_var = self.next_temp;
@@ -268,22 +281,41 @@ pub fn parse_function<'l>(module : &ParsedModule, function : &'l Function) -> Re
     let mut parsed = ParsedFunction::new(Some(function));
 
     for param in &function.parameters {
-        parsed.locals.insert(param.name.clone(), Value::GetSetPtr {
-            getter_codeblock : "set_var".to_string(),
-            getter_action    : "=".to_string(),
-            getter_tags      : vec![ ],
-            setter_codeblock : "set_var".to_string(),
-            setter_action    : "=".to_string(),
-            setter_tags      : vec![ ],
-            params : vec![ Value::CodeValue(CodeValue::line_variable_name(&param.name)) ]
-        });
+        parsed.locals.insert(param.name.clone(), Value::Local(param.name.clone()));
     }
 
+
+    // Do the CFR magic.
     let Some(cfr) = CFAPrim::find_all(ControlFlowGraph::new(function)).map(|cfa| CFRGroups::new(&cfa)).flatten() else {
         return Err(format!("Failed to recover control flow primitives of function `{}`.", function.name).into())
     };
 
+    // Actually parse the function.
     parse_cfr_groups(module, &mut parsed, &cfr)?;
+
+    if (parsed.needs_frame) {
+
+        // Create a new 'frame' which can be used to track allocated variables which need to be destroyed on function exit.
+        let frame = CodeValue::Variable { name : "lldf.alloca.frame".to_string(), scope : VariableScope::Unsaved };
+        parsed.line.blocks.insert(0, Codeblock::action("set_var", "+=", vec![ frame.clone() ], vec![]));
+        let params = vec![
+            CodeValue::Variable { name : "lldf.alloca.frame.current".to_string(), scope : VariableScope::Line },
+            frame
+        ];
+        parsed.line.blocks.insert(1, Codeblock::action("set_var", "=", params, vec![]));
+
+        // Add the code which destroys any allocated variables from this 'frame'.
+        let params = vec![
+            CodeValue::String("mem.#%var(lldf.alloca.frame.current)".to_string())
+        ];
+        let tags = vec![
+            CodeValue::Actiontag { kind : "Match Requirement".to_string(), value : "Any part of name".to_string(), variable : None },
+            CodeValue::Actiontag { kind : "Ignore Case".to_string(), value : "False".to_string(), variable : None }
+        ];
+        let block = Codeblock::action("set_var", "PurgeVars", params, tags);
+        parsed.line.blocks.push(block); // TODO: Add after every Return or ReturnNTimes codeblock.
+
+    }
 
     Ok(parsed)
 }

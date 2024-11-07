@@ -1,8 +1,6 @@
-use core::mem::transmute_unchecked;
-
 use crate::prelude::*;
-use crate::core::mem::MaybeUninit;
 use crate::bind::DFOpaqueValue;
+use core::mem::transmute_unchecked;
 
 
 #[derive(Clone)]
@@ -13,12 +11,7 @@ pub struct Text {
 impl<T : DFValue> From<T> for Text {
     #[inline(always)]
     fn from(value : T) -> Text { unsafe {
-        let mut out : MaybeUninit<Text> = MaybeUninit::uninit();
-        DF_ACTION__SetVariable_Text(
-            (&mut out) as *mut _ as *mut Text,
-            &value as *const _ as *const DFOpaqueValue
-        );
-        out.assume_init()
+        DF_ACTION__SetVariable_Text(value.to_opaque())
     } }
 }
 
@@ -36,11 +29,20 @@ impl AsRef<Text> for &str {
 }
 
 
-unsafe impl DFValue for Text {}
+unsafe impl DFValue for Text {
+    #[inline(always)]
+    unsafe fn to_opaque(self) -> DFOpaqueValue { unsafe {
+        DF_TRANSMUTE__Opaque(self)
+    } }
+}
 
 
+#[allow(clashing_extern_declarations)]
 extern "C" {
 
-    fn DF_ACTION__SetVariable_Text( dest : *mut Text, from : *const DFOpaqueValue ) -> ();
+    fn DF_TRANSMUTE__Opaque( from : Text ) -> DFOpaqueValue;
+
+    // TODO: Add spaces tags.
+    fn DF_ACTION__SetVariable_Text( from : DFOpaqueValue ) -> Text;
 
 }

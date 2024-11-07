@@ -1,6 +1,5 @@
 use crate::prelude::*;
 use crate::core::ops::Add;
-use crate::core::mem::MaybeUninit;
 use crate::bind::DFOpaqueValue;
 
 
@@ -23,17 +22,19 @@ impl<T : Into<UInt>> Add<T> for UInt {
     type Output = Self;
     #[inline(never)]
     fn add(self, rhs : T) -> Self::Output { unsafe {
-        let mut out : MaybeUninit<UInt> = MaybeUninit::uninit();
-        DF_ACTION__SetVariable_Specialcharplus(
-            (&mut out) as *mut _ as *mut _,
-            &self as *const _ as *const _,
-            &rhs as *const _ as *const _
+        let out = DF_ACTION__SetVariable_Specialcharplus(
+            self.to_opaque(),
+            rhs.into().to_opaque()
         );
-        out.assume_init()
+        DF_TRANSMUTE__UInt(out)
     } }
 }
 
-unsafe impl DFValue for UInt {}
+unsafe impl DFValue for UInt {
+    unsafe fn to_opaque(self) -> DFOpaqueValue { unsafe {
+        DF_TRANSMUTE__UInt_Opaque(self)
+    } }
+}
 
 
 pub struct Int {
@@ -49,7 +50,11 @@ impl From<i64   > for Int { #[inline(always)] fn from(value : i64   ) -> Self { 
 impl From<i128  > for Int { #[inline(always)] fn from(value : i128  ) -> Self { unsafe { *(&value as *const _ as *const _) } } }
 impl From<isize > for Int { #[inline(always)] fn from(value : isize ) -> Self { unsafe { *(&value as *const _ as *const _) } } }
 
-unsafe impl DFValue for Int {}
+unsafe impl DFValue for Int {
+    unsafe fn to_opaque(self) -> DFOpaqueValue { unsafe {
+        DF_TRANSMUTE__Int_Opaque(self)
+    } }
+}
 
 
 pub struct Float {
@@ -61,12 +66,21 @@ impl Copy for Float {}
 impl From<f32> for Float { #[inline(always)] fn from(value : f32) -> Self { unsafe { *(&value as *const _ as *const _) } } }
 impl From<f64> for Float { #[inline(always)] fn from(value : f64) -> Self { unsafe { *(&value as *const _ as *const _) } } }
 
-unsafe impl DFValue for Float {}
+unsafe impl DFValue for Float {
+    unsafe fn to_opaque(self) -> DFOpaqueValue { unsafe {
+        DF_TRANSMUTE__Float_Opaque(self)
+    } }
+}
 
 
 #[allow(clashing_extern_declarations)]
 extern "C" {
 
-    fn DF_ACTION__SetVariable_Specialcharplus( dest : *mut DFOpaqueValue, left : *const DFOpaqueValue, right : *const DFOpaqueValue ) -> ();
+    fn DF_TRANSMUTE__UInt_Opaque( from : UInt ) -> DFOpaqueValue;
+    fn DF_TRANSMUTE__Int_Opaque( from : Int ) -> DFOpaqueValue;
+    fn DF_TRANSMUTE__Float_Opaque( from : Float ) -> DFOpaqueValue;
+    fn DF_TRANSMUTE__UInt( from : DFOpaqueValue ) -> UInt;
+
+    fn DF_ACTION__SetVariable_Specialcharplus( left : DFOpaqueValue, right : DFOpaqueValue ) -> DFOpaqueValue;
 
 }

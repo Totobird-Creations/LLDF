@@ -2,7 +2,9 @@ use super::*;
 
 
 /// Removes any `SelectObject` codeblocks which is follow an identical `SelectObject` codeblock.
-pub fn duplicate_selections(line : &mut CodeLine) -> () {
+pub fn duplicate_selections(line : &mut CodeLine) -> bool {
+    let mut did_something = false;
+
     let mut prev_selobj = None;
     let mut i = 0;
     while (i < line.blocks.len()) {
@@ -12,6 +14,7 @@ pub fn duplicate_selections(line : &mut CodeLine) -> () {
             if let Some(prev_selobj) = &prev_selobj {
                 if (curr == prev_selobj) {
                     line.blocks.remove(i);
+                    did_something = true;
                     continue;
                 }
             }
@@ -20,4 +23,6 @@ pub fn duplicate_selections(line : &mut CodeLine) -> () {
         } }
         i += 1;
     }
+
+    did_something
 }

@@ -5,7 +5,7 @@ use super::marker::{ Copy, Sized };
 
 extern "rust-intrinsic" {
     #[rustc_nounwind]
-    pub fn transmute_unchecked<Src, Dst>(src: Src) -> Dst;
+    pub fn transmute_unchecked<Src, Dst>(src : Src) -> Dst;
 }
 
 
@@ -50,6 +50,9 @@ impl<T> MaybeUninit<T> {
         &mut*self.as_mut_ptr()
     } }
 
+}
+impl<T : Clone> Clone for MaybeUninit<T> {
+    fn clone(&self) -> Self { Self { value : unsafe { self.value.clone() } } }
 }
 
 

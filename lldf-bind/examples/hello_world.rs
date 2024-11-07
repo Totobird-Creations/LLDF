@@ -8,34 +8,31 @@ use lldf_bind::prelude::*;
 
 
 struct Potato {
-    a : String,
-    b : String
+    a : Text,
+    b : Text
 }
-
 
 #[event(PlayerSwapHands)]
 fn player_swap_hands(default : PlayerSel) {
     let mut p = Potato {
-        a : String::from("Hello,"),
-        b : String::from("World!")
+        a : Text::from("Hello,"),
+        b : Text::from("World!")
     };
-    default.send_message(Text::from(&p.a));
-    default.send_message(Text::from(&p.b));
+    print_potato(&default, &p);
     do_something(&mut p.b);
-    default.send_message(Text::from(&p.a));
-    default.send_message(Text::from(&p.b));
+    print_potato(&default, &p);
 }
-
 
 #[inline(never)]
 #[no_mangle]
-fn do_something(swapping_ptr : &mut String) {
-    *swapping_ptr = String::from("LLDF!");
+fn do_something(swapping_ptr : &mut Text) {
+    *swapping_ptr = Text::from("LLDF!");
 }
 
+#[inline(never)]
+#[no_mangle]
+fn print_potato(player : &PlayerSel, potato : &Potato) {
+    player.send_message(&potato.a);
+    player.send_message(&potato.b);
+}
 
-//#[inline(never)]
-//fn print_potato(player : &PlayerSel, potato : &Potato) {
-//    player.send_message(Text::from(&potato.a));
-//    player.send_message(Text::from(&potato.b));
-//}

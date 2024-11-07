@@ -5,6 +5,3 @@ use crate::prelude::*;
 pub struct Potion {
     _opaque_type : u8
 }
-
-
-unsafe impl DFValue for Potion {}

@@ -195,7 +195,7 @@ fn main() -> Result<(), Box<dyn Error>> {
                 continue;
             }
 
-            // Skip the actions that have tags.
+            // Skip the actions that have tags. We dont want an 800000 line file.
             if (! action.tags.is_empty()) { continue; }
 
             util::write_doc_comment(&mut file, "    ",
@@ -260,7 +260,7 @@ fn main() -> Result<(), Box<dyn Error>> {
                     &game_value.icon.required_rank,
                     &autogen_message
                 )?;
-                writeln!(file, "    pub fn DF_GAMEVALUE__{}_{}() -> *const crate::bind::DFOpaqueValue;", name, target)?;
+                writeln!(file, "    pub fn DF_GAMEVALUE__{}_{}() -> crate::bind::DFOpaqueValue;", name, target)?;
                 if (game_value.category == "Plot Values" || game_value.category == "Event Values") { break; }
             }
 

@@ -117,19 +117,27 @@ impl Codeblock {
         Self::Bracket { .. } => todo!()
     } }
 
-    pub fn replace_line_var(&mut self, var_name : &str, with : &CodeValue) -> () { match (self) {
-        Codeblock::Block(block) => block.replace_line_var(var_name, with),
-        _ => { }
-    } }
-
-    pub fn contains_line_var(&self, var_name : &str) -> bool { match (self) {
-        Codeblock::Block(block) => block.contains_line_var(var_name),
-        _ => false
-    } }
-
     pub fn contains_param(&self, var_name : &str) -> bool { match (self) {
         Codeblock::Block(block) => block.contains_param(var_name),
         _ => false
+    } }
+
+    pub fn can_replace_line_var_with_constant(&self, var_name : &str) -> bool { match (self) {
+        Codeblock::Block(block) => block.can_replace_line_var_with_constant(var_name),
+        _ => false
+    } }
+    pub fn replace_line_var_with_constant(&mut self, var_name : &str, with : &CodeValue) -> () { match (self) {
+        Codeblock::Block(block) => block.replace_line_var_with_constant(var_name, with),
+        _ => { }
+    } }
+
+    pub fn is_line_var_used(&self, var_name : &str) -> bool { match (self) {
+        Codeblock::Block(block) => block.is_line_var_used(var_name),
+        _ => false
+    } }
+    pub fn replace_line_var(&mut self, var_name : &str, with : &str) -> () { match (self) {
+        Codeblock::Block(block) => block.replace_line_var(var_name, with),
+        _ => { }
     } }
 
     pub fn is_call_func(&self) -> bool { match (self) {
@@ -167,23 +175,35 @@ impl CodeblockBlock {
         block
     }
 
-    pub fn replace_line_var(&mut self, var_name : &str, with : &CodeValue) -> () {
+    pub fn contains_param(&self, var_name : &str) -> bool {
+        self.params.iter().any(|param| param.contains_param(var_name))
+            || self.tags.iter().any(|tag| tag.contains_param(var_name))
+    }
+
+    pub fn can_replace_line_var_with_constant(&self, var_name : &str) -> bool {
+        self.params.iter().all(|param| param.can_replace_line_var_with_constant(var_name))
+            || self.tags.iter().all(|tag| tag.can_replace_line_var_with_constant(var_name))
+    }
+    pub fn replace_line_var_with_constant(&mut self, var_name : &str, with : &CodeValue) -> () {
+        for param in &mut self.params {
+            param.replace_line_var_with_constant(var_name, with);
+        }
+        for tag in &mut self.tags {
+            tag.replace_line_var_with_constant(var_name, with);
+        }
+    }
+
+    pub fn is_line_var_used(&self, var_name : &str) -> bool {
+        self.params.iter().any(|param| param.is_line_var_used(var_name))
+            || self.tags.iter().any(|tag| tag.is_line_var_used(var_name))
+    }
+    pub fn replace_line_var(&mut self, var_name : &str, with : &str) -> () {
         for param in &mut self.params {
             param.replace_line_var(var_name, with);
         }
         for tag in &mut self.tags {
             tag.replace_line_var(var_name, with);
         }
-    }
-
-    pub fn contains_line_var(&self, var_name : &str) -> bool {
-        self.params.iter().any(|param| param.contains_line_var(var_name))
-            || self.tags.iter().any(|tag| tag.contains_line_var(var_name))
-    }
-
-    pub fn contains_param(&self, var_name : &str) -> bool {
-        self.params.iter().any(|param| param.contains_param(var_name))
-            || self.tags.iter().any(|tag| tag.contains_param(var_name))
     }
 
     pub fn is_call_func(&self) -> bool {

@@ -1,6 +1,5 @@
 use std::error::Error;
 
-use llvm_ir::Name;
 use serde_json as json;
 
 
@@ -8,7 +7,7 @@ use serde_json as json;
 pub enum CodeValue {
     String(String),
     Text(String),
-    Number(f64),
+    Number(String),
     Location { x : f64, y : f64, z : f64, pitch : f64, yaw : f64 },
     Vector { x : f64, y : f64, z : f64 },
     SoundNamed { name : String, volume : f64, pitch : f64 },
@@ -110,43 +109,6 @@ impl AsRef<str> for ParameterType {
 
 impl CodeValue {
 
-    pub fn line_variable_name(name : &Name) -> Self {
-        Self::Variable { name : match (name) {
-            Name::Name   (name   ) => format!("local.name.{}",  name    ),
-            Name::Number (number ) => format!("local.number.{}", number )
-        }, scope : VariableScope::Line }
-    }
-
-    pub fn line_variable<S : Into<String>>(name : S) -> Self {
-        Self::Variable { name : name.into(), scope : VariableScope::Line }
-    }
-
-    pub fn unsaved_variable_name(name : &Name) -> Self {
-        Self::Variable { name : match (name) {
-            Name::Name   (name   ) => format!("global.name.{}",  name    ),
-            Name::Number (number ) => format!("global.number.{}", number )
-        }, scope : VariableScope::Unsaved }
-    }
-
-    pub fn unsaved_variable<S : Into<String>>(name : S) -> Self {
-        Self::Variable { name : name.into(), scope : VariableScope::Unsaved }
-    }
-
-    pub fn param_name<N : Into<String>, D : Into<String>>(name : &Name, note : N, description : D) -> Self {
-        Self::Parameter {
-            name : match (name) {
-                Name::Name   (name   ) => format!("local.name.{}",  name    ),
-                Name::Number (number ) => format!("local.number.{}", number )
-            },
-            typ         : ParameterType::Variable,
-            plural      : false,
-            optional    : false,
-            description : Some(description.into()),
-            note        : Some(note.into()),
-        }
-    }
-
-
     pub fn is_constant(&self) -> bool { match (self) {
         CodeValue::String     ( _  ) => true,
         CodeValue::Text       ( _  ) => true,
@@ -179,23 +141,72 @@ impl CodeValue {
         _ => Err("Non string nor variable value used as tag".into())
     } }
 
-    pub fn replace_line_var(&mut self, var_name : &str, with : &CodeValue) -> () { match (self) {
-        CodeValue::Variable  { name, scope : VariableScope::Line } => { if (name == var_name) { *self = with.clone() } },
-        CodeValue::Parameter { name, ..                          } => { if (name == var_name) { panic!("Attempted to replace line var in parameter") } },
-        CodeValue::Actiontag { variable : Some(variable), ..     } => variable.replace_line_var(var_name, with),
-        _ => { }
-    } }
-
-    pub fn contains_line_var(&self, var_name : &str) -> bool { match (self) {
-        CodeValue::Variable  { name, scope : VariableScope::Line } => name == var_name,
-        CodeValue::Parameter { name, ..                          } => name == var_name,
-        CodeValue::Actiontag { variable : Some(variable), ..     } => variable.contains_line_var(var_name),
-        _ => false
-    } }
-
     pub fn contains_param(&self, var_name : &str) -> bool { match (self) {
         CodeValue::Parameter { name, .. } => name == var_name,
         _ => false
+    } }
+
+    pub fn can_replace_line_var_with_constant(&self, var_name : &str) -> bool { match (self) {
+        CodeValue::String(value) | CodeValue::Number(value) | CodeValue::Variable { name : value, .. }
+            => ! (value.contains(&format!("%index({},", var_name)) || value.contains(&format!("%entry({},", var_name))),
+        CodeValue::Parameter { name, ..                           } => name != var_name,
+        CodeValue::Actiontag { variable : Some(variable), ..      } => variable.can_replace_line_var_with_constant(var_name),
+        _ => true
+    } }
+    pub fn replace_line_var_with_constant(&mut self, var_name : &str, with : &CodeValue) -> () { match (self) {
+        CodeValue::String(value) | CodeValue::Number(value)
+            => { *value = value.replace(&format!("%var({})", var_name), &with.to_pvar_string()); },
+        CodeValue::Variable { name, .. } => {
+            if (name == var_name) { *self = with.clone(); }
+            else { *name = name.replace(&format!("%var({})", var_name), &with.to_pvar_string()); }
+        },
+        CodeValue::Parameter { name, .. } => { if (name == var_name) { panic!("Attempted to replace line var in parameter") } },
+        CodeValue::Actiontag { value, variable, .. } => {
+            if let Some(var) = variable {
+                var.replace_line_var_with_constant(var_name, with);
+                if (var.is_constant()) {
+                    *value    = var.to_pvar_string();
+                    *variable = None;
+                }
+            }
+        },
+        _ => { }
+    } }
+    fn to_pvar_string(&self) -> String { match (self) {
+        CodeValue::String   ( value    ) => value.clone(),
+        CodeValue::Text     ( value    ) => value.clone(),
+        CodeValue::Number   ( value    ) => value.to_string(),
+        CodeValue::Variable { name, .. } => format!("%var({})", name),
+        _ => unreachable!()
+    } }
+
+    pub fn is_line_var_used(&self, var_name : &str) -> bool { match (self) {
+        CodeValue::String(value) | CodeValue::Number(value)
+            => value.contains(&format!("%var({})", var_name)) || value.contains(&format!("%index({},", var_name)) || value.contains(&format!("%entry({},", var_name)),
+        CodeValue::Variable { name, scope : VariableScope::Line }
+            => (name == var_name) || name.contains(&format!("%var({})", var_name)) || name.contains(&format!("%index({},", var_name)) || name.contains(&format!("%entry({},", var_name)),
+        CodeValue::Parameter { name, .. } => name == var_name,
+        CodeValue::Actiontag { variable : Some(variable), .. } => variable.is_line_var_used(var_name),
+        _ => false
+    } }
+    pub fn replace_line_var(&mut self, var_name : &str, with : &str) -> () { match (self) {
+        CodeValue::String(value) | CodeValue::Number(value)
+            => { *value = value
+                .replace(&format!("%var({})", var_name), &format!("%var({})", with))
+                .replace(&format!("%index({},", var_name), &format!("%index({},", with))
+                .replace(&format!("%entry({},", var_name), &format!("%entry({},", with))
+            },
+        CodeValue::Variable { name, scope : VariableScope::Line } => {
+            if (name == var_name) { *name = with.to_string(); }
+            else { *name = name
+                    .replace(&format!("%var({})", var_name), &format!("%var({})", with))
+                    .replace(&format!("%index({},", var_name), &format!("%index({},", with))
+                    .replace(&format!("%entry({},", var_name), &format!("%entry({},", with))
+            }
+        },
+        CodeValue::Parameter { name, .. } => { if (name == var_name) { *name = with.to_string(); } },
+        CodeValue::Actiontag { variable : Some(variable), .. } => variable.replace_line_var(var_name, with),
+        _ => { }
     } }
 
 }

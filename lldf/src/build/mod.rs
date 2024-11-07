@@ -8,10 +8,10 @@ use std::process::{ self, Command };
 use std::error::Error;
 use std::collections::HashMap;
 
-use codegen::{CodeLine, CodeValue, Codeblock};
+use codegen::{CodeLine, CodeValue, Codeblock, ParameterType, VariableScope};
 use llvm_ir::Module;
 
-use parse::ParsedModule;
+use parse::{ ParsedModule, name_to_local };
 use serde::Deserialize as Deser;
 use toml;
 use tungstenite as ws;
@@ -114,7 +114,14 @@ pub fn build_templates(modules : Vec<ParsedModule>) -> Result<Vec<CodeLine>, Box
         for (name, function) in module.functions {
             if (! function.line.blocks.is_empty()) {
                 let params = function.function.map(|function| function.parameters.iter().map(
-                    |param| CodeValue::param_name(&param.name, format!("Type: {}", param.ty), format!("{}", param.name))
+                    |param| CodeValue::Parameter {
+                        name        : name_to_local(&param.name),
+                        typ         : ParameterType::Variable,
+                        plural      : false,
+                        optional    : false,
+                        description : Some(format!("Type: {}", param.ty)),
+                        note        : Some(format!("{}", param.name))
+                    }
                 ).collect()).unwrap_or_else(|| vec![ ]);
                 templates.entry(name).or_insert_with(|| (params, CodeLine::new())).1.blocks.extend(function.line.blocks);
             }
@@ -123,8 +130,11 @@ pub fn build_templates(modules : Vec<ParsedModule>) -> Result<Vec<CodeLine>, Box
 
     // Handle init template.
     if let Some(mut template) = templates.remove(&init_template) {
-        let init_var = CodeValue::unsaved_variable(concat!(crate::MODULE_NAME, ".init"));
-        let one      = CodeValue::Number(1.0);
+        let init_var = CodeValue::Variable {
+            name  : concat!(crate::MODULE_NAME, ".init").to_string(),
+            scope : VariableScope::Unsaved
+        };
+        let one      = CodeValue::Number("1".to_string());
         let params   = vec![ init_var, one ];
         template.1.blocks.insert(0, Codeblock::action("set_var", "=", params.clone(), vec![]));
         template.1.blocks.insert(0, Codeblock::OPEN_COND_BRACKET);

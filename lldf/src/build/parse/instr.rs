@@ -1,9 +1,8 @@
-use crate::build::codegen::{CodeValue, Codeblock};
+use crate::build::codegen::{ CodeValue, Codeblock, VariableScope };
 
 use super::*;
 
 use llvm_ir::instruction::*;
-use llvm_ir::{ Constant, ConstantRef, Operand, Type };
 
 
 
@@ -28,145 +27,88 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
 
     Instruction::Xor(_) => todo!(),
 
-    Instruction::FAdd(FAdd { operand0, operand1, dest, .. }) => handle_binop(module, function, dest, operand0, operand1, "+"),
+    Instruction::FAdd(_) => todo!(),
 
-    Instruction::FSub(FSub { operand0, operand1, dest, .. }) => handle_binop(module, function, dest, operand0, operand1, "-"),
+    Instruction::FSub(_) => todo!(),
 
-    Instruction::FMul(FMul { operand0, operand1, dest, .. }) => handle_binop(module, function, dest, operand0, operand1, "x"),
+    Instruction::FMul(_) => todo!(),
 
-    Instruction::FDiv(FDiv { operand0, operand1, dest, .. }) => handle_binop(module, function, dest, operand0, operand1, "/"), // TODO: error on div by zero
+    Instruction::FDiv(_) => todo!(),
 
-    Instruction::FRem(FRem { operand0, operand1, dest, .. }) => { // TODO: error on div by zero.
-        let dest_var = CodeValue::line_variable_name(dest);
-        let params = vec![
-            dest_var.clone(),
-            parse_oper(module, function, operand0)?.to_codevalue(module, function)?,
-            parse_oper(module, function, operand1)?.to_codevalue(module, function)?
-        ];
-        let tags   = vec![ CodeValue::Actiontag { kind : "Remainder Mode".to_string(), value : "Remainder".to_string(), variable : None } ];
-        function.line.blocks.push(Codeblock::action("set_var", "%", params, tags));
-        function.locals.insert(dest.clone(), Value::CodeValue(dest_var));
-        Ok(())
-    },
+    Instruction::FRem(_) => todo!(),
 
-    Instruction::FNeg(FNeg { operand, dest, .. }) => handle_binop(module, function, dest, &Operand::ConstantOperand(ConstantRef::new(llvm_ir::Constant::Int { bits : 0, value : 0 })), operand, "+"),
+    Instruction::FNeg(_) => todo!(),
+
+    Instruction::ExtractElement(_) => todo!(),
+
+    Instruction::InsertElement(_) => todo!(),
+
+    Instruction::ShuffleVector(_) => todo!(),
 
     Instruction::ExtractValue(_) => todo!(),
 
     Instruction::InsertValue(_) => todo!(),
 
-    Instruction::Alloca(Alloca { allocated_type, dest, .. }) => {
-        let count = match (&**allocated_type) {
-            Type::VoidType                          => 1,
-            Type::IntegerType { ..                } => 1,
-            Type::PointerType { ..                } => 1,
-            Type::FPType      { ..                } => 1,
-            Type::FuncType    { ..                } => 1,
-            Type::VectorType  { ..                } => { return Err("SIMD vectors are unsupported".into()) },
-            Type::ArrayType   { num_elements, ..  } => *num_elements,
-            Type::StructType  { element_types, .. } => element_types.len(),
-            Type::NamedStructType { .. } => todo!(),
-            _ => { return Err(format!("Can not allocate stack space for unsupported type {}", allocated_type).into()); }
-        }; // TODO: Handle case when count = 1
-        let value = handle_aggregate(Some(CodeValue::line_variable_name(dest)), module, function, &(0..count).map(|_| ConstantRef::new(Constant::Int { bits : 0, value : 0 })).collect())?;
-        function.locals.insert(dest.clone(), Value::GetSetPtr {
-            getter_codeblock : String::from("set_var"),
-            getter_action    : String::from("GetListValue"),
-            getter_tags      : vec![ ],
-            setter_codeblock : String::from("set_var"),
-            setter_action    : String::from("SetListValue"),
-            setter_tags      : vec![ ],
-            params           : vec![ value, Value::CodeValue(CodeValue::Number(1.0)) ],
-        });
+    Instruction::Alloca(Alloca { dest, .. }) => {
+        function.needs_frame = true;
+        let counter = CodeValue::Variable { name : "lldf.alloca.counter".to_string(), scope : VariableScope::Unsaved };
+        function.line.blocks.push(Codeblock::action("set_var", "+=", vec![ counter.clone() ], vec![]));
+        let params = vec![
+            CodeValue::Variable { name : name_to_local(dest), scope: VariableScope::Line },
+            CodeValue::String("mem.#%var(lldf.alloca.frame.current).%var(lldf.alloca.counter)".to_string()),
+            CodeValue::Number("0".to_string())
+        ];
+        function.line.blocks.push(Codeblock::action("set_var", "CreateList", params, vec![]));
+        function.locals.insert(dest.clone(), Value::Local(dest.clone()));
         Ok(())
     },
 
     Instruction::Load(Load { address, dest, .. }) => {
-        match (parse_oper(module, function, address)?) {
-
-            Value::GlobalRef(name) => {
-                let Some(global) = module.globals.get(&name) else { return Err(format!("Unknown global {}", name).into()) };
-                match (global) {
-
-                    Global::NoopFunction => Err("Can not load from a no-op function".into()),
-
-                    Global::UserFunction { .. } => Err("Can not load from a function".into()),
-
-                    Global::ActionFunction { .. } => Err("Can not load from an action function".into()),
-
-                    Global::ActionPtrFunction { .. } => Err("Can not load from an action-pointer function".into()),
-
-                    Global::GamevalueFunction { .. } => Err("Can not load from a gamevalue function".into()),
-
-                    Global::Constant(value) => {
-                        let params = vec![ CodeValue::line_variable_name(dest), value.to_codevalue(module, function)? ];
-                        function.line.blocks.push(Codeblock::action("set_var", "=", params, vec![]));
-                        function.locals.insert(dest.clone(), value.clone());
-                        Ok(())
-                    },
-
-                }
-            },
-
-            gsp @ Value::GetSetPtr { .. } => {
-                let dest_value = gsp.to_codevalue(module, function)?;
-                function.locals.insert(dest.clone(), Value::CodeValue(dest_value));
-                Ok(())
-            },
-
-            Value::IntPtr(_) => todo!(),
-
-            Value::Local(name) => {
-                let Some(value) = function.locals.get(&name) else { return Err("".into()) };
-                let value = value.clone();
-                let params = vec![ CodeValue::line_variable_name(dest), value.to_codevalue(module, function)? ];
-                function.line.blocks.push(Codeblock::action("set_var", "=", params, vec![]));
-                function.locals.insert(dest.clone(), value);
-                Ok(())
-            },
-
-            Value::CodeValue(_) => Err("Can not load from a code value".into())
-
-        }
+        let dest_var = CodeValue::Variable { name : name_to_local(dest), scope : VariableScope::Line };
+        let address = parse_oper(module, function, address)?;
+        let params = vec![
+            dest_var,
+            address.to_ptr_accessor_codevalue(module)?
+        ];
+        function.line.blocks.push(Codeblock::action("set_var", "=", params, vec![ ]));
+        function.locals.insert(dest.clone(), Value::Local(dest.clone()));
+        Ok(())
     },
 
     Instruction::Store(Store { address, value, .. }) => {
-        let     value   = parse_oper(module, function, value   )?;
-        let mut address = parse_oper(module, function, address )?;
-        handle_store(module, function, &mut address, &value)
+        let address = parse_oper(module, function, address)?;
+        let value   = parse_oper(module, function, value)?;
+        let params  = vec![
+            address.to_ptr_accessor_codevalue(module)?,
+            value.to_codevalue(module)?,
+        ];
+        function.line.blocks.push(Codeblock::action("set_var", "=", params, vec![ ]));
+        Ok(())
     },
 
     Instruction::GetElementPtr(GetElementPtr { address, indices, dest, .. }) => {
         if (indices.len() != 1) { return Err("Multi-index GEP instructions are unsupported".into()); }
-        let index_var = CodeValue::line_variable(function.create_temp_var_name());
-        let params    = vec![
-            index_var.clone(),
-            parse_oper(module, function, &indices[0])?.to_codevalue(module, function)?,
-            CodeValue::Number(1.0)
+        let address  = parse_oper(module, function, address)?;
+        let index    = parse_oper(module, function, &indices[0])?;
+        let temp_var = CodeValue::Variable { name : function.create_temp_var_name(), scope : VariableScope::Line };
+        let accessor = address.to_ptr_accessor_part_strings(module)?;
+        let params = vec![
+            temp_var.clone(),
+            CodeValue::Number(accessor.1),
+            index.to_codevalue(module)?
         ];
         function.line.blocks.push(Codeblock::action("set_var", "+", params, vec![ ]));
         let params = vec![
-            parse_oper(module, function, address)?,
-            Value::CodeValue(index_var)
+            CodeValue::Variable { name : name_to_local(dest), scope: VariableScope::Line },
+            CodeValue::String(accessor.0),
+            temp_var
         ];
-        let value = Value::GetSetPtr {
-            getter_codeblock : "set_var".to_string(),
-            getter_action    : "GetListValue".to_string(),
-            getter_tags      : vec![ ],
-            setter_codeblock : "set_var".to_string(),
-            setter_action    : "SetListValue".to_string(),
-            setter_tags      : vec![ ],
-            params
-        };
-        function.locals.insert(dest.clone(), value);
+        function.line.blocks.push(Codeblock::action("set_var", "CreateList", params, vec![]));
+        function.locals.insert(dest.clone(), Value::Local(dest.clone()));
         Ok(())
     },
 
-    Instruction::Trunc(Trunc { operand, dest, .. }) => {
-        let value = parse_oper(module, function, operand)?;
-        function.locals.insert(dest.clone(), value);
-        Ok(())
-    },
+    Instruction::Trunc(_) => todo!(),
 
     Instruction::ZExt(_) => todo!(),
 
@@ -184,11 +126,7 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
 
     Instruction::SIToFP(_) => todo!(),
 
-    Instruction::PtrToInt(PtrToInt { operand, dest, .. }) => {
-        let value = Value::IntPtr(Box::new(parse_oper(module, function, operand)?));
-        function.locals.insert(dest.clone(), value);
-        Ok(())
-    },
+    Instruction::PtrToInt(_) => todo!(),
 
     Instruction::IntToPtr(_) => todo!(),
 
@@ -202,134 +140,75 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
 
     Instruction::Call(Call { function : calling, arguments, dest, .. }) => {
         let Some(calling) = calling.as_ref().right() else { return Err("Inline assembly is unsupported".into()) };
-        match (parse_oper(module, function, calling)?) {
+        let calling = parse_oper(module, function, calling)?;
+        if let Value::Global(name) = &calling {
+            let Some(global) = module.globals.get(name) else { return Err(format!("Unknown global {}", name).into()) };
+            match (global) {
 
-            Value::GlobalRef(global) => {
-                let Some(global) = module.globals.get(&global) else { return Err(format!("Unknown global {}", global).into()) };
-                match (global) {
+                Global::NoopFunction => {
+                    if let Some(dest) = dest {
+                        if (arguments.len() != 1) { return Err("Noop function with destination local must have one argument".into()); }
+                        let params = vec![
+                            CodeValue::Variable { name : name_to_local(dest), scope : VariableScope::Line },
+                            parse_oper(module, function, &arguments[0].0)?.to_codevalue(module)?
+                        ];
+                        function.line.blocks.push(Codeblock::action("set_var", "=", params, vec![ ]));
+                        function.locals.insert(dest.clone(), Value::Local(dest.clone()));
+                    }
+                    Ok(())
+                },
 
-                    Global::NoopFunction => Ok(()),
+                Global::UserFunction { name } => { // TODO: return
+                    let mut params = Vec::with_capacity(arguments.len());
+                    for (arg, _) in arguments {
+                        params.push(parse_oper(module, function, arg)?.to_codevalue(module)?);
+                    }
+                    function.line.blocks.push(Codeblock::call_func(name, params));
+                    Ok(())
+                },
 
-                    Global::UserFunction { name } => {
-                        let mut params = Vec::with_capacity(arguments.len());
-                        for (arg, _) in arguments {
-                            params.push(parse_oper(module, function, arg)?.to_codevalue(module, function)?);
-                        }
-                        let block = Codeblock::call_func(name, params);
-                        function.line.blocks.push(block);
-                        Ok(())
-                    },
+                Global::ActionFunction { codeblock, action, tags } => {
+                    let mut params = Vec::with_capacity(arguments.len() + 1);
+                    if let Some(dest) = dest {
+                        params.push(CodeValue::Variable { name : name_to_local(dest), scope : VariableScope::Line });
+                        function.locals.insert(dest.clone(), Value::Local(dest.clone()));
+                    }
+                    for (arg, _) in arguments {
+                        params.push(parse_oper(module, function, arg)?.to_codevalue(module)?);
+                    }
+                    function.line.blocks.push(Codeblock::action(codeblock, action, params, tags.clone()));
+                    Ok(())
+                },
 
-                    Global::ActionFunction { codeblock, action, tags } => {
-                        let mut params = Vec::with_capacity(arguments.len());
-                        for (arg, _) in arguments {
-                            params.push(parse_oper(module, function, arg)?.to_codevalue(module, function)?);
-                        }
-                        let block  = Codeblock::action(codeblock, action, params, tags.clone());
-                        function.line.blocks.push(block);
-                        Ok(())
-                    },
+                Global::ActionPtrFunction { getter_codeblock, getter_action, getter_tags, setter_codeblock, setter_action, setter_tags } => todo!(),
 
-                    Global::ActionPtrFunction { getter_codeblock, getter_action, getter_tags, setter_codeblock, setter_action, setter_tags } => {
-                        let Some(dest) = dest else { return Err("Action pointer function return value must be assigned to a local".into()) };
-                        let mut params = Vec::with_capacity(arguments.len());
-                        for (arg, _) in arguments {
-                            params.push(parse_oper(module, function, arg)?);
-                        }
-                        let value = Value::GetSetPtr {
-                            getter_codeblock : getter_codeblock .clone(),
-                            getter_action    : getter_action    .clone(),
-                            getter_tags      : getter_tags      .clone(),
-                            setter_codeblock : setter_codeblock .clone(),
-                            setter_action    : setter_action    .clone(),
-                            setter_tags      : setter_tags      .clone(),
-                            params
-                        };
-                        function.locals.insert(dest.clone(), value);
-                        Ok(())
-                    },
-
-                    Global::GamevalueFunction { kind, target } => {
-                        let Some(dest) = dest else { return Err("Game value function return value must be assigned to a local".into()) };
-                        let dest_var = CodeValue::line_variable_name(dest);
-                        let params = vec![ dest_var.clone(), CodeValue::Gamevalue { kind : kind.clone(), target : target.clone() } ];
+                Global::GamevalueFunction { kind, target } => {
+                    if let Some(dest) = dest {
+                        let params = vec![
+                            CodeValue::Variable { name : name_to_local(dest), scope : VariableScope::Line },
+                            CodeValue::Gamevalue { kind : kind.clone(), target : target.clone() }
+                        ];
                         function.line.blocks.push(Codeblock::action("set_var", "=", params, vec![]));
-                        function.locals.insert(dest.clone(), Value::CodeValue(dest_var));
-                        Ok(())
-                    },
+                        function.locals.insert(dest.clone(), Value::Local(dest.clone()));
+                    }
+                    Ok(())
+                },
 
-                    Global::Constant(_) => todo!()
+                Global::Constant(value) => todo!(),
 
-                }
-            },
-
-            Value::GetSetPtr { .. } => { Err("Can not call a pointer".into()) }, // TODO: function-pointer, maybe?
-
-            Value::IntPtr(_) => { Err("Can not call an integer".into()) },
-
-            Value::Local(_) => { Err("Can not call a local".into()) },
-
-            Value::CodeValue(_) => { Err("Can not call a code value".into()) }
-
+            }
+        } else {
+            function.line.blocks.push(Codeblock::call_func(format!("%var({})", calling.to_ptr_accessor_string(module)?), vec![])); // TODO: params, return, actiontag, 
+            Ok(())
         }
     },
 
-    Instruction::Shl(_) | Instruction::LShr(_) | Instruction::AShr(_)                              => Err("Bit shift instructions are unsupported"          .into()),
-    Instruction::ExtractElement(_) | Instruction::InsertElement(_) | Instruction::ShuffleVector(_) => Err("Vector instructions are unsupported"             .into()),
-    Instruction::Fence(_) | Instruction::CmpXchg(_) | Instruction::AtomicRMW(_)                    => Err("Atomic instructions are unsupported"             .into()),
-    Instruction::BitCast(_)                                                                        => Err("Bit cast instructions are unsupported"           .into()),
-    Instruction::AddrSpaceCast(_)                                                                  => Err("Address space cast instructions are unsupported" .into()),
-    Instruction::Freeze(_)                                                                         => Err("Propagation freeze instructions are unsupported" .into()),
-    Instruction::VAArg(_)                                                                          => Err("Variadic argument instructions are unsupported"  .into()),
-    Instruction::LandingPad(_) | Instruction::CatchPad(_) | Instruction::CleanupPad(_)             => Err("Exception handling instructions are unsupported" .into()),
+    Instruction::VAArg(_) => todo!(),
+
+    Instruction::Shl(_) | Instruction::LShr(_) | Instruction::AShr(_)                  => Err("Bit shift instructions are unsupported"          .into()),
+    Instruction::Fence(_) | Instruction::CmpXchg(_) | Instruction::AtomicRMW(_)        => Err("Atomic instructions are unsupported"             .into()),
+    Instruction::BitCast(_)                                                            => Err("Bit cast instructions are unsupported"           .into()),
+    Instruction::AddrSpaceCast(_)                                                      => Err("Address space cast instructions are unsupported" .into()),
+    Instruction::Freeze(_)                                                             => Err("Propagation freeze instructions are unsupported" .into()),
+    Instruction::LandingPad(_) | Instruction::CatchPad(_) | Instruction::CleanupPad(_) => Err("Exception handling instructions are unsupported" .into()),
 } }
-
-
-
-
-
-fn handle_binop(module : &ParsedModule, function : &mut ParsedFunction, dest : &Name, operand0 : &Operand, operand1 : &Operand, op : &str) -> Result<(), Box<dyn Error>> {
-    let dest_var = CodeValue::line_variable_name(dest);
-    let params = vec![
-        dest_var.clone(),
-        parse_oper(module, function, operand0)?.to_codevalue(module, function)?,
-        parse_oper(module, function, operand1)?.to_codevalue(module, function)?
-    ];
-    function.line.blocks.push(Codeblock::action("set_var", op, params, vec![]));
-    function.locals.insert(dest.clone(), Value::CodeValue(dest_var));
-    Ok(())
-}
-
-
-
-fn handle_store(module : &ParsedModule, function : &mut ParsedFunction, address : &mut Value, value : &Value) -> Result<(), Box<dyn Error>> {
-    match (address) {
-
-        Value::GlobalRef(name) => {
-            let params = vec![ CodeValue::unsaved_variable_name(name), value.to_codevalue(module, function)? ];
-            function.line.blocks.push(Codeblock::action("set_var", "=", params, vec![]));
-            function.locals.insert(name.clone(), value.clone());
-            Ok(())
-        },
-
-        Value::GetSetPtr { getter_codeblock, getter_action, getter_tags, setter_codeblock, setter_action, setter_tags, params, .. } => {
-            let mut final_params = Vec::with_capacity(params.len() + 1);
-            for param in params {
-                final_params.push(param.to_codevalue(module, function)?);
-            }
-            final_params.push(value.to_codevalue(module, function)?);
-            function.line.blocks.push(Codeblock::action(setter_codeblock.clone(), setter_action.clone(), final_params, setter_tags.clone()));
-            *getter_codeblock = String::from("set_var");
-            *getter_action    = String::from("=");
-            *getter_tags      = vec![ ];
-            Ok(())
-        },
-
-        Value::IntPtr(_) => Err("Can not store to an integer".into()),
-
-        Value::Local(_) => Err("Can not store to a local".into()), // TODO: Pointer?
-
-        Value::CodeValue(_) => Err("Can not store to a code value".into())
-
-    }
-}

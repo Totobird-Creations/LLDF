@@ -1,24 +1,18 @@
 use crate::prelude::*;
 use crate::bind::DFOpaqueValue;
+use crate::core::mem::transmute_unchecked;
 
 
 #[repr(transparent)]
 pub struct PlayerSel {
-    pub(crate) uuids : *const List<String>
+    pub(crate) uuids : List<String>
 }
 
-#[allow(deprecated)]
 impl PlayerSel {
 
-    #[inline(always)]
-    pub fn uuids<'l>(&'l self) -> &'l List<String> { unsafe{ &*self.uuids } }
-
-    #[inline(always)]
-    pub fn names(&self) -> &List<Text> { unsafe {
-        DF_ACTION__SelectObject_PlayerName(self.uuids as *const _);
-        let names = crate::bind::gamevalue::DF_GAMEVALUE__SelectionTargetNames_Default() as *const List<Text>;
-        DF_ACTION__SelectObject_Reset();
-        &*names
+    #[doc(hidden)]
+    pub unsafe fn from_uuids(uuids : DFOpaqueValue) -> Self { unsafe {
+        Self { uuids : DF_TRANSMUTE__ListString(uuids) }
     } }
 
 }
@@ -27,9 +21,25 @@ impl PlayerSel {
 impl PlayerSel {
 
     #[inline(always)]
-    pub fn send_message<T : AsRef<Text>>(&self, text : T) -> () { unsafe {
-        DF_ACTION__SelectObject_PlayerName(self.uuids as *const _);
-        DF_ACTION__PlayerAction_SendMessage_AlignmentMode_Regular_TextValueMerging_NoSpaces_InheritStyles_False(text.as_ref());
+    pub fn uuids<'l>(&'l self) -> &'l List<String> { &self.uuids }
+
+    #[inline(always)]
+    pub fn names(&self) -> &List<Text> { unsafe {
+        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
+        let names = crate::bind::gamevalue::DF_GAMEVALUE__SelectionTargetNames_Default();
+        DF_ACTION__SelectObject_Reset();
+        transmute_unchecked(&DF_TRANSMUTE__ListText(names))
+    } }
+
+}
+
+#[allow(deprecated)]
+impl PlayerSel {
+
+    #[inline(always)]
+    pub fn send_message<T : DFValue>(&self, text : T) -> () { unsafe {
+        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
+        DF_ACTION__PlayerAction_SendMessage_AlignmentMode_Regular_TextValueMerging_NoSpaces_InheritStyles_False(text.to_opaque());
         DF_ACTION__SelectObject_Reset();
     } }
 
@@ -45,10 +55,13 @@ unsafe impl DFSel for PlayerSel {}
 #[allow(clashing_extern_declarations)]
 extern "C" {
 
-    fn DF_ACTION__SelectObject_PlayerName( target : *const DFOpaqueValue ) -> ();
+    fn DF_TRANSMUTE__ListString( from : DFOpaqueValue ) -> List<String>;
+    fn DF_TRANSMUTE__ListText( from : DFOpaqueValue ) -> List<Text>;
+
+    fn DF_ACTION__SelectObject_PlayerName( target : List<String> ) -> ();
 
     fn DF_ACTION__SelectObject_Reset( ) -> ();
 
-    fn DF_ACTION__PlayerAction_SendMessage_AlignmentMode_Regular_TextValueMerging_NoSpaces_InheritStyles_False( message : *const Text ) -> ();
+    fn DF_ACTION__PlayerAction_SendMessage_AlignmentMode_Regular_TextValueMerging_NoSpaces_InheritStyles_False( message : DFOpaqueValue ) -> ();
 
 }
