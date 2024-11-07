@@ -57,8 +57,7 @@ pub fn substitutable_string(line : &mut CodeLine) -> bool {
 
 
 fn try_param(param : &CodeValue) -> Option<String> { match (param) {
-    CodeValue::String(value) | CodeValue::Number(value) => Some(value.replace("<", "<\\")), // TODO: Check this escape code.
-    CodeValue::Text(value) => Some(value.clone()),
+    CodeValue::String(value) | CodeValue::Number(value) => Some(value.clone()), // TODO: Check this escape code.
     CodeValue::Variable { name, scope : VariableScope::Line } => Some(format!("%var({})", name)),
     _ => None
 } }
