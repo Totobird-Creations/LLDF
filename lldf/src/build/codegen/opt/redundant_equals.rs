@@ -45,12 +45,8 @@ pub fn redundant_equals(line : &mut CodeLine) -> bool {
                             did_something = true;
                         }
 
-                        // The value is not a game value
-                        // AND the destination variable is only used in the block immediately following this block.
-                        else if (
-                            (! matches!(value, CodeValue::Gamevalue { .. }))
-                            && ((i + 2)..line.blocks.len()).all(|j| ! line.blocks[j].is_line_var_used(dest_name))
-                        ) {
+                        // The destination variable is only used in the block immediately following this block.
+                        else if ((i + 2)..line.blocks.len()).all(|j| ! line.blocks[j].is_line_var_used(dest_name)) {
                             let dest_name = dest_name.clone();
                             let value     = value.clone();
                             if let Some(block) = line.blocks.get_mut(i + 1) {

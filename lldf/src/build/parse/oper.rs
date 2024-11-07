@@ -22,7 +22,15 @@ pub fn parse_const(module : &ParsedModule, function : &mut ParsedFunction, cor :
 
     Constant::Int { value, .. } => Ok(Value::ConstInt(*value)), // Unsigned vs signed
 
-    Constant::Float(_) => todo!(),
+    Constant::Float(value) => match (value) {
+        Float::Half          => Err("Half floats are unsupported"   .into()),
+        Float::BFloat        => Err("BFloat floats are unsupported" .into()),
+        Float::Single(value) => Ok(Value::ConstFloat(*value as f64)),
+        Float::Double(value) => Ok(Value::ConstFloat(*value)),
+        Float::Quadruple     => Err("Quadruple floats are unsupported" .into()),
+        Float::X86_FP80      => Err("X86_FP80 floats are unsupported"  .into()),
+        Float::PPC_FP128     => Err("PPC_FP128 floats are unsupported" .into()),
+    },
 
     Constant::Null(_) => todo!(),
 
@@ -50,12 +58,6 @@ pub fn parse_const(module : &ParsedModule, function : &mut ParsedFunction, cor :
 
     Constant::Shl(_) => todo!(),
 
-    Constant::ExtractElement(_) => todo!(),
-    
-    Constant::InsertElement(_) => todo!(),
-    
-    Constant::ShuffleVector(_) => todo!(),
-
     Constant::GetElementPtr(_) => todo!(),
 
     Constant::Trunc(Trunc { operand, .. }) => parse_const(module, function, operand),
@@ -68,10 +70,12 @@ pub fn parse_const(module : &ParsedModule, function : &mut ParsedFunction, cor :
 
     Constant::FCmp(_) => todo!(),
 
-    Constant::BlockAddress                                                                                      => Err("Block address operands are unsupported"      .into()),
-    Constant::TokenNone                                                                                         => Err("Token operands are unsupported"              .into()),
-    Constant::BitCast(_)                                                                                        => Err("Bit cast operands are unsupported"           .into()),
-    Constant::AddrSpaceCast(_)                                                                                  => Err("Address space cast operands are unsupported" .into()),
+
+    Constant::ExtractElement(_) | Constant::InsertElement(_) | Constant::ShuffleVector(_) => Err("Vector operands are unsupported"             .into()),
+    Constant::BlockAddress                                                                => Err("Block address operands are unsupported"      .into()),
+    Constant::TokenNone                                                                   => Err("Token operands are unsupported"              .into()),
+    Constant::BitCast(_)                                                                  => Err("Bit cast operands are unsupported"           .into()),
+    Constant::AddrSpaceCast(_)                                                            => Err("Address space cast operands are unsupported" .into()),
 } }
 
 

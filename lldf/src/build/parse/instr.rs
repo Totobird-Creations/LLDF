@@ -7,6 +7,7 @@ use llvm_ir::instruction::*;
 
 
 pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr : &Instruction) -> Result<(), Box<dyn Error>> { match (instr) {
+
     Instruction::Add(_) => todo!(),
 
     Instruction::Sub(_) => todo!(),
@@ -38,12 +39,6 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
     Instruction::FRem(_) => todo!(),
 
     Instruction::FNeg(_) => todo!(),
-
-    Instruction::ExtractElement(_) => todo!(),
-
-    Instruction::InsertElement(_) => todo!(),
-
-    Instruction::ShuffleVector(_) => todo!(),
 
     Instruction::ExtractValue(_) => todo!(),
 
@@ -180,7 +175,7 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
                     Ok(())
                 },
 
-                Global::ActionPtrFunction { getter_codeblock, getter_action, getter_tags, setter_codeblock, setter_action, setter_tags } => todo!(),
+                Global::ActionPtrFunction { .. } => todo!(),
 
                 Global::GamevalueFunction { kind, target } => {
                     if let Some(dest) = dest {
@@ -194,7 +189,7 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
                     Ok(())
                 },
 
-                Global::Constant(value) => todo!(),
+                Global::Constant(_) => todo!(),
 
             }
         } else {
@@ -203,12 +198,13 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
         }
     },
 
-    Instruction::VAArg(_) => todo!(),
 
-    Instruction::Shl(_) | Instruction::LShr(_) | Instruction::AShr(_)                  => Err("Bit shift instructions are unsupported"          .into()),
-    Instruction::Fence(_) | Instruction::CmpXchg(_) | Instruction::AtomicRMW(_)        => Err("Atomic instructions are unsupported"             .into()),
-    Instruction::BitCast(_)                                                            => Err("Bit cast instructions are unsupported"           .into()),
-    Instruction::AddrSpaceCast(_)                                                      => Err("Address space cast instructions are unsupported" .into()),
-    Instruction::Freeze(_)                                                             => Err("Propagation freeze instructions are unsupported" .into()),
-    Instruction::LandingPad(_) | Instruction::CatchPad(_) | Instruction::CleanupPad(_) => Err("Exception handling instructions are unsupported" .into()),
+    Instruction::ExtractElement(_) | Instruction::InsertElement(_) | Instruction::ShuffleVector(_) => Err("Vector instructions are unsupported"             .into()),
+    Instruction::VAArg(_)                                                                          => Err("Variadic argument instructions are unsupported"  .into()),
+    Instruction::Shl(_) | Instruction::LShr(_) | Instruction::AShr(_)                              => Err("Bit shift instructions are unsupported"          .into()),
+    Instruction::Fence(_) | Instruction::CmpXchg(_) | Instruction::AtomicRMW(_)                    => Err("Atomic instructions are unsupported"             .into()),
+    Instruction::BitCast(_)                                                                        => Err("Bit cast instructions are unsupported"           .into()),
+    Instruction::AddrSpaceCast(_)                                                                  => Err("Address space cast instructions are unsupported" .into()),
+    Instruction::Freeze(_)                                                                         => Err("Propagation freeze instructions are unsupported" .into()),
+    Instruction::LandingPad(_) | Instruction::CatchPad(_) | Instruction::CleanupPad(_)             => Err("Exception handling instructions are unsupported" .into()),
 } }

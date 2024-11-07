@@ -141,13 +141,13 @@ pub fn parse_module(module : &Module) -> Result<ParsedModule, Box<dyn Error>> {
     }
 
     // Collect global variables.
-    let mut init_function = ParsedFunction::new(None);
-    for GlobalVariable { name, is_constant, initializer : init, .. } in &module.global_vars {
-        let mut is_constant = *is_constant;
-        let var = CodeValue::Variable {
+    let /*mut*/ init_function = ParsedFunction::new(None);
+    for GlobalVariable { name, /*is_constant,*/ initializer : init, .. } in &module.global_vars {
+        //let mut is_constant = *is_constant;
+        /*let var = CodeValue::Variable {
             name  : format!("global.{}", name_to_global(name)),
             scope : VariableScope::Unsaved
-        };
+        };*/
         if let Some(init) = init {
             // Handle special cases like strings.
             let value = if let Some(value) = handle_special_const(&init) {

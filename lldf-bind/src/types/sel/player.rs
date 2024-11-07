@@ -17,7 +17,6 @@ impl PlayerSel {
 
 }
 
-#[allow(deprecated)]
 impl PlayerSel {
 
     #[inline(always)]
@@ -33,7 +32,18 @@ impl PlayerSel {
 
 }
 
-#[allow(deprecated)]
+/// `PLAYER_ACTION` / `Item Management`
+impl PlayerSel {
+
+    #[inline(always)]
+    pub fn give_item(&self, item : Item) -> () { unsafe {
+        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
+        DF_ACTION__PlayerAction_GiveItems(item.to_opaque());
+        DF_ACTION__SelectObject_Reset();
+    } }
+
+}
+
 impl PlayerSel {
 
     #[inline(always)]
@@ -59,8 +69,10 @@ extern "C" {
     fn DF_TRANSMUTE__ListText( from : DFOpaqueValue ) -> List<Text>;
 
     fn DF_ACTION__SelectObject_PlayerName( target : List<String> ) -> ();
-
     fn DF_ACTION__SelectObject_Reset( ) -> ();
+
+
+    fn DF_ACTION__PlayerAction_GiveItems( item : DFOpaqueValue ) -> ();
 
     fn DF_ACTION__PlayerAction_SendMessage_AlignmentMode_Regular_TextValueMerging_NoSpaces_InheritStyles_False( message : DFOpaqueValue ) -> ();
 
