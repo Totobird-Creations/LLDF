@@ -4,7 +4,7 @@ use serde_json as json;
 
 
 #[derive(Debug, Clone, PartialEq)]
-pub enum CodeValue {
+pub enum CodeValue { // TODO: Add item
     String(String),
     Text(String),
     Number(String),

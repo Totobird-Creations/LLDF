@@ -30,6 +30,11 @@
   - [ ] Function pointers
 - [ ] Pointers
 
+
+### Fun types cause I feel like it:
+- [ ] Matrix
+- [ ] Quaternion
+
 ### The things that will be pain to implement:
 - [x] Stack allocation
 - [ ] Heap allocation

@@ -4,7 +4,6 @@ use crate::bind::DFOpaqueValue;
 
 pub enum Game { /* Unconstructable */ }
 
-#[allow(deprecated)]
 impl Game {
 
     #[inline(always)]
@@ -23,7 +22,17 @@ impl Game {
 
 }
 
-#[allow(deprecated)]
+// `SET_VARIABLE` / `Variable Setting`
+impl Game {
+
+    // TODO: SetPersistentData
+
+    // TODO: GetPersistentData
+
+    // TODO: RemovePersistentData
+
+}
+
 impl Game {
 
     #[inline(always)]
