@@ -2,6 +2,7 @@ use crate::prelude::*;
 use crate::bind::DFOpaqueValue;
 
 
+/// A Minecraft sound or a custom sound from a resource pack.
 #[derive(Clone)]
 pub struct Sound {
     _opaque_type : u8
@@ -72,4 +73,4 @@ extern "C" {
 }
 
 
-include!("../../bind/sounds.rs");
+include!("../../bind/sound.rs");

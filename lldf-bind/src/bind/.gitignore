@@ -1,2 +1,4 @@
 doc.rs
-items.rs
+item.rs
+sound.rs
+potion.rs

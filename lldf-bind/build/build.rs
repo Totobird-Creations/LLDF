@@ -65,7 +65,7 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     // Items
     {
-        let mut file = File::create(cwd.join("src/bind/items.rs"))?;
+        let mut file = File::create(cwd.join("src/bind/item.rs"))?;
         if let Some(items) = items {
             writeln!(file, "extern \"C\" {{")?;
             for item in &items {
@@ -85,7 +85,7 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     // Sounds
     {
-        let mut file = File::create(cwd.join("src/bind/sounds.rs"))?;
+        let mut file = File::create(cwd.join("src/bind/sound.rs"))?;
         if let Some(sounds) = sounds {
             writeln!(file, "extern \"C\" {{")?;
             for sound in &sounds {
@@ -101,6 +101,34 @@ fn main() -> Result<(), Box<dyn Error>> {
             }
             writeln!(file, "}}")?;
         }
+    }
+
+    // Particles
+    dbc.particles.sort_by(|a, b| a.particle.cmp(&b.particle));
+    dbc.particles.dedup_by(|a, b| a.particle == b.particle);
+    {
+        let mut file = File::create(cwd.join("src/bind/particle.rs"))?;
+        writeln!(file, "extern \"C\" {{")?;
+        for particle in &dbc.particles {
+            let name = particle.particle.to_title_case().replace(" ", "");
+            write!(file, "    fn DF_PARTICLE__{}", name)?;
+            for field in &particle.fields {
+                write!(file, "_{:?}", field)?;
+            }
+            writeln!(file, "( ) -> Particle;")?;
+        }
+        writeln!(file, "}}")?;
+        writeln!(file, "impl Particle {{")?;
+        for particle in &dbc.particles {
+            let name = particle.particle.to_title_case().replace(" ", "");
+            writeln!(file, "    /// `{}`", particle.particle)?;
+            write!(file, "    #[inline(always)] pub fn {}() -> Self {{ unsafe {{ DF_PARTICLE__{}", particle.particle.to_snake_case(), name)?;
+            for field in &particle.fields {
+                write!(file, "_{:?}", field)?;
+            }
+            writeln!(file, "() }} }}")?;
+        }
+        writeln!(file, "}}")?;
     }
 
 

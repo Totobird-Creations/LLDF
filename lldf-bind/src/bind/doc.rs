@@ -14,7 +14,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -35,7 +35,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Emperor</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_emperor"))]
         $($item)*
@@ -55,7 +55,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -74,7 +74,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -102,7 +102,7 @@ pub macro dfdoc {
         /// not hidden!
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -121,7 +121,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -140,7 +140,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -159,7 +159,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -178,7 +178,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -197,7 +197,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -221,7 +221,7 @@ pub macro dfdoc {
         /// damage.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -240,7 +240,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -260,7 +260,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -279,7 +279,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -300,7 +300,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -319,7 +319,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -338,7 +338,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -358,7 +358,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -380,7 +380,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Overlord</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_overlord"))]
         $($item)*
@@ -400,7 +400,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -424,7 +424,7 @@ pub macro dfdoc {
         /// player sees!
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -444,7 +444,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -463,7 +463,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -482,7 +482,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -502,7 +502,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -521,7 +521,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -540,7 +540,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -559,7 +559,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -579,7 +579,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -604,7 +604,7 @@ pub macro dfdoc {
         /// will not trigger this event.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -623,7 +623,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -642,7 +642,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -661,7 +661,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -680,7 +680,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -699,7 +699,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -718,7 +718,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -738,7 +738,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -757,7 +757,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -781,7 +781,7 @@ pub macro dfdoc {
         /// player sees!
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -801,7 +801,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -822,7 +822,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -842,7 +842,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -863,7 +863,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -884,7 +884,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -908,7 +908,7 @@ pub macro dfdoc {
         /// player holds down right click.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -930,7 +930,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Emperor</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_emperor"))]
         $($item)*
@@ -950,7 +950,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -969,7 +969,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -988,7 +988,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -1007,7 +1007,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -1035,7 +1035,7 @@ pub macro dfdoc {
         /// not shown!
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -1054,7 +1054,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -1073,7 +1073,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -1092,7 +1092,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -1116,7 +1116,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Emperor</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_emperor"))]
         $($item)*
@@ -1136,7 +1136,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -1155,7 +1155,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -1177,7 +1177,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Overlord</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_overlord"))]
         $($item)*
@@ -1197,7 +1197,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -1218,7 +1218,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -1238,7 +1238,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -1258,7 +1258,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -1276,7 +1276,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -1297,7 +1297,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -1316,7 +1316,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -1337,7 +1337,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -1357,7 +1357,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -1376,7 +1376,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -1398,7 +1398,7 @@ pub macro dfdoc {
         /// be used for a delay.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -1421,7 +1421,7 @@ pub macro dfdoc {
         /// you must use a negative step size.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -1440,7 +1440,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -1465,7 +1465,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Mythic</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_mythic"))]
         $($item)*
@@ -1489,7 +1489,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -1514,7 +1514,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Mythic</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_mythic"))]
         $($item)*
@@ -1533,7 +1533,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -1552,7 +1552,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -1576,7 +1576,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Mythic</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_mythic"))]
         $($item)*
@@ -1602,7 +1602,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Mythic</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_mythic"))]
         $($item)*
@@ -1625,7 +1625,7 @@ pub macro dfdoc {
         /// - Glow Squid
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -1646,7 +1646,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -1670,7 +1670,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -1696,7 +1696,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Mythic</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_mythic"))]
         $($item)*
@@ -1718,7 +1718,7 @@ pub macro dfdoc {
         /// - Any Mob
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -1740,7 +1740,7 @@ pub macro dfdoc {
         /// - Sheep
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -1770,7 +1770,7 @@ pub macro dfdoc {
         /// and untamed mobs.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -1793,7 +1793,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -1818,7 +1818,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -1838,7 +1838,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -1859,7 +1859,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -1887,7 +1887,7 @@ pub macro dfdoc {
         /// purse the target.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -1910,7 +1910,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -1932,7 +1932,7 @@ pub macro dfdoc {
         /// - Any Mob
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -1954,7 +1954,7 @@ pub macro dfdoc {
         /// - Panda
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -1977,7 +1977,7 @@ pub macro dfdoc {
         /// - Any Mob
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -1999,7 +1999,7 @@ pub macro dfdoc {
         /// - Any Mob
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -2022,7 +2022,7 @@ pub macro dfdoc {
         /// - Any Mob
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -2046,7 +2046,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Mythic</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_mythic"))]
         $($item)*
@@ -2070,7 +2070,7 @@ pub macro dfdoc {
         /// - Arrows, Tridents
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -2098,7 +2098,7 @@ pub macro dfdoc {
         /// Type /migration for more info.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -2121,7 +2121,7 @@ pub macro dfdoc {
         /// - Area Effect Cloud
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -2148,7 +2148,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -2170,7 +2170,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -2194,7 +2194,7 @@ pub macro dfdoc {
         /// - Panda
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -2220,7 +2220,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -2243,7 +2243,7 @@ pub macro dfdoc {
         /// launch the entity down.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -2265,7 +2265,7 @@ pub macro dfdoc {
         /// - Any Mob
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -2299,7 +2299,7 @@ pub macro dfdoc {
         /// goes down each tick.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -2322,7 +2322,7 @@ pub macro dfdoc {
         /// - Fishing Hook
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -2350,7 +2350,7 @@ pub macro dfdoc {
         /// block.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -2368,7 +2368,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -2390,7 +2390,7 @@ pub macro dfdoc {
         /// - Frog
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -2414,7 +2414,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Mythic</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_mythic"))]
         $($item)*
@@ -2443,7 +2443,7 @@ pub macro dfdoc {
         /// unemployment.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -2466,7 +2466,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Overlord</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_overlord"))]
         #[deprecated] 
@@ -2492,7 +2492,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -2515,7 +2515,7 @@ pub macro dfdoc {
         /// - Any Mob
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -2539,7 +2539,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Mythic</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_mythic"))]
         $($item)*
@@ -2563,7 +2563,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         #[deprecated] 
@@ -2588,7 +2588,7 @@ pub macro dfdoc {
         /// trigger damage events.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -2608,7 +2608,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -2627,7 +2627,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -2648,7 +2648,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -2672,7 +2672,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Mythic</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_mythic"))]
         #[deprecated] 
@@ -2699,7 +2699,7 @@ pub macro dfdoc {
         /// immediately.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -2723,7 +2723,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Overlord</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_overlord"))]
         $($item)*
@@ -2745,7 +2745,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -2769,7 +2769,7 @@ pub macro dfdoc {
         /// - Any Mob
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -2794,7 +2794,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Mythic</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_mythic"))]
         $($item)*
@@ -2818,7 +2818,7 @@ pub macro dfdoc {
         /// - Creeper
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -2839,7 +2839,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -2859,7 +2859,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -2884,7 +2884,7 @@ pub macro dfdoc {
         /// cursor is placed on them.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -2908,7 +2908,7 @@ pub macro dfdoc {
         /// upon taking damage.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -2930,7 +2930,7 @@ pub macro dfdoc {
         /// - Shulker
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -2956,7 +2956,7 @@ pub macro dfdoc {
         /// have an absorption effect.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -2979,7 +2979,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Mythic</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_mythic"))]
         $($item)*
@@ -3004,7 +3004,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -3027,7 +3027,7 @@ pub macro dfdoc {
         /// - Creeper
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -3058,7 +3058,7 @@ pub macro dfdoc {
         /// display the fire effect.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -3077,7 +3077,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -3100,7 +3100,7 @@ pub macro dfdoc {
         /// - Any Mob
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -3119,7 +3119,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -3137,7 +3137,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -3158,7 +3158,7 @@ pub macro dfdoc {
         /// - Any Mob
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -3180,7 +3180,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Mythic</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_mythic"))]
         $($item)*
@@ -3208,7 +3208,7 @@ pub macro dfdoc {
         /// an explosion occurs.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -3232,7 +3232,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Mythic</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_mythic"))]
         $($item)*
@@ -3252,7 +3252,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -3275,7 +3275,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         #[deprecated] 
@@ -3302,7 +3302,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Mythic</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_mythic"))]
         $($item)*
@@ -3327,7 +3327,7 @@ pub macro dfdoc {
         /// - Arrows
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -3353,7 +3353,7 @@ pub macro dfdoc {
         /// wearing an elytra.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -3372,7 +3372,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -3396,7 +3396,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Mythic</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_mythic"))]
         $($item)*
@@ -3420,7 +3420,7 @@ pub macro dfdoc {
         /// - Interaction Entity
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -3442,7 +3442,7 @@ pub macro dfdoc {
         /// - Panda
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -3466,7 +3466,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -3491,7 +3491,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -3513,7 +3513,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -3538,7 +3538,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Mythic</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_mythic"))]
         $($item)*
@@ -3560,7 +3560,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -3586,7 +3586,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Mythic</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_mythic"))]
         $($item)*
@@ -3609,7 +3609,7 @@ pub macro dfdoc {
         /// - Sniffer
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -3630,7 +3630,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -3652,7 +3652,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -3676,7 +3676,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -3696,7 +3696,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -3719,7 +3719,7 @@ pub macro dfdoc {
         /// the entity away from the location.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -3748,7 +3748,7 @@ pub macro dfdoc {
         /// in the 'helmet' slot.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -3773,7 +3773,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Mythic</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_mythic"))]
         $($item)*
@@ -3800,7 +3800,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -3822,7 +3822,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -3842,7 +3842,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -3864,7 +3864,7 @@ pub macro dfdoc {
         /// - Interaction Entity
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -3884,7 +3884,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -3905,7 +3905,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -3929,7 +3929,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -3961,7 +3961,7 @@ pub macro dfdoc {
         /// Total Arrow Damage: ||velocity|| x base
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -3990,7 +3990,7 @@ pub macro dfdoc {
         /// use 'Set Equipment Item'.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -4009,7 +4009,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -4033,7 +4033,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Mythic</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_mythic"))]
         $($item)*
@@ -4058,7 +4058,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Mythic</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_mythic"))]
         $($item)*
@@ -4083,7 +4083,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Mythic</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_mythic"))]
         $($item)*
@@ -4105,7 +4105,7 @@ pub macro dfdoc {
         /// - Any Mob
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -4127,7 +4127,7 @@ pub macro dfdoc {
         /// - Ender Dragon
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -4150,7 +4150,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -4177,7 +4177,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -4201,7 +4201,7 @@ pub macro dfdoc {
         /// - Creeper
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -4224,7 +4224,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         #[deprecated] 
@@ -4251,7 +4251,7 @@ pub macro dfdoc {
         /// - Armor Stand
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -4275,7 +4275,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -4301,7 +4301,7 @@ pub macro dfdoc {
         /// - Interaction Entity
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -4326,7 +4326,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Mythic</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_mythic"))]
         $($item)*
@@ -4348,7 +4348,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -4371,7 +4371,7 @@ pub macro dfdoc {
         /// - Sheep
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -4398,7 +4398,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -4421,7 +4421,7 @@ pub macro dfdoc {
         /// - Any Mob
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -4443,7 +4443,7 @@ pub macro dfdoc {
         /// - Goat
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -4469,7 +4469,7 @@ pub macro dfdoc {
         /// - Any Horse
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -4489,7 +4489,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -4511,7 +4511,7 @@ pub macro dfdoc {
         /// - Goat
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -4533,7 +4533,7 @@ pub macro dfdoc {
         /// - Panda
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -4555,7 +4555,7 @@ pub macro dfdoc {
         /// - Bee
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -4579,7 +4579,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Mythic</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_mythic"))]
         $($item)*
@@ -4602,7 +4602,7 @@ pub macro dfdoc {
         /// - Any Mob
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -4622,7 +4622,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Overlord</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_overlord"))]
         $($item)*
@@ -4643,7 +4643,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Overlord</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_overlord"))]
         $($item)*
@@ -4669,7 +4669,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -4694,7 +4694,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -4722,7 +4722,7 @@ pub macro dfdoc {
         /// have their collisions disabled.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -4746,7 +4746,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Mythic</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_mythic"))]
         $($item)*
@@ -4770,7 +4770,7 @@ pub macro dfdoc {
         /// launch the entity backward.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -4790,7 +4790,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -4815,7 +4815,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Overlord</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_overlord"))]
         $($item)*
@@ -4840,7 +4840,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Mythic</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_mythic"))]
         $($item)*
@@ -4865,7 +4865,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Mythic</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_mythic"))]
         $($item)*
@@ -4889,7 +4889,7 @@ pub macro dfdoc {
         /// - Any Mob
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -4913,7 +4913,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -4935,7 +4935,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -4960,7 +4960,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -4986,7 +4986,7 @@ pub macro dfdoc {
         /// Max. attach range is 10 blocks.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -5010,7 +5010,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -5030,7 +5030,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -5057,7 +5057,7 @@ pub macro dfdoc {
         /// are disregarded.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -5080,7 +5080,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Overlord</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_overlord"))]
         #[deprecated] 
@@ -5104,7 +5104,7 @@ pub macro dfdoc {
         /// - Sheep
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -5129,7 +5129,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Mythic</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_mythic"))]
         $($item)*
@@ -5152,7 +5152,7 @@ pub macro dfdoc {
         /// - Allay
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -5175,7 +5175,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -5200,7 +5200,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Mythic</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_mythic"))]
         $($item)*
@@ -5227,7 +5227,7 @@ pub macro dfdoc {
         /// - Pufferfish
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -5250,7 +5250,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         #[deprecated] 
@@ -5273,7 +5273,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -5298,7 +5298,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Overlord</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_overlord"))]
         $($item)*
@@ -5323,7 +5323,7 @@ pub macro dfdoc {
         /// - Zombified Piglin
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -5345,7 +5345,7 @@ pub macro dfdoc {
         /// - Dropped Item
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -5369,7 +5369,7 @@ pub macro dfdoc {
         /// - Firework
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -5391,7 +5391,7 @@ pub macro dfdoc {
         /// - Warden
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -5414,7 +5414,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Overlord</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_overlord"))]
         #[deprecated] 
@@ -5436,7 +5436,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Overlord</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_overlord"))]
         $($item)*
@@ -5463,7 +5463,7 @@ pub macro dfdoc {
         /// the sound are ignored.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -5485,7 +5485,7 @@ pub macro dfdoc {
         /// - Any Mob
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -5509,7 +5509,7 @@ pub macro dfdoc {
         /// - Falling Block
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -5533,7 +5533,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -5564,7 +5564,7 @@ pub macro dfdoc {
         /// ■ 250: Master
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -5587,7 +5587,7 @@ pub macro dfdoc {
         /// - Creeper
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -5612,7 +5612,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -5646,7 +5646,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -5671,7 +5671,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Mythic</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_mythic"))]
         $($item)*
@@ -5696,7 +5696,7 @@ pub macro dfdoc {
         /// - Llama
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -5717,7 +5717,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -5741,7 +5741,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         #[deprecated] 
@@ -5766,7 +5766,7 @@ pub macro dfdoc {
         /// - Any Mob
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -5791,7 +5791,7 @@ pub macro dfdoc {
         /// - Llama
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -5813,7 +5813,7 @@ pub macro dfdoc {
         /// - Goat
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -5836,7 +5836,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -5859,7 +5859,7 @@ pub macro dfdoc {
         /// All values will be converted to string.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -5877,7 +5877,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -5898,7 +5898,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -5917,7 +5917,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -5936,7 +5936,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -5955,7 +5955,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -5974,7 +5974,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -5993,7 +5993,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -6012,7 +6012,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -6036,7 +6036,7 @@ pub macro dfdoc {
         /// to the list (a nested list).
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -6056,7 +6056,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -6075,7 +6075,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -6094,7 +6094,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -6113,7 +6113,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -6132,7 +6132,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -6151,7 +6151,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -6170,7 +6170,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -6192,7 +6192,7 @@ pub macro dfdoc {
         /// component is used.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -6218,7 +6218,7 @@ pub macro dfdoc {
         /// by its enchantments and type.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -6237,7 +6237,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -6256,7 +6256,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -6277,7 +6277,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -6306,7 +6306,7 @@ pub macro dfdoc {
         /// 64-bit signed integers.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -6325,7 +6325,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -6346,7 +6346,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -6366,7 +6366,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -6387,7 +6387,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -6407,7 +6407,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -6428,7 +6428,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -6448,7 +6448,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -6466,7 +6466,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -6487,7 +6487,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -6508,7 +6508,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -6527,7 +6527,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -6546,7 +6546,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -6576,7 +6576,7 @@ pub macro dfdoc {
         /// loudness at its origin decreases.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -6596,7 +6596,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -6615,7 +6615,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -6634,7 +6634,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -6653,7 +6653,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -6672,7 +6672,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -6691,7 +6691,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -6710,7 +6710,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -6731,7 +6731,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -6753,7 +6753,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -6780,7 +6780,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Emperor</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_emperor"))]
         $($item)*
@@ -6807,7 +6807,7 @@ pub macro dfdoc {
         /// Always returns a string value.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -6828,7 +6828,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -6848,7 +6848,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -6867,7 +6867,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -6885,7 +6885,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -6904,7 +6904,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -6923,7 +6923,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -6941,7 +6941,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -6962,7 +6962,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -6982,7 +6982,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -7003,7 +7003,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -7023,7 +7023,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -7049,7 +7049,7 @@ pub macro dfdoc {
         /// given list, 0 is returned.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -7067,7 +7067,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -7086,7 +7086,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -7104,7 +7104,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -7125,7 +7125,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -7145,7 +7145,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -7168,7 +7168,7 @@ pub macro dfdoc {
         /// sin, asin and sinh functions.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -7187,7 +7187,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -7206,7 +7206,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -7227,7 +7227,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -7250,7 +7250,7 @@ pub macro dfdoc {
         /// between each of the joined strings.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -7269,7 +7269,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -7292,7 +7292,7 @@ pub macro dfdoc {
         /// a value is kept.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -7311,7 +7311,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -7332,7 +7332,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -7352,7 +7352,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -7373,7 +7373,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -7397,7 +7397,7 @@ pub macro dfdoc {
         /// of zero will not be affected.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -7415,7 +7415,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -7433,7 +7433,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -7455,7 +7455,7 @@ pub macro dfdoc {
         /// are removed from the result.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -7478,7 +7478,7 @@ pub macro dfdoc {
         /// Also known as a Gaussian distribution.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -7496,7 +7496,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -7515,7 +7515,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -7533,7 +7533,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -7552,7 +7552,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -7570,7 +7570,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -7591,7 +7591,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -7614,7 +7614,7 @@ pub macro dfdoc {
         /// key, will overwrite the old value.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -7633,7 +7633,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -7652,7 +7652,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -7671,7 +7671,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -7690,7 +7690,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -7711,7 +7711,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -7730,7 +7730,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -7750,7 +7750,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -7769,7 +7769,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -7794,7 +7794,7 @@ pub macro dfdoc {
         /// is undefined, 0 will be returned.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -7813,7 +7813,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -7832,7 +7832,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -7851,7 +7851,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -7869,7 +7869,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -7887,7 +7887,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -7909,7 +7909,7 @@ pub macro dfdoc {
         /// Output is in arbitrary order.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -7928,7 +7928,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -7949,7 +7949,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -7969,7 +7969,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -7988,7 +7988,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -8013,7 +8013,7 @@ pub macro dfdoc {
         /// - WrapNum(-2, 0, 7) = 5
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -8032,7 +8032,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -8050,7 +8050,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -8068,7 +8068,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -8091,7 +8091,7 @@ pub macro dfdoc {
         /// - \[\[1, 2\], 5, \[3, 4\]\] becomes \[1, 2, 5, 3, 4\]
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -8109,7 +8109,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -8127,7 +8127,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -8146,7 +8146,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -8165,7 +8165,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -8183,7 +8183,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -8202,7 +8202,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -8221,7 +8221,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -8240,7 +8240,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -8259,7 +8259,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -8277,7 +8277,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -8296,7 +8296,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -8314,7 +8314,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -8333,7 +8333,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -8354,7 +8354,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -8373,7 +8373,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -8392,7 +8392,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -8410,7 +8410,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -8428,7 +8428,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -8447,7 +8447,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -8466,7 +8466,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -8484,7 +8484,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -8503,7 +8503,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -8529,7 +8529,7 @@ pub macro dfdoc {
         /// Always returns a string value.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -8548,7 +8548,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -8567,7 +8567,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -8586,7 +8586,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -8605,7 +8605,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -8624,7 +8624,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -8642,7 +8642,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -8661,7 +8661,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -8679,7 +8679,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -8698,7 +8698,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -8716,7 +8716,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -8734,7 +8734,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -8755,7 +8755,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -8777,7 +8777,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -8797,7 +8797,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -8817,7 +8817,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -8836,7 +8836,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -8857,7 +8857,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -8877,7 +8877,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -8895,7 +8895,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -8914,7 +8914,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -8933,7 +8933,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -8961,7 +8961,7 @@ pub macro dfdoc {
         /// list bounds.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -8983,7 +8983,7 @@ pub macro dfdoc {
         /// 'Get Item Enchantments' action.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -9001,7 +9001,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -9020,7 +9020,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -9038,7 +9038,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -9056,7 +9056,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -9082,7 +9082,7 @@ pub macro dfdoc {
         /// given list, 0 is returned.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -9107,7 +9107,7 @@ pub macro dfdoc {
         /// - BounceNum(-9, 0, 7) = 5
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -9130,7 +9130,7 @@ pub macro dfdoc {
         /// tan, atan and tanh functions.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -9150,7 +9150,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -9171,7 +9171,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -9191,7 +9191,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -9210,7 +9210,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -9228,7 +9228,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -9252,7 +9252,7 @@ pub macro dfdoc {
         /// - Filled Maps
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -9271,7 +9271,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -9292,7 +9292,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -9322,7 +9322,7 @@ pub macro dfdoc {
         /// loudness at its origin decreases.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -9341,7 +9341,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -9360,7 +9360,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -9381,7 +9381,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -9401,7 +9401,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -9422,7 +9422,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -9441,7 +9441,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -9461,7 +9461,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -9480,7 +9480,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -9500,7 +9500,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -9524,7 +9524,7 @@ pub macro dfdoc {
         /// - Filled Maps
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -9543,7 +9543,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -9561,7 +9561,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -9580,7 +9580,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -9602,7 +9602,7 @@ pub macro dfdoc {
         /// Output is in arbitrary order.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -9627,7 +9627,7 @@ pub macro dfdoc {
         /// their first index.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -9645,7 +9645,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -9664,7 +9664,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -9688,7 +9688,7 @@ pub macro dfdoc {
         /// generate timestamps.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -9707,7 +9707,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -9726,7 +9726,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -9755,7 +9755,7 @@ pub macro dfdoc {
         /// are multiplied by 8.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -9777,7 +9777,7 @@ pub macro dfdoc {
         /// All values will be converted to styled text.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -9802,7 +9802,7 @@ pub macro dfdoc {
         /// several adjacent "&lt;color&ht;" tags.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -9823,7 +9823,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -9842,7 +9842,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -9871,7 +9871,7 @@ pub macro dfdoc {
         /// are divided by 8.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -9890,7 +9890,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -9913,7 +9913,7 @@ pub macro dfdoc {
         /// not present.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -9932,7 +9932,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -9951,7 +9951,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -9970,7 +9970,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -9989,7 +9989,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -10008,7 +10008,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -10027,7 +10027,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -10055,7 +10055,7 @@ pub macro dfdoc {
         /// block.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -10073,7 +10073,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -10096,7 +10096,7 @@ pub macro dfdoc {
         /// cos, acos and cosh functions.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -10115,7 +10115,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -10134,7 +10134,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -10156,7 +10156,7 @@ pub macro dfdoc {
         /// number, the result is 0.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -10175,7 +10175,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -10196,7 +10196,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -10221,7 +10221,7 @@ pub macro dfdoc {
         /// found in the list.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -10239,7 +10239,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -10257,7 +10257,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -10278,7 +10278,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -10297,7 +10297,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -10315,7 +10315,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -10336,7 +10336,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -10356,7 +10356,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -10376,7 +10376,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -10397,7 +10397,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -10417,7 +10417,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -10437,7 +10437,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -10456,7 +10456,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -10475,7 +10475,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -10494,7 +10494,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -10513,7 +10513,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -10532,7 +10532,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -10551,7 +10551,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -10570,7 +10570,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -10591,7 +10591,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -10615,7 +10615,7 @@ pub macro dfdoc {
         /// contain the key, 0 is returned.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -10642,7 +10642,7 @@ pub macro dfdoc {
         /// is not lockable.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -10661,7 +10661,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -10679,7 +10679,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -10699,7 +10699,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -10718,7 +10718,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -10739,7 +10739,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -10759,7 +10759,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -10778,7 +10778,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -10799,7 +10799,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Emperor</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_emperor"))]
         $($item)*
@@ -10819,7 +10819,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -10839,7 +10839,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -10860,7 +10860,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -10883,7 +10883,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Overlord</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_overlord"))]
         $($item)*
@@ -10908,7 +10908,7 @@ pub macro dfdoc {
         /// cooldown.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -10927,7 +10927,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -10948,7 +10948,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -10974,7 +10974,7 @@ pub macro dfdoc {
         /// swimming animation.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -10993,7 +10993,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -11016,7 +11016,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Emperor</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_emperor"))]
         #[deprecated] 
@@ -11037,7 +11037,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -11056,7 +11056,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -11077,7 +11077,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -11099,7 +11099,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -11121,7 +11121,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -11141,7 +11141,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -11160,7 +11160,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -11190,7 +11190,7 @@ pub macro dfdoc {
         /// item, not the item that was clicked.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -11210,7 +11210,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -11231,7 +11231,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -11253,7 +11253,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -11273,7 +11273,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -11293,7 +11293,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -11312,7 +11312,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -11332,7 +11332,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -11351,7 +11351,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -11370,7 +11370,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -11388,7 +11388,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -11406,7 +11406,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -11426,7 +11426,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -11449,7 +11449,7 @@ pub macro dfdoc {
         /// Works with UUIDs.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -11474,7 +11474,7 @@ pub macro dfdoc {
         /// inventory.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -11493,7 +11493,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -11512,7 +11512,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -11531,7 +11531,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -11552,7 +11552,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -11574,7 +11574,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -11594,7 +11594,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -11614,7 +11614,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -11633,7 +11633,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -11652,7 +11652,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -11671,7 +11671,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -11691,7 +11691,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -11710,7 +11710,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -11729,7 +11729,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -11748,7 +11748,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -11767,7 +11767,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -11786,7 +11786,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -11805,7 +11805,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -11824,7 +11824,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -11843,7 +11843,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -11863,7 +11863,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -11883,7 +11883,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -11902,7 +11902,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -11923,7 +11923,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -11944,7 +11944,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -11967,7 +11967,7 @@ pub macro dfdoc {
         /// - Click Events
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -11992,7 +11992,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Emperor</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_emperor"))]
         $($item)*
@@ -12019,7 +12019,7 @@ pub macro dfdoc {
         /// - Place Block Event
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -12038,7 +12038,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -12057,7 +12057,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -12081,7 +12081,7 @@ pub macro dfdoc {
         /// needs to have one of them.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -12100,7 +12100,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -12119,7 +12119,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -12138,7 +12138,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -12158,7 +12158,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -12178,7 +12178,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -12203,7 +12203,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Emperor</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_emperor"))]
         $($item)*
@@ -12223,7 +12223,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -12242,7 +12242,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -12261,7 +12261,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -12280,7 +12280,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -12303,7 +12303,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         #[deprecated] 
@@ -12328,7 +12328,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         #[deprecated] 
@@ -12349,7 +12349,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -12369,7 +12369,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Overlord</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_overlord"))]
         $($item)*
@@ -12391,7 +12391,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -12413,7 +12413,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -12437,7 +12437,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Mythic</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_mythic"))]
         #[deprecated] 
@@ -12465,7 +12465,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Overlord</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_overlord"))]
         $($item)*
@@ -12489,7 +12489,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         #[deprecated] 
@@ -12510,7 +12510,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -12529,7 +12529,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -12551,7 +12551,7 @@ pub macro dfdoc {
         /// - Damage Events
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -12569,7 +12569,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -12588,7 +12588,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -12606,7 +12606,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -12627,7 +12627,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -12647,7 +12647,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -12671,7 +12671,7 @@ pub macro dfdoc {
         /// ⏵ Player Right Click Entity Event
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -12690,7 +12690,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -12711,7 +12711,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Overlord</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_overlord"))]
         $($item)*
@@ -12735,7 +12735,7 @@ pub macro dfdoc {
         /// after a Control: Wait block.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -12754,7 +12754,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -12786,7 +12786,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Mythic</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_mythic"))]
         $($item)*
@@ -12811,7 +12811,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Mythic</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_mythic"))]
         $($item)*
@@ -12830,7 +12830,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -12853,7 +12853,7 @@ pub macro dfdoc {
         /// after a Control: Wait block.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -12874,7 +12874,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -12899,7 +12899,7 @@ pub macro dfdoc {
         /// second later.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -12922,7 +12922,7 @@ pub macro dfdoc {
         /// - Entity Death Events
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -12945,7 +12945,7 @@ pub macro dfdoc {
         /// - Fish Event
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -12968,7 +12968,7 @@ pub macro dfdoc {
         /// the item used to open the container.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -12989,7 +12989,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -13013,7 +13013,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Mythic</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_mythic"))]
         #[deprecated] 
@@ -13037,7 +13037,7 @@ pub macro dfdoc {
         /// - Exhaustion Events
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -13060,7 +13060,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         #[deprecated] 
@@ -13085,7 +13085,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Mythic</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_mythic"))]
         #[deprecated] 
@@ -13106,7 +13106,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -13127,7 +13127,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -13161,7 +13161,7 @@ pub macro dfdoc {
         /// by cooking time.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -13180,7 +13180,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -13200,7 +13200,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -13224,7 +13224,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Dev</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(feature = "rank_dev")]
         #[doc(cfg(feature = "rank_dev"))]
         #[deprecated] 
@@ -13249,7 +13249,7 @@ pub macro dfdoc {
         /// disappear after 30 seconds.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -13270,7 +13270,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Overlord</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_overlord"))]
         $($item)*
@@ -13291,7 +13291,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -13310,7 +13310,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -13332,7 +13332,7 @@ pub macro dfdoc {
         /// - Shoot Bow Event
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -13350,7 +13350,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -13375,7 +13375,7 @@ pub macro dfdoc {
         /// Leggings, Boots, Off Hand
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -13394,7 +13394,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -13417,7 +13417,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Mythic</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_mythic"))]
         #[deprecated] 
@@ -13444,7 +13444,7 @@ pub macro dfdoc {
         /// path always goes upwards.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -13465,7 +13465,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -13488,7 +13488,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Mythic</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_mythic"))]
         $($item)*
@@ -13507,7 +13507,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -13530,7 +13530,7 @@ pub macro dfdoc {
         /// save CPU.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -13554,7 +13554,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Mythic</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_mythic"))]
         $($item)*
@@ -13578,7 +13578,7 @@ pub macro dfdoc {
         /// from 0 to 7.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -13599,7 +13599,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -13619,7 +13619,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -13638,7 +13638,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -13661,7 +13661,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Mythic</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_mythic"))]
         #[deprecated] 
@@ -13682,7 +13682,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -13703,7 +13703,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -13731,7 +13731,7 @@ pub macro dfdoc {
         /// SetBlock in certain situations.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -13754,7 +13754,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Mythic</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_mythic"))]
         #[deprecated] 
@@ -13774,7 +13774,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -13793,7 +13793,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -13821,7 +13821,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -13844,7 +13844,7 @@ pub macro dfdoc {
         /// - Player Heal Event
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -13865,7 +13865,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -13898,7 +13898,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Overlord</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_overlord"))]
         $($item)*
@@ -13920,7 +13920,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -13948,7 +13948,7 @@ pub macro dfdoc {
         /// tree growth.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -13969,7 +13969,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -13991,7 +13991,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -14011,7 +14011,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -14035,7 +14035,7 @@ pub macro dfdoc {
         /// (unless the campfire is unlit).
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -14061,7 +14061,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Mythic</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_mythic"))]
         $($item)*
@@ -14080,7 +14080,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -14103,7 +14103,7 @@ pub macro dfdoc {
         /// damage event cause.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -14126,7 +14126,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Mythic</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_mythic"))]
         #[deprecated] 
@@ -14149,7 +14149,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -14173,7 +14173,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         #[deprecated] 
@@ -14194,7 +14194,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -14215,7 +14215,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -14235,7 +14235,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -14255,7 +14255,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -14275,7 +14275,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Emperor</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_emperor"))]
         $($item)*
@@ -14295,7 +14295,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -14316,7 +14316,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -14337,7 +14337,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -14360,7 +14360,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Mythic</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_mythic"))]
         #[deprecated] 
@@ -14383,7 +14383,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -14403,7 +14403,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -14422,7 +14422,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -14444,7 +14444,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Emperor</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_emperor"))]
         $($item)*
@@ -14466,7 +14466,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -14486,7 +14486,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -14504,7 +14504,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -14527,7 +14527,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         #[deprecated] 
@@ -14548,7 +14548,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -14567,7 +14567,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -14589,7 +14589,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -14611,7 +14611,7 @@ pub macro dfdoc {
         /// Triggers the Heal Event.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -14630,7 +14630,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -14649,7 +14649,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -14671,7 +14671,7 @@ pub macro dfdoc {
         /// launch the player down.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -14692,7 +14692,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -14712,7 +14712,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -14745,7 +14745,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -14770,7 +14770,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Overlord</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_overlord"))]
         $($item)*
@@ -14792,7 +14792,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -14814,7 +14814,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -14834,7 +14834,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -14859,7 +14859,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Mythic</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_mythic"))]
         $($item)*
@@ -14881,7 +14881,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -14901,7 +14901,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -14922,7 +14922,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -14950,7 +14950,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Emperor</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_emperor"))]
         $($item)*
@@ -14970,7 +14970,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -14993,7 +14993,7 @@ pub macro dfdoc {
         /// have an absorption effect.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -15016,7 +15016,7 @@ pub macro dfdoc {
         /// not on fire.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -15036,7 +15036,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -15057,7 +15057,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -15080,7 +15080,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Emperor</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_emperor"))]
         $($item)*
@@ -15102,7 +15102,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -15122,7 +15122,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -15141,7 +15141,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -15162,7 +15162,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -15184,7 +15184,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -15203,7 +15203,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -15222,7 +15222,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -15245,7 +15245,7 @@ pub macro dfdoc {
         /// wearing an elytra.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -15264,7 +15264,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -15283,7 +15283,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -15302,7 +15302,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -15331,7 +15331,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -15353,7 +15353,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -15375,7 +15375,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Mythic</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_mythic"))]
         $($item)*
@@ -15397,7 +15397,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -15420,7 +15420,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Emperor</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_emperor"))]
         $($item)*
@@ -15444,7 +15444,7 @@ pub macro dfdoc {
         /// the player away from the location.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -15470,7 +15470,7 @@ pub macro dfdoc {
         /// in the 'helmet' slot.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -15489,7 +15489,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -15507,7 +15507,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -15544,7 +15544,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Mythic</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_mythic"))]
         $($item)*
@@ -15564,7 +15564,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -15584,7 +15584,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -15603,7 +15603,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -15628,7 +15628,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Mythic</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_mythic"))]
         $($item)*
@@ -15653,7 +15653,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Mythic</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_mythic"))]
         $($item)*
@@ -15675,7 +15675,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Emperor</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_emperor"))]
         $($item)*
@@ -15702,7 +15702,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -15726,7 +15726,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         #[deprecated] 
@@ -15750,7 +15750,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Emperor</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_emperor"))]
         $($item)*
@@ -15770,7 +15770,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -15791,7 +15791,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -15815,7 +15815,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Overlord</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_overlord"))]
         #[deprecated] 
@@ -15838,7 +15838,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Mythic</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_mythic"))]
         $($item)*
@@ -15857,7 +15857,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -15876,7 +15876,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -15900,7 +15900,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -15921,7 +15921,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Overlord</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_overlord"))]
         $($item)*
@@ -15941,7 +15941,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -15962,7 +15962,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Emperor</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_emperor"))]
         $($item)*
@@ -15984,7 +15984,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Mythic</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_mythic"))]
         $($item)*
@@ -16006,7 +16006,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -16027,7 +16027,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -16048,7 +16048,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -16068,7 +16068,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -16093,7 +16093,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Emperor</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_emperor"))]
         $($item)*
@@ -16118,7 +16118,7 @@ pub macro dfdoc {
         /// are disregarded.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -16141,7 +16141,7 @@ pub macro dfdoc {
         /// Disappears after 20s.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -16162,7 +16162,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Mythic</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_mythic"))]
         $($item)*
@@ -16182,7 +16182,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -16203,7 +16203,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -16223,7 +16223,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -16242,7 +16242,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -16261,7 +16261,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -16283,7 +16283,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -16306,7 +16306,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -16328,7 +16328,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -16351,7 +16351,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -16375,7 +16375,7 @@ pub macro dfdoc {
         /// set to Downfall to take effect.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -16395,7 +16395,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Overlord</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_overlord"))]
         $($item)*
@@ -16417,7 +16417,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Mythic</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_mythic"))]
         $($item)*
@@ -16443,7 +16443,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -16463,7 +16463,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -16484,7 +16484,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -16508,7 +16508,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Mythic</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_mythic"))]
         #[deprecated] 
@@ -16531,7 +16531,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -16562,7 +16562,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -16586,7 +16586,7 @@ pub macro dfdoc {
         /// to be played from an entity.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -16607,7 +16607,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -16627,7 +16627,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -16646,7 +16646,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -16666,7 +16666,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -16687,7 +16687,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -16713,7 +16713,7 @@ pub macro dfdoc {
         /// Type /migration for more info.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -16734,7 +16734,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -16753,7 +16753,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -16774,7 +16774,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Mythic</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_mythic"))]
         $($item)*
@@ -16800,7 +16800,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -16820,7 +16820,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -16841,7 +16841,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Mythic</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_mythic"))]
         $($item)*
@@ -16874,7 +16874,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -16894,7 +16894,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -16920,7 +16920,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -16942,7 +16942,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -16966,7 +16966,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Overlord</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_overlord"))]
         #[deprecated] 
@@ -16996,7 +16996,7 @@ pub macro dfdoc {
         /// number format of the whole scoreboard.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -17022,7 +17022,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Mythic</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_mythic"))]
         $($item)*
@@ -17048,7 +17048,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Overlord</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_overlord"))]
         $($item)*
@@ -17071,7 +17071,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Mythic</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_mythic"))]
         $($item)*
@@ -17093,7 +17093,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -17118,7 +17118,7 @@ pub macro dfdoc {
         /// upon taking damage.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -17139,7 +17139,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -17160,7 +17160,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -17179,7 +17179,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -17200,7 +17200,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -17219,7 +17219,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -17240,7 +17240,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -17270,7 +17270,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -17292,7 +17292,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -17314,7 +17314,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -17335,7 +17335,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Emperor</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_emperor"))]
         $($item)*
@@ -17364,7 +17364,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Overlord</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_overlord"))]
         $($item)*
@@ -17386,7 +17386,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Emperor</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_emperor"))]
         $($item)*
@@ -17405,7 +17405,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -17424,7 +17424,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -17444,7 +17444,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -17465,7 +17465,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -17492,7 +17492,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -17516,7 +17516,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Overlord</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_overlord"))]
         $($item)*
@@ -17541,7 +17541,7 @@ pub macro dfdoc {
         /// used or picked up.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -17564,7 +17564,7 @@ pub macro dfdoc {
         /// of the given type.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -17585,7 +17585,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -17607,7 +17607,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -17627,7 +17627,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -17650,7 +17650,7 @@ pub macro dfdoc {
         /// will be merged together.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -17669,7 +17669,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -17689,7 +17689,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -17711,7 +17711,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Mythic</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_mythic"))]
         $($item)*
@@ -17735,7 +17735,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Mythic</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_mythic"))]
         #[deprecated] 
@@ -17760,7 +17760,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Emperor</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_emperor"))]
         #[deprecated] 
@@ -17785,7 +17785,7 @@ pub macro dfdoc {
         /// of the given type.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -17804,7 +17804,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -17825,7 +17825,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -17851,7 +17851,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -17875,7 +17875,7 @@ pub macro dfdoc {
         /// to 30 air ticks.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -17897,7 +17897,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Mythic</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_mythic"))]
         $($item)*
@@ -17919,7 +17919,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Emperor</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_emperor"))]
         $($item)*
@@ -17943,7 +17943,7 @@ pub macro dfdoc {
         /// one moon phase.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -17961,7 +17961,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -17982,7 +17982,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -18002,7 +18002,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -18020,7 +18020,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -18043,7 +18043,7 @@ pub macro dfdoc {
         /// gliding with an elytra.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -18065,7 +18065,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -18091,7 +18091,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Emperor</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_emperor"))]
         $($item)*
@@ -18115,7 +18115,7 @@ pub macro dfdoc {
         /// or damage event.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -18135,7 +18135,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Overlord</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_overlord"))]
         $($item)*
@@ -18168,7 +18168,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Overlord</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_overlord"))]
         $($item)*
@@ -18190,7 +18190,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -18212,7 +18212,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -18237,7 +18237,7 @@ pub macro dfdoc {
         /// with projectiles.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -18260,7 +18260,7 @@ pub macro dfdoc {
         /// launch the player backward.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -18280,7 +18280,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -18299,7 +18299,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -18320,7 +18320,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Noble</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_noble"))]
         $($item)*
@@ -18347,7 +18347,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Emperor</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_emperor"))]
         $($item)*
@@ -18371,7 +18371,7 @@ pub macro dfdoc {
         /// have an absorption effect.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -18392,7 +18392,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -18414,7 +18414,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Emperor</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_emperor"))]
         $($item)*
@@ -18433,7 +18433,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -18458,7 +18458,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Overlord</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_overlord"))]
         $($item)*
@@ -18478,7 +18478,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -18499,7 +18499,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -18521,7 +18521,7 @@ pub macro dfdoc {
         /// ##### Requires Rank: **<u>Emperor</u>**
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[doc(cfg(feature = "rank_emperor"))]
         $($item)*
@@ -18545,7 +18545,7 @@ pub macro dfdoc {
         /// depending on the number format type.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -18569,7 +18569,7 @@ pub macro dfdoc {
         /// sound effect.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -18589,7 +18589,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -18609,7 +18609,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -18630,7 +18630,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -18651,7 +18651,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -18671,7 +18671,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -18692,7 +18692,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -18714,7 +18714,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -18735,7 +18735,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -18755,7 +18755,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -18776,7 +18776,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -18797,7 +18797,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -18816,7 +18816,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -18837,7 +18837,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -18858,7 +18858,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -18878,7 +18878,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -18898,7 +18898,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -18918,7 +18918,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -18939,7 +18939,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -18961,7 +18961,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -18986,7 +18986,7 @@ pub macro dfdoc {
         /// NOT Arrow.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -19005,7 +19005,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -19035,7 +19035,7 @@ pub macro dfdoc {
         /// entities are selected.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -19056,7 +19056,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -19081,7 +19081,7 @@ pub macro dfdoc {
         /// NOT Arrow.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -19102,7 +19102,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -19123,7 +19123,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -19144,7 +19144,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -19166,7 +19166,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -19191,7 +19191,7 @@ pub macro dfdoc {
         /// NOT Arrow.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -19212,7 +19212,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -19232,7 +19232,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -19251,7 +19251,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -19270,7 +19270,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -19289,7 +19289,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -19308,7 +19308,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -19329,7 +19329,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -19351,7 +19351,7 @@ pub macro dfdoc {
         /// - Sheep
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -19370,7 +19370,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -19389,7 +19389,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -19412,7 +19412,7 @@ pub macro dfdoc {
         /// still remain in selections.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -19431,7 +19431,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -19451,7 +19451,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -19472,7 +19472,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -19494,7 +19494,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -19515,7 +19515,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -19534,7 +19534,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -19555,7 +19555,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -19578,7 +19578,7 @@ pub macro dfdoc {
         /// - Repeat
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -19602,7 +19602,7 @@ pub macro dfdoc {
         /// at the end of a Function.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -19623,7 +19623,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -19647,7 +19647,7 @@ pub macro dfdoc {
         /// - Repeat
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -19674,7 +19674,7 @@ pub macro dfdoc {
         /// if they have left the game.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -19698,7 +19698,7 @@ pub macro dfdoc {
         /// fractions of a tick.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -19718,7 +19718,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -19743,7 +19743,7 @@ pub macro dfdoc {
         /// for any level.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -19762,7 +19762,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -19782,7 +19782,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -19803,7 +19803,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -19822,7 +19822,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -19840,7 +19840,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -19860,7 +19860,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -19879,7 +19879,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -19898,7 +19898,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -19919,7 +19919,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -19941,7 +19941,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -19967,7 +19967,7 @@ pub macro dfdoc {
         /// - Location
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -19985,7 +19985,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -20006,7 +20006,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -20026,7 +20026,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -20046,7 +20046,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -20070,7 +20070,7 @@ pub macro dfdoc {
         /// of the values are found.
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -20091,7 +20091,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -20113,7 +20113,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
@@ -20133,7 +20133,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -20152,7 +20152,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -20171,7 +20171,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -20190,7 +20190,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -20209,7 +20209,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -20228,7 +20228,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -20248,7 +20248,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -20268,7 +20268,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -20287,7 +20287,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         $($item)*
     },
@@ -20308,7 +20308,7 @@ pub macro dfdoc {
         )?
         /// 
         /// ## 
-        /// *\[2024-11-09 21:59:36 UTC\] Automatically generated from the action dump.*
+        /// *\[2024-11-09 22:20:49 UTC\] Automatically generated from the action dump.*
         #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
         #[deprecated] 
         $($item)*
