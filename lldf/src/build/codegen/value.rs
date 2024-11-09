@@ -32,6 +32,11 @@ pub enum CodeValue { // TODO: Add item
         dur  : u32,
         amp  : u8
     },
+    Item {
+        id    : String,
+        count : u8,
+        nbt   : String
+    },
     Variable {
         name  : String,
         scope : VariableScope
@@ -119,6 +124,7 @@ impl CodeValue {
         CodeValue::SoundKeyed { .. } => true,
         CodeValue::Particle   { .. } => true,
         CodeValue::Potion     { .. } => true,
+        CodeValue::Item       { .. } => true,
         CodeValue::Variable   { .. } => false,
         CodeValue::Gamevalue  { .. } => false,
         CodeValue::Parameter  { .. } => false,
@@ -155,10 +161,20 @@ impl CodeValue {
     } }
     pub fn replace_line_var_with_constant(&mut self, var_name : &str, with : &CodeValue) -> () { match (self) {
         CodeValue::String(value) | CodeValue::Text(value) | CodeValue::Number(value)
-            => { *value = value.replace(&format!("%var({})", var_name), &with.to_pvar_string()); },
+            => {
+                let replacing = format!("%var({})", var_name);
+                if (value.contains(&replacing)) {
+                    *value = value.replace(&replacing, &with.to_pvar_string());
+                }
+            },
         CodeValue::Variable { name, .. } => {
             if (name == var_name) { *self = with.clone(); }
-            else { *name = name.replace(&format!("%var({})", var_name), &with.to_pvar_string()); }
+            else {
+                let replacing = format!("%var({})", var_name);
+                if (name.contains(&replacing)) {
+                    *name = name.replace(&replacing, &with.to_pvar_string());
+                }
+            }
         },
         CodeValue::Parameter { name, .. } => { if (name == var_name) { panic!("Attempted to replace line var in parameter") } },
         CodeValue::Actiontag { value, variable, .. } => {
@@ -245,6 +261,7 @@ impl CodeValue {
         Self::Potion    { kind, dur, amp } => json::json!({ "id" : "pot",    "data" : { "pot" : kind, "dur" : dur, "amp" : amp } }),
         Self::Variable  { name, scope    } => json::json!({ "id" : "var",    "data" : { "name" : name, "scope" : scope.as_ref() } }),
         Self::Gamevalue { kind, target   } => json::json!({ "id" : "g_val",  "data" : { "type" : kind, "target" : target } }),
+        Self::Item      { id, count, nbt } => json::json!({ "id" : "item",   "data" : { "item" : format!("{{Count:{}b,DF_NBT:3700,id:\"minecraft:{}\",tag:{}}}", count, id, nbt) }}),
         Self::Parameter { name, typ, plural, optional, description, note } => {
             let mut data = json::json!({
                 "name"     : name,

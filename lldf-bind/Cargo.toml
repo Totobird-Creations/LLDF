@@ -9,7 +9,7 @@ exclude = [ "/src/bind" ]
 
 publish = false
 [features]
-default = [ "rank_overlord" ] # DISABLE THIS BEFORE RELEASE
+default = [ "rank_overlord", "mc_1_21_1" ] # DISABLE THIS BEFORE RELEASE
 
 en_us         = [ ]
 
@@ -20,11 +20,11 @@ rank_mythic   = [ ]
 rank_overlord = [ ]
 rank_dev      = [ ]
 
-internals     = [ ]
+mc_1_21_1 = [ ]
 
 [package.metadata.docs.rs]
 no-default-features = true
-features = [ "rank_overlord", "internals" ]
+features = [ "rank_overlord", "mc_1_21_1" ]
 
 
 [dependencies.lldf-bind-proc]

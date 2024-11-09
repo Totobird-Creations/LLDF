@@ -16,9 +16,9 @@ use super::codegen::{ CodeValue, VariableScope };
 pub enum Value {
 
     // Constants
+    ConstString(String),
     ConstInt(u64),
     ConstFloat(f64),
-    ConstString(String),
 
     Local(Name),
     Global(Name)
@@ -29,9 +29,9 @@ impl Value {
 
     pub fn to_codevalue(&self, module : &ParsedModule, function : &mut ParsedFunction) -> Result<CodeValue, Box<dyn Error>> { match (self) {
 
+        Self::ConstString (value ) => Ok(CodeValue::String(value.clone())),
         Self::ConstInt    (value ) => Ok(CodeValue::Number(value.to_string())),
         Self::ConstFloat  (value ) => Ok(CodeValue::Number(value.to_string())),
-        Self::ConstString (value ) => Ok(CodeValue::String(value.clone())),
 
         Self::Local(name) => Ok(CodeValue::Variable { name : name_to_local(name), scope : VariableScope::Line }),
 
@@ -46,7 +46,9 @@ impl Value {
                 Global::NoopFunction |
                 Global::ActionFunction { .. } |
                 Global::ActionPtrFunction { .. } |
-                Global::GamevalueFunction { .. }
+                Global::GamevalueFunction { .. } |
+                Global::SoundFunction { .. } |
+                Global::ItemFunction { .. }
                     => unreachable!(),
 
             }
@@ -57,7 +59,7 @@ impl Value {
 
     pub fn to_ptr_accessor_part_strings(&self, module : &ParsedModule) -> Result<(String, String), Box<dyn Error>> { match (self) {
 
-        Self::ConstInt(_) | Self::ConstFloat(_) | Self::ConstString(_)
+        Self::ConstString(_) | Self::ConstInt(_) | Self::ConstFloat(_)
             => { Err("Can not use constant as pointer accessor".into()) },
 
         Self::Local(name) => {
@@ -75,7 +77,9 @@ impl Value {
                 Global::UserFunction { .. } |
                 Global::ActionFunction { .. } |
                 Global::ActionPtrFunction { .. } |
-                Global::GamevalueFunction { .. }
+                Global::GamevalueFunction { .. } |
+                Global::SoundFunction { .. } |
+                Global::ItemFunction { .. }
                     => unreachable!(),
 
             }
@@ -86,7 +90,7 @@ impl Value {
 
     pub fn to_ptr_accessor_string(&self, module : &ParsedModule) -> Result<String, Box<dyn Error>> { match (self) {
 
-        Self::ConstInt(_) | Self::ConstFloat(_) | Self::ConstString(_)
+        Self::ConstString(_) | Self::ConstInt(_) | Self::ConstFloat(_)
             => { Err("Can not use constant as pointer accessor".into()) },
 
         Self::Local(name) => {
@@ -105,7 +109,9 @@ impl Value {
                 Global::NoopFunction |
                 Global::ActionFunction { .. } |
                 Global::ActionPtrFunction { .. } |
-                Global::GamevalueFunction { .. }
+                Global::GamevalueFunction { .. } |
+                Global::SoundFunction { .. } |
+                Global::ItemFunction { .. }
                     => unreachable!(),
 
             }

@@ -32,14 +32,12 @@ macro feature_require_one {
 }
 // Error if the number of enabled server rank features is not exactly one.
 feature_require_one!{ "server rank" => "rank_none", "rank_noble", "rank_emperor", "rank_mythic", "rank_overlord", "rank_dev" }
+// Error if the number of enabled game version features is not exactly one.
+feature_require_one!{ "game version" => "mc_1_21_1" }
 
 // Warn if dev rank is enabled.
 #[cfg(feature = "rank_dev")]
 compile_warning!("Developer server rank enabled. You probably shouldn't be using this.");
-
-// Warn if public internals is enabled.
-#[cfg(feature = "internals")]
-compile_warning!("Public internals enabled. Here be dragons.");
 
 // Warn if target family is not wasm.
 #[cfg(not(target_family = "wasm"))]
@@ -49,11 +47,6 @@ compile_warning!("Target family is not wasm. It probably should be.");/*  */
 pub mod core;
 use crate::core::prelude::*;
 
-
-#[cfg(feature = "internals")]
-#[doc(cfg(feature = "internals"))]
-pub mod bind;
-#[cfg(not(feature = "internals"))]
 mod bind;
 
 pub mod types;

@@ -17,7 +17,7 @@
 - [ ] Float
 - [ ] List
 - [ ] Dict
-- [ ] PlayerSel
+- [x] PlayerSel
 - [ ] EntitySel
 
 ### LLVM types:

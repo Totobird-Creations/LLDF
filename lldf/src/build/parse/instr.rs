@@ -214,7 +214,7 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
                             let temp_var = CodeValue::Variable { name : function.create_temp_var_name(), scope : VariableScope::Line };
                             let params = vec![
                                 temp_var.clone(),
-                                parse_oper(module, function, &arguments[0].0)?.to_codevalue(module, function)?
+                                parse_oper(module, function, &arguments[skip_params].0)?.to_codevalue(module, function)?
                             ];
                             function.line.blocks.push(Codeblock::action("set_var", "=", params, vec![ ]));
                             final_tags.push(CodeValue::Actiontag { kind : kind.clone(), value : default_value.clone(), variable : Some(Box::new(temp_var)) });
@@ -242,6 +242,30 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
                         let params = vec![
                             CodeValue::Variable { name : name_to_local(dest), scope : VariableScope::Line },
                             CodeValue::Gamevalue { kind : kind.clone(), target : target.clone() }
+                        ];
+                        function.line.blocks.push(Codeblock::action("set_var", "=", params, vec![]));
+                        function.locals.insert(dest.clone(), Value::Local(dest.clone()));
+                    }
+                    Ok(())
+                },
+
+                Global::SoundFunction { id } => {
+                    if let Some(dest) = dest {
+                        let params = vec![
+                            CodeValue::Variable { name : name_to_local(dest), scope : VariableScope::Line },
+                            CodeValue::SoundKeyed { key : id.clone(), volume : 1.0, pitch : 1.0 }
+                        ];
+                        function.line.blocks.push(Codeblock::action("set_var", "=", params, vec![]));
+                        function.locals.insert(dest.clone(), Value::Local(dest.clone()));
+                    }
+                    Ok(())
+                },
+
+                Global::ItemFunction { id } => {
+                    if let Some(dest) = dest {
+                        let params = vec![
+                            CodeValue::Variable { name : name_to_local(dest), scope : VariableScope::Line },
+                            CodeValue::Item { id : id.clone(), count : 1, nbt : "{}".to_string() }
                         ];
                         function.line.blocks.push(Codeblock::action("set_var", "=", params, vec![]));
                         function.locals.insert(dest.clone(), Value::Local(dest.clone()));

@@ -19,7 +19,7 @@ use super::{ Codeblock, CodeLine, CodeValue };
 
 pub fn optimise(line : &mut CodeLine) -> () {
     let mut did_nothing = 0;
-    while (did_nothing < 2) {
+    while (did_nothing < 5) {
         let mut did_something = false;
         did_something &= redundant_selection(line);
         did_something &= dead_selection(line);

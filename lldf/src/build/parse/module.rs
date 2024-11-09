@@ -36,8 +36,14 @@ pub enum Global {
         setter_tags      : Vec<CodeValue>
     },
     GamevalueFunction {
-        kind : String,
+        kind   : String,
         target : String
+    },
+    SoundFunction {
+        id : String
+    },
+    ItemFunction {
+        id : String
     },
     Constant(Value)
 }
@@ -140,7 +146,29 @@ pub fn parse_module(module : &Module) -> Result<ParsedModule, Box<dyn Error>> {
                         continue;
                     }
                 }
-            }
+            },
+
+            Some("DF_SOUND") => {
+                if let (Some(sound), None) = (parts.next(), parts.next()) {
+                    {
+                        let id = linked_name_to_sound_id(sound);
+                        parsed.globals.insert(Name::Name(Box::new(module_function.name.clone())), Global::SoundFunction { id });
+                        continue;
+                    }
+                }
+            },
+
+            Some("DF_ITEM") => {
+                if let (Some(item), None) = (parts.next(), parts.next()) {
+                    let mut item_parts = item.split("_");
+                    if let (Some(id), None) = (item_parts.next(), item_parts.next())
+                    {
+                        let id = linked_name_to_item_id(id);
+                        parsed.globals.insert(Name::Name(Box::new(module_function.name.clone())), Global::ItemFunction { id });
+                        continue;
+                    }
+                }
+            },
 
             _ => { }
         }
@@ -234,9 +262,16 @@ pub fn linked_name_to_gamevalue_kind(gamevalue_kind : &str) -> String {
 pub fn linked_name_to_gamevalue_target(gamevalue_kind : &str) -> String {
     names_to_symbols(&gamevalue_kind.to_title_case().replace(" ", "")).to_title_case()
 }
+pub fn linked_name_to_item_id(item_id : &str) -> String {
+    names_to_symbols(&item_id.to_title_case().replace(" ", "")).to_snake_case()
+}
+pub fn linked_name_to_sound_id(sound_id : &str) -> String {
+    sound_id.split("_").map(|part| names_to_symbols(&part.to_title_case().replace(" ", "")).to_snake_case()).intersperse(".".to_string()).collect::<String>()
+}
 pub fn names_to_symbols(from : &str) -> String {
     // Yes, I know this sucks. No, I'm not going to find something better.
-    from.replace("Specialcharplus"             , "+")
+    from.replace("Specialcharspace"            , " ")
+        .replace("Specialcharplus"             , "+")
         .replace("Specialcharminus"            , "-")
         .replace("Specialcharslash"            , "/")
         .replace("Specialcharpercent"          , "%")

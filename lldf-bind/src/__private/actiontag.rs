@@ -4,7 +4,7 @@ pub macro actiontag {
         $vis:vis enum $ident:ident { $(
             $( #[$($varattrs:tt)*] )*
             $varident:ident = $varvalue:tt
-    ),* }
+    ),* $(,)? }
 
     ) => { ::paste::paste!{
 
@@ -22,15 +22,14 @@ pub macro actiontag {
             $ident : &'static str
         }
         impl $ident { $(
+            #[doc = crate::core::concat!("`", $varvalue, "`")]
             #[allow(non_upper_case_globals)]
             $( #[$($varattrs)*] )*
             $vis const $varident : Self = Self::$ident( [< __ $ident >] { $ident : $varvalue } );
         )* }
         impl crate::core::string::ToString for $ident {
             fn to_string(&self) -> crate::types::String {
-                //use crate::core::clone::Clone;
                 let Self::$ident(variant) = self;
-                //unsafe{ (*(variant.$ident as *const str as *const crate::types::String)).clone() }
                 use crate::core::convert::From;
                 crate::types::String::from(variant.$ident)
             }

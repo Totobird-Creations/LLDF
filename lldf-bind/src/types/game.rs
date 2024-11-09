@@ -2,7 +2,9 @@ use crate::prelude::*;
 use crate::bind::DFOpaqueValue;
 
 
-pub enum Game { /* Unconstructable */ }
+pub struct Game {
+    _unconstructable : ()
+}
 
 impl Game {
 

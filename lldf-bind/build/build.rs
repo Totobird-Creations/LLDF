@@ -1,13 +1,18 @@
-#![feature(decl_macro)]
+#![feature(
+    decl_macro,
+    iter_intersperse
+)]
 
 
 mod dbc;
+mod data;
 mod util;
 
 use std::env::current_dir;
 use std::fs::File;
 use std::io::{ self, Write };
 use std::error::Error;
+use std::env::var_os;
 
 use dirs::download_dir;
 use chrono::Utc;
@@ -19,17 +24,18 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     // TODO: find a public actiondump api.
     //let data = reqwest::blocking::get("https://dfonline.dev/public/db.json")?.text()?; // OUTDATED
-    let data = std::fs::read_to_string(download_dir().unwrap().join("actiondump.json"))?;
-    let mut out : dbc::DBC = serde_json::from_str(&data)?;
+    let mut dbc : dbc::DBC = serde_json::from_str(&std::fs::read_to_string(download_dir().unwrap().join("actiondump.json"))?)?;
+    let version = get_game_version();
+    let items  : Option<data::Items  > = if let Some(version) = &version { serde_json::from_str(&reqwest::blocking::get(format!("https://github.com/PrismarineJS/minecraft-data/raw/refs/heads/master/data/pc/{}/items.json",  version))?.text()?)? } else { None };
+    let sounds : Option<data::Sounds > = if let Some(version) = &version { serde_json::from_str(&reqwest::blocking::get(format!("https://github.com/PrismarineJS/minecraft-data/raw/refs/heads/master/data/pc/{}/sounds.json", version))?.text()?)? } else { None };
 
-    let autogen_message = format!("*\\[{}\\] Automatically generated from the action dump.*", Utc::now().format("%Y-%m-%d %H:%M:%S UTC"));
-
+    let dbc_autogen_message = format!("*\\[{}\\] Automatically generated from the action dump.*", Utc::now().format("%Y-%m-%d %H:%M:%S UTC"));
 
     // Doc
     {
         let mut file = File::create(cwd.join("src/bind/doc.rs"))?;
         writeln!(file, "pub macro dfdoc {{")?;
-        for action in &mut out.actions {
+        for action in &mut dbc.actions {
 
             let code_block_name = action.code_block_name.to_title_case().replace(" ", "");
             let action_name     = action.name.to_title_case().replace(" ", "");
@@ -45,7 +51,7 @@ fn main() -> Result<(), Box<dyn Error>> {
                 &action.icon.works_with,
                 &action.icon.additional_info,
                 &action.icon.required_rank,
-                &autogen_message
+                &dbc_autogen_message
             )?;
             writeln!(file, "        $($item)*")?;
             writeln!(file, "    }},")?;
@@ -55,6 +61,46 @@ fn main() -> Result<(), Box<dyn Error>> {
         writeln!(file, "        compile_error!(concat!(\"Unknown target `\", stringify!($a), \"/\", stringify!($b), \"`\"));")?;
         writeln!(file, "    }}")?;
         writeln!(file, "}}")?;
+    }
+
+    // Items
+    {
+        let mut file = File::create(cwd.join("src/bind/items.rs"))?;
+        if let Some(items) = items {
+            writeln!(file, "extern \"C\" {{")?;
+            for item in &items {
+                let name = item.name.to_title_case().replace(" ", "");
+                writeln!(file, "    fn DF_ITEM__{}( ) -> Item;", name)?;
+            }
+            writeln!(file, "}}")?;
+            writeln!(file, "impl Item {{")?;
+            for item in &items {
+                let name = item.name.to_title_case().replace(" ", "");
+                writeln!(file, "    /// `{}`", item.display_name)?;
+                writeln!(file, "    #[inline(always)] pub fn {}() -> Self {{ unsafe {{ DF_ITEM__{}() }} }}", item.name, name)?;
+            }
+            writeln!(file, "}}")?;
+        }
+    }
+
+    // Sounds
+    {
+        let mut file = File::create(cwd.join("src/bind/sounds.rs"))?;
+        if let Some(sounds) = sounds {
+            writeln!(file, "extern \"C\" {{")?;
+            for sound in &sounds {
+                let name = sound.name.split(".").map(|part| part.to_title_case().replace(" ", "")).intersperse("_".to_string()).collect::<String>();
+                writeln!(file, "    fn DF_SOUND__{}( ) -> Sound;", name)?;
+            }
+            writeln!(file, "}}")?;
+            writeln!(file, "impl Sound {{")?;
+            for sound in &sounds {
+                let name = sound.name.split(".").map(|part| part.to_title_case().replace(" ", "")).intersperse("_".to_string()).collect::<String>();
+                writeln!(file, "    /// `{}`", sound.name)?;
+                writeln!(file, "    #[inline(always)] pub fn {}() -> Self {{ unsafe {{ DF_SOUND__{}() }} }}", sound.name.replace(".", "_"), name)?;
+            }
+            writeln!(file, "}}")?;
+        }
     }
 
 
@@ -159,4 +205,16 @@ fn write_doc_comment<W : Write>(
     }
 
     Ok(())
+}
+
+
+fn get_game_version() -> Option<String> {
+    fn get_game_version_cases() -> Result<(), String> {
+        get_game_version_case("1_21_1")?;
+        Ok(())
+    }
+    fn get_game_version_case(version : &str) -> Result<(), String> {
+        if let Some(_) = var_os(format!("CARGO_FEATURE_MC_{}", version)) { Err(version.replace("_", ".")) } else { Ok(()) }
+    }
+    get_game_version_cases().err()
 }

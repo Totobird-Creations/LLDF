@@ -54,13 +54,37 @@ pub fn parse_const(module : &ParsedModule, function : &mut ParsedFunction, cor :
 
     Constant::Mul(_) => todo!(),
 
+    Constant::And(_) => todo!(),
+
+    Constant::Or(_) => todo!(),
+
     Constant::Xor(_) => todo!(),
 
     Constant::Shl(_) => todo!(),
 
+    Constant::LShr(_) => todo!(),
+
+    Constant::AShr(_) => todo!(),
+
     Constant::GetElementPtr(_) => todo!(),
 
     Constant::Trunc(Trunc { operand, .. }) => parse_const(module, function, operand),
+
+    Constant::ZExt(_) => todo!(),
+
+    Constant::SExt(_) => todo!(),
+
+    Constant::FPTrunc(_) => todo!(),
+
+    Constant::FPExt(_) => todo!(),
+
+    Constant::FPToUI(_) => todo!(),
+
+    Constant::FPToSI(_) => todo!(),
+
+    Constant::UIToFP(_) => todo!(),
+
+    Constant::SIToFP(_) => todo!(),
 
     Constant::PtrToInt(PtrToInt { operand, .. }) => parse_const(module, function, operand),
 

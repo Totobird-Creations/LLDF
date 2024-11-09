@@ -31,11 +31,11 @@ version = "0.12"
 [dependencies.decomp]
 version          = ">=0.1.4"
 default-features = false
-features         = [ "llvm-18" ]
+features         = [ "llvm-17" ]
 
 [dependencies.llvm-ir]
 version  = "0.11"
-features = [ "llvm-18" ]
+features = [ "llvm-17" ]
 
 
 [dependencies.serde_json]
