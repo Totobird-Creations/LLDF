@@ -2,6 +2,7 @@ use crate::prelude::*;
 use crate::bind::DFOpaqueValue;
 
 
+/// A colour.
 #[derive(Clone)]
 #[repr(transparent)]
 pub struct Colour {
@@ -11,6 +12,9 @@ pub struct Colour {
 
 impl Colour {
 
+    /// Creates a `Colour` using a hex code.
+    /// 
+    /// **No checks are done to make sure this hex code is valid.**
     #[inline(always)]
     pub unsafe fn from_hexcode_unchecked<S : Into<String>>(hexcode : S) -> Self { Self { hexcode : hexcode.into() } }
 
@@ -20,11 +24,11 @@ impl Colour {
 
     #[lldf_bind_proc::dfdoc(SetVariable/Hsbcolor)]
     #[inline(always)]
-    pub fn from_hsb<U0 : Into<UInt>, U1 : Into<UInt>, U2 : Into<UInt>>(h : U0, s : U1, b : U2) -> Self { Self { hexcode : unsafe{ DF_ACTION__SetVariable_RGBColor(h.into(), s.into(), b.into()) } } }
+    pub fn from_hsb<U0 : Into<UInt>, U1 : Into<UInt>, U2 : Into<UInt>>(h : U0, s : U1, b : U2) -> Self { Self { hexcode : unsafe{ DF_ACTION__SetVariable_HSBColor(h.into(), s.into(), b.into()) } } }
 
     #[lldf_bind_proc::dfdoc(SetVariable/Hslcolor)]
     #[inline(always)]
-    pub fn from_hsl<U0 : Into<UInt>, U1 : Into<UInt>, U2 : Into<UInt>>(h : U0, s : U1, l : U2) -> Self { Self { hexcode : unsafe{ DF_ACTION__SetVariable_RGBColor(h.into(), s.into(), l.into()) } } }
+    pub fn from_hsl<U0 : Into<UInt>, U1 : Into<UInt>, U2 : Into<UInt>>(h : U0, s : U1, l : U2) -> Self { Self { hexcode : unsafe{ DF_ACTION__SetVariable_HSLColor(h.into(), s.into(), l.into()) } } }
 
 }
 
@@ -35,6 +39,7 @@ impl Colour {
         self.hexcode.clone()
     }
 
+    #[lldf_bind_proc::dfdoc(SetVariable/GetColorChannels { ColorChannels = RGB })]
     #[inline(always)]
     pub fn rgb(&self) -> (UInt, UInt, UInt) { unsafe {
         let rgb = DF_ACTION__SetVariable_GetColorChannels_ColorChannels_RGB(self.hexcode.clone()).to_opaque();
@@ -44,6 +49,7 @@ impl Colour {
         (r, g, b)
     } }
 
+    #[lldf_bind_proc::dfdoc(SetVariable/GetColorChannels { ColorChannels = HSB })]
     #[inline(always)]
     pub fn hsb(&self) -> (Float, Float, Float) { unsafe {
         let hsb = DF_ACTION__SetVariable_GetColorChannels_ColorChannels_HSB(self.hexcode.clone()).to_opaque();
@@ -53,6 +59,7 @@ impl Colour {
         (h, s, b)
     } }
 
+    #[lldf_bind_proc::dfdoc(SetVariable/GetColorChannels { ColorChannels = HSL })]
     #[inline(always)]
     pub fn hsl(&self) -> (Float, Float, Float) { unsafe {
         let hsl = DF_ACTION__SetVariable_GetColorChannels_ColorChannels_HSL(self.hexcode.clone()).to_opaque();
