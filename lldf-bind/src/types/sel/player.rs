@@ -463,7 +463,13 @@ impl PlayerSel {
 /// `PLAYER_ACTION` / `Movement`
 impl PlayerSel {
 
-    // TODO: Teleport
+    #[lldf_bind_proc::dfdoc(PlayerAction/Teleport)]
+    #[inline(always)]
+    pub fn set_location(&self, location : Location) -> () { unsafe {
+        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
+        DF_ACTION__PlayerAction_Teleport_KeepVelocity_True_KeepCurrentRotation_True(location);
+        DF_ACTION__SelectObject_Reset();
+    } }
 
     // TODO: LaunchUp
 
@@ -842,6 +848,8 @@ extern "C" {
     fn DF_ACTION__PlayerAction_SetCollidable_Collision_DynamicFalse( enable : String ) -> ();
     fn DF_ACTION__PlayerAction_InstantRespawn_InstantRespawn_DynamicFalse( enable : String ) -> ();
     fn DF_ACTION__PlayerAction_SetHandCrafting_AllowHandCrafting_DynamicFalse( enable : String ) -> ();
+
+    fn DF_ACTION__PlayerAction_Teleport_KeepVelocity_True_KeepCurrentRotation_True( location : Location ) -> ();
 
     fn DF_ACTION__PlayerAction_SetTickRate( ticks_per_second : UInt ) -> ();
 

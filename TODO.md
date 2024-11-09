@@ -4,7 +4,9 @@
 - [ ] Number
 - [ ] Location
 - [ ] Vector
-- [ ] Sound
+- [x] Sound
+  - [x] Keyed sounds
+  - [ ] Named sounds
 - [ ] Particle
 - [ ] Potion
 - [ ] Item
@@ -32,6 +34,7 @@
 
 
 ### Fun types cause I feel like it:
+- [ ] Colour
 - [ ] Matrix
 - [ ] Quaternion
 

@@ -12,6 +12,8 @@ mod substitutable_string;
 pub use substitutable_string::substitutable_string;
 mod substitutable_text;
 pub use substitutable_text::substitutable_text;
+mod constant_sound;
+pub use constant_sound::constant_sound;
 
 
 use super::{ Codeblock, CodeLine, CodeValue };
@@ -28,6 +30,7 @@ pub fn optimise(line : &mut CodeLine) -> () {
         did_something &= substitutable_arithmetic(line);
         did_something &= substitutable_string(line);
         did_something &= substitutable_text(line);
+        did_something &= constant_sound(line);
         did_nothing = if (did_something) { 0 } else { did_nothing + 1 };
     }
 }
