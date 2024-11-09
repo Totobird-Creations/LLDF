@@ -9,7 +9,7 @@ use std::error::Error;
 
 use llvm_ir::Name;
 
-use super::codegen::{CodeValue, VariableScope};
+use super::codegen::{ CodeValue, VariableScope };
 
 
 #[derive(Clone, Debug)]
@@ -27,11 +27,11 @@ pub enum Value {
 impl Value {
 
 
-    pub fn to_codevalue(&self, module : &ParsedModule) -> Result<CodeValue, Box<dyn Error>> { match (self) {
+    pub fn to_codevalue(&self, module : &ParsedModule, function : &mut ParsedFunction) -> Result<CodeValue, Box<dyn Error>> { match (self) {
 
-        Self::ConstInt    (value) => Ok(CodeValue::Number(value.to_string())),
-        Self::ConstFloat  (value) => Ok(CodeValue::Number(value.to_string())),
-        Self::ConstString (value) => Ok(CodeValue::String(value.clone())),
+        Self::ConstInt    (value ) => Ok(CodeValue::Number(value.to_string())),
+        Self::ConstFloat  (value ) => Ok(CodeValue::Number(value.to_string())),
+        Self::ConstString (value ) => Ok(CodeValue::String(value.clone())),
 
         Self::Local(name) => Ok(CodeValue::Variable { name : name_to_local(name), scope : VariableScope::Line }),
 
@@ -41,7 +41,7 @@ impl Value {
 
                 Global::UserFunction { name } => Ok(CodeValue::String(name.clone())),
 
-                Global::Constant(value) => value.to_codevalue(module),
+                Global::Constant(value) => value.to_codevalue(module, function),
 
                 Global::NoopFunction |
                 Global::ActionFunction { .. } |

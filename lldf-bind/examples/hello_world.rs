@@ -7,32 +7,15 @@
 use lldf_bind::prelude::*;
 
 
-struct Potato {
-    a : Text,
-    b : Text
-}
-
 #[event(PlayerSwapHands)]
 fn player_swap_hands(default : PlayerSel) {
-    let mut p = Potato {
-        a : Text::from("Hello,"),
-        b : Text::from("World!")
-    };
-    print_potato(&default, &p);
-    do_something(&mut p.b);
-    print_potato(&default, &p);
+    test(&default, NameColour::Aqua);
+    default.send_message(String::from("Hello"));
+    test(&default, NameColour::DarkGreen);
+    //default.set_name_colour(NameColour::DarkGreen);
 }
 
 #[inline(never)]
-#[no_mangle]
-fn do_something(swapping_ptr : &mut Text) {
-    *swapping_ptr = Text::from("LLDF!");
+fn test(s : &PlayerSel, c : NameColour) {
+    s.set_name_colour(c);
 }
-
-#[inline(never)]
-#[no_mangle]
-fn print_potato(player : &PlayerSel, potato : &Potato) {
-    player.send_message(&potato.a);
-    player.send_message(&potato.b);
-}
-

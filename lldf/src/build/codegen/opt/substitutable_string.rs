@@ -9,6 +9,9 @@ const SUBSTITUTION_MAX_COUNT : usize = 4;
 /// 
 /// **This optimisation requires some guarantees that LLVM provides.**
 /// Failure to uphold the guarantees may result in broken codegen.
+/// 
+/// **All `String` codeblocks must have the `Add spaces` action tag set to `False`.**
+/// Failure to uphold this guarantee may result in broken codegen.
 pub fn substitutable_string(line : &mut CodeLine) -> bool {
     let mut did_something = false;
 
@@ -34,7 +37,7 @@ pub fn substitutable_string(line : &mut CodeLine) -> bool {
                             for param in params.iter().skip(1) {
                                 let Some(param) = try_param(param) else { break 'l };
                                 value += &param;
-                            } // TODO: Check `Add spaces` action tag
+                            }
 
                             let dest_name = dest_name.clone();
                             let value     = CodeValue::String(value);
@@ -57,7 +60,7 @@ pub fn substitutable_string(line : &mut CodeLine) -> bool {
 
 
 fn try_param(param : &CodeValue) -> Option<String> { match (param) {
-    CodeValue::String(value) | CodeValue::Number(value) => Some(value.clone()), // TODO: Check this escape code.
+    CodeValue::String(value) | CodeValue::Number(value) => Some(value.clone()),
     CodeValue::Variable { name, scope : VariableScope::Line } => Some(format!("%var({})", name)),
     _ => None
 } }

@@ -35,6 +35,7 @@ pub struct CodeblockBlock {
     pub block  : String,
     pub action : Option<String>,
     pub data   : Option<String>,
+    pub attr   : Option<String>,
     pub params : Vec<CodeValue>,
     pub tags   : Vec<CodeValue>
 }
@@ -59,6 +60,7 @@ impl Codeblock {
         block  : codeblock.into(),
         action : Some(action.into()),
         data   : None,
+        attr   : Some(String::from("LS-CANCEL")),
         params : vec![],
         tags   : vec![]
     }) }
@@ -67,6 +69,7 @@ impl Codeblock {
         block  : String::from("func"),
         action : None,
         data   : Some(data.into()),
+        attr   : None,
         params,
         tags   : vec![ CodeValue::Actiontag {
             kind     : String::from("Is Hidden"),
@@ -79,6 +82,7 @@ impl Codeblock {
         block  : String::from("call_func"),
         action : None,
         data   : Some(data.into()),
+        attr   : None,
         params,
         tags   : Vec::new()
     }) }
@@ -87,8 +91,27 @@ impl Codeblock {
         block  : codeblock.into(),
         action : Some(action.into()),
         data   : None,
+        attr   : None,
         params,
         tags
+    }) }
+
+    pub fn ifs<C : Into<String>, A : Into<String>>(codeblock : C, action : A, not : bool, params : Vec<CodeValue>, tags : Vec<CodeValue>) -> Self { Self::Block(CodeblockBlock {
+        block  : codeblock.into(),
+        action : Some(action.into()),
+        data   : None,
+        attr   : not.then(|| String::from("NOT")),
+        params,
+        tags
+    }) }
+
+    pub fn elses() -> Self { Self::Block(CodeblockBlock {
+        block  : String::from("else"),
+        action : None,
+        data   : None,
+        attr   : None,
+        params : Vec::new(),
+        tags   : Vec::new()
     }) }
 
 }
@@ -114,7 +137,17 @@ impl Codeblock {
 
     pub fn to_json(&self) -> json::Value { match (self) {
         Self::Block(block) => block.to_json(),
-        Self::Bracket { .. } => todo!()
+        Self::Bracket { kind, side } => json::json!({
+            "id"     : "bracket",
+            "direct" : match (side) {
+                BracketSide::Open  => "open",
+                BracketSide::Close => "close",
+            },
+            "type" : match (kind) {
+                BracketKind::Normal => "norm",
+                BracketKind::Repeat => "repeat",
+            }
+        })
     } }
 
     pub fn contains_param(&self, var_name : &str) -> bool { match (self) {
@@ -170,8 +203,9 @@ impl CodeblockBlock {
                 "items" : items
             }
         });
-        if let Some(action ) = &self.action { block["action" ] = json::Value::String(action .to_string()); }
-        if let Some(data   ) = &self.data   { block["data"   ] = json::Value::String(data   .to_string()); }
+        if let Some(action ) = &self.action { block["action"    ] = json::Value::String(action .to_string()); }
+        if let Some(data   ) = &self.data   { block["data"      ] = json::Value::String(data   .to_string()); }
+        if let Some(attr   ) = &self.attr   { block["attribute" ] = json::Value::String(attr   .to_string()); }
         block
     }
 
@@ -181,8 +215,12 @@ impl CodeblockBlock {
     }
 
     pub fn can_replace_line_var_with_constant(&self, var_name : &str) -> bool {
-        self.params.iter().all(|param| param.can_replace_line_var_with_constant(var_name))
-            || self.tags.iter().all(|tag| tag.can_replace_line_var_with_constant(var_name))
+        if (self.block == "call_func") {
+            ! self.is_line_var_used(var_name)
+        } else {
+            self.params.iter().all(|param| param.can_replace_line_var_with_constant(var_name))
+                || self.tags.iter().all(|tag| tag.can_replace_line_var_with_constant(var_name))
+        }
     }
     pub fn replace_line_var_with_constant(&mut self, var_name : &str, with : &CodeValue) -> () {
         for param in &mut self.params {

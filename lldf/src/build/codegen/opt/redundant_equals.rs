@@ -28,11 +28,12 @@ pub fn redundant_equals(line : &mut CodeLine) -> bool {
                             }
                             line.blocks.remove(i);
                             did_something = true;
+                            continue;
                         }
 
                         // The value is a constant
                         // AND is not used in `%index` or `%entry` codes.
-                        else if (
+                        if (
                             value.is_constant()
                             && ((i + 1)..line.blocks.len()).all(|j| line.blocks[j].can_replace_line_var_with_constant(dest_name))
                         ) {
@@ -43,17 +44,21 @@ pub fn redundant_equals(line : &mut CodeLine) -> bool {
                             }
                             line.blocks.remove(i);
                             did_something = true;
+                            continue;
                         }
 
                         // The destination variable is only used in the block immediately following this block.
-                        else if ((i + 2)..line.blocks.len()).all(|j| ! line.blocks[j].is_line_var_used(dest_name)) {
-                            let dest_name = dest_name.clone();
-                            let value     = value.clone();
-                            if let Some(block) = line.blocks.get_mut(i + 1) {
-                                block.replace_line_var_with_constant(&dest_name, &value);
+                        if (line.blocks.get(i + 1).is_none_or(|block| ! block.is_call_func())) {
+                            if ((i + 2)..line.blocks.len()).all(|j| ! line.blocks[j].is_line_var_used(dest_name)) {
+                                let dest_name = dest_name.clone();
+                                let value     = value.clone();
+                                if let Some(block) = line.blocks.get_mut(i + 1) {
+                                    block.replace_line_var_with_constant(&dest_name, &value);
+                                }
+                                line.blocks.remove(i);
+                                did_something = true;
+                                continue;
                             }
-                            line.blocks.remove(i);
-                            did_something = true;
                         }
 
                     }

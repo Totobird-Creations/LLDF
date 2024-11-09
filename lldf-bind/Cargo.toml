@@ -10,12 +10,16 @@ exclude = [ "/src/bind" ]
 publish = false
 [features]
 default = [ "rank_overlord" ] # DISABLE THIS BEFORE RELEASE
+
+en_us         = [ ]
+
 rank_none     = [ ]
 rank_noble    = [ ]
 rank_emperor  = [ ]
 rank_mythic   = [ ]
 rank_overlord = [ ]
 rank_dev      = [ ]
+
 internals     = [ ]
 
 [package.metadata.docs.rs]
@@ -25,6 +29,9 @@ features = [ "rank_overlord", "internals" ]
 
 [dependencies.lldf-bind-proc]
 path = "../lldf-bind-proc"
+
+[dependencies.paste]
+version = "1.0"
 
 
 [build-dependencies.reqwest]

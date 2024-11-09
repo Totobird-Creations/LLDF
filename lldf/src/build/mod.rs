@@ -138,7 +138,7 @@ pub fn build_templates(modules : Vec<ParsedModule>) -> Result<Vec<CodeLine>, Box
         let params   = vec![ init_var, one ];
         template.1.blocks.insert(0, Codeblock::action("set_var", "=", params.clone(), vec![]));
         template.1.blocks.insert(0, Codeblock::OPEN_COND_BRACKET);
-        template.1.blocks.insert(0, Codeblock::action("if_var", "=", params, vec![])); // TOOD: NOT and tags
+        template.1.blocks.insert(0, Codeblock::ifs("if_var", "=", true, params, vec![])); // TOOD: NOT and tags
         template.1.blocks.push(Codeblock::CLOSE_COND_BRACKET);
         templates.entry(String::from("DF_EVENT__Event_Join")).or_insert_with(|| (vec![ ], CodeLine::new())).1.blocks.splice(0..0, template.1.blocks);
     }
@@ -149,7 +149,6 @@ pub fn build_templates(modules : Vec<ParsedModule>) -> Result<Vec<CodeLine>, Box
         match (parts.next()) {
 
             Some("DF_EVENT") => {
-                // TODO: LS-CANCEL
                 if let (Some(trigger), None) = (parts.next(), parts.next()) {
                     let mut trigger_parts = trigger.split("_");
                     if let (Some(codeblock), Some(action), None) = (trigger_parts.next(), trigger_parts.next(), trigger_parts.next()) {

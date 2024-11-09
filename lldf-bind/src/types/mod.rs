@@ -1,7 +1,13 @@
-//! DiamondFire value and selection types.
+//! DiamondFire types.
 
 
-pub mod value;
-pub mod sel;
+mod value;
+pub use value::*;
+mod sel;
+pub use sel::*;
 
-pub mod game;
+mod game;
+pub use game::*;
+
+mod data;
+pub use data::*;

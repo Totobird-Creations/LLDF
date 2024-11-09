@@ -25,7 +25,7 @@ pub enum Global {
     ActionFunction {
         codeblock : String,
         action    : String,
-        tags      : Vec<CodeValue>
+        tags      : Vec<ActionFunctionTag>
     },
     ActionPtrFunction {
         getter_codeblock : String,
@@ -40,6 +40,14 @@ pub enum Global {
         target : String
     },
     Constant(Value)
+}
+#[derive(Debug)]
+pub enum ActionFunctionTag {
+    Value(CodeValue),
+    Dynamic {
+        kind          : String,
+        default_value : String
+    }
 }
 
 pub fn parse_module(module : &Module) -> Result<ParsedModule, Box<dyn Error>> {
@@ -99,7 +107,7 @@ pub fn parse_module(module : &Module) -> Result<ParsedModule, Box<dyn Error>> {
                 }
             },
 
-            Some("DF_ACTIONPTR") => {
+            /*Some("DF_ACTIONPTR") => {
                 if let (Some(getter), Some(setter), None) = (parts.next(), parts.next(), parts.next()) {
                     let mut getter_parts = getter.split("_");
                     let mut setter_parts = setter.split("_");
@@ -119,7 +127,7 @@ pub fn parse_module(module : &Module) -> Result<ParsedModule, Box<dyn Error>> {
                         continue;
                     }
                 }
-            },
+            },*/
 
             Some("DF_GAMEVALUE") => {
                 if let (Some(getter), None) = (parts.next(), parts.next()) {
@@ -141,33 +149,23 @@ pub fn parse_module(module : &Module) -> Result<ParsedModule, Box<dyn Error>> {
     }
 
     // Collect global variables.
-    let /*mut*/ init_function = ParsedFunction::new(None);
+    let mut init_function = ParsedFunction::new(None);
     for GlobalVariable { name, /*is_constant,*/ initializer : init, .. } in &module.global_vars {
         //let mut is_constant = *is_constant;
-        /*let var = CodeValue::Variable {
-            name  : format!("global.{}", name_to_global(name)),
+        let var = CodeValue::Variable {
+            name  : format!("{}:0", name_to_global(name)),
             scope : VariableScope::Unsaved
-        };*/
+        };
         if let Some(init) = init {
             // Handle special cases like strings.
             let value = if let Some(value) = handle_special_const(&init) {
                 value
             } else { // Otherwise just create a global.
                 todo!()
-                //let block_count = init_function.line.blocks.len();
-                //let mut value = parse_const(&parsed, &mut init_function, init)?;
-                //let code_value = value.to_codevalue(&parsed, &mut init_function)?;
-                //if (init_function.line.blocks.len() != block_count) {
-                //    is_constant = false;
-                //}
-                //if let CodeValue::Variable { .. } = &code_value { is_constant = false; }
-                //if (! is_constant) {
-                //    let params = vec![ var.clone(), code_value ];
-                //    init_function.line.blocks.push(Codeblock::action("set_var", "=", params, vec![]));
-                //    value = Value::CodeValue(var);
-                //}
-                //value
             };
+            //let params = vec![ var.clone(), match (value.to_codevalue(&parsed, &mut init_function)) { Ok(v) => v, Err(e) => { return Err(e) } } ];
+            //init_function.line.blocks.push(Codeblock::action("set_var", "=", params, vec![ ]));
+            //parsed.globals.insert(name.clone(), Global::Constant(Value::ConstPtr(name.clone())));
             parsed.globals.insert(name.clone(), Global::Constant(value));
         } else {
             todo!()
@@ -202,13 +200,21 @@ pub fn linked_name_to_actiontag_kind(actiontag_kind : &str) -> String {
 pub fn linked_name_to_actiontag_value(actiontag_value : &str) -> String {
     names_to_symbols(&actiontag_value.to_title_case().replace(" ", "")).to_sentence_case()
 }
-pub fn collect_actiontag_parts<'l>(actiontag_parts : impl Iterator<Item = &'l str>) -> Vec<CodeValue> {
+pub fn collect_actiontag_parts<'l>(actiontag_parts : impl Iterator<Item = &'l str>) -> Vec<ActionFunctionTag> {
     actiontag_parts.array_chunks::<2>()
-        .map(|[kind, value]| CodeValue::Actiontag {
-            kind     : linked_name_to_actiontag_kind(kind),
-            value    : linked_name_to_actiontag_value(value),
-            variable : None
-        }).collect::<Vec<_>>()
+        .map(|[kind, value]| {
+            let kind  = linked_name_to_actiontag_kind(kind);
+            let value = linked_name_to_actiontag_value(value);
+            if (value.starts_with("Dynamic")) { ActionFunctionTag::Dynamic {
+                kind,
+                default_value : value[8..].to_sentence_case()
+            } }
+            else { ActionFunctionTag::Value(CodeValue::Actiontag {
+                kind,
+                value,
+                variable : None
+            }) }
+    } ).collect::<Vec<_>>()
 }
 pub fn linked_name_to_gamevalue_kind(gamevalue_kind : &str) -> String {
     let string = gamevalue_kind.to_title_case();

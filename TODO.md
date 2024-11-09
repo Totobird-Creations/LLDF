@@ -28,7 +28,7 @@
 - [ ] Function
   - [x] The actual function
   - [ ] Function pointers
-- [ ] Pointers
+- [x] Pointers
 
 
 ### Fun types cause I feel like it:
@@ -40,7 +40,7 @@
 - [ ] Heap allocation
 - [x] Pointers to allocated space
 - [ ] Pointers to elements in other values (lists, dicts)
-- [ ] Dynamic action codeblock tags
+- [x] Dynamic action codeblock tags
 - [ ] Flow control
   - [ ] Loops
   - [ ] Conditionals

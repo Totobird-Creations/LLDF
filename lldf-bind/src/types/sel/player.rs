@@ -1,6 +1,5 @@
 use crate::prelude::*;
 use crate::bind::DFOpaqueValue;
-use crate::core::mem::transmute_unchecked;
 
 
 #[repr(transparent)]
@@ -11,30 +10,14 @@ pub struct PlayerSel {
 impl PlayerSel {
 
     #[doc(hidden)]
-    pub unsafe fn from_uuids(uuids : DFOpaqueValue) -> Self { unsafe {
-        Self { uuids : DF_TRANSMUTE__ListString(uuids) }
-    } }
-
-}
-
-impl PlayerSel {
-
-    #[inline(always)]
-    pub fn uuids<'l>(&'l self) -> &'l List<String> { &self.uuids }
-
-    #[inline(always)]
-    pub fn names(&self) -> &List<Text> { unsafe {
-        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
-        let names = crate::bind::gamevalue::DF_GAMEVALUE__SelectionTargetNames_Default();
-        DF_ACTION__SelectObject_Reset();
-        transmute_unchecked(&DF_TRANSMUTE__ListText(names))
-    } }
+    pub unsafe fn from_uuids(uuids : List<String>) -> Self { Self { uuids } }
 
 }
 
 /// `PLAYER_ACTION` / `Item Management`
 impl PlayerSel {
 
+    #[lldf_bind_proc::dfdoc(PlayerAction/GiveItems)]
     #[inline(always)]
     pub fn give_item(&self, item : Item) -> () { unsafe {
         DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
@@ -46,6 +29,7 @@ impl PlayerSel {
 
     // TODO: SetInventory
 
+    #[lldf_bind_proc::dfdoc(PlayerAction/SetSlotItem)]
     #[inline(always)]
     pub fn set_item_in_slot(&self, slot : UInt, item : Item) -> () { unsafe {
         DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
@@ -53,36 +37,42 @@ impl PlayerSel {
         DF_ACTION__SelectObject_Reset();
     } }
 
+    #[lldf_bind_proc::dfdoc(PlayerAction/SetEquipment { EquipmentSlot = MainHand })]
     #[inline(always)]
     pub fn set_mainhand_item(&self, item : Item) -> () { unsafe {
         DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
         DF_ACTION__PlayerAction_SetEquipment_EquipmentSlot_MainHand(item);
         DF_ACTION__SelectObject_Reset();
     } }
+    #[lldf_bind_proc::dfdoc(PlayerAction/SetEquipment { EquipmentSlot = OffHand })]
     #[inline(always)]
     pub fn set_offhand_item(&self, item : Item) -> () { unsafe {
         DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
         DF_ACTION__PlayerAction_SetEquipment_EquipmentSlot_OffHand(item);
         DF_ACTION__SelectObject_Reset();
     } }
+    #[lldf_bind_proc::dfdoc(PlayerAction/SetEquipment { EquipmentSlot = Head })]
     #[inline(always)]
     pub fn set_head_item(&self, item : Item) -> () { unsafe {
         DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
         DF_ACTION__PlayerAction_SetEquipment_EquipmentSlot_Head(item);
         DF_ACTION__SelectObject_Reset();
     } }
+    #[lldf_bind_proc::dfdoc(PlayerAction/SetEquipment { EquipmentSlot = Chest })]
     #[inline(always)]
     pub fn set_chest_item(&self, item : Item) -> () { unsafe {
         DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
         DF_ACTION__PlayerAction_SetEquipment_EquipmentSlot_Chest(item);
         DF_ACTION__SelectObject_Reset();
     } }
+    #[lldf_bind_proc::dfdoc(PlayerAction/SetEquipment { EquipmentSlot = Legs })]
     #[inline(always)]
     pub fn set_legs_item(&self, item : Item) -> () { unsafe {
         DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
         DF_ACTION__PlayerAction_SetEquipment_EquipmentSlot_Legs(item);
         DF_ACTION__SelectObject_Reset();
     } }
+    #[lldf_bind_proc::dfdoc(PlayerAction/SetEquipment { EquipmentSlot = Feet })]
     #[inline(always)]
     pub fn set_feet_item(&self, item : Item) -> () { unsafe {
         DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
@@ -100,21 +90,53 @@ impl PlayerSel {
 
     // TODO: ClearInventory
 
-    // TODO: SetCursorItem
+    #[lldf_bind_proc::dfdoc(PlayerAction/SetCursorItem)]
+    #[inline(always)]
+    pub fn set_cursor_item(&self, item : Item) -> () { unsafe {
+        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
+        DF_ACTION__PlayerAction_SetCursorItem(item);
+        DF_ACTION__SelectObject_Reset();
+    } }
 
-    // TODO: SaveInv
+    #[lldf_bind_proc::dfdoc(PlayerAction/SaveInv)]
+    #[inline(always)]
+    pub fn save_inventory(&self) -> () { unsafe {
+        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
+        DF_ACTION__PlayerAction_SaveInv();
+        DF_ACTION__SelectObject_Reset();
+    } }
 
-    // TODO: LoadInv
+    #[lldf_bind_proc::dfdoc(PlayerAction/LoadInv)]
+    #[inline(always)]
+    pub fn load_saved_inventory(&self) -> () { unsafe {
+        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
+        DF_ACTION__PlayerAction_LoadInv();
+        DF_ACTION__SelectObject_Reset();
+    } }
 
-    // TODO: SetItemCooldown
+    #[lldf_bind_proc::dfdoc(PlayerAction/SetItemCooldown)]
+    #[inline(always)]
+    pub fn set_item_cooldown(&self, item : Item, cooldown_ticks : UInt) -> () { unsafe {
+        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
+        DF_ACTION__PlayerAction_SetItemCooldown(item, cooldown_ticks);
+        DF_ACTION__SelectObject_Reset();
+    } }
 
-    // TODO: GetItemCooldown
+    #[lldf_bind_proc::dfdoc(PlayerAction/GetItemCooldown)]
+    #[inline(always)]
+    pub fn get_item_cooldown(&self, item : Item) -> UInt { unsafe {
+        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
+        let out = DF_ACTION__PlayerAction_GetItemCooldown(item);
+        DF_ACTION__SelectObject_Reset();
+        out
+    } }
 
 }
 
 /// `PLAYER_ACTION` / `Communication`
 impl PlayerSel {
 
+    #[lldf_bind_proc::dfdoc(PlayerAction/SendMessage)]
     #[inline(always)]
     pub fn send_message<T : DFValue>(&self, text : T) -> () { unsafe {
         DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
@@ -124,9 +146,21 @@ impl PlayerSel {
 
     // TODO: SendMessageSeq
 
-    // TODO: SendTitle
+    #[lldf_bind_proc::dfdoc(PlayerAction/SendTitle)]
+    #[inline(always)]
+    pub fn send_title<T : DFValue, S : DFValue>(&self, title : T, subtitle : S, fade_in_ticks : UInt, hold_ticks : UInt, fade_out_ticks : UInt) -> () { unsafe {
+        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
+        DF_ACTION__PlayerAction_SendTitle_TextValueMerging_NoSpaces_InheritStyles_False(title.to_opaque(), subtitle.to_opaque(), fade_in_ticks, hold_ticks, fade_out_ticks);
+        DF_ACTION__SelectObject_Reset();
+    } }
 
-    // TODO: ActionBar
+    #[lldf_bind_proc::dfdoc(PlayerAction/ActionBar)]
+    #[inline(always)]
+    pub fn send_actionbar<T : DFValue>(&self, text : T) -> () { unsafe {
+        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
+        DF_ACTION__PlayerAction_ActionBar(text.to_opaque());
+        DF_ACTION__SelectObject_Reset();
+    } }
 
     // TODO: OpenBook
 
@@ -318,7 +352,13 @@ impl PlayerSel {
 /// `PLAYER_ACTION` / `World`
 impl PlayerSel {
 
-    // TODO: SetTickRate
+    #[lldf_bind_proc::dfdoc(PlayerAction/SetTickRate)]
+    #[inline(always)]
+    pub fn set_tick_rate(&self, ticks_per_second : UInt) -> () { unsafe {
+        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
+        DF_ACTION__PlayerAction_SetTickRate(ticks_per_second);
+        DF_ACTION__SelectObject_Reset();
+    } }
 
     // TODO: LaunchProj
 
@@ -414,7 +454,22 @@ impl PlayerSel {
 
     // TODO: ChatStyle
 
-    // TODO: SetNameColour
+    #[inline(always)]
+    fn _set_name_colour(&self, colour : NameColour) -> () { unsafe {
+        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
+        DF_ACTION__PlayerAction_SetNameColor_NameColor_DynamicNone(colour.to_string());
+        DF_ACTION__SelectObject_Reset();
+    } }
+    #[cfg(any(not(feature = "en_us"), doc))]
+    #[doc(cfg(not(feature = "en_us")))]
+    #[lldf_bind_proc::dfdoc(PlayerAction/SetNameColor)]
+    #[inline(always)]
+    pub fn set_name_colour(&self, colour : NameColour) -> () { self._set_name_colour(colour); }
+    #[cfg(any(feature = "en_us", doc))]
+    #[doc(cfg(feature = "en_us"))]
+    #[lldf_bind_proc::dfdoc(PlayerAction/SetNameColor)]
+    #[inline(always)]
+    pub fn set_name_color(&self, color : NameColor) -> () { self._set_name_colour(color); }
 
     // TODO: SetNameVisible
 
@@ -443,11 +498,29 @@ impl PlayerSel {
 /// `PLAYER_ACTION` / `Miscellaneous`
 impl PlayerSel {
 
-    // TODO: RollbackBlocks
+    #[lldf_bind_proc::dfdoc(PlayerAction/RollbackBlocks)]
+    #[inline(always)]
+    pub fn rollback_blocks(&self, time_seconds : UInt) -> () { unsafe {
+        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
+        DF_ACTION__PlayerAction_RollbackBlocks(time_seconds);
+        DF_ACTION__SelectObject_Reset();
+    } }
 
-    // TODO: SendToPlot
+    #[lldf_bind_proc::dfdoc(PlayerAction/SendToPlot)]
+    #[inline(always)]
+    pub fn send_to_plot(&self, plot_id : UInt) -> () { unsafe {
+        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
+        DF_ACTION__PlayerAction_SendToPlot(String::from(plot_id));
+        DF_ACTION__SelectObject_Reset();
+    } }
 
-    // TODO: Kick
+    #[lldf_bind_proc::dfdoc(PlayerAction/Kick)]
+    #[inline(always)]
+    pub fn kick(&self) -> () { unsafe {
+        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
+        DF_ACTION__PlayerAction_Kick();
+        DF_ACTION__SelectObject_Reset();
+    } }
 
 }
 
@@ -529,6 +602,39 @@ impl PlayerSel {
 
 }
 
+/// `SELECT_OBJECT` / `Creating Selections`
+impl PlayerSel {
+
+    // TODO: RandomPlayer
+
+    // TODO: PlayerName
+
+    // TODO: AllPlayers
+
+    // TODO: Invert
+
+}
+
+/// `SELECT_OBJECT` / `Selection Filters`
+impl PlayerSel {
+
+    // TODO: FilterRandom
+
+    // TODO: FilterDistance
+
+    // TODO: FilterSort
+
+    // TODO: FilterRay
+
+}
+
+impl PlayerSel {
+
+    #[inline(always)]
+    pub fn uuids<'l>(&'l self) -> &'l List<String> { &self.uuids }
+
+}
+
 
 unsafe impl DFSel for PlayerSel {}
 
@@ -538,9 +644,6 @@ unsafe impl DFSel for PlayerSel {}
 
 #[allow(clashing_extern_declarations)]
 extern "C" {
-
-    fn DF_TRANSMUTE__ListString( from : DFOpaqueValue ) -> List<String>;
-    fn DF_TRANSMUTE__ListText( from : DFOpaqueValue ) -> List<Text>;
 
     fn DF_ACTION__SelectObject_PlayerName( target : List<String> ) -> ();
     fn DF_ACTION__SelectObject_Reset( ) -> ();
@@ -554,7 +657,22 @@ extern "C" {
     fn DF_ACTION__PlayerAction_SetEquipment_EquipmentSlot_Chest( item : Item ) -> ();
     fn DF_ACTION__PlayerAction_SetEquipment_EquipmentSlot_Legs( item : Item ) -> ();
     fn DF_ACTION__PlayerAction_SetEquipment_EquipmentSlot_Feet( item : Item ) -> ();
+    fn DF_ACTION__PlayerAction_SetCursorItem( item : Item ) -> ();
+    fn DF_ACTION__PlayerAction_SaveInv( ) -> ();
+    fn DF_ACTION__PlayerAction_LoadInv( ) -> ();
+    fn DF_ACTION__PlayerAction_SetItemCooldown( item : Item, cooldown_ticks : UInt ) -> ();
+    fn DF_ACTION__PlayerAction_GetItemCooldown( item : Item ) -> UInt;
 
     fn DF_ACTION__PlayerAction_SendMessage_AlignmentMode_Regular_TextValueMerging_NoSpaces_InheritStyles_False( message : DFOpaqueValue ) -> ();
+    fn DF_ACTION__PlayerAction_SendTitle_TextValueMerging_NoSpaces_InheritStyles_False( title : DFOpaqueValue, subtitle : DFOpaqueValue, fade_in_ticks : UInt, hold_ticks : UInt, fade_out_ticks : UInt ) -> ();
+    fn DF_ACTION__PlayerAction_ActionBar( message : DFOpaqueValue ) -> ();
+
+    fn DF_ACTION__PlayerAction_SetTickRate( ticks_per_second : UInt ) -> ();
+
+    fn DF_ACTION__PlayerAction_SetNameColor_NameColor_DynamicNone( name_color : String ) -> ();
+
+    fn DF_ACTION__PlayerAction_RollbackBlocks( time_seconds : UInt ) -> ();
+    fn DF_ACTION__PlayerAction_SendToPlot( plot_id : String ) -> ();
+    fn DF_ACTION__PlayerAction_Kick( ) -> ();
 
 }

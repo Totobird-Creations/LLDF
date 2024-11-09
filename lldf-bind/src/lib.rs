@@ -66,25 +66,7 @@ pub mod prelude {
 
     pub use lldf_bind_proc::event;
 
-    pub use crate::types::value::DFValue;
-    pub use crate::types::value::string::String;
-    pub use crate::types::value::number::{ UInt, Int, Float };
-    pub use crate::types::value::text::Text;
-    pub use crate::types::value::location::Location;
-    pub use crate::types::value::vector::Vector;
-    pub use crate::types::value::sound::Sound;
-    pub use crate::types::value::particle::Particle;
-    pub use crate::types::value::potion::Potion;
-    pub use crate::types::value::item::Item;
-    pub use crate::types::value::colour::RGB;
-    pub use crate::types::value::list::List;
-    pub use crate::types::value::dict::Dict;
-
-    pub use crate::types::sel::DFSel;
-    pub use crate::types::sel::player::PlayerSel;
-    pub use crate::types::sel::entity::EntitySel;
-
-    pub use crate::types::game::Game;
+    pub use crate::types::*;
 }
 
 

@@ -2,7 +2,7 @@ use super::*;
 
 
 /// Removes any `SelectObject` codeblocks which is follow an identical `SelectObject` codeblock.
-pub fn duplicate_selections(line : &mut CodeLine) -> bool {
+pub fn duplicate_selection(line : &mut CodeLine) -> bool {
     let mut did_something = false;
 
     let mut prev_selobj = None;

@@ -1,5 +1,4 @@
-use crate::prelude::*;
-use crate::bind::DFOpaqueValue;
+use super::*;
 use core::mem::transmute_unchecked;
 
 
@@ -11,7 +10,7 @@ pub struct Text {
 impl<T : DFValue> From<T> for Text {
     #[inline(always)]
     fn from(value : T) -> Text { unsafe {
-        DF_ACTION__SetVariable_Text(value.to_opaque())
+        DF_ACTION__SetVariable_Text_InheritStyles_False_TextValueMerging_NoSpaces(value.to_opaque())
     } }
 }
 
@@ -42,7 +41,6 @@ extern "C" {
 
     fn DF_TRANSMUTE__Opaque( from : Text ) -> DFOpaqueValue;
 
-    // TODO: Add spaces tags.
-    fn DF_ACTION__SetVariable_Text( from : DFOpaqueValue ) -> Text;
+    fn DF_ACTION__SetVariable_Text_InheritStyles_False_TextValueMerging_NoSpaces( from : DFOpaqueValue ) -> Text;
 
 }

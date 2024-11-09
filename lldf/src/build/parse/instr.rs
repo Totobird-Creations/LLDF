@@ -3,6 +3,7 @@ use crate::build::codegen::{ CodeValue, Codeblock, VariableScope };
 use super::*;
 
 use llvm_ir::instruction::*;
+use llvm_ir::Operand;
 
 
 
@@ -44,6 +45,8 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
 
     Instruction::InsertValue(_) => todo!(),
 
+    // Sets `dest` to a 2-element list with the first element being a unique `unsaved` variable name, and the second being 0.
+    // The unique name is tied to the function it was called in, and can be discarded on return.
     Instruction::Alloca(Alloca { dest, .. }) => {
         function.needs_frame = true;
         let counter = CodeValue::Variable { name : "lldf.alloca.counter".to_string(), scope : VariableScope::Unsaved };
@@ -58,6 +61,7 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
         Ok(())
     },
 
+    // Gets the value pointed to by a pointer (An `unsaved` variable with name `%var(%index(address,1):%index(address,2))`) and sets `dest` to it.
     Instruction::Load(Load { address, dest, .. }) => {
         let dest_var = CodeValue::Variable { name : name_to_local(dest), scope : VariableScope::Line };
         let address = parse_oper(module, function, address)?;
@@ -70,17 +74,19 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
         Ok(())
     },
 
+    // Sets the value pointed to by a pointer (An `unsaved` variable with name `%var(%index(address,1):%index(address,2))`) to a value.
     Instruction::Store(Store { address, value, .. }) => {
         let address = parse_oper(module, function, address)?;
         let value   = parse_oper(module, function, value)?;
         let params  = vec![
             address.to_ptr_accessor_codevalue(module)?,
-            value.to_codevalue(module)?,
+            value.to_codevalue(module, function)?,
         ];
         function.line.blocks.push(Codeblock::action("set_var", "=", params, vec![ ]));
         Ok(())
     },
 
+    // Shift the second element of the pointer (represented as a 2-element list).
     Instruction::GetElementPtr(GetElementPtr { address, indices, dest, .. }) => {
         if (indices.len() != 1) { return Err("Multi-index GEP instructions are unsupported".into()); }
         let address  = parse_oper(module, function, address)?;
@@ -90,7 +96,7 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
         let params = vec![
             temp_var.clone(),
             CodeValue::Number(accessor.1),
-            index.to_codevalue(module)?
+            index.to_codevalue(module, function)?
         ];
         function.line.blocks.push(Codeblock::action("set_var", "+", params, vec![ ]));
         let params = vec![
@@ -103,7 +109,7 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
         Ok(())
     },
 
-    Instruction::Trunc(_) => todo!(),
+    Instruction::Trunc(Trunc { operand, dest, .. }) => handle_passthru(module, function, operand, dest),
 
     Instruction::ZExt(_) => todo!(),
 
@@ -121,7 +127,7 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
 
     Instruction::SIToFP(_) => todo!(),
 
-    Instruction::PtrToInt(_) => todo!(),
+    Instruction::PtrToInt(PtrToInt { operand, dest, .. }) => handle_passthru(module, function, operand, dest), // TODO: Make sure PtrToInt works
 
     Instruction::IntToPtr(_) => todo!(),
 
@@ -131,8 +137,34 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
 
     Instruction::Phi(_) => todo!(),
 
-    Instruction::Select(_) => todo!(),
+    // If `condition` is 0 (false), set `dest` to `false_value`, else `true_value`. 
+    Instruction::Select(Select { condition, true_value, false_value, dest, .. }) => {
+        let params = vec![
+            parse_oper(module, function, condition)?.to_codevalue(module, function)?,
+            CodeValue::Number("0".to_string())
+        ];
+        function.line.blocks.push(Codeblock::action("if_var", "=", params, vec![ ]));
+        function.line.blocks.push(Codeblock::OPEN_COND_BRACKET);
+        let params = vec![
+            CodeValue::Variable { name : name_to_local(dest), scope: VariableScope::Line },
+            parse_oper(module, function, false_value)?.to_codevalue(module, function)?
+        ];
+        function.line.blocks.push(Codeblock::action("set_var", "=", params, vec![ ]));
+        function.line.blocks.push(Codeblock::CLOSE_COND_BRACKET);
+        function.line.blocks.push(Codeblock::elses());
+        function.line.blocks.push(Codeblock::OPEN_COND_BRACKET);
+        let params = vec![
+            CodeValue::Variable { name : name_to_local(dest), scope: VariableScope::Line },
+            parse_oper(module, function, true_value)?.to_codevalue(module, function)?
+        ];
+        function.line.blocks.push(Codeblock::action("set_var", "=", params, vec![ ]));
+        function.line.blocks.push(Codeblock::CLOSE_COND_BRACKET);
+        function.locals.insert(dest.clone(), Value::Local(dest.clone()));
+        Ok(())
+    },
 
+    // Call a function, or the function behind a pointer.
+    // This is also used for manually adding codeblocks.
     Instruction::Call(Call { function : calling, arguments, dest, .. }) => {
         let Some(calling) = calling.as_ref().right() else { return Err("Inline assembly is unsupported".into()) };
         let calling = parse_oper(module, function, calling)?;
@@ -145,7 +177,7 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
                         if (arguments.len() != 1) { return Err("Noop function with destination local must have one argument".into()); }
                         let params = vec![
                             CodeValue::Variable { name : name_to_local(dest), scope : VariableScope::Line },
-                            parse_oper(module, function, &arguments[0].0)?.to_codevalue(module)?
+                            parse_oper(module, function, &arguments[0].0)?.to_codevalue(module, function)?
                         ];
                         function.line.blocks.push(Codeblock::action("set_var", "=", params, vec![ ]));
                         function.locals.insert(dest.clone(), Value::Local(dest.clone()));
@@ -156,22 +188,50 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
                 Global::UserFunction { name } => { // TODO: return
                     let mut params = Vec::with_capacity(arguments.len());
                     for (arg, _) in arguments {
-                        params.push(parse_oper(module, function, arg)?.to_codevalue(module)?);
+                        let mut value = parse_oper(module, function, arg)?.to_codevalue(module, function)?;
+                        if let CodeValue::Variable { .. } = value { } else {
+                            let temp_var = CodeValue::Variable { name : function.create_temp_var_name(), scope : VariableScope::Line };
+                            let params = vec![
+                                temp_var.clone(),
+                                value
+                            ];
+                            function.line.blocks.push(Codeblock::action("set_var", "=", params, vec![ ]));
+                            value = temp_var;
+                        }
+                        params.push(value);
                     }
                     function.line.blocks.push(Codeblock::call_func(name, params));
                     Ok(())
                 },
 
                 Global::ActionFunction { codeblock, action, tags } => {
-                    let mut params = Vec::with_capacity(arguments.len() + 1);
+
+                    let mut final_tags  = Vec::with_capacity(tags.len());
+                    let mut skip_params = 0;
+                    for tag in tags { match (tag) {
+                        ActionFunctionTag::Value(value) => { final_tags.push(value.clone()); },
+                        ActionFunctionTag::Dynamic { kind, default_value } => {
+                            let temp_var = CodeValue::Variable { name : function.create_temp_var_name(), scope : VariableScope::Line };
+                            let params = vec![
+                                temp_var.clone(),
+                                parse_oper(module, function, &arguments[0].0)?.to_codevalue(module, function)?
+                            ];
+                            function.line.blocks.push(Codeblock::action("set_var", "=", params, vec![ ]));
+                            final_tags.push(CodeValue::Actiontag { kind : kind.clone(), value : default_value.clone(), variable : Some(Box::new(temp_var)) });
+                            skip_params += 1;
+                        },
+                    } }
+
+                    let mut final_params = Vec::with_capacity(arguments.len() + 1);
                     if let Some(dest) = dest {
-                        params.push(CodeValue::Variable { name : name_to_local(dest), scope : VariableScope::Line });
+                        final_params.push(CodeValue::Variable { name : name_to_local(dest), scope : VariableScope::Line });
                         function.locals.insert(dest.clone(), Value::Local(dest.clone()));
                     }
-                    for (arg, _) in arguments {
-                        params.push(parse_oper(module, function, arg)?.to_codevalue(module)?);
+                    for (arg, _) in arguments.iter().skip(skip_params) {
+                        final_params.push(parse_oper(module, function, arg)?.to_codevalue(module, function)?);
                     }
-                    function.line.blocks.push(Codeblock::action(codeblock, action, params, tags.clone()));
+
+                    function.line.blocks.push(Codeblock::action(codeblock, action, final_params, final_tags));
                     Ok(())
                 },
 
@@ -208,3 +268,14 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
     Instruction::Freeze(_)                                                                         => Err("Propagation freeze instructions are unsupported" .into()),
     Instruction::LandingPad(_) | Instruction::CatchPad(_) | Instruction::CleanupPad(_)             => Err("Exception handling instructions are unsupported" .into()),
 } }
+
+
+fn handle_passthru(module : &ParsedModule, function : &mut ParsedFunction, operand : &Operand, dest : &Name) -> Result<(), Box<dyn Error>> {
+    let params = vec![
+        CodeValue::Variable { name : name_to_local(dest), scope: VariableScope::Line },
+        parse_oper(module, function, operand)?.to_codevalue(module, function)?
+    ];
+    function.line.blocks.push(Codeblock::action("set_var", "=", params, vec![ ]));
+    function.locals.insert(dest.clone(), Value::Local(dest.clone()));
+    Ok(())
+}

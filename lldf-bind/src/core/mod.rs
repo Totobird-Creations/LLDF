@@ -14,6 +14,7 @@ pub mod option;
 pub mod panic;
 pub mod ptr;
 pub mod str;
+pub mod string;
 
 
 #[rustc_builtin_macro]
@@ -54,6 +55,7 @@ pub mod prelude {
     pub use super::marker;
     pub use super::marker::Copy;
     pub use super::option::Option::{ self, Some, None };
+    pub use super::string::ToString;
     pub use super::{
         include, include_str, include_bytes,
         concat, stringify,

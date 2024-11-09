@@ -401,5 +401,29 @@ impl EntitySel {
 
 }
 
+/// `SELECT_OBJECT` / `Creating Selections`
+impl EntitySel {
+
+    // TODO: EntityName
+
+    // TODO: AllEntities
+
+    // TODO: Invert
+
+}
+
+/// `SELECT_OBJECT` / `Selection Filters`
+impl EntitySel {
+
+    // TODO: FilterRandom
+
+    // TODO: FilterDistance
+
+    // TODO: FilterSort
+
+    // TODO: FilterRay
+
+}
+
 
 unsafe impl DFSel for EntitySel {}

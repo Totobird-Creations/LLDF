@@ -2,7 +2,7 @@ use super::*;
 
 
 /// Removes any `SelectObject` codeblocks which is immediately followed by a non-filter `SelectObject` codeblock.
-pub fn dead_selections(line : &mut CodeLine) -> bool {
+pub fn dead_selection(line : &mut CodeLine) -> bool {
     let mut did_something = false;
 
     for i in (1..line.blocks.len()).rev() {
