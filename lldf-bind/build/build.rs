@@ -58,7 +58,7 @@ fn main() -> Result<(), Box<dyn Error>> {
 
         }
         writeln!(file, "    ( {{ $a:ident / $b:ident }} {{ $($_:tt)* }} ) => {{")?;
-        writeln!(file, "        compile_error!(concat!(\"Unknown target `\", stringify!($a), \"/\", stringify!($b), \"`\"));")?;
+        writeln!(file, "        crate::core::compile_error!(crate::core::concat!(\"Unknown target `\", crate::core::stringify!($a), \"/\", crate::core::stringify!($b), \"`\"));")?;
         writeln!(file, "    }}")?;
         writeln!(file, "}}")?;
     }

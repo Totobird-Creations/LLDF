@@ -220,13 +220,21 @@ pub fn linked_name_to_codeblock(codeblock : &str) -> String {
     }
 }
 pub fn linked_name_to_action(action : &str) -> String {
-    names_to_symbols(&action.to_title_case().replace(" ", ""))
+    linked_name_to_actiontag_kind(action).replace(" ", "")
 }
 pub fn linked_name_to_actiontag_kind(actiontag_kind : &str) -> String {
-    names_to_symbols(&actiontag_kind.to_title_case().replace(" ", "")).to_title_case()
+    let mut out = String::with_capacity(actiontag_kind.len() * 2);
+    let mut last_ch = ' ';
+    for (i, ch) in actiontag_kind.chars().rev().enumerate() {
+        out.push(ch);
+        if (ch.is_uppercase() && (! last_ch.is_uppercase()) && (i + 1 != actiontag_kind.len())) { out.push(' '); }
+        last_ch = ch;
+    }
+    out.chars().rev().collect()
 }
 pub fn linked_name_to_actiontag_value(actiontag_value : &str) -> String {
-    names_to_symbols(&actiontag_value.to_title_case().replace(" ", "")).to_sentence_case()
+    if (actiontag_value == actiontag_value.to_uppercase()) { actiontag_value.to_string() }
+    else { linked_name_to_gamevalue_kind(actiontag_value).to_sentence_case() }
 }
 pub fn collect_actiontag_parts<'l>(actiontag_parts : impl Iterator<Item = &'l str>) -> Vec<ActionFunctionTag> {
     actiontag_parts.array_chunks::<2>()
@@ -235,7 +243,7 @@ pub fn collect_actiontag_parts<'l>(actiontag_parts : impl Iterator<Item = &'l st
             let value = linked_name_to_actiontag_value(value);
             if (value.starts_with("Dynamic")) { ActionFunctionTag::Dynamic {
                 kind,
-                default_value : value[8..].to_sentence_case()
+                default_value : value[8..].to_string()
             } }
             else { ActionFunctionTag::Value(CodeValue::Actiontag {
                 kind,
@@ -260,13 +268,13 @@ pub fn linked_name_to_gamevalue_kind(gamevalue_kind : &str) -> String {
     out
 }
 pub fn linked_name_to_gamevalue_target(gamevalue_kind : &str) -> String {
-    names_to_symbols(&gamevalue_kind.to_title_case().replace(" ", "")).to_title_case()
+    linked_name_to_actiontag_kind(gamevalue_kind)
 }
 pub fn linked_name_to_item_id(item_id : &str) -> String {
     names_to_symbols(&item_id.to_title_case().replace(" ", "")).to_snake_case()
 }
 pub fn linked_name_to_sound_id(sound_id : &str) -> String {
-    sound_id.split("_").map(|part| names_to_symbols(&part.to_title_case().replace(" ", "")).to_snake_case()).intersperse(".".to_string()).collect::<String>()
+    sound_id.split("_").map(|part| linked_name_to_item_id(part)).intersperse(".".to_string()).collect::<String>()
 }
 pub fn names_to_symbols(from : &str) -> String {
     // Yes, I know this sucks. No, I'm not going to find something better.
