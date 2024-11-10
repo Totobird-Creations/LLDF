@@ -45,7 +45,9 @@ impl Value {
 
                 Global::NoopFunction |
                 Global::ActionFunction { .. } |
-                Global::ActionPtrFunction { .. } |
+                Global::BracketFunction { .. } |
+                Global::ElseFunction |
+                Global::TempVarFunction |
                 Global::GamevalueFunction { .. } |
                 Global::SoundFunction { .. } |
                 Global::PotionFunction { .. } |
@@ -77,7 +79,9 @@ impl Value {
                 Global::NoopFunction |
                 Global::UserFunction { .. } |
                 Global::ActionFunction { .. } |
-                Global::ActionPtrFunction { .. } |
+                Global::BracketFunction { .. } |
+                Global::ElseFunction |
+                Global::TempVarFunction |
                 Global::GamevalueFunction { .. } |
                 Global::SoundFunction { .. } |
                 Global::PotionFunction { .. } |
@@ -110,7 +114,9 @@ impl Value {
 
                 Global::NoopFunction |
                 Global::ActionFunction { .. } |
-                Global::ActionPtrFunction { .. } |
+                Global::BracketFunction { .. } |
+                Global::ElseFunction |
+                Global::TempVarFunction |
                 Global::GamevalueFunction { .. } |
                 Global::SoundFunction { .. } |
                 Global::PotionFunction { .. } |

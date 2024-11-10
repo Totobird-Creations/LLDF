@@ -2,7 +2,7 @@ use super::*;
 
 
 /// Removes any `PlayerName` or `EntityName` `Select Object` codeblocks which has a `Selection Target UUIDs` game value as the only parameter.
-pub fn redundant_selection(line : &mut CodeLine) -> bool {
+pub fn redundant_selection(line : &mut CodeLine) -> bool { // TODO: Add a check to handle crossing a loop boundary.
     let mut did_something = false;
 
     for i in (0..line.blocks.len()).rev() {

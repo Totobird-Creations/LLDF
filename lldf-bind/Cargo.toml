@@ -11,8 +11,7 @@ publish = false
 [features]
 default = [ "rank_overlord", "mc_1_21_1" ] # DISABLE THIS BEFORE RELEASE
 
-en_us         = [ ]
-
+# Server rank
 rank_none     = [ ]
 rank_noble    = [ ]
 rank_emperor  = [ ]
@@ -20,7 +19,11 @@ rank_mythic   = [ ]
 rank_overlord = [ ]
 rank_dev      = [ ]
 
+# Game version
 mc_1_21_1 = [ ]
+
+# Language
+en_us = [ ]
 
 [package.metadata.docs.rs]
 no-default-features = true

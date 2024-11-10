@@ -12,7 +12,7 @@ const SUBSTITUTION_MAX_COUNT : usize = 4;
 /// 
 /// **All `String` codeblocks must have the `Add spaces` action tag set to `False`.**
 /// Failure to uphold this guarantee may result in broken codegen.
-pub fn substitutable_string(line : &mut CodeLine) -> bool {
+pub fn substitutable_string(line : &mut CodeLine) -> bool { // TODO: Add a check to handle crossing a loop boundary.
     let mut did_something = false;
 
     'l : for i in (0..line.blocks.len()).rev() {

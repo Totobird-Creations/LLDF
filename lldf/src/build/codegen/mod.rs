@@ -4,6 +4,7 @@ pub mod opt;
 
 
 use std::io::Write;
+use std::error::Error;
 
 use serde_json as json;
 
@@ -157,7 +158,7 @@ impl Codeblock {
 
     pub fn can_replace_line_var_with_constant(&self, var_name : &str) -> bool { match (self) {
         Codeblock::Block(block) => block.can_replace_line_var_with_constant(var_name),
-        _ => false
+        _ => true
     } }
     pub fn replace_line_var_with_constant(&mut self, var_name : &str, with : &CodeValue) -> () { match (self) {
         Codeblock::Block(block) => block.replace_line_var_with_constant(var_name, with),
@@ -249,3 +250,15 @@ impl CodeblockBlock {
     }
 
 }
+
+impl BracketKind { pub fn from<S : AsRef<str>>(from : S) -> Result<Self, Box<dyn Error>> { match (from.as_ref()) {
+    "Normal" => Ok(Self::Normal),
+    "Repeat" => Ok(Self::Repeat),
+    kind => Err(format!("Invalid bracket kind {:?}", kind).into())
+} } }
+
+impl BracketSide { pub fn from<S : AsRef<str>>(from : S) -> Result<Self, String> { match (from.as_ref()) {
+    "Open"  => Ok(Self::Open),
+    "Close" => Ok(Self::Close),
+    side => Err(format!("Invalid bracket side {:?}", side).into())
+} } }

@@ -124,7 +124,7 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
 
     Instruction::FPToSI(_) => todo!(),
 
-    Instruction::UIToFP(_) => todo!(),
+    Instruction::UIToFP(UIToFP { operand, dest, .. }) => handle_passthru(module, function, operand, dest),
 
     Instruction::SIToFP(_) => todo!(),
 
@@ -236,7 +236,22 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
                     Ok(())
                 },
 
-                Global::ActionPtrFunction { .. } => todo!(),
+                Global::BracketFunction { kind, side } => {
+                    function.line.blocks.push(Codeblock::Bracket { kind : kind.clone(), side : side.clone() });
+                    Ok(())
+                },
+
+                Global::ElseFunction => {
+                    function.line.blocks.push(Codeblock::elses());
+                    Ok(())
+                },
+
+                Global::TempVarFunction => {
+                    if let Some(dest) = dest {
+                        function.locals.insert(dest.clone(), Value::Local(dest.clone()));
+                    }
+                    Ok(())
+                },
 
                 Global::GamevalueFunction { kind, target } => {
                     if let Some(dest) = dest {

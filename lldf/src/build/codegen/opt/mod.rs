@@ -22,6 +22,7 @@ use super::{ Codeblock, CodeLine, CodeValue };
 
 
 pub fn optimise(line : &mut CodeLine) -> () {
+    return; // TODO: Add a check to handle crossing a loop boundary.
     let mut did_nothing = 0;
     while (did_nothing < 5) {
         let mut did_something = false;

@@ -1,7 +1,7 @@
 use super::clone::Clone;
 use super::cmp::{ PartialEq, PartialOrd, Ordering };
 use super::marker::Copy;
-use super::ops::{ Add, Sub, Neg, Not };
+use super::ops::*;
 use super::option::Option;
 
 impl Clone for bool  { #[inline(never)] fn clone(&self) -> Self { *self } }
@@ -58,6 +58,19 @@ impl Sub for u128 { type Output = Self; #[inline(never)] fn sub(self, _ : Self) 
 impl Sub for i128 { type Output = Self; #[inline(never)] fn sub(self, _ : Self) -> Self::Output { loop { /* compiler built-in */ } } }
 impl Sub for usize { type Output = Self; #[inline(never)] fn sub(self, _ : Self) -> Self::Output { loop { /* compiler built-in */ } } }
 impl Sub for isize { type Output = Self; #[inline(never)] fn sub(self, _ : Self) -> Self::Output { loop { /* compiler built-in */ } } }
+
+impl Mul for u8 { type Output = Self; #[inline(never)] fn mul(self, _ : Self) -> Self::Output { loop { /* compiler built-in */ } } }
+impl Mul for i8 { type Output = Self; #[inline(never)] fn mul(self, _ : Self) -> Self::Output { loop { /* compiler built-in */ } } }
+impl Mul for u16 { type Output = Self; #[inline(never)] fn mul(self, _ : Self) -> Self::Output { loop { /* compiler built-in */ } } }
+impl Mul for i16 { type Output = Self; #[inline(never)] fn mul(self, _ : Self) -> Self::Output { loop { /* compiler built-in */ } } }
+impl Mul for u32 { type Output = Self; #[inline(never)] fn mul(self, _ : Self) -> Self::Output { loop { /* compiler built-in */ } } }
+impl Mul for i32 { type Output = Self; #[inline(never)] fn mul(self, _ : Self) -> Self::Output { loop { /* compiler built-in */ } } }
+impl Mul for u64 { type Output = Self; #[inline(never)] fn mul(self, _ : Self) -> Self::Output { loop { /* compiler built-in */ } } }
+impl Mul for i64 { type Output = Self; #[inline(never)] fn mul(self, _ : Self) -> Self::Output { loop { /* compiler built-in */ } } }
+impl Mul for u128 { type Output = Self; #[inline(never)] fn mul(self, _ : Self) -> Self::Output { loop { /* compiler built-in */ } } }
+impl Mul for i128 { type Output = Self; #[inline(never)] fn mul(self, _ : Self) -> Self::Output { loop { /* compiler built-in */ } } }
+impl Mul for usize { type Output = Self; #[inline(never)] fn mul(self, _ : Self) -> Self::Output { loop { /* compiler built-in */ } } }
+impl Mul for isize { type Output = Self; #[inline(never)] fn mul(self, _ : Self) -> Self::Output { loop { /* compiler built-in */ } } }
 
 impl Neg for i8 { type Output = Self; #[inline(never)] fn neg(self) -> Self::Output { loop { /* compiler built-in */ } } }
 impl Neg for i16 { type Output = Self; #[inline(never)] fn neg(self) -> Self::Output { loop { /* compiler built-in */ } } }

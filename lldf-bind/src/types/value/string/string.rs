@@ -2,17 +2,18 @@ use super::*;
 use crate::core::mem::transmute_unchecked;
 
 
-//#[derive(Clone)]
+/// A sequence of characters.
+#[derive(Clone)]
 pub struct String {
     _opaque_type : u8
 }
 
-impl Clone for String {
-    #[inline(always)]
-    fn clone(&self) -> Self { unsafe {
-        transmute_unchecked(self._opaque_type.clone())
-    } }
-}
+//impl Clone for String {
+//    #[inline(always)]
+//    fn clone(&self) -> Self { unsafe {
+//        transmute_unchecked(self._opaque_type.clone())
+//    } }
+//}
 
 impl<T : DFValue> From<T> for String {
     #[inline(always)]

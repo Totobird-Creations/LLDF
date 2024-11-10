@@ -2,6 +2,7 @@ use crate::prelude::*;
 use crate::bind::DFOpaqueValue;
 
 
+/// A selection consisting of any number of player entities.
 #[repr(transparent)]
 pub struct PlayerSel {
     pub(crate) uuids : List<String>
@@ -147,7 +148,7 @@ impl PlayerSel {
     #[inline(always)]
     pub fn send_message<T : DFValue>(&self, text : T) -> () { unsafe {
         DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
-        DF_ACTION__PlayerAction_SendMessage_AlignmentMode_Regular_TextValueMerging_NoSpaces_InheritStyles_False(text.to_opaque());
+        DF_ACTION__PlayerAction_SendMessage_AlignmentMode_Regular_TextValueMerging_AddSpaces_InheritStyles_False(text.to_opaque());
         DF_ACTION__SelectObject_Reset();
     } }
 
@@ -165,7 +166,7 @@ impl PlayerSel {
     #[inline(always)]
     pub fn send_actionbar<T : DFValue>(&self, text : T) -> () { unsafe {
         DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
-        DF_ACTION__PlayerAction_ActionBar(text.to_opaque());
+        DF_ACTION__PlayerAction_ActionBar_InheritStyles_False_TextValueMerging_AddSpaces(text.to_opaque());
         DF_ACTION__SelectObject_Reset();
     } }
 
@@ -831,9 +832,9 @@ extern "C" {
     fn DF_ACTION__PlayerAction_SetItemCooldown( item : Item, cooldown_ticks : UInt ) -> ();
     fn DF_ACTION__PlayerAction_GetItemCooldown( item : Item ) -> UInt;
 
-    fn DF_ACTION__PlayerAction_SendMessage_AlignmentMode_Regular_TextValueMerging_NoSpaces_InheritStyles_False( message : DFOpaqueValue ) -> ();
+    fn DF_ACTION__PlayerAction_SendMessage_AlignmentMode_Regular_TextValueMerging_AddSpaces_InheritStyles_False( message : DFOpaqueValue ) -> ();
     fn DF_ACTION__PlayerAction_SendTitle_TextValueMerging_NoSpaces_InheritStyles_False( title : Text, subtitle : Text, fade_in_ticks : UInt, hold_ticks : UInt, fade_out_ticks : UInt ) -> ();
-    fn DF_ACTION__PlayerAction_ActionBar( message : DFOpaqueValue ) -> ();
+    fn DF_ACTION__PlayerAction_ActionBar_InheritStyles_False_TextValueMerging_AddSpaces( message : DFOpaqueValue ) -> ();
     fn DF_ACTION__PlayerAction_OpenBook( item : Item ) -> ();
     fn DF_ACTION__PlayerAction_SpecialcharspaceSetBossBarSpecialcharspace_SkyEffect_DynamicNone_BarStyle_DynamicSolid_BarColor_DynamicPurple( sky_effect : String, bar_style : String, bar_colour : String, title : Text, progress : Float, maximum : Float, position : UInt ) -> ();
     fn DF_ACTION__PlayerAction_RemoveBossBar( ... ) -> ();

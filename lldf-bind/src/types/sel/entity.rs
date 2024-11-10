@@ -1,6 +1,7 @@
 use crate::prelude::*;
 
 
+/// A selection consisting of any number of non-player entities.
 #[repr(transparent)]
 pub struct EntitySel {
     pub(in super::super) uuids : List<String>

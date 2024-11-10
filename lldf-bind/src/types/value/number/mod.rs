@@ -7,5 +7,5 @@ pub use float::Float;
 
 
 use crate::prelude::*;
-use crate::core::ops::Add;
+use crate::core::ops::*;
 use crate::bind::DFOpaqueValue;

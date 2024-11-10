@@ -5,8 +5,6 @@
 - [ ] Location
 - [ ] Vector
 - [x] Sound
-  - [x] Keyed sounds
-  - [ ] Named sounds
 - [ ] Particle
 - [x] Potion
 - [ ] Item

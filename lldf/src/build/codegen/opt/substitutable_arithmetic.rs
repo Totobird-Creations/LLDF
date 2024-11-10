@@ -9,7 +9,7 @@ const SUBSTITUTION_MAX_COUNT : usize = 4;
 /// 
 /// **This optimisation requires some guarantees that LLVM provides.**
 /// Failure to uphold the guarantees may result in broken codegen.
-pub fn substitutable_arithmetic(line : &mut CodeLine) -> bool {
+pub fn substitutable_arithmetic(line : &mut CodeLine) -> bool { // TODO: Add a check to handle crossing a loop boundary.
     let mut did_something = false;
 
     'l : for i in (0..line.blocks.len()).rev() {
@@ -34,7 +34,7 @@ pub fn substitutable_arithmetic(line : &mut CodeLine) -> bool {
                                     let mut count = 0;
                                     for j in (i + 1)..line.blocks.len() {
                                         let checking_block = &line.blocks[j];
-                                        if (! checking_block.can_replace_line_var_with_constant(dest_name)) { break 'l; }
+                                        if (! checking_block.can_replace_line_var_with_constant(dest_name)) { continue 'l; }
                                         if (checking_block.is_line_var_used(&dest_name)) { count += 1; }
                                     }
                                     if (count <= SUBSTITUTION_MAX_COUNT) {

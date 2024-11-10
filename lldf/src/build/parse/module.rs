@@ -1,5 +1,5 @@
-use crate::build::codegen::{CodeLine, Codeblock};
 use super::*;
+use crate::build::codegen::{ BracketKind, BracketSide, CodeLine, Codeblock };
 
 use std::collections::HashMap;
 
@@ -27,14 +27,12 @@ pub enum Global {
         action    : String,
         tags      : Vec<ActionFunctionTag>
     },
-    ActionPtrFunction {
-        getter_codeblock : String,
-        getter_action    : String,
-        getter_tags      : Vec<CodeValue>,
-        setter_codeblock : String,
-        setter_action    : String,
-        setter_tags      : Vec<CodeValue>
+    BracketFunction {
+        kind : BracketKind,
+        side : BracketSide
     },
+    ElseFunction,
+    TempVarFunction,
     GamevalueFunction {
         kind   : String,
         target : String
@@ -116,27 +114,33 @@ pub fn parse_module(module : &Module) -> Result<ParsedModule, Box<dyn Error>> {
                 }
             },
 
-            /*Some("DF_ACTIONPTR") => {
-                if let (Some(getter), Some(setter), None) = (parts.next(), parts.next(), parts.next()) {
-                    let mut getter_parts = getter.split("_");
-                    let mut setter_parts = setter.split("_");
-                    if let (Some(getter_codeblock), Some(getter_action), Some(setter_codeblock), Some(setter_action))
-                        = (getter_parts.next(), getter_parts.next(), setter_parts.next(), setter_parts.next())
-                    {
-                        let getter_codeblock = linked_name_to_codeblock (getter_codeblock );
-                        let getter_action    = linked_name_to_action    (getter_action    );
-                        let setter_codeblock = linked_name_to_codeblock (setter_codeblock );
-                        let setter_action    = linked_name_to_action    (setter_action    );
-                        parsed.globals.insert(Name::Name(Box::new(module_function.name.clone())), Global::ActionPtrFunction {
-                            getter_codeblock, getter_action,
-                            getter_tags : collect_actiontag_parts(getter_parts),
-                            setter_codeblock, setter_action,
-                            setter_tags : collect_actiontag_parts(setter_parts)
+            Some("DF_BRACKET") => {
+                if let (Some(typ), None) = (parts.next(), parts.next()) {
+                    let mut typ_parts = typ.split("_");
+                    if let (Some(kind), Some(side), None) = (typ_parts.next(), typ_parts.next(), typ_parts.next()) {
+                        let kind = BracketKind::from(kind)?;
+                        let side = BracketSide::from(side)?;
+                        parsed.globals.insert(Name::Name(Box::new(module_function.name.clone())), Global::BracketFunction {
+                            kind, side
                         });
                         continue;
                     }
                 }
-            },*/
+            },
+
+            Some("DF_ELSE") => {
+                if let (None) = (parts.next()) {
+                    parsed.globals.insert(Name::Name(Box::new(module_function.name.clone())), Global::ElseFunction);
+                    continue;
+                }
+            },
+
+            Some("DF_TEMPVAR") => {
+                if let (None) = (parts.next()) {
+                    parsed.globals.insert(Name::Name(Box::new(module_function.name.clone())), Global::TempVarFunction);
+                    continue;
+                }
+            },
 
             Some("DF_GAMEVALUE") => {
                 if let (Some(getter), None) = (parts.next(), parts.next()) {

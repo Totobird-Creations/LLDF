@@ -3,7 +3,7 @@ use super::*;
 
 #[repr(transparent)]
 pub struct UInt {
-    _opaque_type : u8
+    pub(crate) _opaque_type : u8
 }
 impl Clone for UInt { fn clone(&self) -> Self { *self } }
 impl Copy for UInt {}
@@ -18,9 +18,31 @@ impl From<usize > for UInt { #[inline(always)] fn from(value : usize ) -> Self {
 
 impl<T : Into<UInt>> Add<T> for UInt {
     type Output = Self;
-    #[inline(never)]
+    #[inline(always)]
     fn add(self, rhs : T) -> Self::Output { unsafe {
         DF_ACTION__SetVariable_Specialcharplus(
+            self,
+            rhs.into()
+        )
+    } }
+}
+
+impl<T : Into<UInt>> Sub<T> for UInt { // TODO: Add overflow check.
+    type Output = Self;
+    #[inline(always)]
+    fn sub(self, rhs : T) -> Self::Output { unsafe {
+        DF_ACTION__SetVariable_Specialcharminus(
+            self,
+            rhs.into()
+        )
+    } }
+}
+
+impl<T : Into<UInt>> Mul<T> for UInt {
+    type Output = Self;
+    #[inline(always)]
+    fn mul(self, rhs : T) -> Self::Output { unsafe {
+        DF_ACTION__SetVariable_x(
             self,
             rhs.into()
         )
@@ -32,6 +54,10 @@ unsafe impl DFValue for UInt {
         DF_TRANSMUTE__UInt_Opaque(self)
     } }
 }
+impl Into<UInt> for UInt {
+    #[inline(always)]
+    fn into(self) -> UInt { self }
+}
 
 
 #[allow(clashing_extern_declarations)]
@@ -40,5 +66,7 @@ extern "C" {
     fn DF_TRANSMUTE__UInt_Opaque( from : UInt ) -> DFOpaqueValue;
 
     fn DF_ACTION__SetVariable_Specialcharplus( left : UInt, right : UInt ) -> UInt;
+    fn DF_ACTION__SetVariable_Specialcharminus( left : UInt, right : UInt ) -> UInt;
+    fn DF_ACTION__SetVariable_x( left : UInt, right : UInt ) -> UInt;
 
 }

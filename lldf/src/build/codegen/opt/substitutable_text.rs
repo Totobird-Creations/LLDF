@@ -9,7 +9,7 @@ const SUBSTITUTION_MAX_COUNT : usize = 4;
 /// 
 /// **This optimisation requires some guarantees that LLVM provides.**
 /// Failure to uphold the guarantees may result in broken codegen.
-pub fn substitutable_text(line : &mut CodeLine) -> bool {
+pub fn substitutable_text(line : &mut CodeLine) -> bool { // TODO: Add a check to handle crossing a loop boundary.
     let mut did_something = false;
 
     'l : for i in (0..line.blocks.len()).rev() {
