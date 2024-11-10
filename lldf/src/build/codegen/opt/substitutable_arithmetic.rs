@@ -21,15 +21,15 @@ pub fn substitutable_arithmetic(line : &mut CodeLine) -> bool {
                     // The destination variable is not a parameter value.
                     if (! line.blocks.iter().any(|block| block.contains_param(dest_name))) {
 
-                        if let Some(operator) = (match (action.as_str()) {
-                            "+" => Some("+"),
-                            "-" => Some("-"),
-                            "x" => Some("*"),
-                            "/" => Some("/"),
-                            _   => None
-                        }) {
-                            if let Some(left) = try_param(&params[1]) {
-                                if let Some(right) = try_param(&params[2]) {
+                        if let Some(left) = try_param(&params[1]) { let left_int = left.parse::<f64>().ok();
+                            if let Some(right) = try_param(&params[2]) { let right_int = right.parse::<f64>().ok();
+                                if let Some(value) = (match (action.as_str()) {
+                                    "+" => Some(CodeValue::Number(if let (Some(left), Some(right)) = (left_int, right_int) { (left + right).to_string() } else { format!("%math({}+{})", left, right) })),
+                                    "-" => Some(CodeValue::Number(if let (Some(left), Some(right)) = (left_int, right_int) { (left - right).to_string() } else { format!("%math({}-{})", left, right) })),
+                                    "x" => Some(CodeValue::Number(if let (Some(left), Some(right)) = (left_int, right_int) { (left * right).to_string() } else { format!("%math({}*{})", left, right) })),
+                                    "/" => Some(CodeValue::Number(if let (Some(left), Some(right)) = (left_int, right_int) { (left / right).to_string() } else { format!("%math({}/{})", left, right) })),
+                                    _   => None
+                                }) {
                                     // Count the number of usages of the destination variable, also making sure that each usage can be substituted.
                                     let mut count = 0;
                                     for j in (i + 1)..line.blocks.len() {
@@ -40,7 +40,6 @@ pub fn substitutable_arithmetic(line : &mut CodeLine) -> bool {
                                     if (count <= SUBSTITUTION_MAX_COUNT) {
 
                                         let dest_name = dest_name.clone();
-                                        let value     = CodeValue::Number(format!("%math({}{}{})", left, operator, right));
                                         for j in (i + 1)..line.blocks.len() {
                                             line.blocks[j].replace_line_var_with_constant(&dest_name, &value);
                                         }

@@ -1,3 +1,4 @@
+use crate::build::codegen::SoundKind;
 use crate::build::codegen::{ CodeValue, Codeblock, VariableScope };
 
 use super::*;
@@ -253,7 +254,19 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
                     if let Some(dest) = dest {
                         let params = vec![
                             CodeValue::Variable { name : name_to_local(dest), scope : VariableScope::Line },
-                            CodeValue::SoundKeyed { key : id.clone(), volume : 1.0, pitch : 1.0 }
+                            CodeValue::Sound { kind : SoundKind::Keyed(id.clone()), volume : 1.0, pitch : 1.0 }
+                        ];
+                        function.line.blocks.push(Codeblock::action("set_var", "=", params, vec![]));
+                        function.locals.insert(dest.clone(), Value::Local(dest.clone()));
+                    }
+                    Ok(())
+                },
+
+                Global::PotionFunction { id } => {
+                    if let Some(dest) = dest {
+                        let params = vec![
+                            CodeValue::Variable { name : name_to_local(dest), scope : VariableScope::Line },
+                            CodeValue::Potion { kind : id.clone(), dur : 1000000, amp : 0 }
                         ];
                         function.line.blocks.push(Codeblock::action("set_var", "=", params, vec![]));
                         function.locals.insert(dest.clone(), Value::Local(dest.clone()));

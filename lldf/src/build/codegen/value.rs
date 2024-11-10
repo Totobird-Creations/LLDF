@@ -10,8 +10,7 @@ pub enum CodeValue { // TODO: Add item
     Number(String),
     Location { x : f64, y : f64, z : f64, pitch : f64, yaw : f64 },
     Vector { x : f64, y : f64, z : f64 },
-    SoundNamed { name : String, volume : f64, pitch : f64 },
-    SoundKeyed { key : String, volume : f64, pitch : f64 },
+    Sound { kind : SoundKind, volume : f64, pitch : f64 },
     Particle {
         kind             : String,
         cluster_x        : f64,
@@ -60,6 +59,12 @@ pub enum CodeValue { // TODO: Add item
     }
 }
 
+
+#[derive(Debug, Clone, PartialEq)]
+pub enum SoundKind {
+    Named(String),
+    Keyed(String)
+}
 
 #[derive(Debug, Clone, PartialEq)]
 pub enum VariableScope {
@@ -115,20 +120,19 @@ impl AsRef<str> for ParameterType {
 impl CodeValue {
 
     pub fn is_constant(&self) -> bool { match (self) {
-        CodeValue::String     ( _  ) => true,
-        CodeValue::Text       ( _  ) => true,
-        CodeValue::Number     ( _  ) => true,
-        CodeValue::Location   { .. } => true,
-        CodeValue::Vector     { .. } => true,
-        CodeValue::SoundNamed { .. } => true,
-        CodeValue::SoundKeyed { .. } => true,
-        CodeValue::Particle   { .. } => true,
-        CodeValue::Potion     { .. } => true,
-        CodeValue::Item       { .. } => true,
-        CodeValue::Variable   { .. } => false,
-        CodeValue::Gamevalue  { .. } => false,
-        CodeValue::Parameter  { .. } => false,
-        CodeValue::Actiontag  { .. } => false,
+        CodeValue::String    ( _  ) => true,
+        CodeValue::Text      ( _  ) => true,
+        CodeValue::Number    ( _  ) => true,
+        CodeValue::Location  { .. } => true,
+        CodeValue::Vector    { .. } => true,
+        CodeValue::Sound     { .. } => true,
+        CodeValue::Particle  { .. } => true,
+        CodeValue::Potion    { .. } => true,
+        CodeValue::Item      { .. } => true,
+        CodeValue::Variable  { .. } => false,
+        CodeValue::Gamevalue { .. } => false,
+        CodeValue::Parameter { .. } => false,
+        CodeValue::Actiontag { .. } => false,
     } }
 
     pub fn is_variable(&self) -> bool { match (self) {
@@ -230,14 +234,23 @@ impl CodeValue {
 
 impl CodeValue {
     pub fn to_json(&self, codeblock : &str, action : &str) -> json::Value { match (self) {
-        Self::String     ( string              ) => json::json!({ "id" : "txt",  "data" : { "name" : string } }),
-        Self::Text       ( text                ) => json::json!({ "id" : "comp", "data" : { "name" : text } }),
-        Self::Number     ( num                 ) => json::json!({ "id" : "num",  "data" : { "name" : num.to_string() } }),
-        Self::Location   { x, y, z, pitch, yaw } => json::json!({ "id" : "loc",  "data" : { "isBlock" : false, "loc" : { "x" : x, "y" : y, "z" : z, "pitch" : pitch, "yaw" : yaw } } }),
-        Self::Vector     { x, y, z             } => json::json!({ "id" : "vec",  "data" : { "x" : x, "y" : y, "z" : z } }),
-        Self::SoundNamed { name, volume, pitch } => json::json!({ "id" : "snd",  "data" : { "sound" : name, "vol" : volume, "pitch" : pitch } }),
-        Self::SoundKeyed { key, volume, pitch  } => json::json!({ "id" : "snd",  "data" : { "key" : key, "vol" : volume, "pitch" : pitch } }),
-        Self::Particle   { kind, cluster_x, cluster_y, cluster_amount, motion, motion_variation, colour, colour_variation, material, size, size_variation, roll, fade_colour } => {
+        Self::String   ( string              ) => json::json!({ "id" : "txt",  "data" : { "name" : string } }),
+        Self::Text     ( text                ) => json::json!({ "id" : "comp", "data" : { "name" : text } }),
+        Self::Number   ( num                 ) => json::json!({ "id" : "num",  "data" : { "name" : num.to_string() } }),
+        Self::Location { x, y, z, pitch, yaw } => json::json!({ "id" : "loc",  "data" : { "isBlock" : false, "loc" : { "x" : x, "y" : y, "z" : z, "pitch" : pitch, "yaw" : yaw } } }),
+        Self::Vector   { x, y, z             } => json::json!({ "id" : "vec",  "data" : { "x" : x, "y" : y, "z" : z } }),
+        Self::Sound    { kind, volume, pitch } => {
+            let mut data = json::json!({
+                "vol"   : volume,
+                "pitch" : pitch
+            });
+            match (kind) {
+                SoundKind::Named(name ) => { data["name" ] = json::Value::String(name .clone()) },
+                SoundKind::Keyed(key  ) => { data["key"  ] = json::Value::String(key  .clone()) },
+            }
+            json::json!({ "id" : "snd", "data" : data })
+        },
+        Self::Particle { kind, cluster_x, cluster_y, cluster_amount, motion, motion_variation, colour, colour_variation, material, size, size_variation, roll, fade_colour } => {
             let mut data = json::json!({});
             if let Some((x, y, z)) = motion {
                 data["x"] = json::Number::from_f64(*x).unwrap().into();

@@ -53,9 +53,22 @@ pub enum Gamemode {
 }
 
 #[lldf_bind_proc::actiontag]
-pub enum Flag {
+pub enum Toggle {
     Enable  = "Enable",
     Disable = "Disable"
+}
+
+#[lldf_bind_proc::actiontag]
+pub enum Flag {
+    True  = "True",
+    False = "False"
+}
+
+#[lldf_bind_proc::actiontag]
+pub enum Particles {
+    Regular = "Regular",
+    Ambient = "Ambient",
+    None    = "None"
 }
 
 mod name_colour;

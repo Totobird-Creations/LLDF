@@ -44,9 +44,10 @@ fn main() -> Result<(), Box<dyn Error>> {
                 &mut file,
                 "        ",
                 &format!("{}: {}", code_block_name, action_name),
-                &mut action.icon.deprecated_note,
+                &mut action.icon.deprecated_note, true,
                 None,
                 &action.icon.description,
+                true,
                 &action.icon.example,
                 &action.icon.works_with,
                 &action.icon.additional_info,
@@ -119,14 +120,55 @@ fn main() -> Result<(), Box<dyn Error>> {
         }
         writeln!(file, "}}")?;
         writeln!(file, "impl Particle {{")?;
-        for particle in &dbc.particles {
+        for particle in &mut dbc.particles {
             let name = particle.particle.to_title_case().replace(" ", "");
-            writeln!(file, "    /// `{}`", particle.particle)?;
-            write!(file, "    #[inline(always)] pub fn {}() -> Self {{ unsafe {{ DF_PARTICLE__{}", particle.particle.to_snake_case(), name)?;
+            write_doc_comment(&mut file, "    ",
+                &particle.icon.name,
+                &mut particle.icon.deprecated_note, false,
+                None,
+                &particle.icon.description,
+                false,
+                &particle.icon.example,
+                &particle.icon.works_with,
+                &particle.icon.additional_info,
+                &particle.icon.required_rank,
+                &dbc_autogen_message
+            )?;
+            write!(file, "    #[inline(always)] pub fn {}() -> Self {{ unsafe {{ DF_PARTICLE__{}", particle.icon.name.to_snake_case(), name)?;
             for field in &particle.fields {
                 write!(file, "_{:?}", field)?;
             }
             writeln!(file, "() }} }}")?;
+        }
+        writeln!(file, "}}")?;
+    }
+
+    // Potions
+    {
+        let mut file = File::create(cwd.join("src/bind/potion.rs"))?;
+        writeln!(file, "extern \"C\" {{")?;
+        for potion in &dbc.potions {
+            let name = util::symbols_to_names(&potion.icon.name).to_title_case().replace(" ", "");
+            write!(file, "    fn DF_POTION__{}", name)?;
+            writeln!(file, "( ) -> Potion;")?;
+        }
+        writeln!(file, "}}")?;
+        writeln!(file, "impl Potion {{")?;
+        for potion in &mut dbc.potions {
+            let name = util::symbols_to_names(&potion.icon.name).to_title_case().replace(" ", "");
+            write_doc_comment(&mut file, "    ",
+                &potion.icon.name,
+                &mut potion.icon.deprecated_note, false,
+                None,
+                &potion.icon.description,
+                false,
+                &potion.icon.example,
+                &potion.icon.works_with,
+                &potion.icon.additional_info,
+                &potion.icon.required_rank,
+                &dbc_autogen_message
+            )?;
+            writeln!(file, "    #[inline(always)] pub fn {}() -> Self {{ unsafe {{ DF_POTION__{}() }} }}", potion.icon.name.replace("'", "").to_snake_case(), name)?;
         }
         writeln!(file, "}}")?;
     }
@@ -137,20 +179,22 @@ fn main() -> Result<(), Box<dyn Error>> {
 
 
 fn write_doc_comment<W : Write>(
-    f               : &mut W,
-    prefix          : &str,
-    title           : &str,
-    deprecated_note : &mut Vec<String>,
-    typ             : Option<&dbc::DBCValueType>,
-    description     : &Vec<String>,
-    examples        : &Vec<String>,
-    works_with      : &Vec<String>,
-    additional_info : &Vec<Vec<String>>,
-    required_rank   : &dbc::DBCRank,
+    f                 : &mut W,
+    prefix            : &str,
+    title             : &str,
+    deprecated_note   : &mut Vec<String>,
+    assume_deprecated : bool,
+    typ               : Option<&dbc::DBCValueType>,
+    description       : &Vec<String>,
+    tags              : bool,
+    examples          : &Vec<String>,
+    works_with        : &Vec<String>,
+    additional_info   : &Vec<Vec<String>>,
+    required_rank     : &dbc::DBCRank,
     // TODO: Arguments and return value
-    autogen_message : &str
+    autogen_message   : &str
 ) -> io::Result<()> {
-    if (description.is_empty()) {
+    if (assume_deprecated && description.is_empty()) {
         deprecated_note.push("*Assumed.*".to_string());
     }
 
@@ -180,13 +224,15 @@ fn write_doc_comment<W : Write>(
         writeln!(f, "{prefix}/// *No description available.*")?;
     }
 
-    writeln!(f, "{prefix}$(")?;
-    writeln!(f, "{prefix}    /// ")?;
-    writeln!(f, "{prefix}    /// ##### Tags")?;
-    writeln!(f, "{prefix}    $(")?;
-    writeln!(f, "{prefix}        #[doc = crate::core::concat!(\"- `\", crate::core::stringify!($tagident), \"`: `\", crate::core::stringify!($tagvalue), \"`\")]")?;
-    writeln!(f, "{prefix}    )*")?;
-    writeln!(f, "{prefix})?")?;
+    if (tags) {
+        writeln!(f, "{prefix}$(")?;
+        writeln!(f, "{prefix}    /// ")?;
+        writeln!(f, "{prefix}    /// ##### Tags")?;
+        writeln!(f, "{prefix}    $(")?;
+        writeln!(f, "{prefix}        #[doc = crate::core::concat!(\"- `\", crate::core::stringify!($tagident), \"`: `\", crate::core::stringify!($tagvalue), \"`\")]")?;
+        writeln!(f, "{prefix}    )*")?;
+        writeln!(f, "{prefix})?")?;
+    }
 
     if (examples.len() > 0) {
         writeln!(f, "{prefix}/// ")?;

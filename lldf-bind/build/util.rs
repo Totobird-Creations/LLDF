@@ -1,4 +1,4 @@
-/*#[track_caller]
+#[track_caller]
 pub fn symbols_to_names(from : &str) -> String {
     let mut out = String::with_capacity(from.len());
     for ch in from.chars() { match (ch) {
@@ -26,7 +26,7 @@ pub fn symbols_to_names(from : &str) -> String {
         _ => { panic!("Could not convert symbol character {:?} to a name.", ch) }
     } }
     out
-}*/
+}
 
 
 pub fn remove_sections(from : &str) -> String {

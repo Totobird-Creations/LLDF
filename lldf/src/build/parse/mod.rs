@@ -48,6 +48,7 @@ impl Value {
                 Global::ActionPtrFunction { .. } |
                 Global::GamevalueFunction { .. } |
                 Global::SoundFunction { .. } |
+                Global::PotionFunction { .. } |
                 Global::ItemFunction { .. }
                     => unreachable!(),
 
@@ -79,6 +80,7 @@ impl Value {
                 Global::ActionPtrFunction { .. } |
                 Global::GamevalueFunction { .. } |
                 Global::SoundFunction { .. } |
+                Global::PotionFunction { .. } |
                 Global::ItemFunction { .. }
                     => unreachable!(),
 
@@ -111,6 +113,7 @@ impl Value {
                 Global::ActionPtrFunction { .. } |
                 Global::GamevalueFunction { .. } |
                 Global::SoundFunction { .. } |
+                Global::PotionFunction { .. } |
                 Global::ItemFunction { .. }
                     => unreachable!(),
 

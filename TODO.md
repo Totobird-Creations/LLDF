@@ -8,7 +8,7 @@
   - [x] Keyed sounds
   - [ ] Named sounds
 - [ ] Particle
-- [ ] Potion
+- [x] Potion
 - [ ] Item
 - [ ] List
 - [ ] Dict

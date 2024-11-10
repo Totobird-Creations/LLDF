@@ -42,6 +42,9 @@ pub enum Global {
     SoundFunction {
         id : String
     },
+    PotionFunction {
+        id : String
+    },
     ItemFunction {
         id : String
     },
@@ -138,8 +141,7 @@ pub fn parse_module(module : &Module) -> Result<ParsedModule, Box<dyn Error>> {
             Some("DF_GAMEVALUE") => {
                 if let (Some(getter), None) = (parts.next(), parts.next()) {
                     let mut getter_parts = getter.split("_");
-                    if let (Some(kind), Some(target), None) = (getter_parts.next(), getter_parts.next(), getter_parts.next())
-                    {
+                    if let (Some(kind), Some(target), None) = (getter_parts.next(), getter_parts.next(), getter_parts.next()) {
                         let kind   = linked_name_to_gamevalue_kind   (kind   );
                         let target = linked_name_to_gamevalue_target (target );
                         parsed.globals.insert(Name::Name(Box::new(module_function.name.clone())), Global::GamevalueFunction { kind, target });
@@ -150,9 +152,18 @@ pub fn parse_module(module : &Module) -> Result<ParsedModule, Box<dyn Error>> {
 
             Some("DF_SOUND") => {
                 if let (Some(sound), None) = (parts.next(), parts.next()) {
-                    {
-                        let id = linked_name_to_sound_id(sound);
-                        parsed.globals.insert(Name::Name(Box::new(module_function.name.clone())), Global::SoundFunction { id });
+                    let id = linked_name_to_sound_id(sound);
+                    parsed.globals.insert(Name::Name(Box::new(module_function.name.clone())), Global::SoundFunction { id });
+                    continue;
+                }
+            },
+
+            Some("DF_POTION") => {
+                if let (Some(potion), None) = (parts.next(), parts.next()) {
+                    let mut potion_parts = potion.split("_");
+                    if let (Some(id), None) = (potion_parts.next(), potion_parts.next()) {
+                        let id = linked_name_to_potion_id(id);
+                        parsed.globals.insert(Name::Name(Box::new(module_function.name.clone())), Global::PotionFunction { id });
                         continue;
                     }
                 }
@@ -161,8 +172,7 @@ pub fn parse_module(module : &Module) -> Result<ParsedModule, Box<dyn Error>> {
             Some("DF_ITEM") => {
                 if let (Some(item), None) = (parts.next(), parts.next()) {
                     let mut item_parts = item.split("_");
-                    if let (Some(id), None) = (item_parts.next(), item_parts.next())
-                    {
+                    if let (Some(id), None) = (item_parts.next(), item_parts.next()) {
                         let id = linked_name_to_item_id(id);
                         parsed.globals.insert(Name::Name(Box::new(module_function.name.clone())), Global::ItemFunction { id });
                         continue;
@@ -220,7 +230,7 @@ pub fn linked_name_to_codeblock(codeblock : &str) -> String {
     }
 }
 pub fn linked_name_to_action(action : &str) -> String {
-    linked_name_to_actiontag_kind(action).replace(" ", "")
+    linked_name_to_actiontag_kind(&names_to_symbols(action)).replace(" ", "")
 }
 pub fn linked_name_to_actiontag_kind(actiontag_kind : &str) -> String {
     let mut out = String::with_capacity(actiontag_kind.len() * 2);
@@ -270,11 +280,14 @@ pub fn linked_name_to_gamevalue_kind(gamevalue_kind : &str) -> String {
 pub fn linked_name_to_gamevalue_target(gamevalue_kind : &str) -> String {
     linked_name_to_actiontag_kind(gamevalue_kind)
 }
-pub fn linked_name_to_item_id(item_id : &str) -> String {
-    names_to_symbols(&item_id.to_title_case().replace(" ", "")).to_snake_case()
-}
 pub fn linked_name_to_sound_id(sound_id : &str) -> String {
     sound_id.split("_").map(|part| linked_name_to_item_id(part)).intersperse(".".to_string()).collect::<String>()
+}
+pub fn linked_name_to_potion_id(potion_id : &str) -> String {
+    linked_name_to_actiontag_kind(&names_to_symbols(&potion_id))
+}
+pub fn linked_name_to_item_id(item_id : &str) -> String {
+    item_id.to_snake_case()
 }
 pub fn names_to_symbols(from : &str) -> String {
     // Yes, I know this sucks. No, I'm not going to find something better.

@@ -9,10 +9,6 @@ use lldf_bind::prelude::*;
 
 #[event(PlayerSwapHands)]
 fn player_swap_hands(default : PlayerSel) {
-    let c = Colour::from_rgb(0usize, 127usize, 255usize);
-    let c = c.hsb();
-    default.send_message(c.0);
-    default.send_message(c.1);
-    default.send_message(c.2);
+    default.give_potion(Potion::dolphins_grace().with_amplifier(2usize).with_duration(100usize), Flag::True, Particles::Ambient)
 }
 

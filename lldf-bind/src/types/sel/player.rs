@@ -323,7 +323,13 @@ impl PlayerSel {
 
     // TODO: SetExp
 
-    // TODO: GivePotion
+    #[lldf_bind_proc::dfdoc(PlayerAction/GivePotion { OverwriteEffect = True })]
+    #[inline(always)]
+    pub fn give_potion(&self, potion : Potion, icon : Flag, particles : Particles) -> () { unsafe {
+        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
+        DF_ACTION__PlayerAction_GivePotion_ShowIcon_DynamicTrue_OverwriteEffect_True_EffectParticles_DynamicTrue(icon.to_string(), particles.to_string(), potion);
+        DF_ACTION__SelectObject_Reset();
+    } }
 
     // TODO: RemovePotion
 
@@ -392,7 +398,7 @@ impl PlayerSel {
 
     #[lldf_bind_proc::dfdoc(PlayerAction/SetAllowFlight)]
     #[inline(always)]
-    pub fn set_allow_flight(&self, enable : Flag) -> () { unsafe {
+    pub fn set_allow_flight(&self, enable : Toggle) -> () { unsafe {
         DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
         DF_ACTION__PlayerAction_SetAllowFlight_AllowFlight_DynamicFalse(enable.to_string());
         DF_ACTION__SelectObject_Reset();
@@ -400,7 +406,7 @@ impl PlayerSel {
 
     #[lldf_bind_proc::dfdoc(PlayerAction/SetAllowPVP)]
     #[inline(always)]
-    pub fn set_allow_pvp(&self, enable : Flag) -> () { unsafe {
+    pub fn set_allow_pvp(&self, enable : Toggle) -> () { unsafe {
         DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
         DF_ACTION__PlayerAction_SetAllowPVP_PVP_DynamicFalse(enable.to_string());
         DF_ACTION__SelectObject_Reset();
@@ -408,7 +414,7 @@ impl PlayerSel {
 
     #[lldf_bind_proc::dfdoc(PlayerAction/SetDropsEnabled)]
     #[inline(always)]
-    pub fn set_death_drops(&self, enable : Flag) -> () { unsafe {
+    pub fn set_death_drops(&self, enable : Toggle) -> () { unsafe {
         DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
         DF_ACTION__PlayerAction_SetDropsEnabled_SpawnDeathDrops_DynamicFalse(enable.to_string());
         DF_ACTION__SelectObject_Reset();
@@ -416,7 +422,7 @@ impl PlayerSel {
 
     #[lldf_bind_proc::dfdoc(PlayerAction/SetInventoryKept)]
     #[inline(always)]
-    pub fn set_keep_inventory(&self, enable : Flag) -> () { unsafe {
+    pub fn set_keep_inventory(&self, enable : Toggle) -> () { unsafe {
         DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
         DF_ACTION__PlayerAction_SetInventoryKept_InventoryKept_DynamicFalse(enable.to_string());
         DF_ACTION__SelectObject_Reset();
@@ -424,7 +430,7 @@ impl PlayerSel {
 
     #[lldf_bind_proc::dfdoc(PlayerAction/SetCollidable)]
     #[inline(always)]
-    pub fn set_entity_collision(&self, enable : Flag) -> () { unsafe {
+    pub fn set_entity_collision(&self, enable : Toggle) -> () { unsafe {
         DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
         DF_ACTION__PlayerAction_SetCollidable_Collision_DynamicFalse(enable.to_string());
         DF_ACTION__SelectObject_Reset();
@@ -436,7 +442,7 @@ impl PlayerSel {
 
     #[lldf_bind_proc::dfdoc(PlayerAction/InstantRespawn)]
     #[inline(always)]
-    pub fn set_instant_respawn(&self, enable : Flag) -> () { unsafe {
+    pub fn set_instant_respawn(&self, enable : Toggle) -> () { unsafe {
         DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
         DF_ACTION__PlayerAction_InstantRespawn_InstantRespawn_DynamicFalse(enable.to_string());
         DF_ACTION__SelectObject_Reset();
@@ -444,7 +450,7 @@ impl PlayerSel {
 
     #[lldf_bind_proc::dfdoc(PlayerAction/SetReducedDebug)]
     #[inline(always)]
-    pub fn set_reduced_debug_info(&self, enable : Flag) -> () { unsafe {
+    pub fn set_reduced_debug_info(&self, enable : Toggle) -> () { unsafe {
         DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
         DF_ACTION__PlayerAction_InstantRespawn_InstantRespawn_DynamicFalse(enable.to_string());
         DF_ACTION__SelectObject_Reset();
@@ -452,7 +458,7 @@ impl PlayerSel {
 
     #[lldf_bind_proc::dfdoc(PlayerAction/SetHandCrafting)]
     #[inline(always)]
-    pub fn set_allow_hand_crafting(&self, enable : Flag) -> () { unsafe {
+    pub fn set_allow_hand_crafting(&self, enable : Toggle) -> () { unsafe {
         DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
         DF_ACTION__PlayerAction_SetHandCrafting_AllowHandCrafting_DynamicFalse(enable.to_string());
         DF_ACTION__SelectObject_Reset();
@@ -806,8 +812,8 @@ extern "C" {
     fn DF_ACTION__SelectObject_PlayerName( target : List<String> ) -> ();
     fn DF_ACTION__SelectObject_Reset( ) -> ();
 
-    fn DF_ACTION__SetVariable_Specialcharplus( a : DFOpaqueValue, b : DFOpaqueValue ) -> DFOpaqueValue;
     fn DF_TRANSMUTE__Opaque_UInt( from : DFOpaqueValue ) -> UInt;
+    fn DF_ACTION__SetVariable_Specialcharplus( a : DFOpaqueValue, b : DFOpaqueValue ) -> DFOpaqueValue;
 
 
     fn DF_ACTION__PlayerAction_GiveItems( item : Item ) -> ();
@@ -836,6 +842,8 @@ extern "C" {
     fn DF_ACTION__PlayerAction_SetTabListInfo_PlayerListField_Footer( title : Text ) -> ();
     fn DF_ACTION__PlayerAction_PlaySound_SoundSource_DynamicMaster( channel : String, sound : Sound, location : Location ) -> ();
     fn DF_ACTION__PlayerAction_StopSound_SoundSource_DynamicMaster( channel : String, ... ) -> ();
+
+    fn DF_ACTION__PlayerAction_GivePotion_ShowIcon_DynamicTrue_OverwriteEffect_True_EffectParticles_DynamicTrue( icon : String, particles : String, potion : Potion ) -> ();
 
     fn DF_ACTION__PlayerAction_SurvivalMode( ) -> ();
     fn DF_ACTION__PlayerAction_AdventureMode( ) -> ();
