@@ -4,9 +4,18 @@ use crate::bind::DFOpaqueValue;
 use core::mem::transmute_unchecked;
 
 
+#[repr(transparent)]
 pub struct List<T : DFValue> {
     _opaque_type : u8,
     _ph          : PhantomData<T>
+}
+
+impl<T : DFValue> List<T> {
+    #[inline(always)]
+    pub fn from_array<const N : usize>(array : [T; N]) -> Self { unsafe {
+        //(*(DF_TRANSMUTE__Array_Opaque(&array as *const [T; N] as *const [DFOpaqueValue; 1]) as *const List<T>)).clone()
+        transmute_unchecked(DF_TRANSMUTE__Array_Opaque(array))
+    } }
 }
 
 impl<T : DFValue> Clone for List<T> {
@@ -31,5 +40,7 @@ unsafe impl<T : DFValue> DFValue for List<T> {
 extern "C" {
 
     fn DF_TRANSMUTE__ListOpaque_Opaque( from : List<DFOpaqueValue> ) -> DFOpaqueValue;
+
+    fn DF_TRANSMUTE__Array_Opaque( ... ) -> DFOpaqueValue;
 
 }

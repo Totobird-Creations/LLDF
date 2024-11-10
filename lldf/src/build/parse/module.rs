@@ -247,8 +247,7 @@ pub fn linked_name_to_actiontag_kind(actiontag_kind : &str) -> String {
     out.chars().rev().collect()
 }
 pub fn linked_name_to_actiontag_value(actiontag_value : &str) -> String {
-    if (actiontag_value == actiontag_value.to_uppercase()) { actiontag_value.to_string() }
-    else { linked_name_to_gamevalue_kind(actiontag_value).to_sentence_case() }
+    linked_name_to_gamevalue_kind(actiontag_value).to_sentence_case()
 }
 pub fn collect_actiontag_parts<'l>(actiontag_parts : impl Iterator<Item = &'l str>) -> Vec<ActionFunctionTag> {
     actiontag_parts.array_chunks::<2>()
@@ -257,7 +256,7 @@ pub fn collect_actiontag_parts<'l>(actiontag_parts : impl Iterator<Item = &'l st
             let value = linked_name_to_actiontag_value(value);
             if (value.starts_with("Dynamic")) { ActionFunctionTag::Dynamic {
                 kind,
-                default_value : value[8..].to_string()
+                default_value : value[8..].to_sentence_case()
             } }
             else { ActionFunctionTag::Value(CodeValue::Actiontag {
                 kind,
@@ -347,7 +346,7 @@ pub fn parse_function<'l>(module : &ParsedModule, function : &'l Function) -> Re
     let mut parsed = ParsedFunction::new(Some(function));
 
     for param in &function.parameters {
-        parsed.locals.insert(param.name.clone(), Value::Local(param.name.clone()));
+        parsed.locals.insert(param.name.clone(), Value::Local(name_to_local(&param.name)));
     }
 
 

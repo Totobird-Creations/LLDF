@@ -34,6 +34,12 @@ pub macro actiontag {
                 crate::types::String::from(variant.$ident)
             }
         }
+        impl crate::core::string::FromStringUnchecked for $ident {
+            unsafe fn from_string_unchecked(from : crate::types::String) -> Self {
+                #[allow(invalid_reference_casting)]
+                Self::$ident([< __ $ident >] { $ident : &*(&from as *const crate::types::String as *const &str) }) // TODO: This pointer magic is bloating the generated code.
+            }
+        }
 
     } }
 }

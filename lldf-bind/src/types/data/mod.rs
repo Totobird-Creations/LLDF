@@ -78,3 +78,14 @@ pub use name_colour::NameColour;
 #[cfg(any(feature = "en_us", doc))]
 #[doc(cfg(feature = "en_us"))]
 pub use name_colour::NameColour as NameColor;
+
+
+#[lldf_bind_proc::actiontag]
+pub enum Direction {
+    North = "north",
+    East  = "east",
+    South = "south",
+    West  = "west",
+    Up    = "up",
+    Down  = "down"
+}

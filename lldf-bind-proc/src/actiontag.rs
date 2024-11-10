@@ -1,4 +1,4 @@
-/// Creates an fake enum which can be used as a dynamic actiontag.
+/// Creates a fake enum which can be used as a dynamic actiontag.
 #[proc_macro_attribute]
 pub fn actiontag(args : TokenStream, input : TokenStream) -> TokenStream {
     if (! args.is_empty()) {

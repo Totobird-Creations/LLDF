@@ -1,6 +1,7 @@
 //! Reimplementation of the necessary parts of the Rust core library.
 
 
+pub mod array;
 pub mod clone;
 pub mod cmp;
 pub mod convert;
@@ -13,6 +14,7 @@ pub mod ops;
 pub mod option;
 pub mod panic;
 pub mod ptr;
+pub mod slice;
 pub mod str;
 pub mod string;
 
@@ -55,7 +57,7 @@ pub mod prelude {
     pub use super::marker;
     pub use super::marker::Copy;
     pub use super::option::Option::{ self, Some, None };
-    pub use super::string::ToString;
+    pub use super::string::{ ToString, FromStringUnchecked };
     pub use super::{
         include, include_str, include_bytes,
         concat, stringify,

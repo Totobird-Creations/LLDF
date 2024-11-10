@@ -58,7 +58,7 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
             CodeValue::Number("0".to_string())
         ];
         function.line.blocks.push(Codeblock::action("set_var", "CreateList", params, vec![]));
-        function.locals.insert(dest.clone(), Value::Local(dest.clone()));
+        function.locals.insert(dest.clone(), Value::Local(name_to_local(dest)));
         Ok(())
     },
 
@@ -71,7 +71,7 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
             address.to_ptr_accessor_codevalue(module)?
         ];
         function.line.blocks.push(Codeblock::action("set_var", "=", params, vec![ ]));
-        function.locals.insert(dest.clone(), Value::Local(dest.clone()));
+        function.locals.insert(dest.clone(), Value::Local(name_to_local(dest)));
         Ok(())
     },
 
@@ -106,7 +106,7 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
             temp_var
         ];
         function.line.blocks.push(Codeblock::action("set_var", "CreateList", params, vec![]));
-        function.locals.insert(dest.clone(), Value::Local(dest.clone()));
+        function.locals.insert(dest.clone(), Value::Local(name_to_local(dest)));
         Ok(())
     },
 
@@ -160,7 +160,7 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
         ];
         function.line.blocks.push(Codeblock::action("set_var", "=", params, vec![ ]));
         function.line.blocks.push(Codeblock::CLOSE_COND_BRACKET);
-        function.locals.insert(dest.clone(), Value::Local(dest.clone()));
+        function.locals.insert(dest.clone(), Value::Local(name_to_local(dest)));
         Ok(())
     },
 
@@ -181,7 +181,7 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
                             parse_oper(module, function, &arguments[0].0)?.to_codevalue(module, function)?
                         ];
                         function.line.blocks.push(Codeblock::action("set_var", "=", params, vec![ ]));
-                        function.locals.insert(dest.clone(), Value::Local(dest.clone()));
+                        function.locals.insert(dest.clone(), Value::Local(name_to_local(dest)));
                     }
                     Ok(())
                 },
@@ -226,7 +226,7 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
                     let mut final_params = Vec::with_capacity(arguments.len() + 1);
                     if let Some(dest) = dest {
                         final_params.push(CodeValue::Variable { name : name_to_local(dest), scope : VariableScope::Line });
-                        function.locals.insert(dest.clone(), Value::Local(dest.clone()));
+                        function.locals.insert(dest.clone(), Value::Local(name_to_local(dest)));
                     }
                     for (arg, _) in arguments.iter().skip(skip_params) {
                         final_params.push(parse_oper(module, function, arg)?.to_codevalue(module, function)?);
@@ -248,7 +248,7 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
 
                 Global::TempVarFunction => {
                     if let Some(dest) = dest {
-                        function.locals.insert(dest.clone(), Value::Local(dest.clone()));
+                        function.locals.insert(dest.clone(), Value::Local(name_to_local(dest)));
                     }
                     Ok(())
                 },
@@ -260,7 +260,7 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
                             CodeValue::Gamevalue { kind : kind.clone(), target : target.clone() }
                         ];
                         function.line.blocks.push(Codeblock::action("set_var", "=", params, vec![]));
-                        function.locals.insert(dest.clone(), Value::Local(dest.clone()));
+                        function.locals.insert(dest.clone(), Value::Local(name_to_local(dest)));
                     }
                     Ok(())
                 },
@@ -272,7 +272,7 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
                             CodeValue::Sound { kind : SoundKind::Keyed(id.clone()), volume : 1.0, pitch : 1.0 }
                         ];
                         function.line.blocks.push(Codeblock::action("set_var", "=", params, vec![]));
-                        function.locals.insert(dest.clone(), Value::Local(dest.clone()));
+                        function.locals.insert(dest.clone(), Value::Local(name_to_local(dest)));
                     }
                     Ok(())
                 },
@@ -284,7 +284,7 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
                             CodeValue::Potion { kind : id.clone(), dur : 1000000, amp : 0 }
                         ];
                         function.line.blocks.push(Codeblock::action("set_var", "=", params, vec![]));
-                        function.locals.insert(dest.clone(), Value::Local(dest.clone()));
+                        function.locals.insert(dest.clone(), Value::Local(name_to_local(dest)));
                     }
                     Ok(())
                 },
@@ -296,7 +296,7 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
                             CodeValue::Item { id : id.clone(), count : 1, nbt : "{}".to_string() }
                         ];
                         function.line.blocks.push(Codeblock::action("set_var", "=", params, vec![]));
-                        function.locals.insert(dest.clone(), Value::Local(dest.clone()));
+                        function.locals.insert(dest.clone(), Value::Local(name_to_local(dest)));
                     }
                     Ok(())
                 },
@@ -328,6 +328,6 @@ fn handle_passthru(module : &ParsedModule, function : &mut ParsedFunction, opera
         parse_oper(module, function, operand)?.to_codevalue(module, function)?
     ];
     function.line.blocks.push(Codeblock::action("set_var", "=", params, vec![ ]));
-    function.locals.insert(dest.clone(), Value::Local(dest.clone()));
+    function.locals.insert(dest.clone(), Value::Local(name_to_local(dest)));
     Ok(())
 }

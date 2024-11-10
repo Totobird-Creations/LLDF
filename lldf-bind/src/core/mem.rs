@@ -62,3 +62,12 @@ impl<T : Clone> Clone for MaybeUninit<T> {
 pub struct ManuallyDrop<T : ?Sized> {
     value : T
 }
+
+impl<T> ManuallyDrop<T> {
+
+    #[inline(always)]
+    pub const fn new(value: T) -> ManuallyDrop<T> {
+        ManuallyDrop { value }
+    }
+
+}

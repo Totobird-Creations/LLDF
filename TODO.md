@@ -3,7 +3,7 @@
 - [x] Text
 - [ ] Number
 - [ ] Location
-- [ ] Vector
+- [x] Vector
 - [x] Sound
 - [ ] Particle
 - [x] Potion
@@ -32,8 +32,8 @@
 
 
 ### Fun types cause I feel like it:
-- [ ] Colour
-- [ ] Matrix
+- [x] Colour
+- [x] Matrix
 - [ ] Quaternion
 
 ### The things that will be pain to implement:

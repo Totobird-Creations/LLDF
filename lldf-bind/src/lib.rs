@@ -9,7 +9,9 @@
     allow_internal_unstable,
     intrinsics,
     doc_cfg,
-    transparent_unions
+    transparent_unions,
+    specialization,
+    trivial_bounds
 )]
 
 #![no_main]

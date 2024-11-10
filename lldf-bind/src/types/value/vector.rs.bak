@@ -1,0 +1,157 @@
+use crate::prelude::*;
+use crate::bind::DFOpaqueValue;
+use crate::core::ops::*;
+
+
+/// A vector with X, Y, and Z values. Used for representing directions, motions, or offsets.
+#[derive(Clone, Copy)]
+pub struct Vector {
+    _opaque_type : u8
+}
+
+impl Vector {
+
+    #[inline(always)]
+    pub fn new<F0 : Into<Float>, F1 : Into<Float>, F2 : Into<Float>>(x : F0, y : F1, z : F2) -> Vector { unsafe {
+        DF_ACTION__SetVariable_Vector(x.into(), y.into(), z.into())
+    } }
+
+}
+
+impl Vector {
+
+    #[lldf_bind_proc::dfdoc(SetVariable/GetVectorComp { Component = X })]
+    #[inline(always)]
+    pub fn x(&self) -> Float { unsafe {
+        DF_ACTION__SetVariable_GetVectorComponent_Component_X(self.clone())
+    } }
+    #[lldf_bind_proc::dfdoc(SetVariable/GetVectorComp { Component = Y })]
+    #[inline(always)]
+    pub fn y(&self) -> Float { unsafe {
+        DF_ACTION__SetVariable_GetVectorComponent_Component_Y(self.clone())
+    } }
+    #[lldf_bind_proc::dfdoc(SetVariable/GetVectorComp { Component = Z })]
+    #[inline(always)]
+    pub fn z(&self) -> Float { unsafe {
+        DF_ACTION__SetVariable_GetVectorComponent_Component_Z(self.clone())
+    } }
+
+    #[lldf_bind_proc::dfdoc(SetVariable/GetVectorLength { LengthType = Length })]
+    #[inline(always)]
+    pub fn length(&self) -> Float { unsafe {
+        DF_ACTION__SetVariable_GetVectorLength_LengthType_Length(self.clone())
+    } }
+    #[lldf_bind_proc::dfdoc(SetVariable/GetVectorLength { LengthType = LengthSquared })]
+    #[inline(always)]
+    pub fn length_squared(&self) -> Float { unsafe {
+        DF_ACTION__SetVariable_GetVectorLength_LengthType_LengthSquared(self.clone())
+    } }
+
+    #[lldf_bind_proc::dfdoc(SetVariable/AlignVector)]
+    #[inline(always)]
+    pub fn align(&self) -> Vector { unsafe {
+        DF_ACTION__SetVariable_AlignVector(self.clone())
+    } }
+
+    #[lldf_bind_proc::dfdoc(SetVariable/RotateAroundAxis { Axis = X, AngleUnits = Radians })]
+    #[inline(always)]
+    pub fn pivot_x<F : Into<Float>>(&self, angle_radians : F) -> Vector { unsafe {
+        DF_ACTION__SetVariable_RotateAroundAxis_Axis_X_AngleUnits_Radians(self.clone(), angle_radians.into())
+    } }
+    #[lldf_bind_proc::dfdoc(SetVariable/RotateAroundAxis { Axis = Y, AngleUnits = Radians })]
+    #[inline(always)]
+    pub fn pivot_y<F : Into<Float>>(&self, angle_radians : F) -> Vector { unsafe {
+        DF_ACTION__SetVariable_RotateAroundAxis_Axis_Y_AngleUnits_Radians(self.clone(), angle_radians.into())
+    } }
+    #[lldf_bind_proc::dfdoc(SetVariable/RotateAroundAxis { Axis = Z, AngleUnits = Radians })]
+    #[inline(always)]
+    pub fn pivot_z<F : Into<Float>>(&self, angle_radians : F) -> Vector { unsafe {
+        DF_ACTION__SetVariable_RotateAroundAxis_Axis_Z_AngleUnits_Radians(self.clone(), angle_radians.into())
+    } }
+
+    #[lldf_bind_proc::dfdoc(SetVariable/RotateAroundVec { AngleUnits = Radians })]
+    #[inline(always)]
+    pub fn pivot<F : Into<Float>>(&self, pivot : Vector, angle_radians : F) -> Vector { unsafe {
+        DF_ACTION__SetVariable_RotateAroundVec_AngleUnits_Radians(self.clone(), pivot, angle_radians.into())
+    } }
+
+    #[lldf_bind_proc::dfdoc(SetVariable/ReflectVector)]
+    #[inline(always)]
+    pub fn reflect(&self, normal : Vector) -> Vector { unsafe {
+        DF_ACTION__SetVariable_ReflectVector(self.clone(), normal)
+    } }
+
+    #[lldf_bind_proc::dfdoc(SetVariable/CrossProduct)]
+    #[inline(always)]
+    pub fn cross(&self, rhs : Vector) -> Vector { unsafe {
+        DF_ACTION__SetVariable_CrossProduct(self.clone(), rhs)
+    } }
+
+    #[lldf_bind_proc::dfdoc(SetVariable/CrossProduct)]
+    #[inline(always)]
+    pub fn dot(&self, rhs : Vector) -> Float { unsafe {
+        DF_ACTION__SetVariable_DotProduct(self.clone(), rhs)
+    } }
+
+    #[lldf_bind_proc::dfdoc(SetVariable/DirectionName)]
+    #[inline(always)]
+    pub fn name(&self) -> Direction { unsafe {
+        Direction::from_string_unchecked(DF_ACTION__SetVariable_DirectionName(self.clone()))
+    } }
+
+}
+
+impl Add<Vector> for Vector {
+    type Output = Vector;
+    fn add(self, rhs : Vector) -> Self::Output { unsafe {
+        DF_ACTION__SetVariable_AddVectors(self, rhs)
+    } }
+}
+
+impl Sub<Vector> for Vector {
+    type Output = Vector;
+    fn sub(self, rhs : Vector) -> Self::Output { unsafe {
+        DF_ACTION__SetVariable_SubtractVectors(self, rhs)
+    } }
+}
+
+impl<F : Into<Float>> Mul<F> for Vector {
+    type Output = Vector;
+    fn mul(self, rhs : F) -> Self::Output { unsafe {
+        DF_ACTION__SetVariable_MultiplyVector(self, rhs.into())
+    } }
+}
+
+unsafe impl DFValue for Vector {
+    #[inline]
+    unsafe fn to_opaque(self) -> DFOpaqueValue { unsafe {
+        DF_TRANSMUTE__Opaque(self)
+    } }
+}
+
+
+#[allow(clashing_extern_declarations)]
+extern "C" {
+
+    fn DF_TRANSMUTE__Opaque( from : Vector ) -> DFOpaqueValue;
+
+    fn DF_ACTION__SetVariable_Vector( x : Float, y : Float, z : Float ) -> Vector;
+    fn DF_ACTION__SetVariable_GetVectorComponent_Component_X( vector : Vector ) -> Float;
+    fn DF_ACTION__SetVariable_GetVectorComponent_Component_Y( vector : Vector ) -> Float;
+    fn DF_ACTION__SetVariable_GetVectorComponent_Component_Z( vector : Vector ) -> Float;
+    fn DF_ACTION__SetVariable_GetVectorLength_LengthType_Length( vector : Vector ) -> Float;
+    fn DF_ACTION__SetVariable_GetVectorLength_LengthType_LengthSquared( vector : Vector ) -> Float;
+    fn DF_ACTION__SetVariable_MultiplyVector( vector : Vector, factor : Float ) -> Vector;
+    fn DF_ACTION__SetVariable_AddVectors( a : Vector, b : Vector ) -> Vector;
+    fn DF_ACTION__SetVariable_SubtractVectors( a : Vector, b : Vector ) -> Vector;
+    fn DF_ACTION__SetVariable_AlignVector( vector : Vector ) -> Vector;
+    fn DF_ACTION__SetVariable_RotateAroundAxis_Axis_X_AngleUnits_Radians( vector : Vector, angle : Float ) -> Vector;
+    fn DF_ACTION__SetVariable_RotateAroundAxis_Axis_Y_AngleUnits_Radians( vector : Vector, angle : Float ) -> Vector;
+    fn DF_ACTION__SetVariable_RotateAroundAxis_Axis_Z_AngleUnits_Radians( vector : Vector, angle : Float ) -> Vector;
+    fn DF_ACTION__SetVariable_RotateAroundVec_AngleUnits_Radians( vector : Vector, pivot : Vector, angle : Float ) -> Vector;
+    fn DF_ACTION__SetVariable_ReflectVector( vector : Vector, normal : Vector ) -> Vector;
+    fn DF_ACTION__SetVariable_CrossProduct( a : Vector, b : Vector ) -> Vector;
+    fn DF_ACTION__SetVariable_DotProduct( a : Vector, b : Vector ) -> Float;
+    fn DF_ACTION__SetVariable_DirectionName( vector : Vector ) -> String;
+
+}

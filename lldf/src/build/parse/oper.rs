@@ -1,3 +1,5 @@
+use crate::build::codegen::Codeblock;
+
 use super::*;
 
 use llvm_ir::operand::*;
@@ -38,7 +40,16 @@ pub fn parse_const(module : &ParsedModule, function : &mut ParsedFunction, cor :
 
     Constant::Struct { .. } => todo!(),
 
-    Constant::Array { .. } => todo!(),
+    Constant::Array { elements, .. } => { // TODO: Handle >26 element lists.
+        let temp_var = function.create_temp_var_name();
+        let mut params = Vec::with_capacity(elements.len() + 1);
+        params.push(CodeValue::Variable { name : temp_var.clone(), scope : VariableScope::Line });
+        for element in elements {
+            params.push(parse_const(module, function, element)?.to_codevalue(module, function)?);
+        }
+        function.line.blocks.push(Codeblock::action("set_var", "CreateList", params, vec![ ]));
+        Ok(Value::Local(temp_var))
+    },
 
     Constant::Vector(_) => todo!(),
 
