@@ -10,6 +10,12 @@ pub enum Flag {
     False = "False"
 }
 
+#[lldf_bind_proc::actiontag]
+pub enum Visible {
+    Hide = "Hide",
+    Show = "Show"
+}
+
 
 #[lldf_bind_proc::actiontag]
 pub enum SoundChannel {
@@ -80,6 +86,14 @@ pub use name_colour::NameColour;
 #[doc(cfg(feature = "en_us"))]
 pub use name_colour::NameColour as NameColor;
 
+
+#[lldf_bind_proc::actiontag]
+pub enum ItemRarity {
+    Common   = "Common",
+    Uncommon = "Uncommon",
+    Rare     = "Rare",
+    Epic     = "Epic"
+}
 
 #[lldf_bind_proc::actiontag]
 pub enum ItemGlowing {

@@ -27,7 +27,7 @@ fn player_swap_hands(default : PlayerSel) {
 
     //default.set_gamemode_creative();
 
-    default.send_message(Item::compass().tags());
+    default.send_message(Item::compass().rarity().to_string());
 
 }
 

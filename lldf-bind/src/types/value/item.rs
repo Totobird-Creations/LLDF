@@ -39,13 +39,37 @@ impl Item {
         DF_ACTION__SetVariable_SetItemName(self.clone(), name.into())
     } }
 
-    // TODO: lore
+    #[lldf_bind_proc::dfdoc(SetVariable/GetItemLore)]
+    #[inline(always)]
+    pub fn lore(&self) -> List<Text> { unsafe {
+        DF_ACTION__SetVariable_GetItemLore(self.clone())
+    } }
 
-    // TODO: lore_line
+    #[lldf_bind_proc::dfdoc(SetVariable/GetLoreLine)]
+    #[inline(always)]
+    pub fn lore_line<U : Into<UInt>>(&self, index : U) -> Text { unsafe { // TODO: Add bounds check
+        let index = DF_TRANSMUTE__Opaque_UInt(DF_ACTION__SetVariable_Specialcharplus(index.into().to_opaque(), UInt::from(1usize).to_opaque()));
+        DF_ACTION__SetVariable_GetLoreLine(self.clone(), index)
+    } }
 
-    // TODO: with_lore
+    #[lldf_bind_proc::dfdoc(SetVariable/SetItemLore)]
+    #[inline(always)]
+    pub fn with_lore(&self, lore : List<Text>) -> Item { unsafe {
+        DF_ACTION__SetVariable_SetItemLore(self.clone(), lore)
+    } }
 
-    // TODO: with_lore_line
+    #[lldf_bind_proc::dfdoc(SetVariable/SetItemLore)]
+    #[inline(always)]
+    pub fn with_lore_line<U : Into<UInt>>(&self, index : U, line : Text) -> Item { unsafe {
+        let index = DF_TRANSMUTE__Opaque_UInt(DF_ACTION__SetVariable_Specialcharplus(index.into().to_opaque(), UInt::from(1usize).to_opaque()));
+        DF_ACTION__SetVariable_SetItemLore(self.clone(), line, index)
+    } }
+
+    #[lldf_bind_proc::dfdoc(SetVariable/AddItemLore)]
+    #[inline(always)]
+    pub fn with_lore_line_added(&self, line : Text) -> Item { unsafe {
+        DF_ACTION__SetVariable_AddItemLore(self.clone(), line)
+    } }
 
     #[lldf_bind_proc::dfdoc(SetVariable/GetItemAmount)]
     #[inline(always)]
@@ -132,6 +156,8 @@ impl Item {
     // TODO: with_book_page
 
     #[lldf_bind_proc::dfdoc(SetVariable/GetItemTag)]
+    /// ##### Warning
+    /// - **Numeric tag values will be converted to strings. Thus, [`String`](String) `"0"` and [`Float`](Float) `0`** are not differentiable.
     #[inline(always)]
     pub fn tag(&self, key : String) -> String { unsafe {
         DF_ACTION__SetVariable_String(DF_ACTION__SetVariable_GetItemTag(self.clone(), key))
@@ -144,35 +170,104 @@ impl Item {
         dict.keys()
     } }
 
-    // TODO: with_tag
+    #[lldf_bind_proc::dfdoc(SetVariable/SetItemTag)]
+    #[inline(always)]
+    pub fn with_tag(&self, key : String, value : String) -> Item { unsafe {
+        DF_ACTION__SetVariable_SetItemTag(self.clone(), key, value)
+    } }
 
-    // TODO: without_tag
+    #[lldf_bind_proc::dfdoc(SetVariable/RemoveItemTag)]
+    #[inline(always)]
+    pub fn without_tag(&self, key : String) -> Item { unsafe {
+        DF_ACTION__SetVariable_RemoveItemTag(self.clone(), key)
+    } }
 
-    // TODO: without_tags
+    #[lldf_bind_proc::dfdoc(SetVariable/ClearItemTag)]
+    #[inline(always)]
+    pub fn without_tags(&self) -> Item { unsafe {
+        DF_ACTION__SetVariable_ClearItemTag(self.clone())
+    } }
 
-    // TODO: with_modeldata
+    #[lldf_bind_proc::dfdoc(SetVariable/SetModelData)]
+    #[inline(always)]
+    pub fn with_modeldata(&self, index : UInt) -> Item { unsafe {
+        DF_ACTION__SetVariable_SetModelData(self.clone(), index)
+    } }
 
-    // TODO: potions
+    #[lldf_bind_proc::dfdoc(SetVariable/GetItemEffects)]
+    #[inline(always)]
+    pub fn potions(&self) -> List<Potion> { unsafe {
+        DF_ACTION__SetVariable_GetItemEffects(self.clone())
+    } }
 
-    // TODO: with_potions
+    #[lldf_bind_proc::dfdoc(SetVariable/SetItemEffects)]
+    #[inline(always)]
+    pub fn with_potions(&self, potions : List<Potion>) -> Item { unsafe {
+        DF_ACTION__SetVariable_SetItemEffects(self.clone(), potions)
+    } }
 
-    // TODO: with_hideflag_trim
+    #[lldf_bind_proc::dfdoc(SetVariable/SetItemFlags)]
+    #[inline(always)]
+    pub fn with_hideflag_trim(&self, visible : Visible) -> Item { unsafe {
+        DF_ACTION__SetVariable_SetItemFlags_ArmorTrim_DynamicNoChange_Color_NoChange_Enchantments_NoChange_Attributes_NoChange_Unbreakable_NoChange_CanDestroy_NoChange_CanPlaceOn_NoChange_PotionEffects_NoChange_Others_NoChange(visible, self.clone())
+    } }
 
-    // TODO: with_hideflag_colour
+    #[cfg(any(not(feature = "en_us"), doc))]
+    #[doc(cfg(not(feature = "en_us")))]
+    #[lldf_bind_proc::dfdoc(SetVariable/SetItemFlags)]
+    #[inline(always)]
+    pub fn with_hideflag_colour(&self, visible : Visible) -> Item { unsafe {
+        DF_ACTION__SetVariable_SetItemFlags_ArmorTrim_NoChange_Color_DynamicNoChange_Enchantments_NoChange_Attributes_NoChange_Unbreakable_NoChange_CanDestroy_NoChange_CanPlaceOn_NoChange_PotionEffects_NoChange_Others_NoChange(visible, self.clone())
+    } }
+    #[cfg(any(feature = "en_us", doc))]
+    #[doc(cfg(feature = "en_us"))]
+    #[lldf_bind_proc::dfdoc(SetVariable/SetItemFlags)]
+    #[inline(always)]
+    pub fn with_hideflag_color(&self, visible : Visible) -> Item { unsafe {
+        DF_ACTION__SetVariable_SetItemFlags_ArmorTrim_NoChange_Color_DynamicNoChange_Enchantments_NoChange_Attributes_NoChange_Unbreakable_NoChange_CanDestroy_NoChange_CanPlaceOn_NoChange_PotionEffects_NoChange_Others_NoChange(visible, self.clone())
+    } }
 
-    // TODO: with_hideflag_enchants
+    #[lldf_bind_proc::dfdoc(SetVariable/SetItemFlags)]
+    #[inline(always)]
+    pub fn with_hideflag_enchants(&self, visible : Visible) -> Item { unsafe {
+        DF_ACTION__SetVariable_SetItemFlags_ArmorTrim_NoChange_Color_NoChange_Enchantments_DynamicNoChange_Attributes_NoChange_Unbreakable_NoChange_CanDestroy_NoChange_CanPlaceOn_NoChange_PotionEffects_NoChange_Others_NoChange(visible, self.clone())
+    } }
 
-    // TODO: with_hideflag_attributes
+    #[lldf_bind_proc::dfdoc(SetVariable/SetItemFlags)]
+    #[inline(always)]
+    pub fn with_hideflag_attributes(&self, visible : Visible) -> Item { unsafe {
+        DF_ACTION__SetVariable_SetItemFlags_ArmorTrim_NoChange_Color_NoChange_Enchantments_NoChange_Attributes_DynamicNoChange_Unbreakable_NoChange_CanDestroy_NoChange_CanPlaceOn_NoChange_PotionEffects_NoChange_Others_NoChange(visible, self.clone())
+    } }
 
-    // TODO: with_hideflag_unbreakable
+    #[lldf_bind_proc::dfdoc(SetVariable/SetItemFlags)]
+    #[inline(always)]
+    pub fn with_hideflag_unbreakable(&self, visible : Visible) -> Item { unsafe {
+        DF_ACTION__SetVariable_SetItemFlags_ArmorTrim_NoChange_Color_NoChange_Enchantments_NoChange_Attributes_NoChange_Unbreakable_DynamicNoChange_CanDestroy_NoChange_CanPlaceOn_NoChange_PotionEffects_NoChange_Others_NoChange(visible, self.clone())
+    } }
 
-    // TODO: with_hideflag_breakables
+    #[lldf_bind_proc::dfdoc(SetVariable/SetItemFlags)]
+    #[inline(always)]
+    pub fn with_hideflag_breakables(&self, visible : Visible) -> Item { unsafe {
+        DF_ACTION__SetVariable_SetItemFlags_ArmorTrim_NoChange_Color_NoChange_Enchantments_NoChange_Attributes_NoChange_Unbreakable_NoChange_CanDestroy_DynamicNoChange_CanPlaceOn_NoChange_PotionEffects_NoChange_Others_NoChange(visible, self.clone())
+    } }
 
-    // TODO: with_hideflag_placeables
+    #[lldf_bind_proc::dfdoc(SetVariable/SetItemFlags)]
+    #[inline(always)]
+    pub fn with_hideflag_placeables(&self, visible : Visible) -> Item { unsafe {
+        DF_ACTION__SetVariable_SetItemFlags_ArmorTrim_NoChange_Color_NoChange_Enchantments_NoChange_Attributes_NoChange_Unbreakable_NoChange_CanDestroy_NoChange_CanPlaceOn_DynamicNoChange_PotionEffects_NoChange_Others_NoChange(visible, self.clone())
+    } }
 
-    // TODO: with_hideflag_potions
+    #[lldf_bind_proc::dfdoc(SetVariable/SetItemFlags)]
+    #[inline(always)]
+    pub fn with_hideflag_potions(&self, visible : Visible) -> Item { unsafe {
+        DF_ACTION__SetVariable_SetItemFlags_ArmorTrim_NoChange_Color_NoChange_Enchantments_NoChange_Attributes_NoChange_Unbreakable_NoChange_CanDestroy_NoChange_CanPlaceOn_NoChange_PotionEffects_DynamicNoChange_Others_NoChange(visible, self.clone())
+    } }
 
-    // TODO: with_hideflag_others
+    #[lldf_bind_proc::dfdoc(SetVariable/SetItemFlags)]
+    #[inline(always)]
+    pub fn with_hideflag_others(&self, visible : Visible) -> Item { unsafe {
+        DF_ACTION__SetVariable_SetItemFlags_ArmorTrim_NoChange_Color_NoChange_Enchantments_NoChange_Attributes_NoChange_Unbreakable_NoChange_CanDestroy_NoChange_CanPlaceOn_NoChange_PotionEffects_NoChange_Others_DynamicNoChange(visible, self.clone())
+    } }
 
     // TODO: placeables
 
@@ -182,7 +277,11 @@ impl Item {
 
     // TODO: with_breakables
 
-    // TODO: rarity
+    #[lldf_bind_proc::dfdoc(SetVariable/GetItemRarity)]
+    #[inline(always)]
+    pub fn rarity(&self) -> ItemRarity { unsafe {
+        ItemRarity::from_string_unchecked(DF_ACTION__SetVariable_GetItemRarity(self.clone()))
+    } }
 
     #[lldf_bind_proc::dfdoc(SetVariable/GetLodestoneLoc)]
     #[inline(always)]
@@ -208,13 +307,29 @@ impl Item {
         DF_ACTION__SetVariable_SetArmorTrim_TrimPattern_None_TrimMaterial_Amethyst(self.clone())
     } }
 
-    // TODO: nutrition
+    #[lldf_bind_proc::dfdoc(SetVariable/GetItemFood { FoodProperty = Nutrition })]
+    #[inline(always)]
+    pub fn nutrition(&self) -> Float { unsafe {
+        DF_ACTION__SetVariable_GetItemFood_FoodProperty_Nutrition(self.clone())
+    } }
 
-    // TODO: saturation
+    #[lldf_bind_proc::dfdoc(SetVariable/GetItemFood { FoodProperty = Saturation })]
+    #[inline(always)]
+    pub fn saturation(&self) -> Float { unsafe {
+        DF_ACTION__SetVariable_GetItemFood_FoodProperty_Saturation(self.clone())
+    } }
 
-    // TODO: eating_time
+    #[lldf_bind_proc::dfdoc(SetVariable/GetItemFood { FoodProperty = EatingDuration })]
+    #[inline(always)]
+    pub fn eating_time(&self) -> Float { unsafe {
+        DF_ACTION__SetVariable_GetItemFood_FoodProperty_EatingDuration(self.clone())
+    } }
 
-    // TODO: with_food
+    #[lldf_bind_proc::dfdoc(SetVariable/SetItemFood)]
+    #[inline(always)]
+    pub fn with_food(&self, nutrition : Float, saturation : Float, eating_time_seconds : Float, always_edible : Flag) -> Item { unsafe {
+        DF_ACTION__SetVariable_SetItemFood_CanAlwaysEat_DynamicFalse(self.clone(), always_edible.to_string(), nutrition, saturation, eating_time_seconds)
+    } }
 
     // TODO: with_tool
 
@@ -276,8 +391,10 @@ impl Item {
     } }
 
     #[lldf_bind_proc::dfdoc(SetVariable/SetMapTexture)]
+    /// ##### Unsafe
+    /// - **May cause large plot CPU usage spikes, causing plot to lagslay.**
     #[inline(always)]
-    pub fn with_map_texture(&self, image_uri : String) -> Item { unsafe {
+    pub unsafe fn with_map_texture(&self, image_uri : String) -> Item { unsafe {
         DF_ACTION__SetVariable_SetMapTexture(self.clone(), image_uri)
     } }
 
@@ -300,11 +417,18 @@ extern "C" {
     fn DF_TRANSMUTE__Opaque( from : Item ) -> DFOpaqueValue;
     fn DF_ACTION__SetVariable_String( from : DFOpaqueValue ) -> String;
 
+    fn DF_TRANSMUTE__Opaque_UInt( from : DFOpaqueValue ) -> UInt;
+    fn DF_ACTION__SetVariable_Specialcharplus( a : DFOpaqueValue, b : DFOpaqueValue ) -> DFOpaqueValue;
+
     fn DF_ACTION__SetVariable_GetItemType_ReturnValueType_ItemID( item : Item ) -> String;
     fn DF_ACTION__SetVariable_GetItemType_ReturnValueType_ItemName( item : Item ) -> String;
     fn DF_ACTION__SetVariable_GetItemType_ReturnValueType_Item( item : Item ) -> Item;
     fn DF_ACTION__SetVariable_GetItemName( item : Item ) -> Text;
     fn DF_ACTION__SetVariable_SetItemName( item : Item, name : Text ) -> Item;
+    fn DF_ACTION__SetVariable_GetItemLore( item : Item ) -> List<Text>;
+    fn DF_ACTION__SetVariable_GetLoreLine( item : Item, index : UInt ) -> Text;
+    fn DF_ACTION__SetVariable_SetItemLore( item : Item, ... ) -> Item;
+    fn DF_ACTION__SetVariable_AddItemLore( item : Item, line : Text ) -> Item;
     fn DF_ACTION__SetVariable_GetItemAmount( item : Item ) -> UInt;
     fn DF_ACTION__SetVariable_SetItemAmount( item : Item, count : UInt ) -> Item;
     fn DF_ACTION__SetVariable_GetMaxAmount( item : Item ) -> UInt;
@@ -314,10 +438,31 @@ extern "C" {
     fn DF_ACTION__SetVariable_SetHeadTexture( item : Item, name_uuid_or_texture : String ) -> Item;
     fn DF_ACTION__SetVariable_GetItemTag( item : Item, key : String ) -> DFOpaqueValue;
     fn DF_ACTION__SetVariable_GetAllItemTags( item : Item ) -> Dict<DFOpaqueValue>;
+    fn DF_ACTION__SetVariable_SetItemTag( item : Item, key : String, value : String ) -> Item;
+    fn DF_ACTION__SetVariable_RemoveItemTag( item : Item, key : String ) -> Item;
+    fn DF_ACTION__SetVariable_ClearItemTag( item : Item ) -> Item;
+    fn DF_ACTION__SetVariable_SetModelData( item : Item, index : UInt ) -> Item;
+    fn DF_ACTION__SetVariable_GetItemEffects( item : Item ) -> List<Potion>;
+    fn DF_ACTION__SetVariable_SetItemEffects( item : Item, potions : List<Potion> ) -> Item;
+    fn DF_ACTION__SetVariable_SetItemFlags_ArmorTrim_DynamicNoChange_Color_NoChange_Enchantments_NoChange_Attributes_NoChange_Unbreakable_NoChange_CanDestroy_NoChange_CanPlaceOn_NoChange_PotionEffects_NoChange_Others_NoChange( visible : Visible, item : Item ) -> Item;
+    fn DF_ACTION__SetVariable_SetItemFlags_ArmorTrim_NoChange_Color_DynamicNoChange_Enchantments_NoChange_Attributes_NoChange_Unbreakable_NoChange_CanDestroy_NoChange_CanPlaceOn_NoChange_PotionEffects_NoChange_Others_NoChange( visible : Visible, item : Item ) -> Item;
+    fn DF_ACTION__SetVariable_SetItemFlags_ArmorTrim_NoChange_Color_NoChange_Enchantments_DynamicNoChange_Attributes_NoChange_Unbreakable_NoChange_CanDestroy_NoChange_CanPlaceOn_NoChange_PotionEffects_NoChange_Others_NoChange( visible : Visible, item : Item ) -> Item;
+    fn DF_ACTION__SetVariable_SetItemFlags_ArmorTrim_NoChange_Color_NoChange_Enchantments_NoChange_Attributes_DynamicNoChange_Unbreakable_NoChange_CanDestroy_NoChange_CanPlaceOn_NoChange_PotionEffects_NoChange_Others_NoChange( visible : Visible, item : Item ) -> Item;
+    fn DF_ACTION__SetVariable_SetItemFlags_ArmorTrim_NoChange_Color_NoChange_Enchantments_NoChange_Attributes_NoChange_Unbreakable_DynamicNoChange_CanDestroy_NoChange_CanPlaceOn_NoChange_PotionEffects_NoChange_Others_NoChange( visible : Visible, item : Item ) -> Item;
+    fn DF_ACTION__SetVariable_SetItemFlags_ArmorTrim_NoChange_Color_NoChange_Enchantments_NoChange_Attributes_NoChange_Unbreakable_NoChange_CanDestroy_DynamicNoChange_CanPlaceOn_NoChange_PotionEffects_NoChange_Others_NoChange( visible : Visible, item : Item ) -> Item;
+    fn DF_ACTION__SetVariable_SetItemFlags_ArmorTrim_NoChange_Color_NoChange_Enchantments_NoChange_Attributes_NoChange_Unbreakable_NoChange_CanDestroy_NoChange_CanPlaceOn_DynamicNoChange_PotionEffects_NoChange_Others_NoChange( visible : Visible, item : Item ) -> Item;
+    fn DF_ACTION__SetVariable_SetItemFlags_ArmorTrim_NoChange_Color_NoChange_Enchantments_NoChange_Attributes_NoChange_Unbreakable_NoChange_CanDestroy_NoChange_CanPlaceOn_NoChange_PotionEffects_DynamicNoChange_Others_NoChange( visible : Visible, item : Item ) -> Item;
+    fn DF_ACTION__SetVariable_SetItemFlags_ArmorTrim_NoChange_Color_NoChange_Enchantments_NoChange_Attributes_NoChange_Unbreakable_NoChange_CanDestroy_NoChange_CanPlaceOn_NoChange_PotionEffects_NoChange_Others_DynamicNoChange( visible : Visible, item : Item ) -> Item;
+
+    fn DF_ACTION__SetVariable_GetItemRarity( item : Item ) -> String;
     fn DF_ACTION__SetVariable_GetLodestoneLoc( item : Item ) -> Location;
     fn DF_ACTION__SetVariable_SetLodestoneLoc_RequireLodestoneAtLocation_False( item : Item, location : Location ) -> Item;
     fn DF_ACTION__SetVariable_SetArmorTrim_TrimPattern_DynamicNone_TrimMaterial_DynamicAmethyst( pattern : String, material : String, item : Item ) -> Item;
     fn DF_ACTION__SetVariable_SetArmorTrim_TrimPattern_None_TrimMaterial_Amethyst( item : Item ) -> Item;
+    fn DF_ACTION__SetVariable_GetItemFood_FoodProperty_Nutrition( item : Item ) -> Float;
+    fn DF_ACTION__SetVariable_GetItemFood_FoodProperty_Saturation( item : Item ) -> Float;
+    fn DF_ACTION__SetVariable_GetItemFood_FoodProperty_EatingDuration( item : Item ) -> Float;
+    fn DF_ACTION__SetVariable_SetItemFood_CanAlwaysEat_DynamicFalse( item : Item, always_edible : String, nutrition : Float, saturation : Float, eating_time_seconds : Float ) -> Item;
     fn DF_ACTION__SetVariable_SetItemHideTooltip_Tooltip_DynamicEnable( tooltip : String, item : Item ) -> Item;
     fn DF_ACTION__SetVariable_SetItemGlowing_Glowing_DynamicDefault( glowing : String, item : Item ) -> Item;
 
