@@ -27,6 +27,24 @@ impl AsRef<Text> for &str {
     } }
 }
 
+// TODO: Add
+
+impl String {
+
+    // TODO: merge
+
+    // TODO: from_minimsg
+
+    // TODO: to_minimsg
+
+    // TODO: unformat
+
+    // TODO: splice
+
+    // TODO: len
+
+}
+
 
 unsafe impl DFValue for Text {
     #[inline(always)]
@@ -36,7 +54,6 @@ unsafe impl DFValue for Text {
 }
 
 
-#[allow(clashing_extern_declarations)]
 extern "C" {
 
     fn DF_TRANSMUTE__Opaque( from : Text ) -> DFOpaqueValue;

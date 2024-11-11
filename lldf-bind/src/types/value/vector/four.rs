@@ -3,6 +3,14 @@ use super::*;
 
 impl Vector<4> {
 
+    // TODO: with_x
+
+    // TODO: with_y
+
+    // TODO: with_z
+
+    // TODO: with_w
+
     #[inline(always)]
     pub fn x(&self) -> Float { unsafe {
         DF_ACTION__SetVariable_GetListValue( self.clone(), UInt::from(1usize) )
@@ -26,7 +34,6 @@ impl Vector<4> {
 }
 
 
-#[allow(clashing_extern_declarations)]
 extern "C" {
 
     fn DF_ACTION__SetVariable_GetListValue( list : Vector<4>, index : UInt ) -> Float;

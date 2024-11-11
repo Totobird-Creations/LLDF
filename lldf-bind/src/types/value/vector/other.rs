@@ -17,7 +17,6 @@ impl<const LANES : usize> _VectorMethods<LANES> for Vector<LANES> {
 }
 
 
-#[allow(clashing_extern_declarations)]
 extern "C" {
 
     fn DF_ACTION__SetVariable_Specialcharplus( a : UInt, b : UInt ) -> UInt;

@@ -29,6 +29,32 @@ impl From<&str> for String {
     } }
 }
 
+// TODO: Add
+
+impl String {
+
+    // TODO: replace
+
+    // TODO: splice
+
+    // TODO: split
+
+    // TODO: uppercase
+
+    // TODO: lowercase
+
+    // TODO: proper_case
+
+    // TODO: invert_case
+
+    // TODO: random_case
+
+    // TODO: len
+
+    // TODO: repeat
+
+}
+
 unsafe impl DFValue for String {
     #[inline]
     unsafe fn to_opaque(self) -> DFOpaqueValue { unsafe {

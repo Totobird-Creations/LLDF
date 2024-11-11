@@ -60,7 +60,6 @@ impl Into<UInt> for UInt {
 }
 
 
-#[allow(clashing_extern_declarations)]
 extern "C" {
 
     fn DF_TRANSMUTE__UInt_Opaque( from : UInt ) -> DFOpaqueValue;

@@ -20,6 +20,10 @@ pub trait _VectorMethods<const LANES : usize> {
 
     fn new(lanes : [Float; LANES]) -> Vector<LANES>;
 
+    // TODO: splat
+
+    // TODO: with_lane
+
     fn lane<U : Into<UInt>>(&self, lane : U) -> Float;
 
     // TODO: length
@@ -49,6 +53,26 @@ pub trait _VectorMethods<const LANES : usize> {
     // TODO: reflect
 
     // TODO: dot
+
+    // TODO: to_array
+
+    // TODO: to_list
+
+    // TODO: ext
+
+    // TODO: trunc
+
+    // TODO: normalise
+
+    // TODO: project_on
+
+    // TODO: reject_from
+
+    // TODO: midpoint
+
+    // TODO: angle_between
+
+    // TODO: 
 
 }
 

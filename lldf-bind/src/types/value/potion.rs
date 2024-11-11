@@ -51,7 +51,6 @@ unsafe impl DFValue for Potion {
 }
 
 
-#[allow(clashing_extern_declarations)]
 extern "C" {
 
     fn DF_TRANSMUTE__Opaque( from : Potion ) -> DFOpaqueValue;

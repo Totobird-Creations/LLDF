@@ -40,7 +40,8 @@ pub fn parse_const(module : &ParsedModule, function : &mut ParsedFunction, cor :
 
     Constant::Struct { .. } => todo!(),
 
-    Constant::Array { elements, .. } => { // TODO: Handle >26 element lists.
+    Constant::Array { elements, .. } => {   // TODO: Handle >26 element lists.
+                                            // FIXME: This doesn't work with GEP. Use fake pointers instead.
         let temp_var = function.create_temp_var_name();
         let mut params = Vec::with_capacity(elements.len() + 1);
         params.push(CodeValue::Variable { name : temp_var.clone(), scope : VariableScope::Line });

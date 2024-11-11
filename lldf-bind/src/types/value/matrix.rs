@@ -12,7 +12,6 @@ pub struct Matrix<const ROWS : usize, const COLUMNS : usize> {
 impl<const ROWS : usize, const COLUMNS : usize> Matrix<ROWS, COLUMNS> {
 
     pub fn zero() -> Self { unsafe {
-        #[allow(clashing_extern_declarations)]
         extern "C" {
             fn DF_ACTION__Repeat_Multiple( count : UInt ) -> ();
         }
@@ -31,9 +30,7 @@ impl<const ROWS : usize, const COLUMNS : usize> Matrix<ROWS, COLUMNS> {
 impl<const SIZE : usize> Matrix<SIZE, SIZE> {
 
     pub fn identity() -> Self { unsafe {
-        #[allow(clashing_extern_declarations)]
         extern "C" {
-            fn DF_ACTION__Repeat_Multiple( count : UInt ) -> UInt;
             fn DF_ACTION__IfVariable_Specialcharequals( a : UInt, b : UInt ) -> ();
         }
         let inner = DF_ACTION__SetVariable_CreateList();
@@ -103,10 +100,6 @@ impl Matrix<4, 4> {
 impl<const ROWS : usize, const COLUMNS : usize> Add<Matrix<ROWS, COLUMNS>> for Matrix<ROWS, COLUMNS> {
     type Output = Matrix<ROWS, COLUMNS>;
     fn add(self, rhs : Matrix<ROWS, COLUMNS>) -> Self::Output { unsafe {
-        #[allow(clashing_extern_declarations)]
-        extern "C" {
-            fn DF_ACTION__Repeat_Multiple( count : UInt ) -> UInt;
-        }
         let inner = DF_ACTION__SetVariable_CreateList();
         let row = DF_ACTION__Repeat_Multiple(UInt::from(ROWS)); DF_BRACKET__Repeat_Open();
             let column = DF_ACTION__Repeat_Multiple(UInt::from(COLUMNS)); DF_BRACKET__Repeat_Open();
@@ -123,10 +116,6 @@ impl<const ROWS : usize, const COLUMNS : usize> Add<Matrix<ROWS, COLUMNS>> for M
 impl<const A_ROWS : usize, const A_COLUMNS_B_ROWS : usize, const B_COLUMNS : usize> Mul<Matrix<A_COLUMNS_B_ROWS, B_COLUMNS>> for Matrix<A_ROWS, A_COLUMNS_B_ROWS> {
     type Output = Matrix<A_ROWS, B_COLUMNS>;
     fn mul(self, rhs : Matrix<A_COLUMNS_B_ROWS, B_COLUMNS>) -> Self::Output { unsafe {
-        #[allow(clashing_extern_declarations)]
-        extern "C" {
-            fn DF_ACTION__Repeat_Multiple( count : UInt ) -> UInt;
-        }
         let inner = DF_ACTION__SetVariable_CreateList();
         let row = DF_ACTION__Repeat_Multiple(UInt::from(A_ROWS)); DF_BRACKET__Repeat_Open();
             let a_i0 = (row - 1usize) * A_COLUMNS_B_ROWS;
@@ -147,10 +136,6 @@ impl<const A_ROWS : usize, const A_COLUMNS_B_ROWS : usize, const B_COLUMNS : usi
 
 impl<const ROWS : usize, const COLUMNS : usize> Matrix<ROWS, COLUMNS> {
     pub fn transpose(self) -> Matrix<COLUMNS, ROWS> { unsafe {
-        #[allow(clashing_extern_declarations)]
-        extern "C" {
-            fn DF_ACTION__Repeat_Multiple( count : UInt ) -> UInt;
-        }
         let inner = DF_ACTION__SetVariable_CreateList();
         let row = DF_ACTION__Repeat_Multiple(UInt::from(COLUMNS)); DF_BRACKET__Repeat_Open();
             let column = DF_ACTION__Repeat_Multiple(UInt::from(ROWS)); DF_BRACKET__Repeat_Open();
@@ -164,7 +149,6 @@ impl<const ROWS : usize, const COLUMNS : usize> Matrix<ROWS, COLUMNS> {
 }
 
 
-#[allow(clashing_extern_declarations)]
 extern "C" {
 
     fn DF_TEMPVAR() -> DFOpaqueValue;
@@ -174,6 +158,8 @@ extern "C" {
     fn DF_ACTION__SetVariable_GetListValue( list : List<Float>, index : UInt ) -> Float;
     fn DF_ACTION__SetVariable_Specialcharequals( var : DFOpaqueValue, value : Float ) -> ();
     fn DF_ACTION__SetVariable_SpecialcharplusSpecialcharequals( var : DFOpaqueValue, b : Float );
+
+    fn DF_ACTION__Repeat_Multiple( count : UInt ) -> UInt;
 
     fn DF_BRACKET__Normal_Open() -> ();
     fn DF_BRACKET__Normal_Close() -> ();

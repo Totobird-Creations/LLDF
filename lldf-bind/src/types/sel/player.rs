@@ -807,7 +807,6 @@ unsafe impl DFSel for PlayerSel {}
 
 
 
-#[allow(clashing_extern_declarations)]
 extern "C" {
 
     fn DF_ACTION__SelectObject_PlayerName( target : List<String> ) -> ();

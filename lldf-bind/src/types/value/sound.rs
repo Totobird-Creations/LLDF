@@ -67,7 +67,6 @@ unsafe impl DFValue for Sound {
 }
 
 
-#[allow(clashing_extern_declarations)]
 extern "C" {
 
     fn DF_TRANSMUTE__Opaque( from : Sound ) -> DFOpaqueValue;

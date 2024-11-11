@@ -17,7 +17,6 @@ unsafe impl DFValue for Particle {
 }
 
 
-#[allow(clashing_extern_declarations)]
 extern "C" {
 
     fn DF_TRANSMUTE__Opaque( from : Particle ) -> DFOpaqueValue;

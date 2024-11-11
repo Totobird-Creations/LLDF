@@ -3,6 +3,12 @@ use super::*;
 
 impl Vector<3> {
 
+    // TODO: with_x
+
+    // TODO: with_y
+
+    // TODO: with_z
+
     #[inline(always)]
     pub fn x(&self) -> Float { unsafe {
         DF_ACTION__SetVariable_GetVectorComp_Component_X( self.clone() )
@@ -43,7 +49,6 @@ impl _VectorMethods<3> for Vector<3> {
 }
 
 
-#[allow(clashing_extern_declarations)]
 extern "C" {
 
     fn DF_ACTION__SetVariable_Specialcharplus( a : UInt, b : UInt ) -> UInt;

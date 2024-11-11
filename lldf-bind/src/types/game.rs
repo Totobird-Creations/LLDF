@@ -57,7 +57,6 @@ impl Game {
 
 
 
-#[allow(clashing_extern_declarations)]
 extern "C" {
 
     fn DF_GAMEVALUE__PlotPlayerUUIDs_Default( ) -> List<String>;

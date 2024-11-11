@@ -21,7 +21,6 @@ unsafe impl DFValue for Int {
 }
 
 
-#[allow(clashing_extern_declarations)]
 extern "C" {
 
     fn DF_TRANSMUTE__Int_Opaque( from : Int ) -> DFOpaqueValue;

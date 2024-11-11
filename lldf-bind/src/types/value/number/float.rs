@@ -23,6 +23,8 @@ impl<T : Into<Float>> Add<T> for Float {
     } }
 }
 
+// TODO: Sub
+
 impl<T : Into<Float>> Mul<T> for Float {
     type Output = Self;
     #[inline(always)]
@@ -32,6 +34,78 @@ impl<T : Into<Float>> Mul<T> for Float {
             rhs.into()
         )
     } }
+}
+
+// TODO: Div
+
+// TODO: Rem
+
+impl Float {
+
+    // TODO: pow
+
+    // TODO: sqrt
+
+    // TODO: cbrt
+
+    // TODO: root
+
+    // TODO: ln
+
+    // TODO: log2
+
+    // TODO: log10
+
+    // TODO: log
+
+    // TODO: abs
+
+    // TODO: clamp
+
+    // TODO: wrap
+
+    // TODO: bounce
+    
+    // TODO: midpoint
+
+    // TODO: random
+    
+    // TODO: average
+
+    // TODO: floor
+
+    // TODO: ceil
+
+    // TODO: nearest
+
+    // TODO: trunc
+
+    // TODO: min
+
+    // TODO: max
+
+    // TODO: normaldist
+
+    // TODO: normaldist_fold
+
+    // TODO: sin
+
+    // TODO: arcsin
+
+    // TODO: sinh
+
+    // TODO: cos
+
+    // TODO: arccos
+
+    // TODO: cosh
+
+    // TODO: tan
+
+    // TODO: arctan
+
+    // TODO: tanh
+
 }
 
 unsafe impl DFValue for Float {
@@ -45,7 +119,6 @@ impl Into<Float> for Float {
 }
 
 
-#[allow(clashing_extern_declarations)]
 extern "C" {
 
     fn DF_TRANSMUTE__Float_Opaque( from : Float ) -> DFOpaqueValue;

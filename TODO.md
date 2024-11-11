@@ -15,10 +15,13 @@
 - [ ] UInt
 - [ ] Int
 - [ ] Float
+- [x] Colour
 - [ ] List
 - [ ] Dict
 - [x] PlayerSel
 - [ ] EntitySel
+- [ ] Instant
+- [ ] Duration
 
 ### LLVM types:
 - [ ] Struct
@@ -32,7 +35,6 @@
 
 
 ### Fun types cause I feel like it:
-- [x] Colour
 - [x] Matrix
 - [ ] Quaternion
 
