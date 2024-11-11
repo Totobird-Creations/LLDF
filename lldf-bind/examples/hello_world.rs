@@ -27,11 +27,7 @@ fn player_swap_hands(default : PlayerSel) {
 
     //default.set_gamemode_creative();
 
-    let a = Vector::<3>::new([1.0.into(), 2.0.into(), 3.0.into()]);
-    let b = Vector::<5>::new([1.0.into(), 2.0.into(), 3.0.into(), 4.0.into(), 5.0.into()]);
-    default.send_message(a.y());          // Prints 2
-    default.send_message(a.lane(1usize)); // Prints 2
-    default.send_message(b.lane(3usize)); // Prints 4
+    default.send_message(Item::compass().tags());
 
 }
 

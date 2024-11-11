@@ -15,6 +15,7 @@ impl Game {
         PlayerSel { uuids }
     } }
 
+    // TODO: Move to `PlayerSel` as constructor.
     #[inline(always)]
     pub fn player_by_uuid<T : AsRef<String>>(uuid : T) -> PlayerSel { unsafe {
         DF_ACTION__SelectObject_PlayerName(uuid.as_ref() as *const _ as *const _);

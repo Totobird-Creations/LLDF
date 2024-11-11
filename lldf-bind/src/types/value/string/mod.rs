@@ -3,10 +3,12 @@ pub use string::String;
 mod text;
 pub use text::Text;
 mod colour;
-#[cfg(not(feature = "en_us"))]
+#[cfg(any(not(feature = "en_us"), doc))]
 pub use colour::Colour;
-#[cfg(feature = "en_us")]
+#[cfg(any(feature = "en_us", doc))]
 pub use colour::Colour as Color;
+mod uuid;
+pub use uuid::UUID;
 
 
 use crate::prelude::*;

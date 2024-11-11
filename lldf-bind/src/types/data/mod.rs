@@ -1,4 +1,17 @@
 #[lldf_bind_proc::actiontag]
+pub enum Toggle {
+    Enable  = "Enable",
+    Disable = "Disable"
+}
+
+#[lldf_bind_proc::actiontag]
+pub enum Flag {
+    True  = "True",
+    False = "False"
+}
+
+
+#[lldf_bind_proc::actiontag]
 pub enum SoundChannel {
     Master   = "Master",
     Music    = "Music",
@@ -53,18 +66,6 @@ pub enum Gamemode {
 }
 
 #[lldf_bind_proc::actiontag]
-pub enum Toggle {
-    Enable  = "Enable",
-    Disable = "Disable"
-}
-
-#[lldf_bind_proc::actiontag]
-pub enum Flag {
-    True  = "True",
-    False = "False"
-}
-
-#[lldf_bind_proc::actiontag]
 pub enum Particles {
     Regular = "Regular",
     Ambient = "Ambient",
@@ -79,6 +80,13 @@ pub use name_colour::NameColour;
 #[doc(cfg(feature = "en_us"))]
 pub use name_colour::NameColour as NameColor;
 
+
+#[lldf_bind_proc::actiontag]
+pub enum ItemGlowing {
+    Enable  = "Enable",
+    Disable = "Disable",
+    Default = "Default"
+}
 
 #[lldf_bind_proc::actiontag]
 pub enum TrimPattern {
@@ -129,19 +137,36 @@ pub enum ItemAttr {
     ArmourToughness = "Armor toughness",
     #[cfg(any(feature = "en_us", doc))]
     #[doc(cfg(feature = "en_us"))]
-    ArmorToughness       = "Armor toughness",
-    AttackDamage         = "Attack damage",
-    AttackSpeed          = "Attack speed",
-    AttackKnockback      = "Attack knockback",
-    MaxHealth            = "Maximum health",
-    MaxAbsorption        = "Maximum absorption",
-    KnockbackResistance  = "Knockback resistance",
-    MovementSpeed        = "Movement speed",
-    FlyingSpeed          = "Flying speed",
-    FollowRange          = "Follow range",
-    Luck                 = "Luck",
-    HorseJumpStrength    = "Horse jump strength",
-    ZombieReinforcements = "Zombie spawn reinforcements"
+    ArmorToughness               = "Armor toughness",
+    AttackDamage                 = "Attack damage",
+    AttackKnockback              = "Attack knockback",
+    AttackSpeed                  = "Attack speed",
+    BurningTime                  = "Burning time",
+    ExplosionKnockbackResistance = "Explosion knockback resistance",
+    FallDamageMultiplier         = "Fall damage multiplier",
+    FlyingSpeed                  = "Flying speed",
+    FollowRange                  = "Follow range",
+    Gravity                      = "Gravity",
+    JumpStrength                 = "Jump strength",
+    KnockbackResistance          = "Knockback resistance",
+    Luck                         = "Luck",
+    MaximumAbsorptionHealth      = "Maximum absorption health",
+    MaximumHealth                = "Maximum health",
+    MovementEfficiency           = "Movement efficiency",
+    WalkingSpeed                 = "Walking speed",
+    OxygenBonus                  = "Oxygen bonus",
+    SafeFallDistance             = "Safe fall distance",
+    Scale                        = "Scale",
+    StepHeight                   = "Step height",
+    WaterMovementEfficiency      = "Water movement efficiency",
+    BlockBreakSpeed              = "Block break speed",
+    BlockInteractionRange        = "Block interaction range",
+    EntityInteractionRange       = "Entity interaction range",
+    MiningEfficiency             = "Mining efficiency",
+    SneakingSpeed                = "Sneaking speed",
+    SubmergedMiningSpeed         = "Submerged mining speed",
+    SweepingDamageRatio          = "Sweeping damage ratio",
+    ZombieSpawnReinforcements    = "Zombie spawn reinforcements"
 }
 
 #[lldf_bind_proc::actiontag]

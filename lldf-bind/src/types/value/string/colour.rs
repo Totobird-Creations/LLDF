@@ -12,7 +12,7 @@ pub struct Colour {
 
 impl Colour {
 
-    /// Creates a `Colour` using a hex code.
+    /// Creates a `Colour` from a hex code.
     /// 
     /// **No checks are done to make sure this hex code is valid.**
     #[inline(always)]

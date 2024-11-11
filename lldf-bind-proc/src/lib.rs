@@ -4,7 +4,7 @@
 use proc_macro::TokenStream;
 use proc_macro::Span;
 use syn::parse;
-use syn::{ FnArg, Ident, Item, ItemFn, LitStr, Pat, Path, PathArguments, PathSegment, PatType, PatWild, Type, TypePath };
+use syn::{ FnArg, Ident, ItemFn, LitStr, Pat, Path, PathArguments, PathSegment, PatType, PatWild, Type, TypePath };
 use syn::punctuated::Punctuated;
 use quote::quote;
 

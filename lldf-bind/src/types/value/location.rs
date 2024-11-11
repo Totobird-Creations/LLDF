@@ -9,7 +9,11 @@ pub struct Location {
 
 impl Location {
 
-    // TODO: new
+    #[lldf_bind_proc::dfdoc(SetVariable/SetAllCoords { CoordinateType = PlotCoordinate })]
+    #[inline(always)]
+    pub fn new<F0 : Into<Float>, F1 : Into<Float>, F2 : Into<Float>, F3 : Into<Float>, F4 : Into<Float>>(x : F0, y : F1, z : F2, pitch : F3, yaw : F4) -> Self { unsafe {
+        DF_ACTION__SetVariable_SetAllCoords_CoordinateType_PlotCoordinate(x.into(), y.into(), z.into(), pitch.into(), yaw.into())
+    } }
 
     // TODO: with_x
 
@@ -95,5 +99,7 @@ unsafe impl DFValue for Location {
 extern "C" {
 
     fn DF_TRANSMUTE__Opaque( from : Location ) -> DFOpaqueValue;
+
+    fn DF_ACTION__SetVariable_SetAllCoords_CoordinateType_PlotCoordinate( x : Float, y : Float, z : Float, pitch : Float, yaw : Float ) -> Location;
 
 }

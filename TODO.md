@@ -7,17 +7,16 @@
 - [x] Sound
 - [ ] Particle
 - [x] Potion
-- [ ] Item
-- [ ] List
+- [x] Item
+- [x] List
 - [ ] Dict
 
 ### LLDF-rs 'higher-level' types:
 - [ ] UInt
 - [ ] Int
 - [ ] Float
+- [x] UUID
 - [x] Colour
-- [ ] List
-- [ ] Dict
 - [x] PlayerSel
 - [ ] EntitySel
 - [ ] Instant

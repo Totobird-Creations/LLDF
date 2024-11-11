@@ -2,6 +2,7 @@ use super::*;
 use crate::build::codegen::{ BracketKind, BracketSide, CodeLine, Codeblock };
 
 use std::collections::HashMap;
+use std::borrow::Cow;
 
 use decomp::{ cfa::CFAPrim, cfg::ControlFlowGraph, cfr::{ CFRGroup, CFRGroups } };
 use inflector::Inflector;
@@ -244,7 +245,18 @@ pub fn linked_name_to_actiontag_kind(actiontag_kind : &str) -> String {
         if (ch.is_uppercase() && (! last_ch.is_uppercase()) && (i + 1 != actiontag_kind.len())) { out.push(' '); }
         last_ch = ch;
     }
-    out.chars().rev().collect()
+    out.chars().rev().collect::<String>().split(" ").enumerate().map(|(i, word)|
+        if (i == 0) { Cow::Borrowed(word) } 
+        else {
+            let word_lc = word.to_lowercase();
+            match (word_lc.as_str()) {
+                "a"    | "and" | "as"   | "at"   | "but"  | "by"   | "for" | "from" | "if" | "in"   |
+                "into" | "nor" | "of"   | "off"  | "on"   | "once" | "or"  | "over" | "so" | "than" |
+                "that" | "to"  | "upon" | "when" | "with" | "yet"  => Cow::Owned(word_lc),
+                _ => Cow::Borrowed(word)
+            }
+        }
+    ).intersperse(Cow::Borrowed(" ")).collect::<String>()
 }
 pub fn linked_name_to_actiontag_value(actiontag_value : &str) -> String {
     linked_name_to_gamevalue_kind(actiontag_value).to_sentence_case()
