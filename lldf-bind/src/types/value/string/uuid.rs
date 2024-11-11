@@ -1,7 +1,7 @@
 use crate::prelude::*;
 
 
-/// A colour.
+/// An entity UUID.
 #[derive(Clone)]
 #[repr(transparent)]
 pub struct UUID {

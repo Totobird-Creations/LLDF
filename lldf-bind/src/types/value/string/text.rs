@@ -2,6 +2,7 @@ use super::*;
 use core::mem::transmute_unchecked;
 
 
+/// Text with extra formatting via MiniMessage tags. Used for chat messages, item names, etc.
 #[derive(Clone)]
 pub struct Text {
     _opaque_type : u8

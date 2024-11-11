@@ -45,9 +45,11 @@ impl Item {
         DF_ACTION__SetVariable_GetItemLore(self.clone())
     } }
 
-    #[lldf_bind_proc::dfdoc(SetVariable/GetLoreLine)]
+    #[lldf_bind_proc::dfdoc(SetVariable/GetLoreLine)] // TODO: Add bounds check variant.
+    /// ##### Unsafe
+    /// - **Does not do a bounds check**
     #[inline(always)]
-    pub fn lore_line<U : Into<UInt>>(&self, index : U) -> Text { unsafe { // TODO: Add bounds check
+    pub unsafe fn lore_line_unchecked<U : Into<UInt>>(&self, index : U) -> Text { unsafe {
         let index = DF_TRANSMUTE__Opaque_UInt(DF_ACTION__SetVariable_Specialcharplus(index.into().to_opaque(), UInt::from(1usize).to_opaque()));
         DF_ACTION__SetVariable_GetLoreLine(self.clone(), index)
     } }

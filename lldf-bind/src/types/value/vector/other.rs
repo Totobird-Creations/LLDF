@@ -10,8 +10,10 @@ impl<const LANES : usize> _VectorMethods<LANES> for Vector<LANES> {
     }
 
     #[lldf_bind_proc::dfdoc(SetVariable/GetVectorComp)]
+    /// ##### Unsafe
+    /// - **Does not do a bounds check**
     #[inline(always)]
-    default fn lane<U : Into<UInt>>(&self, lane : U) -> Float { unsafe { // TODO: Add a bounds check.
+    default unsafe fn lane_unchecked<U : Into<UInt>>(&self, lane : U) -> Float { unsafe {
         let lane = DF_ACTION__SetVariable_Specialcharplus( lane.into(), UInt::from(1usize) );
         DF_ACTION__SetVariable_GetListValue( self.inner.clone(), lane )
     } }

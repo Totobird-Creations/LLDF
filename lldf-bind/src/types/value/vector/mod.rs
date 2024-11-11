@@ -24,7 +24,9 @@ pub trait _VectorMethods<const LANES : usize> {
 
     // TODO: with_lane
 
-    fn lane<U : Into<UInt>>(&self, lane : U) -> Float;
+    unsafe fn lane_unchecked<U : Into<UInt>>(&self, lane : U) -> Float;
+
+    // TODO: lane (with bounds check)
 
     // TODO: length
 

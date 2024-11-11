@@ -43,8 +43,10 @@ impl _VectorMethods<3> for Vector<3> {
     } }
 
     #[lldf_bind_proc::dfdoc(SetVariable/GetVectorComp)]
+    /// ##### Unsafe
+    /// - **Does not do a bounds check**
     #[inline(always)]
-    fn lane<U : Into<UInt>>(&self, lane : U) -> Float { unsafe { // TODO: Add a bounds check.
+    unsafe fn lane_unchecked<U : Into<UInt>>(&self, lane : U) -> Float { unsafe {
         let lanes = DF_ACTION__SetVariable_CreateList( String::from("X"), String::from("Y"), String::from("Z") );
         let lane  = DF_ACTION__SetVariable_Specialcharplus( lane.into(), UInt::from(1usize) );
         let lane  = DF_ACTION__SetVariable_GetListValue( lanes, lane );

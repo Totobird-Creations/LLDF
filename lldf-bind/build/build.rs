@@ -111,7 +111,7 @@ fn main() -> Result<(), Box<dyn Error>> {
         let mut file = File::create(cwd.join("src/bind/particle.rs"))?;
         writeln!(file, "extern \"C\" {{")?;
         for particle in &dbc.particles {
-            let name = particle.particle.to_title_case().replace(" ", "");
+            let name = util::symbols_to_names(&particle.icon.name).to_title_case().replace(" ", "");
             write!(file, "    fn DF_PARTICLE__{}", name)?;
             for field in &particle.fields {
                 write!(file, "_{:?}", field)?;
@@ -121,7 +121,7 @@ fn main() -> Result<(), Box<dyn Error>> {
         writeln!(file, "}}")?;
         writeln!(file, "impl Particle {{")?;
         for particle in &mut dbc.particles {
-            let name = particle.particle.to_title_case().replace(" ", "");
+            let name = util::symbols_to_names(&particle.icon.name).to_title_case().replace(" ", "");
             write_doc_comment(&mut file, "    ",
                 &particle.icon.name,
                 &mut particle.icon.deprecated_note, false,
@@ -139,6 +139,13 @@ fn main() -> Result<(), Box<dyn Error>> {
                 write!(file, "_{:?}", field)?;
             }
             writeln!(file, "() }} }}")?;
+        }
+        writeln!(file, "}}")?;
+        writeln!(file, "#[lldf_bind_proc::actiontag]")?;
+        writeln!(file, "pub enum ParticleKind {{")?;
+        for particle in &mut dbc.particles {
+            let name = util::symbols_to_names(&particle.icon.name).to_title_case().replace(" ", "");
+            writeln!(file, "    {} = \"{}\",", name, particle.icon.name)?;
         }
         writeln!(file, "}}")?;
     }
@@ -169,6 +176,13 @@ fn main() -> Result<(), Box<dyn Error>> {
                 &dbc_autogen_message
             )?;
             writeln!(file, "    #[inline(always)] pub fn {}() -> Self {{ unsafe {{ DF_POTION__{}() }} }}", potion.icon.name.replace("'", "").to_snake_case(), name)?;
+        }
+        writeln!(file, "}}")?;
+        writeln!(file, "#[lldf_bind_proc::actiontag]")?;
+        writeln!(file, "pub enum PotionKind {{")?;
+        for potion in &mut dbc.potions {
+            let name = util::symbols_to_names(&potion.icon.name).to_title_case().replace(" ", "");
+            writeln!(file, "    {} = \"{}\",", name, potion.icon.name)?;
         }
         writeln!(file, "}}")?;
     }
