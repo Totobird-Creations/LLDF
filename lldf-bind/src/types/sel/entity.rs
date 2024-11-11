@@ -418,5 +418,150 @@ impl EntitySel {
 
 }
 
+/// `Game Value` / `Statistical Values`
+impl EntitySel {
+
+    // TODO: health
+
+    // TODO: max_health
+
+    // TODO: absorption_health
+
+    // TODO: food
+
+    // TODO: saturation
+
+    // TODO: exhaustion
+
+    // TODO: attack_damage
+
+    // TODO: attack_speed
+
+    // TODO: current_attack_cooldown
+
+    // TODO: held_attack_cooldown
+
+    // TODO: armour
+
+    // TODO: armour_toughness
+
+    // TODO: invul_ticks
+
+    // TODO: exp_level
+
+    // TODO: exp_progress
+
+    // TODO: fire_ticks
+
+    // TODO: freeze_ticks
+
+    // TODO: air_ticks
+
+    // TODO: fall_distance
+
+    // TODO: item_usage_progress
+
+    // TODO: flight_speed
+
+    // TODO: walk_speed
+
+    // TODO: width
+
+    // TODO: height
+
+}
+
+/// `Game Value` / `Locational Values`
+impl EntitySel {
+
+    // TODO: location
+
+    // TODO: target_block_location
+
+    // TODO: target_block_side
+
+    // TODO: eye_location
+
+    // TODO: midpoint_location
+
+    // TODO: x
+
+    // TODO: y
+
+    // TODO: z
+
+    // TODO: yaw
+
+    // TODO: pitch
+
+    // TODO: body_yaw
+
+    // TODO: supporting_block_location
+
+    // TODO: spawn_location
+
+    // TODO: velocity
+
+    // TODO: direction
+
+}
+
+/// `Game Value` / `Item Values`
+impl EntitySel {
+
+    // TODO: mainhand_item
+
+    // TODO: offhand_item
+
+    // TODO: armour_items
+
+    // TODO: hotbar_items
+
+    // TODO: inventory_items
+
+    // TODO: saddle_item
+
+    // TODO: entity_item
+
+}
+
+/// `Game Value` / `Informational Values`
+impl EntitySel {
+
+    // TODO: name
+
+    // TODO: uuid
+
+    // TODO: entity_type
+
+    // TODO: potions
+
+    // TODO: vehicle_uuid
+
+    // TODO: passenger_uuids
+
+    // TODO: leading_uuid
+
+    // TODO: lead_uuids
+
+    // TODO: targeted_uuid
+
+    // TODO: shooter_uuid
+
+    // TODO: pose
+
+}
+
+/// `Game Value` / `Plot Values`
+impl PlayerSel {
+
+    // TODO: len
+
+    // TODO: uuids
+
+    // TODO: names
+
+}
+
 
 unsafe impl DFSel for EntitySel {}

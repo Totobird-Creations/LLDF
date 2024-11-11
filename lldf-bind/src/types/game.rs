@@ -266,6 +266,27 @@ impl Game {
 
 }
 
+/// `Game Value` / `Plot Values`
+impl Game {
+
+    // TODO: player_count
+
+    // TODO: plot_cpu
+
+    // TODO: server_tps
+
+    // TODO: now
+
+    // TODO: plot_id
+
+    // TODO: plot_size
+
+    // TODO: elapsed
+
+    // TODO: active_transactions
+
+}
+
 
 
 

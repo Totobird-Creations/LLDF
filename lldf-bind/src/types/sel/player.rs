@@ -789,18 +789,157 @@ impl PlayerSel {
 
 }
 
+/// `Game Value` / `Statistical Values`
 impl PlayerSel {
+
+    // TODO: health
+
+    // TODO: max_health
+
+    // TODO: absorption_health
+
+    // TODO: food
+
+    // TODO: saturation
+
+    // TODO: exhaustion
+
+    // TODO: attack_damage
+
+    // TODO: attack_speed
+
+    // TODO: current_attack_cooldown
+
+    // TODO: held_attack_cooldown
+
+    // TODO: armour
+
+    // TODO: armour_toughness
+
+    // TODO: invul_ticks
+
+    // TODO: exp_level
+
+    // TODO: exp_progress
+
+    // TODO: fire_ticks
+
+    // TODO: freeze_ticks
+
+    // TODO: air_ticks
+
+    // TODO: fall_distance
+
+    // TODO: held_slot
+
+    // TODO: ping
+
+    // TODO: steer_sideways
+
+    // TODO: steer_forward
+
+    // TODO: item_usage_progress
+
+    // TODO: flight_speed
+
+    // TODO: walk_speed
+
+    // TODO: width
+
+    // TODO: height
+
+}
+
+/// `Game Value` / `Locational Values`
+impl PlayerSel {
+
+    // TODO: location
+
+    // TODO: target_block_location
+
+    // TODO: target_block_side
+
+    // TODO: eye_location
+
+    // TODO: midpoint_location
+
+    // TODO: x
+
+    // TODO: y
+
+    // TODO: z
+
+    // TODO: yaw
+
+    // TODO: pitch
+
+    // TODO: body_yaw
+
+    // TODO: supporting_block_location
+
+    // TODO: spawn_location
+
+    // TODO: velocity
+
+    // TODO: direction
+
+}
+
+/// `Game Value` / `Item Values`
+impl PlayerSel {
+
+    // TODO: mainhand_item
+
+    // TODO: offhand_item
+
+    // TODO: armour_items
+
+    // TODO: hotbar_items
+
+    // TODO: inventory_items
+
+    // TODO: cursor_item
+
+    // TODO: menu_items
+
+}
+
+/// `Game Value` / `Informational Values`
+impl PlayerSel {
+
+    // TODO: name
+
+    // TODO: uuid
+
+    // TODO: gamemode
+
+    // TODO: menu_title
+
+    // TODO: potions
+
+    // TODO: vehicle_uuid
+
+    // TODO: passenger_uuids
+
+    // TODO: leading_uuid
+
+    // TODO: lead_uuids
+
+    // TODO: shooter_uuid
+
+    // TODO: pose
+
+}
+
+/// `Game Value` / `Plot Values`
+impl PlayerSel {
+
+    // TODO: len
 
     #[inline(always)]
     pub fn uuids<'l>(&'l self) -> &'l List<String> { &self.uuids }
 
-    #[inline(always)]
-    pub fn eye_location(&self) -> Location { unsafe {
-        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
-        let out = DF_GAMEVALUE__EyeLocation_Selection();
-        DF_ACTION__SelectObject_Reset();
-        out
-    } }
+    // TODO: names
 
 }
 
@@ -870,8 +1009,5 @@ extern "C" {
     fn DF_ACTION__PlayerAction_RollbackBlocks( time_seconds : UInt ) -> ();
     fn DF_ACTION__PlayerAction_SendToPlot( plot_id : String ) -> ();
     fn DF_ACTION__PlayerAction_Kick( ) -> ();
-
-    
-    fn DF_GAMEVALUE__EyeLocation_Selection( ) -> Location;
 
 }
