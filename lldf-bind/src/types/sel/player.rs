@@ -358,6 +358,10 @@ impl PlayerSel {
 
     // TODO: FallingAttribute
 
+    // TODO: MiningAttribute
+
+    // TODO: ReachAttribute
+
     // TODO: MiscAttribute
 
 }

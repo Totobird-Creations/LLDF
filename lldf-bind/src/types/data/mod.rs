@@ -81,6 +81,89 @@ pub use name_colour::NameColour as NameColor;
 
 
 #[lldf_bind_proc::actiontag]
+pub enum TrimPattern {
+    Bolt      = "Bolt",
+    Coast     = "Coast",
+    Dune      = "Dune",
+    Eye       = "Eye",
+    Flow      = "Flow",
+    Rib       = "Rib",
+    Sentry    = "Sentry",
+    Snout     = "Snout",
+    Spire     = "Spire",
+    Tide      = "Tide",
+    Vex       = "Vex",
+    Ward      = "Ward",
+    Wayfinder = "Wayfinder",
+    Shaper    = "Shaper",
+    Silence   = "Silence",
+    Raiser    = "Raiser",
+    Host      = "Host",
+    Wild      = "Wild"
+}
+
+#[lldf_bind_proc::actiontag]
+pub enum TrimMaterial {
+    Amethyst  = "Amethyst",
+    Copper    = "Copper",
+    Diamond   = "Diamond",
+    Emerald   = "Emerald",
+    Gold      = "Gold",
+    Iron      = "Iron",
+    Lapis     = "Lapis lazuli",
+    Netherite = "Netherite",
+    Quartz    = "Quartz",
+    Redstone  = "Redstone"
+}
+
+#[lldf_bind_proc::actiontag]
+pub enum ItemAttr {
+    #[cfg(any(not(feature = "en_us"), doc))]
+    #[doc(cfg(not(feature = "en_us")))]
+    Armour = "Armor",
+    #[cfg(any(feature = "en_us", doc))]
+    #[doc(cfg(feature = "en_us"))]
+    Armor = "Armor",
+    #[cfg(any(not(feature = "en_us"), doc))]
+    #[doc(cfg(not(feature = "en_us")))]
+    ArmourToughness = "Armor toughness",
+    #[cfg(any(feature = "en_us", doc))]
+    #[doc(cfg(feature = "en_us"))]
+    ArmorToughness       = "Armor toughness",
+    AttackDamage         = "Attack damage",
+    AttackSpeed          = "Attack speed",
+    AttackKnockback      = "Attack knockback",
+    MaxHealth            = "Maximum health",
+    MaxAbsorption        = "Maximum absorption",
+    KnockbackResistance  = "Knockback resistance",
+    MovementSpeed        = "Movement speed",
+    FlyingSpeed          = "Flying speed",
+    FollowRange          = "Follow range",
+    Luck                 = "Luck",
+    HorseJumpStrength    = "Horse jump strength",
+    ZombieReinforcements = "Zombie spawn reinforcements"
+}
+
+#[lldf_bind_proc::actiontag]
+pub enum ItemAttrOp {
+    Add             = "Add number",
+    AddPercent      = "Add percentage to base",
+    MultiplyPercent = "Multiply modifier by percentage"
+}
+
+#[lldf_bind_proc::actiontag]
+pub enum ItemAttrSlot {
+    Any      = "Any",
+    MainHand = "Main hand",
+    OffHand  = "Off hand",
+    Head     = "Head",
+    Chest    = "Body",
+    Legs     = "Legs",
+    Feet     = "Feet"
+}
+
+
+#[lldf_bind_proc::actiontag]
 pub enum Direction {
     North = "north",
     East  = "east",

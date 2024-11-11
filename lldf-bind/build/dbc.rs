@@ -325,6 +325,7 @@ pub enum DBCParticleField {
     Colour,
     #[serde(rename = "Color Variation")]
     ColourVariation,
+    Opacity,
     Material,
     Size,
     #[serde(rename = "Size Variation")]
@@ -332,19 +333,6 @@ pub enum DBCParticleField {
     Roll,
     #[serde(rename = "Fade Color")]
     FadeColour
-}
-impl DBCParticleField {
-    pub fn to_type_name(&self) -> &'static str { match (self) {
-        Self::Motion          => "Vector",
-        Self::MotionVariation => "Float",
-        Self::Colour          => "RGB",
-        Self::ColourVariation => "Float",
-        Self::Material        => "&str",
-        Self::Size            => "Float",
-        Self::SizeVariation   => "Float",
-        Self::Roll            => "Float",
-        Self::FadeColour      => "RGB"
-    } }
 }
 
 

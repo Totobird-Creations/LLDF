@@ -10,18 +10,60 @@ pub struct List<T : DFValue> {
     _ph          : PhantomData<T>
 }
 
-impl<T : DFValue> List<T> {
-    #[inline(always)]
-    pub fn from_array<const N : usize>(array : [T; N]) -> Self { unsafe {
-        transmute_unchecked(DF_TRANSMUTE__Array_Opaque(array))
-    } }
-}
-
 impl<T : DFValue> Clone for List<T> {
     #[inline(always)]
     fn clone(&self) -> Self { unsafe {
         transmute_unchecked(self._opaque_type.clone())
     } }
+}
+
+impl<T : DFValue> List<T> {
+
+    // TODO: new
+
+    #[inline(always)]
+    pub fn from_array<const N : usize>(array : [T; N]) -> Self { unsafe {
+        transmute_unchecked(DF_TRANSMUTE__Array_Opaque(array))
+    } }
+
+}
+
+impl<T : DFValue> List<T> {
+
+    // TODO: push
+
+    // TODO: append
+
+    // TODO: get
+
+    // TODO: pop
+
+    // TODO: remove
+
+    // TODO: set
+
+    // TODO: index_of
+
+    // TODO: len
+
+    // TODO: insert
+
+    // TODO: erase (remove by equality)
+
+    // TODO: dedup
+
+    // TODO: splice
+
+    // TODO: sorted
+
+    // TODO: reversed
+
+    // TODO: shuffled
+
+    // TODO: flattened
+
+    // TODO: random (random element)
+
 }
 
 impl List<String> {

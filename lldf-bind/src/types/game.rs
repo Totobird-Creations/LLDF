@@ -36,6 +36,219 @@ impl Game {
 
 }
 
+/// `GAME_ACTION` / `Entity Spawning`
+impl Game {
+
+    // TODO: SpawnMob
+
+    // TODO: SpawnItem
+
+    // TODO: SpawnVehicle
+
+    // TODO: SpawnExpOrb
+
+    // TODO: Explosion
+
+    // TODO: SpawnTNT
+
+    // TODO: SpawnFangs
+
+    // TODO: Firework
+
+    // TODO: LaunchProj
+
+    // TODO: Lightning
+
+    // TODO: SpawnPotionCloud
+
+    // TODO: FallingBlock
+
+    // TODO: SpawnArmourStand
+
+    // TODO: SpawnCrystal
+
+    // TODO: SpawnEnderEye
+
+    // TODO: ShulkerBullet
+
+    // TODO: SpawnTextDisplay
+
+    // TODO: SpawnItemDisp
+
+    // TODO: SpawnBlockDisp
+
+    // TODO: SpawnInteraction
+
+}
+
+/// `GAME_ACTION` / `Block Manipulation`
+impl Game {
+
+    // TODO: SetBlock
+
+    // TODO: set_block_and_update
+
+    // TODO: SetRegion
+
+    // TODO: SetBiome
+
+    // TODO: CloneRegion
+
+    // TODO: BreakBlock
+
+    // TODO: SetBlockData
+
+    // TODO: RandomTickBlock
+
+    // TODO: BoneMealBlock
+
+    // TODO: GenerateTree
+
+    // TODO: SetBlockGrowth
+
+    // TODO: FillContainer
+
+    // TODO: SetContainer
+
+    // TODO: SetItemInSlot
+
+    // TODO: ReplaceItems
+
+    // TODO: RemoveItems
+
+    // TODO: ClearItems
+
+    // TODO: ClearContainer
+
+    // TODO: SetContainerName
+
+    // TODO: LockContainer
+
+    // TODO: ChangeSign
+
+    // TODO: SignColour
+
+    // TODO: SetHead
+
+    // TODO: SetFurnaceSpeed
+
+    // TODO: SetCampfireItem
+
+    // TODO: SetLecternBook
+
+    // TODO: SetBrushableItem
+
+    // TODO: WriteTransaction
+
+    // TODO: ApplyTransaction
+
+}
+
+/// `SET_VARIABLE` / `World Actions`
+impl Game {
+
+    // TODO: GetBlockMaterial
+
+    // TODO: GetBlockData
+
+    // TODO: GetAllBlockData
+
+    // TODO: GetBlockGrowth
+
+    // TODO: GetBlockPower
+
+    // TODO: GetLightLevel
+
+    // TODO: GetSignText
+
+    // TODO: GetContainerName
+
+    // TODO: GetContainerLock
+
+    // TODO: GetContainerContents
+
+    // TODO: GetLecternBook
+
+    // TODO: GetLecternPage
+
+    // TODO: GetBlockDropItems
+
+}
+
+/// `GAME_ACTION` / `Event Manipulation`
+impl Game {
+
+    // TODO: CancelEvent
+
+    // TODO: UncancelEvent
+
+    // TODO: SetEventDamage
+
+    // TODO: SetEventHeal
+
+    // TODO: SetEventXP
+
+    // TODO: SetEventProj
+
+    // TODO: SetEventSound
+
+    // TODO: SetExhaustion
+
+}
+
+/// `GAME_ACTION` / `Settings`
+impl Game {
+
+    // TODO: BlockDropsOn
+
+    // TODO: BlockDropsOff
+
+}
+
+/// `GAME_ACTION` / `Web Manipulation`
+impl Game {
+
+    // TODO: SendWebRequest
+
+    // TODO: DiscordWebhook
+
+}
+
+/// `IF_GAME`
+impl Game {
+
+    // TODO: BlockEquals
+
+    // TODO: BlockIsPowered
+
+    // TODO: ContainerHasItem
+
+    // TODO: ContainerHasAllItems
+
+    // TODO: ContainerHasRoomForItem
+
+    // TODO: SignContainsText
+
+    // TODO: GameHasPlayer
+
+    // TODO: EventBlockEquals
+
+    // TODO: EventItemEquals
+
+    // TODO: CommandEquals
+
+    // TODO: CommandArgumentEquals
+
+    // TODO: AttackIsCritical
+
+    // TODO: EventIsCancalled
+
+    // TODO: LocationIsInBlock
+
+    // TODO: IsChunkLoaded
+
+}
+
 /// `START_PROCESS`
 impl Game {
 

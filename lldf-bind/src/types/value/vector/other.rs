@@ -3,11 +3,13 @@ use super::*;
 
 impl<const LANES : usize> _VectorMethods<LANES> for Vector<LANES> {
 
+    #[lldf_bind_proc::dfdoc(SetVariable/Vector)]
     #[inline(always)]
     default fn new(lanes : [Float; LANES]) -> Vector<LANES> {
         Vector { inner : List::from_array(lanes) }
     }
 
+    #[lldf_bind_proc::dfdoc(SetVariable/GetVectorComp)]
     #[inline(always)]
     default fn lane<U : Into<UInt>>(&self, lane : U) -> Float { unsafe { // TODO: Add a bounds check.
         let lane = DF_ACTION__SetVariable_Specialcharplus( lane.into(), UInt::from(1usize) );
@@ -25,3 +27,14 @@ extern "C" {
 
 }
 
+
+#[cfg(doc)]
+impl<const LANES : usize> Vector<LANES> {
+
+    #[lldf_bind_proc::dfdoc(SetVariable/Vector)]
+    pub fn new(lanes : [Float; LANES]) -> Vector<LANES> { loop { /* documentation only */ } }
+
+    #[lldf_bind_proc::dfdoc(SetVariable/GetVectorComp)]
+    pub fn lane<U : Into<UInt>>(&self, lane : U) -> Float { loop { /* documentation only */ } }
+
+}

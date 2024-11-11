@@ -79,6 +79,8 @@ impl Location {
 
     // TODO: noise_value1
 
+    // TODO: raycast
+
 }
 
 

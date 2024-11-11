@@ -31,11 +31,15 @@ impl Item {
 
     // TODO: with_count
 
-    // TODO: max_stack_size
+    // TODO: stack_size
 
-    // TODO: durability
+    // TODO: with_stack_size
 
-    // TODO: with_durability
+    // TODO: dura
+
+    // TODO: with_dura
+
+    // TODO: with_max_dura
 
     // TODO: with_unbreakable
 
@@ -97,6 +101,8 @@ impl Item {
 
     // TODO: with_hideflag_potions
 
+    // TODO: with_hideflag_others
+
     // TODO: placeables
 
     // TODO: with_placeables
@@ -111,6 +117,20 @@ impl Item {
 
     // TODO: with_compass_target
 
+    // TODO: nutrition
+
+    // TODO: saturation
+
+    // TODO: eating_time
+
+    // TODO: with_food
+
+    // TODO: with_tool
+
+    // TODO: with_tool_rules
+
+    // TODO: with_tooltip
+
     // TODO: with_trim
 
     // TODO: without_trim
@@ -124,6 +144,10 @@ impl Item {
     // TODO: with_attribute
 
     // TODO: with_map_texture
+
+    // TODO: from_block_tag
+
+    // TODO: from_item_tag
 
 }
 

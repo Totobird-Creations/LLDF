@@ -330,14 +330,6 @@ impl EntitySel {
 
     // TODO: DisplayMatrix
 
-    // TODO: DispRotationEuler
-
-    // TODO: DispRotAxisAngle
-
-    // TODO: DispTranslation
-
-    // TODO: DisplayScale
-
 }
 
 /// `ENTITY_ACTION` / `Miscellaneous`

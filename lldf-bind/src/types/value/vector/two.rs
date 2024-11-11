@@ -7,11 +7,13 @@ impl Vector<2> {
 
     // TODO: with_y
 
+    #[lldf_bind_proc::dfdoc(SetVariable/GetVectorComp { Component = X })]
     #[inline(always)]
     pub fn x(&self) -> Float { unsafe {
         DF_ACTION__SetVariable_GetListValue( self.clone(), UInt::from(1usize) )
     } }
 
+    #[lldf_bind_proc::dfdoc(SetVariable/GetVectorComp { Component = Y })]
     #[inline(always)]
     pub fn y(&self) -> Float { unsafe {
         DF_ACTION__SetVariable_GetListValue( self.clone(), UInt::from(2usize) )

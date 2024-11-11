@@ -3,14 +3,14 @@ use crate::bind::DFOpaqueValue;
 use crate::core::mem::transmute_unchecked;
 
 
+mod other;
 mod one;
 mod two;
 mod three;
 mod four;
-mod other;
 
 
-/// A vector with X, Y, and Z values. Used for representing directions, motions, or offsets.
+/// A vector with some number of lanes. Used for representing directions, motions, or offsets.
 #[derive(Clone)]
 pub struct Vector<const LANES : usize> {
     inner : List<Float>
