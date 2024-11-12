@@ -17,6 +17,10 @@ pub enum Visible {
 }
 
 
+
+// `PLAYER_ACTION`
+
+
 #[lldf_bind_proc::actiontag]
 pub enum SoundChannel {
     Master   = "Master",
@@ -85,6 +89,10 @@ pub use name_colour::NameColour;
 #[cfg(any(feature = "en_us", doc))]
 #[doc(cfg(feature = "en_us"))]
 pub use name_colour::NameColour as NameColor;
+
+
+
+// `SET_VARIABLE` / `Item Manipulation`
 
 
 #[lldf_bind_proc::actiontag]
@@ -200,6 +208,10 @@ pub enum ItemAttrSlot {
     Legs     = "Legs",
     Feet     = "Feet"
 }
+
+
+
+// `SET_VARIABLE` / `Vector Manipulation`
 
 
 #[lldf_bind_proc::actiontag]

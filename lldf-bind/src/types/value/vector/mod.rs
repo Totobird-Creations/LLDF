@@ -20,9 +20,11 @@ pub trait _VectorMethods<const LANES : usize> {
 
     fn new(lanes : [Float; LANES]) -> Vector<LANES>;
 
-    // TODO: splat
+    fn splat<F : Into<Float>>(lanes : F) -> Vector<LANES>;
 
-    // TODO: with_lane
+    // TODO: with_lane_unchecked
+
+    // TODO: with_lane (with bounds check)
 
     unsafe fn lane_unchecked<U : Into<UInt>>(&self, lane : U) -> Float;
 
@@ -60,10 +62,6 @@ pub trait _VectorMethods<const LANES : usize> {
 
     // TODO: to_list
 
-    // TODO: ext
-
-    // TODO: trunc
-
     // TODO: normalise
 
     // TODO: project_on
@@ -73,8 +71,6 @@ pub trait _VectorMethods<const LANES : usize> {
     // TODO: midpoint
 
     // TODO: angle_between
-
-    // TODO: 
 
 }
 

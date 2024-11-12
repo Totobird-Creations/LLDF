@@ -3,13 +3,31 @@ use super::*;
 
 impl Vector<4> {
 
-    // TODO: with_x
+    #[lldf_bind_proc::dfdoc(SetVariable/SetVectorComp { Component = X })]
+    #[inline(always)]
+    pub fn with_x<F : Into<Float>>(&self, x : F) -> Vector<4> { unsafe {
+        DF_ACTION__SetVariable_CreateList( x.into(), self.y(), self.z(), self.w() )
+    } }
 
-    // TODO: with_y
+    #[lldf_bind_proc::dfdoc(SetVariable/SetVectorComp { Component = Y })]
+    #[inline(always)]
+    pub fn with_y<F : Into<Float>>(&self, y : F) -> Vector<4> { unsafe {
+        DF_ACTION__SetVariable_CreateList( self.x(), y.into(), self.z(), self.w() )
+    } }
 
-    // TODO: with_z
+    #[lldf_bind_proc::dfdoc(SetVariable/SetVectorComp { Component = Z })]
+    #[inline(always)]
+    pub fn with_z<F : Into<Float>>(&self, z : F) -> Vector<4> { unsafe {
+        DF_ACTION__SetVariable_CreateList( self.x(), self.y(), z.into(), self.w() )
+    } }
 
-    // TODO: with_w
+    #[lldf_bind_proc::dfdoc(SetVariable/SetVectorComp { Component = W })]
+    /// ##### Note
+    /// - **`W` is lane 4 of the vector**
+    #[inline(always)]
+    pub fn with_w<F : Into<Float>>(&self, w : F) -> Vector<4> { unsafe {
+        DF_ACTION__SetVariable_CreateList( self.x(), self.y(), self.z(), w.into() )
+    } }
 
     #[lldf_bind_proc::dfdoc(SetVariable/GetVectorComp { Component = X })]
     #[inline(always)]
@@ -30,6 +48,8 @@ impl Vector<4> {
     } }
 
     #[lldf_bind_proc::dfdoc(SetVariable/GetVectorComp { Component = W })]
+    /// ##### Note
+    /// - **`W` is lane 4 of the vector**
     #[inline(always)]
     pub fn w(&self) -> Float { unsafe {
         DF_ACTION__SetVariable_GetListValue( self.clone(), UInt::from(4usize) )
@@ -40,6 +60,7 @@ impl Vector<4> {
 
 extern "C" {
 
+    fn DF_ACTION__SetVariable_CreateList( ... ) -> Vector<4>;
     fn DF_ACTION__SetVariable_GetListValue( list : Vector<4>, index : UInt ) -> Float;
 
 }
