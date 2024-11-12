@@ -76,7 +76,7 @@ pub trait _VectorMethods<const LANES : usize> {
 
 unsafe impl<const LANES : usize> DFValue for Vector<LANES> {
     #[inline]
-    unsafe fn to_opaque(self) -> DFOpaqueValue { unsafe {
-        transmute_unchecked(self)
+    unsafe fn to_opaque(&self) -> DFOpaqueValue { unsafe {
+        self.inner.to_opaque()
     } }
 }

@@ -49,15 +49,13 @@ impl String {
 
 unsafe impl DFValue for Text {
     #[inline(always)]
-    unsafe fn to_opaque(self) -> DFOpaqueValue { unsafe {
-        DF_TRANSMUTE__Opaque(self)
+    unsafe fn to_opaque(&self) -> DFOpaqueValue { unsafe {
+        transmute_unchecked(self._opaque_type.clone())
     } }
 }
 
 
 extern "C" {
-
-    fn DF_TRANSMUTE__Opaque( from : Text ) -> DFOpaqueValue;
 
     fn DF_ACTION__SetVariable_Text_InheritStyles_False_TextValueMerging_NoSpaces( from : DFOpaqueValue ) -> Text;
 

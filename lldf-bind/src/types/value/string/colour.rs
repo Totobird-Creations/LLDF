@@ -1,5 +1,6 @@
 use crate::prelude::*;
 use crate::bind::DFOpaqueValue;
+use crate::core::mem::transmute_unchecked;
 
 
 /// A colour.
@@ -42,30 +43,30 @@ impl Colour {
     #[lldf_bind_proc::dfdoc(SetVariable/GetColorChannels { ColorChannels = RGB })]
     #[inline(always)]
     pub fn rgb(&self) -> (UInt, UInt, UInt) { unsafe {
-        let rgb = DF_ACTION__SetVariable_GetColorChannels_ColorChannels_RGB(self.hexcode.clone()).to_opaque();
-        let r = DF_TRANSMUTE__UInt(DF_ACTION__SetVariable_GetListValue(rgb.clone(), 1usize.into()));
-        let g = DF_TRANSMUTE__UInt(DF_ACTION__SetVariable_GetListValue(rgb.clone(), 2usize.into()));
-        let b = DF_TRANSMUTE__UInt(DF_ACTION__SetVariable_GetListValue(rgb, 3usize.into()));
+        let rgb = DF_ACTION__SetVariable_GetColorChannels_ColorChannels_RGB(self.hexcode.to_opaque()).to_opaque();
+        let r = transmute_unchecked(DF_ACTION__SetVariable_GetListValue(rgb, 1usize.into()));
+        let g = transmute_unchecked(DF_ACTION__SetVariable_GetListValue(rgb, 2usize.into()));
+        let b = transmute_unchecked(DF_ACTION__SetVariable_GetListValue(rgb, 3usize.into()));
         (r, g, b)
     } }
 
     #[lldf_bind_proc::dfdoc(SetVariable/GetColorChannels { ColorChannels = HSB })]
     #[inline(always)]
     pub fn hsb(&self) -> (Float, Float, Float) { unsafe {
-        let hsb = DF_ACTION__SetVariable_GetColorChannels_ColorChannels_HSB(self.hexcode.clone()).to_opaque();
-        let h = DF_TRANSMUTE__Float(DF_ACTION__SetVariable_GetListValue(hsb.clone(), 1usize.into()));
-        let s = DF_TRANSMUTE__Float(DF_ACTION__SetVariable_GetListValue(hsb.clone(), 2usize.into()));
-        let b = DF_TRANSMUTE__Float(DF_ACTION__SetVariable_GetListValue(hsb, 3usize.into()));
+        let hsb = DF_ACTION__SetVariable_GetColorChannels_ColorChannels_HSB(self.hexcode.to_opaque()).to_opaque();
+        let h = transmute_unchecked(DF_ACTION__SetVariable_GetListValue(hsb, 1usize.into()));
+        let s = transmute_unchecked(DF_ACTION__SetVariable_GetListValue(hsb, 2usize.into()));
+        let b = transmute_unchecked(DF_ACTION__SetVariable_GetListValue(hsb, 3usize.into()));
         (h, s, b)
     } }
 
     #[lldf_bind_proc::dfdoc(SetVariable/GetColorChannels { ColorChannels = HSL })]
     #[inline(always)]
     pub fn hsl(&self) -> (Float, Float, Float) { unsafe {
-        let hsl = DF_ACTION__SetVariable_GetColorChannels_ColorChannels_HSL(self.hexcode.clone()).to_opaque();
-        let h = DF_TRANSMUTE__Float(DF_ACTION__SetVariable_GetListValue(hsl.clone(), 1usize.into()));
-        let s = DF_TRANSMUTE__Float(DF_ACTION__SetVariable_GetListValue(hsl.clone(), 2usize.into()));
-        let l = DF_TRANSMUTE__Float(DF_ACTION__SetVariable_GetListValue(hsl, 3usize.into()));
+        let hsl = DF_ACTION__SetVariable_GetColorChannels_ColorChannels_HSL(self.hexcode.to_opaque()).to_opaque();
+        let h = transmute_unchecked(DF_ACTION__SetVariable_GetListValue(hsl, 1usize.into()));
+        let s = transmute_unchecked(DF_ACTION__SetVariable_GetListValue(hsl, 2usize.into()));
+        let l = transmute_unchecked(DF_ACTION__SetVariable_GetListValue(hsl, 3usize.into()));
         (h, s, l)
     } }
 
@@ -86,14 +87,11 @@ extern "C" {
     fn DF_ACTION__SetVariable_HSBColor( h : UInt, s : UInt, b : UInt ) -> String;
     fn DF_ACTION__SetVariable_HSLColor( h : UInt, s : UInt, l : UInt ) -> String;
 
-    fn DF_ACTION__SetVariable_GetColorChannels_ColorChannels_RGB( hexcode : String ) -> List<UInt>;
-    fn DF_ACTION__SetVariable_GetColorChannels_ColorChannels_HSB( hexcode : String ) -> List<Float>;
-    fn DF_ACTION__SetVariable_GetColorChannels_ColorChannels_HSL( hexcode : String ) -> List<Float>;
+    fn DF_ACTION__SetVariable_GetColorChannels_ColorChannels_RGB( hexcode : DFOpaqueValue ) -> List<UInt>;
+    fn DF_ACTION__SetVariable_GetColorChannels_ColorChannels_HSB( hexcode : DFOpaqueValue ) -> List<Float>;
+    fn DF_ACTION__SetVariable_GetColorChannels_ColorChannels_HSL( hexcode : DFOpaqueValue ) -> List<Float>;
 
     fn DF_ACTION__SetVariable_GetListValue( list : DFOpaqueValue, index : UInt ) -> DFOpaqueValue;
-
-    fn DF_TRANSMUTE__UInt( from : DFOpaqueValue ) -> UInt;
-    fn DF_TRANSMUTE__Float( from : DFOpaqueValue ) -> Float;
 
 }
 

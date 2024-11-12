@@ -15,14 +15,7 @@ impl From<i128  > for Int { #[inline(always)] fn from(value : i128  ) -> Self { 
 impl From<isize > for Int { #[inline(always)] fn from(value : isize ) -> Self { unsafe { *(&value as *const _ as *const _) } } }
 
 unsafe impl DFValue for Int {
-    unsafe fn to_opaque(self) -> DFOpaqueValue { unsafe {
-        DF_TRANSMUTE__Int_Opaque(self)
+    unsafe fn to_opaque(&self) -> DFOpaqueValue { unsafe {
+        transmute_unchecked(self._opaque_type.clone())
     } }
-}
-
-
-extern "C" {
-
-    fn DF_TRANSMUTE__Int_Opaque( from : Int ) -> DFOpaqueValue;
-
 }

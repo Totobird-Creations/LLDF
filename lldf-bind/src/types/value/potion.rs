@@ -1,5 +1,6 @@
 use crate::prelude::*;
 use crate::bind::DFOpaqueValue;
+use crate::core::mem::transmute_unchecked;
 
 
 /// A potion effect with amplifier and duration.
@@ -31,13 +32,13 @@ impl Potion {
     #[inline(always)]
     pub fn amplifier(&self) -> UInt { unsafe {
         let out = DF_ACTION__SetVariable_GetPotionAmp(self.clone());
-        DF_TRANSMUTE__Opaque_UInt(DF_ACTION__SetVariable_Specialcharminus(out.to_opaque(), UInt::from(1usize).to_opaque()))
+        transmute_unchecked(DF_ACTION__SetVariable_Specialcharminus(out.to_opaque(), UInt::from(1usize).to_opaque()))
     } }
 
     #[lldf_bind_proc::dfdoc(SetVariable/SetPotionAmp)]
     #[inline(always)]
     pub fn with_amplifier<U : Into<UInt>>(&self, amplifier : U) -> Potion { unsafe {
-        let amplifier = DF_TRANSMUTE__Opaque_UInt(DF_ACTION__SetVariable_Specialcharplus(amplifier.into().to_opaque(), UInt::from(1usize).to_opaque()));
+        let amplifier = transmute_unchecked(DF_ACTION__SetVariable_Specialcharplus(amplifier.into().to_opaque(), UInt::from(1usize).to_opaque()));
         DF_ACTION__SetVariable_SetPotionAmp(self.clone(), amplifier)
     } }
 
@@ -46,16 +47,14 @@ impl Potion {
 
 unsafe impl DFValue for Potion {
     #[inline]
-    unsafe fn to_opaque(self) -> DFOpaqueValue { unsafe {
-        DF_TRANSMUTE__Opaque(self)
+    unsafe fn to_opaque(&self) -> DFOpaqueValue { unsafe {
+        transmute_unchecked(self._opaque_type.clone())
     } }
 }
 
 
 extern "C" {
 
-    fn DF_TRANSMUTE__Opaque( from : Potion ) -> DFOpaqueValue;
-    fn DF_TRANSMUTE__Opaque_UInt( from : DFOpaqueValue ) -> UInt;
     fn DF_ACTION__SetVariable_Specialcharplus( a : DFOpaqueValue, b : DFOpaqueValue ) -> DFOpaqueValue;
     fn DF_ACTION__SetVariable_Specialcharminus( a : DFOpaqueValue, b : DFOpaqueValue ) -> DFOpaqueValue;
 

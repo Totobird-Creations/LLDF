@@ -109,8 +109,8 @@ impl Float {
 }
 
 unsafe impl DFValue for Float {
-    unsafe fn to_opaque(self) -> DFOpaqueValue { unsafe {
-        DF_TRANSMUTE__Float_Opaque(self)
+    unsafe fn to_opaque(&self) -> DFOpaqueValue { unsafe {
+        transmute_unchecked(self._opaque_type.clone())
     } }
 }
 impl Into<Float> for Float {
@@ -120,8 +120,6 @@ impl Into<Float> for Float {
 
 
 extern "C" {
-
-    fn DF_TRANSMUTE__Float_Opaque( from : Float ) -> DFOpaqueValue;
 
     fn DF_ACTION__SetVariable_Specialcharplus( left : Float, right : Float ) -> Float;
     fn DF_ACTION__SetVariable_x( left : Float, right : Float ) -> Float;

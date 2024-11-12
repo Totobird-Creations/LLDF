@@ -1,5 +1,6 @@
 use crate::prelude::*;
 use crate::bind::DFOpaqueValue;
+use crate::core::mem::transmute_unchecked;
 
 
 #[derive(Clone)]
@@ -408,15 +409,14 @@ impl Item {
 
 unsafe impl DFValue for Item {
     #[inline]
-    unsafe fn to_opaque(self) -> DFOpaqueValue { unsafe {
-        DF_TRANSMUTE__Opaque(self)
+    unsafe fn to_opaque(&self) -> DFOpaqueValue { unsafe {
+        transmute_unchecked(self._opaque_type.clone())
     } }
 }
 
 
 extern "C" {
 
-    fn DF_TRANSMUTE__Opaque( from : Item ) -> DFOpaqueValue;
     fn DF_ACTION__SetVariable_String( from : DFOpaqueValue ) -> String;
 
     fn DF_TRANSMUTE__Opaque_UInt( from : DFOpaqueValue ) -> UInt;

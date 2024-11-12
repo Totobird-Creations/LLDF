@@ -50,8 +50,8 @@ impl<T : Into<UInt>> Mul<T> for UInt {
 }
 
 unsafe impl DFValue for UInt {
-    unsafe fn to_opaque(self) -> DFOpaqueValue { unsafe {
-        DF_TRANSMUTE__UInt_Opaque(self)
+    unsafe fn to_opaque(&self) -> DFOpaqueValue { unsafe {
+        transmute_unchecked(self._opaque_type.clone())
     } }
 }
 impl Into<UInt> for UInt {
@@ -61,8 +61,6 @@ impl Into<UInt> for UInt {
 
 
 extern "C" {
-
-    fn DF_TRANSMUTE__UInt_Opaque( from : UInt ) -> DFOpaqueValue;
 
     fn DF_ACTION__SetVariable_Specialcharplus( left : UInt, right : UInt ) -> UInt;
     fn DF_ACTION__SetVariable_Specialcharminus( left : UInt, right : UInt ) -> UInt;

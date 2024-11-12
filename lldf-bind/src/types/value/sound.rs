@@ -1,5 +1,6 @@
 use crate::prelude::*;
 use crate::bind::DFOpaqueValue;
+use crate::core::mem::transmute_unchecked;
 
 
 /// A vanilla sound or a custom sound from a resource pack.
@@ -61,16 +62,13 @@ impl Sound {
 
 unsafe impl DFValue for Sound {
     #[inline]
-    unsafe fn to_opaque(self) -> DFOpaqueValue { unsafe {
-        DF_TRANSMUTE__Opaque(self)
+    unsafe fn to_opaque(&self) -> DFOpaqueValue { unsafe {
+        transmute_unchecked(self._opaque_type.clone())
     } }
 }
 
 
 extern "C" {
-
-    fn DF_TRANSMUTE__Opaque( from : Sound ) -> DFOpaqueValue;
-
 
     fn DF_ACTION__SetVariable_SetCustomSound( sound : Sound, key : String ) -> Sound;
     fn DF_ACTION__SetVariable_GetCustomSound( sound : Sound ) -> String;

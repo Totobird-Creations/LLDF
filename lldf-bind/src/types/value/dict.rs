@@ -44,16 +44,14 @@ impl<T : DFValue> Dict<T> {
 
 unsafe impl<T : DFValue> DFValue for Dict<T> {
     #[inline(always)]
-    unsafe fn to_opaque(self) -> DFOpaqueValue {
-        DF_TRANSMUTE__DictOpaque_Opaque(transmute_unchecked(self))
+    unsafe fn to_opaque(&self) -> DFOpaqueValue {
+        transmute_unchecked(self._opaque_type.clone())
     }
 }
 
 
 
 extern "C" {
-
-    fn DF_TRANSMUTE__DictOpaque_Opaque( from : Dict<DFOpaqueValue> ) -> DFOpaqueValue;
 
     fn DF_ACTION__SetVariable_GetDictKeys( dict : DFOpaqueValue ) -> List<String>;
 

@@ -1,5 +1,6 @@
 use crate::prelude::*;
 use crate::bind::DFOpaqueValue;
+use crate::core::mem::transmute_unchecked;
 
 
 #[derive(Clone)]
@@ -90,15 +91,13 @@ impl Location {
 
 unsafe impl DFValue for Location {
     #[inline]
-    unsafe fn to_opaque(self) -> DFOpaqueValue { unsafe {
-        DF_TRANSMUTE__Opaque(self)
+    unsafe fn to_opaque(&self) -> DFOpaqueValue { unsafe {
+        transmute_unchecked(self._opaque_type.clone())
     } }
 }
 
 
 extern "C" {
-
-    fn DF_TRANSMUTE__Opaque( from : Location ) -> DFOpaqueValue;
 
     fn DF_ACTION__SetVariable_SetAllCoords_CoordinateType_PlotCoordinate( x : Float, y : Float, z : Float, pitch : Float, yaw : Float ) -> Location;
 

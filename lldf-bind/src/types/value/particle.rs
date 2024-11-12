@@ -1,5 +1,6 @@
 use crate::prelude::*;
 use crate::bind::DFOpaqueValue;
+use crate::core::mem::transmute_unchecked;
 
 
 /// A particle effect with customisable parameters.
@@ -174,16 +175,13 @@ impl Particle {
 
 unsafe impl DFValue for Particle {
     #[inline]
-    unsafe fn to_opaque(self) -> DFOpaqueValue { unsafe {
-        DF_TRANSMUTE__Opaque(self)
+    unsafe fn to_opaque(&self) -> DFOpaqueValue { unsafe {
+        transmute_unchecked(self._opaque_type.clone())
     } }
 }
 
 
 extern "C" {
-
-    fn DF_TRANSMUTE__Opaque( from : Particle ) -> DFOpaqueValue;
-
 
     fn DF_ACTION__SetVariable_SetParticleType( particle : Particle, kind : String ) -> Particle;
     fn DF_ACTION__SetVariable_GetParticleType( particle : Particle ) -> String;

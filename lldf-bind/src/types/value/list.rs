@@ -13,7 +13,7 @@ pub struct List<T : DFValue> {
 impl<T : DFValue> Clone for List<T> {
     #[inline(always)]
     fn clone(&self) -> Self { unsafe {
-        transmute_unchecked(self._opaque_type.clone())
+        transmute_unchecked(DF_ACTION__SetVariable_Specialcharequals(transmute_unchecked(self._opaque_type.clone())))
     } }
 }
 
@@ -37,13 +37,13 @@ impl<T : DFValue> List<T> {
     #[lldf_bind_proc::dfdoc(SetVariable/AppendValue)]
     #[inline(always)]
     pub fn push(&mut self, value : T) -> () { unsafe {
-        DF_ACTION__SetVariable_AppendValue(self.clone().to_opaque(), value.to_opaque())
+        DF_ACTION__SetVariable_AppendValue(self.to_opaque(), value.to_opaque())
     } }
 
     #[lldf_bind_proc::dfdoc(SetVariable/AppendList)]
     #[inline(always)]
     pub fn append(&mut self, list : List<T>) -> () { unsafe {
-        DF_ACTION__SetVariable_AppendList(self.clone().to_opaque(), list.to_opaque())
+        DF_ACTION__SetVariable_AppendList(self.to_opaque(), list.to_opaque())
     } }
 
     // TODO: get
@@ -96,8 +96,8 @@ impl List<String> {
 
 unsafe impl<T : DFValue> DFValue for List<T> {
     #[inline(always)]
-    unsafe fn to_opaque(self) -> DFOpaqueValue {
-        DF_TRANSMUTE__ListOpaque_Opaque(transmute_unchecked(self))
+    unsafe fn to_opaque(&self) -> DFOpaqueValue {
+        transmute_unchecked(self._opaque_type.clone())
     }
 }
 
@@ -107,9 +107,10 @@ unsafe impl<T : DFValue> DFValue for List<T> {
 
 extern "C" {
 
-    fn DF_TRANSMUTE__ListOpaque_Opaque( from : List<DFOpaqueValue> ) -> DFOpaqueValue;
     fn DF_TRANSMUTE__Array_Opaque( ... ) -> DFOpaqueValue;
 
+
+    fn DF_ACTION__SetVariable_Specialcharequals( from : DFOpaqueValue ) -> DFOpaqueValue;
 
     fn DF_ACTION__SetVariable_CreateList( ) -> DFOpaqueValue;
     fn DF_ACTION__SetVariable_AppendValue( list : DFOpaqueValue, value : DFOpaqueValue ) -> ();

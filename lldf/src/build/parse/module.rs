@@ -258,7 +258,7 @@ pub fn linked_name_to_action(action : &str) -> String {
 }
 pub fn linked_name_to_actiontag_kind(actiontag_kind : &str) -> String {
     let mut out = String::with_capacity(actiontag_kind.len() * 2);
-    let mut last_ch = ' ';
+    let mut last_ch = 'A';
     for (i, ch) in actiontag_kind.chars().rev().enumerate() {
         out.push(ch);
         if (ch.is_uppercase() && (! last_ch.is_uppercase()) && (i + 1 != actiontag_kind.len())) { out.push(' '); }
@@ -278,7 +278,7 @@ pub fn linked_name_to_actiontag_kind(actiontag_kind : &str) -> String {
     ).intersperse(Cow::Borrowed(" ")).collect::<String>()
 }
 pub fn linked_name_to_actiontag_value(actiontag_value : &str) -> String {
-    linked_name_to_gamevalue_kind(actiontag_value).to_sentence_case()
+    linked_name_to_actiontag_kind(actiontag_value)
 }
 pub fn collect_actiontag_parts<'l>(actiontag_parts : impl Iterator<Item = &'l str>) -> Vec<ActionFunctionTag> {
     actiontag_parts.array_chunks::<2>()
@@ -289,6 +289,18 @@ pub fn collect_actiontag_parts<'l>(actiontag_parts : impl Iterator<Item = &'l st
                 kind,
                 default_value : value[8..].to_sentence_case()
             } }
+            else if (value.starts_with("Specialcase")) { ActionFunctionTag::Value(CodeValue::Actiontag {
+                kind,
+                value : match (&value[12..]) {
+                    "uppercase"  => "UPPERCASE".to_string(),
+                    "lowercase"  => "lowercase".to_string(),
+                    "propercase" => "Proper Case".to_string(),
+                    "invertcase" => "iNVERT cASE".to_string(),
+                    "randomcase" => "RAnDoM cASe".to_string(),
+                    casing => casing.to_string()
+                },
+                variable : None
+            } ) }
             else { ActionFunctionTag::Value(CodeValue::Actiontag {
                 kind,
                 value,

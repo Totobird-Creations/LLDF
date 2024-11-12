@@ -7,5 +7,6 @@ pub use float::Float;
 
 
 use crate::prelude::*;
-use crate::core::ops::*;
 use crate::bind::DFOpaqueValue;
+use crate::core::ops::*;
+use crate::core::mem::transmute_unchecked;
