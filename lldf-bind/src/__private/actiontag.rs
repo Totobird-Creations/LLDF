@@ -7,7 +7,6 @@
 // - Needs to be able to transmute from a [`String`](crate::types::String).
 pub macro actiontag {
     (
-
         $vis:vis enum $ident:ident { $(
             $( #[$($varattrs:tt)*] )*
             $varident:ident = $varvalue:tt

@@ -29,13 +29,13 @@ fn player_swap_hands(default : PlayerSel) {
     default.set_gamemode_creative();*/
 
 
-    let mut a = List::new();
+    /*let mut a = List::new();
     a.push(String::from("Hello,"));
     let mut b = a.clone();
     b.push(String::from("World!"));
 
     default.send_message(a);
-    default.send_message(b);
+    default.send_message(b);*/
 
 
     /*let a = unsafe{ Colour::from_hexcode_unchecked("#ff7f00") }.rgb();
