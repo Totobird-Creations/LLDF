@@ -1,4 +1,5 @@
 use super::*;
+use crate::core::ops::Add;
 use core::mem::transmute_unchecked;
 
 
@@ -28,21 +29,41 @@ impl AsRef<Text> for &str {
     } }
 }
 
-// TODO: Add
+impl<T : Into<Text>> Add<T> for Text {
+    type Output = Text;
+    #[inline(always)]
+    fn add(self, rhs : T) -> Self::Output { unsafe {
+        DF_ACTION__SetVariable_Text_InheritStyles_False_TextValueMerging_NoSpaces(self, rhs.into())
+    } }
+}
 
-impl String {
+impl Text {
 
-    // TODO: merge
+    #[lldf_bind_proc::dfdoc(SetVariable/ParseMiniMessageExpr)]
+    #[inline(always)]
+    pub fn from_minimsg<S : Into<String>>(minimsg : S) -> Text { unsafe {
+        DF_ACTION__SetVariable_ParseMiniMessageExpr(minimsg.into()) // TODO: make sure this is the correct function name
+    } }
 
-    // TODO: from_minimsg
+    #[lldf_bind_proc::dfdoc(SetVariable/GetMiniMessageExpr)]
+    #[inline(always)]
+    pub fn to_minimsg(&self) -> String { unsafe {
+        DF_ACTION__SetVariable_GetMiniMessageExpr(self.to_opaque()) // TODO: make sure this is the correct function name
+    } }
 
-    // TODO: to_minimsg
-
-    // TODO: unformat
+    #[lldf_bind_proc::dfdoc(SetVariable/ClearFormatting)]
+    #[inline(always)]
+    pub fn without_fmt(&self) -> Text { unsafe {
+        DF_ACTION__SetVariable_ClearFormatting(self.to_opaque())
+    } }
 
     // TODO: splice
 
-    // TODO: len
+    #[lldf_bind_proc::dfdoc(SetVariable/TextContentLength)]
+    #[inline(always)]
+    pub fn len(&self) -> UInt { unsafe {
+        DF_ACTION__SetVariable_TextContentLength(self.to_opaque()) // TODO: make sure this is the correct function name
+    } }
 
 }
 
@@ -57,6 +78,11 @@ unsafe impl DFValue for Text {
 
 extern "C" {
 
-    fn DF_ACTION__SetVariable_Text_InheritStyles_False_TextValueMerging_NoSpaces( from : DFOpaqueValue ) -> Text;
+    fn DF_ACTION__SetVariable_Text_InheritStyles_False_TextValueMerging_NoSpaces( ... ) -> Text;
+
+    fn DF_ACTION__SetVariable_ParseMiniMessageExpr( minimsg : String ) -> Text;
+    fn DF_ACTION__SetVariable_GetMiniMessageExpr( from : DFOpaqueValue ) -> String;
+    fn DF_ACTION__SetVariable_ClearFormatting( text : DFOpaqueValue ) -> Text;
+    fn DF_ACTION__SetVariable_TextContentLength( text : DFOpaqueValue ) -> UInt;
 
 }

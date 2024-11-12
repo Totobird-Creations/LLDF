@@ -115,7 +115,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn angry_villager() -> Self { unsafe { DF_PARTICLE__AngryVillager() } }
     /// ### `Ash`
@@ -124,7 +124,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn ash() -> Self { unsafe { DF_PARTICLE__Ash() } }
     /// ### `Block`
@@ -133,7 +133,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn block() -> Self { unsafe { DF_PARTICLE__Block_Material() } }
     /// ### `Block Marker`
@@ -142,7 +142,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn block_marker() -> Self { unsafe { DF_PARTICLE__BlockMarker_Material() } }
     /// ### `Bubble`
@@ -155,7 +155,7 @@ impl Particle {
     /// outside of water
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn bubble() -> Self { unsafe { DF_PARTICLE__Bubble_Motion_MotionVariation() } }
     /// ### `Upward Bubble Column`
@@ -168,7 +168,7 @@ impl Particle {
     /// outside of water
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn upward_bubble_column() -> Self { unsafe { DF_PARTICLE__UpwardBubbleColumn_Motion_MotionVariation() } }
     /// ### `Bubble Pop`
@@ -177,7 +177,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn bubble_pop() -> Self { unsafe { DF_PARTICLE__BubblePop_Motion_MotionVariation() } }
     /// ### `Campfire Smoke`
@@ -186,7 +186,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn campfire_smoke() -> Self { unsafe { DF_PARTICLE__CampfireSmoke_Motion_MotionVariation() } }
     /// ### `Campfire Signal Smoke`
@@ -195,7 +195,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn campfire_signal_smoke() -> Self { unsafe { DF_PARTICLE__CampfireSignalSmoke_Motion_MotionVariation() } }
     /// ### `Cherry Leaves`
@@ -204,7 +204,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn cherry_leaves() -> Self { unsafe { DF_PARTICLE__CherryLeaves() } }
     /// ### `Cloud`
@@ -213,7 +213,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn cloud() -> Self { unsafe { DF_PARTICLE__Cloud_Motion_MotionVariation() } }
     /// ### `Composter`
@@ -222,7 +222,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn composter() -> Self { unsafe { DF_PARTICLE__Composter() } }
     /// ### `Crimson Spore`
@@ -231,7 +231,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn crimson_spore() -> Self { unsafe { DF_PARTICLE__CrimsonSpore() } }
     /// ### `Critical Hit`
@@ -240,7 +240,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn critical_hit() -> Self { unsafe { DF_PARTICLE__CriticalHit_Motion_MotionVariation() } }
     /// ### `Whirlpool Bubble Column`
@@ -253,7 +253,7 @@ impl Particle {
     /// outside of water
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn whirlpool_bubble_column() -> Self { unsafe { DF_PARTICLE__WhirlpoolBubbleColumn() } }
     /// ### `Damage Indicator`
@@ -262,7 +262,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn damage_indicator() -> Self { unsafe { DF_PARTICLE__DamageIndicator_Motion_MotionVariation() } }
     /// ### `Dolphin`
@@ -271,7 +271,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn dolphin() -> Self { unsafe { DF_PARTICLE__Dolphin() } }
     /// ### `Dragon Breath`
@@ -280,7 +280,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn dragon_breath() -> Self { unsafe { DF_PARTICLE__DragonBreath_Motion_MotionVariation() } }
     /// ### `Dripstone Dripping Lava`
@@ -293,7 +293,7 @@ impl Particle {
     /// Dripstone Lava particle
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn dripstone_dripping_lava() -> Self { unsafe { DF_PARTICLE__DripstoneDrippingLava() } }
     /// ### `Dripstone Dripping Water`
@@ -306,7 +306,7 @@ impl Particle {
     /// Dripstone Water particle
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn dripstone_dripping_water() -> Self { unsafe { DF_PARTICLE__DripstoneDrippingWater() } }
     /// ### `Dripping Honey`
@@ -319,7 +319,7 @@ impl Particle {
     /// Honey particle
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn dripping_honey() -> Self { unsafe { DF_PARTICLE__DrippingHoney() } }
     /// ### `Dripping Lava`
@@ -332,7 +332,7 @@ impl Particle {
     /// Lava particle
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn dripping_lava() -> Self { unsafe { DF_PARTICLE__DrippingLava() } }
     /// ### `Dripping Obsidian Tear`
@@ -345,7 +345,7 @@ impl Particle {
     /// Obsidian Tear particle
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn dripping_obsidian_tear() -> Self { unsafe { DF_PARTICLE__DrippingObsidianTear() } }
     /// ### `Dripping Water`
@@ -358,7 +358,7 @@ impl Particle {
     /// Water particle
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn dripping_water() -> Self { unsafe { DF_PARTICLE__DrippingWater() } }
     /// ### `Dust`
@@ -371,7 +371,7 @@ impl Particle {
     /// with size
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn dust() -> Self { unsafe { DF_PARTICLE__Dust_Colour_ColourVariation_Size_SizeVariation() } }
     /// ### `Fade Dust`
@@ -384,7 +384,7 @@ impl Particle {
     /// with size
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn fade_dust() -> Self { unsafe { DF_PARTICLE__FadeDust_Colour_FadeColour_ColourVariation_Size_SizeVariation() } }
     /// ### `Dust Pillar`
@@ -393,7 +393,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn dust_pillar() -> Self { unsafe { DF_PARTICLE__DustPillar_Material() } }
     /// ### `Dust Plume`
@@ -402,7 +402,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn dust_plume() -> Self { unsafe { DF_PARTICLE__DustPlume_Motion_MotionVariation() } }
     /// ### `Effect`
@@ -411,7 +411,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn effect() -> Self { unsafe { DF_PARTICLE__Effect_MotionVariation() } }
     /// ### `Egg Crack`
@@ -420,7 +420,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn egg_crack() -> Self { unsafe { DF_PARTICLE__EggCrack() } }
     /// ### `Elder Guardian`
@@ -429,7 +429,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn elder_guardian() -> Self { unsafe { DF_PARTICLE__ElderGuardian() } }
     /// ### `Electric Spark`
@@ -438,7 +438,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn electric_spark() -> Self { unsafe { DF_PARTICLE__ElectricSpark_Motion_MotionVariation() } }
     /// ### `Enchant`
@@ -447,7 +447,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn enchant() -> Self { unsafe { DF_PARTICLE__Enchant_Motion_MotionVariation() } }
     /// ### `Enchanted Hit`
@@ -456,7 +456,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn enchanted_hit() -> Self { unsafe { DF_PARTICLE__EnchantedHit_Motion_MotionVariation() } }
     /// ### `End Rod`
@@ -465,7 +465,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn end_rod() -> Self { unsafe { DF_PARTICLE__EndRod_Motion_MotionVariation() } }
     /// ### `Entity Effect`
@@ -474,7 +474,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn entity_effect() -> Self { unsafe { DF_PARTICLE__EntityEffect_Colour_Opacity_ColourVariation_MotionVariation() } }
     /// ### `Explosion`
@@ -483,7 +483,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn explosion() -> Self { unsafe { DF_PARTICLE__Explosion() } }
     /// ### `Explosion Emitter`
@@ -496,7 +496,7 @@ impl Particle {
     /// particles each tick
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn explosion_emitter() -> Self { unsafe { DF_PARTICLE__ExplosionEmitter() } }
     /// ### `Dripstone Falling Lava`
@@ -508,7 +508,7 @@ impl Particle {
     /// Produces sound on landing
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn dripstone_falling_lava() -> Self { unsafe { DF_PARTICLE__DripstoneFallingLava() } }
     /// ### `Dripstone Falling Water`
@@ -520,7 +520,7 @@ impl Particle {
     /// Produces sound on landing
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn dripstone_falling_water() -> Self { unsafe { DF_PARTICLE__DripstoneFallingWater() } }
     /// ### `Falling Dust`
@@ -529,7 +529,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn falling_dust() -> Self { unsafe { DF_PARTICLE__FallingDust_Material() } }
     /// ### `Falling Honey`
@@ -543,7 +543,7 @@ impl Particle {
     /// impact
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn falling_honey() -> Self { unsafe { DF_PARTICLE__FallingHoney() } }
     /// ### `Falling Lava`
@@ -557,7 +557,7 @@ impl Particle {
     /// impact
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn falling_lava() -> Self { unsafe { DF_PARTICLE__FallingLava() } }
     /// ### `Falling Nectar`
@@ -566,7 +566,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn falling_nectar() -> Self { unsafe { DF_PARTICLE__FallingNectar() } }
     /// ### `Falling Obsidian Tear`
@@ -580,7 +580,7 @@ impl Particle {
     /// upon impact
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn falling_obsidian_tear() -> Self { unsafe { DF_PARTICLE__FallingObsidianTear() } }
     /// ### `Spore Blossom Fall`
@@ -589,7 +589,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn spore_blossom_fall() -> Self { unsafe { DF_PARTICLE__SporeBlossomFall() } }
     /// ### `Falling Water`
@@ -602,7 +602,7 @@ impl Particle {
     /// particle upon impact
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn falling_water() -> Self { unsafe { DF_PARTICLE__FallingWater() } }
     /// ### `Firework`
@@ -611,7 +611,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn firework() -> Self { unsafe { DF_PARTICLE__Firework_Motion_MotionVariation() } }
     /// ### `Fishing`
@@ -620,7 +620,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn fishing() -> Self { unsafe { DF_PARTICLE__Fishing_Motion_MotionVariation() } }
     /// ### `Flame`
@@ -629,7 +629,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn flame() -> Self { unsafe { DF_PARTICLE__Flame_Motion_MotionVariation() } }
     /// ### `Flash`
@@ -638,7 +638,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn flash() -> Self { unsafe { DF_PARTICLE__Flash() } }
     /// ### `Glowing Squid Glow`
@@ -647,7 +647,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn glowing_squid_glow() -> Self { unsafe { DF_PARTICLE__GlowingSquidGlow() } }
     /// ### `Glowing Squid Ink`
@@ -656,7 +656,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn glowing_squid_ink() -> Self { unsafe { DF_PARTICLE__GlowingSquidInk_Motion_MotionVariation() } }
     /// ### `Gust`
@@ -665,7 +665,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn gust() -> Self { unsafe { DF_PARTICLE__Gust() } }
     /// ### `Gust Emitter (Large)`
@@ -678,7 +678,7 @@ impl Particle {
     /// particles each tick
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn gust_emitter_large() -> Self { unsafe { DF_PARTICLE__GustEmitterSpecialcharleftparenthesisLargeSpecialcharrightparenthesis() } }
     /// ### `Gust Emitter (Small)`
@@ -691,7 +691,7 @@ impl Particle {
     /// particles every 3 ticks
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn gust_emitter_small() -> Self { unsafe { DF_PARTICLE__GustEmitterSpecialcharleftparenthesisSmallSpecialcharrightparenthesis() } }
     /// ### `Happy Villager`
@@ -700,7 +700,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn happy_villager() -> Self { unsafe { DF_PARTICLE__HappyVillager() } }
     /// ### `Heart`
@@ -709,7 +709,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn heart() -> Self { unsafe { DF_PARTICLE__Heart() } }
     /// ### `Infested`
@@ -718,7 +718,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn infested() -> Self { unsafe { DF_PARTICLE__Infested() } }
     /// ### `Instant Effect`
@@ -727,7 +727,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn instant_effect() -> Self { unsafe { DF_PARTICLE__InstantEffect_MotionVariation() } }
     /// ### `Item`
@@ -736,7 +736,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn item() -> Self { unsafe { DF_PARTICLE__Item_Material_Motion_MotionVariation() } }
     /// ### `Cobweb`
@@ -745,7 +745,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn cobweb() -> Self { unsafe { DF_PARTICLE__Cobweb() } }
     /// ### `Slime`
@@ -754,7 +754,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn slime() -> Self { unsafe { DF_PARTICLE__Slime() } }
     /// ### `Snowball`
@@ -763,7 +763,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn snowball() -> Self { unsafe { DF_PARTICLE__Snowball() } }
     /// ### `Landing Honey`
@@ -772,7 +772,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn landing_honey() -> Self { unsafe { DF_PARTICLE__LandingHoney() } }
     /// ### `Landing Lava`
@@ -781,7 +781,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn landing_lava() -> Self { unsafe { DF_PARTICLE__LandingLava() } }
     /// ### `Landing Obsidian Tear`
@@ -790,7 +790,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn landing_obsidian_tear() -> Self { unsafe { DF_PARTICLE__LandingObsidianTear() } }
     /// ### `Large Smoke`
@@ -799,7 +799,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn large_smoke() -> Self { unsafe { DF_PARTICLE__LargeSmoke_Motion_MotionVariation() } }
     /// ### `Lava`
@@ -812,7 +812,7 @@ impl Particle {
     /// particle each tick
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn lava() -> Self { unsafe { DF_PARTICLE__Lava() } }
     /// ### `Mycelium`
@@ -821,7 +821,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn mycelium() -> Self { unsafe { DF_PARTICLE__Mycelium() } }
     /// ### `Nautilus`
@@ -830,7 +830,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn nautilus() -> Self { unsafe { DF_PARTICLE__Nautilus_Motion_MotionVariation() } }
     /// ### `Note`
@@ -839,7 +839,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn note() -> Self { unsafe { DF_PARTICLE__Note_Colour_ColourVariation() } }
     /// ### `Ominous Spawning`
@@ -848,7 +848,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn ominous_spawning() -> Self { unsafe { DF_PARTICLE__OminousSpawning_Motion_MotionVariation() } }
     /// ### `Poof`
@@ -857,7 +857,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn poof() -> Self { unsafe { DF_PARTICLE__Poof_Motion_MotionVariation() } }
     /// ### `Portal`
@@ -866,7 +866,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn portal() -> Self { unsafe { DF_PARTICLE__Portal_Motion_MotionVariation() } }
     /// ### `Raid Omen`
@@ -875,7 +875,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn raid_omen() -> Self { unsafe { DF_PARTICLE__RaidOmen_MotionVariation() } }
     /// ### `Rain`
@@ -884,7 +884,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn rain() -> Self { unsafe { DF_PARTICLE__Rain() } }
     /// ### `Reverse Portal`
@@ -893,7 +893,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn reverse_portal() -> Self { unsafe { DF_PARTICLE__ReversePortal_Motion_MotionVariation() } }
     /// ### `Scrape Oxidization`
@@ -902,7 +902,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn scrape_oxidization() -> Self { unsafe { DF_PARTICLE__ScrapeOxidization_Motion_MotionVariation() } }
     /// ### `Sculk Charge`
@@ -911,7 +911,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn sculk_charge() -> Self { unsafe { DF_PARTICLE__SculkCharge_Motion_MotionVariation_Roll() } }
     /// ### `Sculk Charge Pop`
@@ -920,7 +920,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn sculk_charge_pop() -> Self { unsafe { DF_PARTICLE__SculkChargePop_Motion_MotionVariation() } }
     /// ### `Sculk Soul`
@@ -929,7 +929,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn sculk_soul() -> Self { unsafe { DF_PARTICLE__SculkSoul_Motion_MotionVariation() } }
     /// ### `Shriek`
@@ -938,7 +938,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn shriek() -> Self { unsafe { DF_PARTICLE__Shriek() } }
     /// ### `Small Flame`
@@ -947,7 +947,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn small_flame() -> Self { unsafe { DF_PARTICLE__SmallFlame_Motion_MotionVariation() } }
     /// ### `Small Gust`
@@ -956,7 +956,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn small_gust() -> Self { unsafe { DF_PARTICLE__SmallGust() } }
     /// ### `Smoke`
@@ -965,7 +965,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn smoke() -> Self { unsafe { DF_PARTICLE__Smoke_Motion_MotionVariation() } }
     /// ### `Sneeze`
@@ -974,7 +974,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn sneeze() -> Self { unsafe { DF_PARTICLE__Sneeze_Motion_MotionVariation() } }
     /// ### `Snowflake`
@@ -983,7 +983,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn snowflake() -> Self { unsafe { DF_PARTICLE__Snowflake_Motion_MotionVariation() } }
     /// ### `Sonic Boom`
@@ -992,7 +992,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn sonic_boom() -> Self { unsafe { DF_PARTICLE__SonicBoom() } }
     /// ### `Soul`
@@ -1001,7 +1001,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn soul() -> Self { unsafe { DF_PARTICLE__Soul_Motion_MotionVariation() } }
     /// ### `Soul Flame`
@@ -1010,7 +1010,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn soul_flame() -> Self { unsafe { DF_PARTICLE__SoulFlame_Motion_MotionVariation() } }
     /// ### `Spit`
@@ -1019,7 +1019,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn spit() -> Self { unsafe { DF_PARTICLE__Spit_Motion_MotionVariation() } }
     /// ### `Splash`
@@ -1028,7 +1028,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn splash() -> Self { unsafe { DF_PARTICLE__Splash() } }
     /// ### `Spore Blossom Air`
@@ -1037,7 +1037,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn spore_blossom_air() -> Self { unsafe { DF_PARTICLE__SporeBlossomAir() } }
     /// ### `Squid Ink`
@@ -1046,7 +1046,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn squid_ink() -> Self { unsafe { DF_PARTICLE__SquidInk_Motion_MotionVariation() } }
     /// ### `Sweep Attack`
@@ -1055,7 +1055,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn sweep_attack() -> Self { unsafe { DF_PARTICLE__SweepAttack_Size_SizeVariation() } }
     /// ### `Totem of Undying`
@@ -1064,7 +1064,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn totem_of_undying() -> Self { unsafe { DF_PARTICLE__TotemOfUndying_Motion_MotionVariation() } }
     /// ### `Trial Omen`
@@ -1073,7 +1073,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn trial_omen() -> Self { unsafe { DF_PARTICLE__TrialOmen_MotionVariation() } }
     /// ### `Trial Spawner Detection`
@@ -1082,7 +1082,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn trial_spawner_detection() -> Self { unsafe { DF_PARTICLE__TrialSpawnerDetection_Motion_MotionVariation() } }
     /// ### `Trial Spawner Detection (Ominous)`
@@ -1091,7 +1091,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn trial_spawner_detection_ominous() -> Self { unsafe { DF_PARTICLE__TrialSpawnerDetectionSpecialcharleftparenthesisOminousSpecialcharrightparenthesis_Motion_MotionVariation() } }
     /// ### `Underwater`
@@ -1104,7 +1104,7 @@ impl Particle {
     /// outside of water
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn underwater() -> Self { unsafe { DF_PARTICLE__Underwater() } }
     /// ### `Vault Connection`
@@ -1113,7 +1113,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn vault_connection() -> Self { unsafe { DF_PARTICLE__VaultConnection_Motion_MotionVariation() } }
     /// ### `Warped Spore`
@@ -1122,7 +1122,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn warped_spore() -> Self { unsafe { DF_PARTICLE__WarpedSpore() } }
     /// ### `Wax Off`
@@ -1131,7 +1131,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn wax_off() -> Self { unsafe { DF_PARTICLE__WaxOff_Motion_MotionVariation() } }
     /// ### `Wax On`
@@ -1140,7 +1140,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn wax_on() -> Self { unsafe { DF_PARTICLE__WaxOn_Motion_MotionVariation() } }
     /// ### `White Ash`
@@ -1149,7 +1149,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn white_ash() -> Self { unsafe { DF_PARTICLE__WhiteAsh() } }
     /// ### `White Smoke`
@@ -1158,7 +1158,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn white_smoke() -> Self { unsafe { DF_PARTICLE__WhiteSmoke_Motion_MotionVariation() } }
     /// ### `Witch`
@@ -1167,7 +1167,7 @@ impl Particle {
     /// *No description available.*
     /// 
     /// ## 
-    /// *\[2024-11-12 15:07:41 UTC\] Automatically generated from the action dump.*
+    /// *\[2024-11-12 16:02:14 UTC\] Automatically generated from the action dump.*
     #[cfg(any(feature = "rank_none", feature = "rank_noble", feature = "rank_emperor", feature = "rank_mythic", feature = "rank_overlord", feature = "rank_dev"))]
     #[inline(always)] pub fn witch() -> Self { unsafe { DF_PARTICLE__Witch_MotionVariation() } }
 }
