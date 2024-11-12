@@ -18,7 +18,7 @@ impl<const LANES : usize> _VectorMethods<LANES> for Vector<LANES> {
             fn DF_ACTION__Repeat_Multiple( count : UInt ) -> ();
         }
         DF_ACTION__Repeat_Multiple(UInt::from(LANES)); DF_BRACKET__Repeat_Open();
-            DF_ACTION__SetVariable_AppendValue(vector.clone(), lanes);
+            DF_ACTION__SetVariable_AppendValue(vector.to_opaque(), lanes);
         DF_BRACKET__Repeat_Close();
         transmute_unchecked(vector)
     } }
@@ -29,7 +29,7 @@ impl<const LANES : usize> _VectorMethods<LANES> for Vector<LANES> {
     #[inline(always)]
     default unsafe fn lane_unchecked<U : Into<UInt>>(&self, lane : U) -> Float { unsafe {
         let lane = DF_ACTION__SetVariable_Specialcharplus( lane.into(), UInt::from(1usize) );
-        DF_ACTION__SetVariable_GetListValue( self.inner.clone(), lane )
+        DF_ACTION__SetVariable_GetListValue( self.inner.to_opaque(), lane )
     } }
 
 }
@@ -40,8 +40,8 @@ extern "C" {
     fn DF_ACTION__SetVariable_Specialcharplus( a : UInt, b : UInt ) -> UInt;
 
     fn DF_ACTION__SetVariable_CreateList( ... ) -> List<Float>;
-    fn DF_ACTION__SetVariable_AppendValue( list : List<Float>, value : Float ) -> ();
-    fn DF_ACTION__SetVariable_GetListValue( list : List<Float>, index : UInt ) -> Float;
+    fn DF_ACTION__SetVariable_AppendValue( list : DFOpaqueValue, value : Float ) -> ();
+    fn DF_ACTION__SetVariable_GetListValue( list : DFOpaqueValue, index : UInt ) -> Float;
 
     fn DF_BRACKET__Repeat_Open() -> ();
     fn DF_BRACKET__Repeat_Close() -> ();

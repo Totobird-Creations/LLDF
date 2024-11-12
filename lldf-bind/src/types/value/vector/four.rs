@@ -32,19 +32,19 @@ impl Vector<4> {
     #[lldf_bind_proc::dfdoc(SetVariable/GetVectorComp { Component = X })]
     #[inline(always)]
     pub fn x(&self) -> Float { unsafe {
-        DF_ACTION__SetVariable_GetListValue( self.clone(), UInt::from(1usize) )
+        DF_ACTION__SetVariable_GetListValue( self.to_opaque(), UInt::from(1usize) )
     } }
 
     #[lldf_bind_proc::dfdoc(SetVariable/GetVectorComp { Component = Y })]
     #[inline(always)]
     pub fn y(&self) -> Float { unsafe {
-        DF_ACTION__SetVariable_GetListValue( self.clone(), UInt::from(2usize) )
+        DF_ACTION__SetVariable_GetListValue( self.to_opaque(), UInt::from(2usize) )
     } }
 
     #[lldf_bind_proc::dfdoc(SetVariable/GetVectorComp { Component = Z })]
     #[inline(always)]
     pub fn z(&self) -> Float { unsafe {
-        DF_ACTION__SetVariable_GetListValue( self.clone(), UInt::from(3usize) )
+        DF_ACTION__SetVariable_GetListValue( self.to_opaque(), UInt::from(3usize) )
     } }
 
     #[lldf_bind_proc::dfdoc(SetVariable/GetVectorComp { Component = W })]
@@ -52,7 +52,7 @@ impl Vector<4> {
     /// - **`W` is lane 4 of the vector**
     #[inline(always)]
     pub fn w(&self) -> Float { unsafe {
-        DF_ACTION__SetVariable_GetListValue( self.clone(), UInt::from(4usize) )
+        DF_ACTION__SetVariable_GetListValue( self.to_opaque(), UInt::from(4usize) )
     } }
 
 }
@@ -61,6 +61,6 @@ impl Vector<4> {
 extern "C" {
 
     fn DF_ACTION__SetVariable_CreateList( ... ) -> Vector<4>;
-    fn DF_ACTION__SetVariable_GetListValue( list : Vector<4>, index : UInt ) -> Float;
+    fn DF_ACTION__SetVariable_GetListValue( list : DFOpaqueValue, index : UInt ) -> Float;
 
 }

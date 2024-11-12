@@ -17,7 +17,7 @@ impl<const ROWS : usize, const COLUMNS : usize> Matrix<ROWS, COLUMNS> {
         }
         let inner = DF_ACTION__SetVariable_CreateList();
         DF_ACTION__Repeat_Multiple(UInt::from(COLUMNS * ROWS)); DF_BRACKET__Repeat_Open();
-            DF_ACTION__SetVariable_AppendValue(inner.clone(), Float::from(0.0).to_opaque());
+            DF_ACTION__SetVariable_AppendValue(inner.to_opaque(), Float::from(0.0).to_opaque());
         DF_BRACKET__Repeat_Close();
         Matrix { inner }
     } }
@@ -37,10 +37,10 @@ impl<const SIZE : usize> Matrix<SIZE, SIZE> {
         let row = DF_ACTION__Repeat_Multiple(UInt::from(SIZE)); DF_BRACKET__Repeat_Open();
             let column = DF_ACTION__Repeat_Multiple(UInt::from(SIZE)); DF_BRACKET__Repeat_Open();
                 DF_ACTION__IfVariable_Specialcharequals(column, row); DF_BRACKET__Normal_Open();
-                    DF_ACTION__SetVariable_AppendValue(inner.clone(), Float::from(1.0).to_opaque());
+                    DF_ACTION__SetVariable_AppendValue(inner.to_opaque(), Float::from(1.0).to_opaque());
                 DF_BRACKET__Normal_Close();
                 DF_ELSE(); DF_BRACKET__Normal_Open();
-                    DF_ACTION__SetVariable_AppendValue(inner.clone(), Float::from(0.0).to_opaque());
+                    DF_ACTION__SetVariable_AppendValue(inner.to_opaque(), Float::from(0.0).to_opaque());
                 DF_BRACKET__Normal_Close();
             DF_BRACKET__Repeat_Close();
         DF_BRACKET__Repeat_Close();
@@ -104,9 +104,9 @@ impl<const ROWS : usize, const COLUMNS : usize> Add<Matrix<ROWS, COLUMNS>> for M
         let row = DF_ACTION__Repeat_Multiple(UInt::from(ROWS)); DF_BRACKET__Repeat_Open();
             let column = DF_ACTION__Repeat_Multiple(UInt::from(COLUMNS)); DF_BRACKET__Repeat_Open();
                 let i = column + (row - 1usize) * COLUMNS;
-                let a = DF_ACTION__SetVariable_GetListValue(self.inner, i);
-                let b = DF_ACTION__SetVariable_GetListValue(rhs.inner, i);
-                DF_ACTION__SetVariable_AppendValue(inner.clone(), (a + b).to_opaque());
+                let a = DF_ACTION__SetVariable_GetListValue(self.inner.to_opaque(), i);
+                let b = DF_ACTION__SetVariable_GetListValue(rhs.inner.to_opaque(), i);
+                DF_ACTION__SetVariable_AppendValue(inner.to_opaque(), (a + b).to_opaque());
             DF_BRACKET__Repeat_Close();
         DF_BRACKET__Repeat_Close();
         Matrix { inner }
@@ -121,13 +121,13 @@ impl<const A_ROWS : usize, const A_COLUMNS_B_ROWS : usize, const B_COLUMNS : usi
             let a_i0 = (row - 1usize) * A_COLUMNS_B_ROWS;
             let column = DF_ACTION__Repeat_Multiple(UInt::from(B_COLUMNS)); DF_BRACKET__Repeat_Open();
                 let cell = DF_TEMPVAR();
-                DF_ACTION__SetVariable_Specialcharequals(cell.clone(), Float::from(0.0));
+                DF_ACTION__SetVariable_Specialcharequals(cell.to_opaque(), Float::from(0.0));
                 let i = DF_ACTION__Repeat_Multiple(UInt::from(A_COLUMNS_B_ROWS)); DF_BRACKET__Repeat_Open();
-                    let a = DF_ACTION__SetVariable_GetListValue(self.inner, a_i0 + i);
-                    let b = DF_ACTION__SetVariable_GetListValue(rhs.inner, column + (i - 1usize) * B_COLUMNS);
-                    DF_ACTION__SetVariable_SpecialcharplusSpecialcharequals(cell.clone(), a * b);
+                    let a = DF_ACTION__SetVariable_GetListValue(self.inner.to_opaque(), a_i0 + i);
+                    let b = DF_ACTION__SetVariable_GetListValue(rhs.inner.to_opaque(), column + (i - 1usize) * B_COLUMNS);
+                    DF_ACTION__SetVariable_SpecialcharplusSpecialcharequals(cell.to_opaque(), a * b);
                 DF_BRACKET__Repeat_Close();
-                DF_ACTION__SetVariable_AppendValue(inner.clone(), cell);
+                DF_ACTION__SetVariable_AppendValue(inner.to_opaque(), cell);
             DF_BRACKET__Repeat_Close();
         DF_BRACKET__Repeat_Close();
         Matrix { inner }
@@ -140,8 +140,8 @@ impl<const ROWS : usize, const COLUMNS : usize> Matrix<ROWS, COLUMNS> {
         let row = DF_ACTION__Repeat_Multiple(UInt::from(COLUMNS)); DF_BRACKET__Repeat_Open();
             let column = DF_ACTION__Repeat_Multiple(UInt::from(ROWS)); DF_BRACKET__Repeat_Open();
                 let i = row + (column - 1usize) * COLUMNS;
-                let a = DF_ACTION__SetVariable_GetListValue(self.inner, i);
-                DF_ACTION__SetVariable_AppendValue(inner.clone(), a.to_opaque());
+                let a = DF_ACTION__SetVariable_GetListValue(self.inner.to_opaque(), i);
+                DF_ACTION__SetVariable_AppendValue(inner.to_opaque(), a.to_opaque());
             DF_BRACKET__Repeat_Close();
         DF_BRACKET__Repeat_Close();
         Matrix { inner }
@@ -154,8 +154,8 @@ extern "C" {
     fn DF_TEMPVAR() -> DFOpaqueValue;
 
     fn DF_ACTION__SetVariable_CreateList( ... ) -> List<Float>;
-    fn DF_ACTION__SetVariable_AppendValue( list : List<Float>, value : DFOpaqueValue ) -> ();
-    fn DF_ACTION__SetVariable_GetListValue( list : List<Float>, index : UInt ) -> Float;
+    fn DF_ACTION__SetVariable_AppendValue( list : DFOpaqueValue, value : DFOpaqueValue ) -> ();
+    fn DF_ACTION__SetVariable_GetListValue( list : DFOpaqueValue, index : UInt ) -> Float;
     fn DF_ACTION__SetVariable_Specialcharequals( var : DFOpaqueValue, value : Float ) -> ();
     fn DF_ACTION__SetVariable_SpecialcharplusSpecialcharequals( var : DFOpaqueValue, b : Float );
 

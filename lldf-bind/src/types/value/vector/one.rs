@@ -12,7 +12,7 @@ impl Vector<1> {
     #[lldf_bind_proc::dfdoc(SetVariable/GetVectorComp { Component = X })]
     #[inline(always)]
     pub fn x(&self) -> Float { unsafe {
-        DF_ACTION__SetVariable_GetListValue( self.clone(), UInt::from(1usize) )
+        DF_ACTION__SetVariable_GetListValue( self.to_opaque(), UInt::from(1usize) )
     } }
 
 }
@@ -22,6 +22,6 @@ extern "C" {
 
     fn DF_ACTION__SetVariable_CreateList( ... ) -> Vector<1>;
 
-    fn DF_ACTION__SetVariable_GetListValue( list : Vector<1>, index : UInt ) -> Float;
+    fn DF_ACTION__SetVariable_GetListValue( list : DFOpaqueValue, index : UInt ) -> Float;
 
 }

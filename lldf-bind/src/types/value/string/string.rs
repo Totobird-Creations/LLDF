@@ -60,25 +60,25 @@ impl String {
     #[lldf_bind_proc::dfdoc(SetVariable/ReplaceString { ReplacementType = AllOccurrences, RegularExpressions = Disable })]
     #[inline(always)]
     pub fn replace(&self, replacing : String, with : String) -> String { unsafe {
-        DF_ACTION__SetVariable_ReplaceString_ReplacementType_AllOccurrences_RegularExpressions_Disable(self.clone(), replacing, with)
+        DF_ACTION__SetVariable_ReplaceString_ReplacementType_AllOccurrences_RegularExpressions_Disable(self.to_opaque(), replacing, with)
     } }
 
     #[lldf_bind_proc::dfdoc(SetVariable/ReplaceString { ReplacementType = FirstOccurrence, RegularExpressions = Disable })]
     #[inline(always)]
     pub fn replace_first(&self, replacing : String, with : String) -> String { unsafe {
-        DF_ACTION__SetVariable_ReplaceString_ReplacementType_FirstOccurrence_RegularExpressions_Disable(self.clone(), replacing, with)
+        DF_ACTION__SetVariable_ReplaceString_ReplacementType_FirstOccurrence_RegularExpressions_Disable(self.to_opaque(), replacing, with)
     } }
 
     #[lldf_bind_proc::dfdoc(SetVariable/ReplaceString { ReplacementType = AllOccurrences, RegularExpressions = Enable })]
     #[inline(always)]
     pub fn regex_replace(&self, regex : String, with : String) -> String { unsafe {
-        DF_ACTION__SetVariable_ReplaceString_ReplacementType_AllOccurrences_RegularExpressions_Enable(self.clone(), regex, with)
+        DF_ACTION__SetVariable_ReplaceString_ReplacementType_AllOccurrences_RegularExpressions_Enable(self.to_opaque(), regex, with)
     } }
 
     #[lldf_bind_proc::dfdoc(SetVariable/ReplaceString { ReplacementType = FirstOccurrence, RegularExpressions = Enable })]
     #[inline(always)]
     pub fn regex_replace_first(&self, regex : String, with : String) -> String { unsafe {
-        DF_ACTION__SetVariable_ReplaceString_ReplacementType_FirstOccurrence_RegularExpressions_Enable(self.clone(), regex, with)
+        DF_ACTION__SetVariable_ReplaceString_ReplacementType_FirstOccurrence_RegularExpressions_Enable(self.to_opaque(), regex, with)
     } }
 
     // TODO: splice
@@ -86,31 +86,31 @@ impl String {
     #[lldf_bind_proc::dfdoc(SetVariable/SplitString)]
     #[inline(always)]
     pub fn split(&self, delimiter : String) -> List<String> { unsafe {
-        DF_ACTION__SetVariable_SplitString(self.clone(), delimiter)
+        DF_ACTION__SetVariable_SplitString(self.to_opaque(), delimiter)
     } }
 
     #[lldf_bind_proc::dfdoc(SetVariable/SetCase { CapitalizationType = UPPERCASE })]
     #[inline(always)]
     pub fn uppercase(&self) -> String { unsafe {
-        DF_ACTION__SetVariable_SetCase_CapitalizationType_SpecialcaseUppercase(self.clone())
+        DF_ACTION__SetVariable_SetCase_CapitalizationType_SpecialcaseUppercase(self.to_opaque())
     } }
 
     #[lldf_bind_proc::dfdoc(SetVariable/SetCase { CapitalizationType = lowercase })]
     #[inline(always)]
     pub fn lowercase(&self) -> String { unsafe {
-        DF_ACTION__SetVariable_SetCase_CapitalizationType_SpecialcaseLowercase(self.clone())
+        DF_ACTION__SetVariable_SetCase_CapitalizationType_SpecialcaseLowercase(self.to_opaque())
     } }
 
     #[lldf_bind_proc::dfdoc(SetVariable/SetCase { CapitalizationType = ProperCase })]
     #[inline(always)]
     pub fn propercase(&self) -> String { unsafe {
-        DF_ACTION__SetVariable_SetCase_CapitalizationType_SpecialcasePropercase(self.clone())
+        DF_ACTION__SetVariable_SetCase_CapitalizationType_SpecialcasePropercase(self.to_opaque())
     } }
 
     #[lldf_bind_proc::dfdoc(SetVariable/SetCase { CapitalizationType = InvertCase })]
     #[inline(always)]
     pub fn invert_case(&self) -> String { unsafe {
-        DF_ACTION__SetVariable_SetCase_CapitalizationType_SpecialcaseInvertcase(self.clone())
+        DF_ACTION__SetVariable_SetCase_CapitalizationType_SpecialcaseInvertcase(self.to_opaque())
     } }
 
     #[cfg(any(not(feature = "en_us"), doc))]
@@ -118,26 +118,26 @@ impl String {
     #[lldf_bind_proc::dfdoc(SetVariable/SetCase { CapitalizationType = RandomCase })]
     #[inline(always)]
     pub fn randomise_case(&self) -> String { unsafe {
-        DF_ACTION__SetVariable_SetCase_CapitalizationType_SpecialcaseRandomcase(self.clone())
+        DF_ACTION__SetVariable_SetCase_CapitalizationType_SpecialcaseRandomcase(self.to_opaque())
     } }
     #[cfg(any(feature = "en_us", doc))]
     #[doc(cfg(feature = "en_us"))]
     #[lldf_bind_proc::dfdoc(SetVariable/SetCase { CapitalizationType = RandomCase })]
     #[inline(always)]
     pub fn randomize_case(&self) -> String { unsafe {
-        DF_ACTION__SetVariable_SetCase_CapitalizationType_SpecialcaseRandomcase(self.clone())
+        DF_ACTION__SetVariable_SetCase_CapitalizationType_SpecialcaseRandomcase(self.to_opaque())
     } }
 
     #[lldf_bind_proc::dfdoc(SetVariable/StringLength)]
     #[inline(always)]
     pub fn len(&self) -> UInt { unsafe {
-        DF_ACTION__SetVariable_StringLength(self.clone())
+        DF_ACTION__SetVariable_StringLength(self.to_opaque())
     } }
 
     #[lldf_bind_proc::dfdoc(SetVariable/RepeatString)]
     #[inline(always)]
     pub fn repeat(&self, count : UInt) -> String { unsafe {
-        DF_ACTION__SetVariable_RepeatString(self.clone(), count)
+        DF_ACTION__SetVariable_RepeatString(self.to_opaque(), count)
     } }
 
 }
@@ -155,17 +155,17 @@ extern "C" {
     fn DF_ASSERT__ConstantStrToString( from : String ) -> String;
 
     fn DF_ACTION__SetVariable_String_TextValueMerging_NoSpaces( ... ) -> String;
-    fn DF_ACTION__SetVariable_ReplaceString_ReplacementType_AllOccurrences_RegularExpressions_Disable( string : String, replacing : String, with : String ) -> String;
-    fn DF_ACTION__SetVariable_ReplaceString_ReplacementType_FirstOccurrence_RegularExpressions_Disable( string : String, replacing : String, with : String ) -> String;
-    fn DF_ACTION__SetVariable_ReplaceString_ReplacementType_AllOccurrences_RegularExpressions_Enable( string : String, regex : String, with : String ) -> String;
-    fn DF_ACTION__SetVariable_ReplaceString_ReplacementType_FirstOccurrence_RegularExpressions_Enable( string : String, regex : String, with : String ) -> String;
-    fn DF_ACTION__SetVariable_SplitString( string : String, delimiter : String ) -> List<String>;
-    fn DF_ACTION__SetVariable_SetCase_CapitalizationType_SpecialcaseUppercase( string : String ) -> String;
-    fn DF_ACTION__SetVariable_SetCase_CapitalizationType_SpecialcaseLowercase( string : String ) -> String;
-    fn DF_ACTION__SetVariable_SetCase_CapitalizationType_SpecialcasePropercase( string : String ) -> String;
-    fn DF_ACTION__SetVariable_SetCase_CapitalizationType_SpecialcaseInvertcase( string : String ) -> String;
-    fn DF_ACTION__SetVariable_SetCase_CapitalizationType_SpecialcaseRandomcase( string : String ) -> String;
-    fn DF_ACTION__SetVariable_StringLength( string : String ) -> UInt;
-    fn DF_ACTION__SetVariable_RepeatString( string : String, count : UInt ) -> String;
+    fn DF_ACTION__SetVariable_ReplaceString_ReplacementType_AllOccurrences_RegularExpressions_Disable( string : DFOpaqueValue, replacing : String, with : String ) -> String;
+    fn DF_ACTION__SetVariable_ReplaceString_ReplacementType_FirstOccurrence_RegularExpressions_Disable( string : DFOpaqueValue, replacing : String, with : String ) -> String;
+    fn DF_ACTION__SetVariable_ReplaceString_ReplacementType_AllOccurrences_RegularExpressions_Enable( string : DFOpaqueValue, regex : String, with : String ) -> String;
+    fn DF_ACTION__SetVariable_ReplaceString_ReplacementType_FirstOccurrence_RegularExpressions_Enable( string : DFOpaqueValue, regex : String, with : String ) -> String;
+    fn DF_ACTION__SetVariable_SplitString( string : DFOpaqueValue, delimiter : String ) -> List<String>;
+    fn DF_ACTION__SetVariable_SetCase_CapitalizationType_SpecialcaseUppercase( string : DFOpaqueValue ) -> String;
+    fn DF_ACTION__SetVariable_SetCase_CapitalizationType_SpecialcaseLowercase( string : DFOpaqueValue ) -> String;
+    fn DF_ACTION__SetVariable_SetCase_CapitalizationType_SpecialcasePropercase( string : DFOpaqueValue ) -> String;
+    fn DF_ACTION__SetVariable_SetCase_CapitalizationType_SpecialcaseInvertcase( string : DFOpaqueValue ) -> String;
+    fn DF_ACTION__SetVariable_SetCase_CapitalizationType_SpecialcaseRandomcase( string : DFOpaqueValue ) -> String;
+    fn DF_ACTION__SetVariable_StringLength( string : DFOpaqueValue ) -> UInt;
+    fn DF_ACTION__SetVariable_RepeatString( string : DFOpaqueValue, count : UInt ) -> String;
 
 }
