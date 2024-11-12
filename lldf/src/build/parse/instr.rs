@@ -186,6 +186,34 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
                     Ok(())
                 },
 
+                Global::Assert(handler) => { if let Some(dest) = dest { match (handler) {
+
+                    AssertHandler::ConstantStrToString => {
+                        let value = parse_oper(module, function, &arguments[0].0)?.to_codevalue(module, function)?;
+                        match (value) {
+                            CodeValue::String(value)
+                                => { function.locals.insert(dest.clone(), Value::ConstString(value)); Ok(()) },
+                            CodeValue::Text(_) | CodeValue::Number(_) | CodeValue::Location { .. } | CodeValue::Vector { .. } | CodeValue::Sound { .. } |
+                            CodeValue::Particle { .. } | CodeValue::Potion { .. } | CodeValue::Item { .. }
+                                => { function.locals.insert(dest.clone(), Value::ConstString(String::new())); Ok(()) },
+                            src_value @ CodeValue::Variable { .. } | src_value @ CodeValue::Gamevalue { .. }
+                                => {
+                                    let dest_name = name_to_local(dest);
+                                    let dest_var  = CodeValue::Variable { name : dest_name.clone(), scope : VariableScope::Line };
+                                    function.line.blocks.push(Codeblock::action("set_var", "=", vec![ dest_var.clone(), src_value ], vec![ ]));
+                                    function.line.blocks.push(Codeblock::ifs("if_var", "VarIsType", true, vec![ dest_var.clone() ], vec![ CodeValue::Actiontag { kind : "Variable Type".to_string(), value : "String".to_string(), variable : None } ]));
+                                    function.line.blocks.push(Codeblock::OPEN_COND_BRACKET);
+                                    function.line.blocks.push(Codeblock::action("set_var", "=", vec![ dest_var, CodeValue::String(String::new()) ], vec![ ]));
+                                    function.line.blocks.push(Codeblock::CLOSE_COND_BRACKET);
+                                    function.locals.insert(dest.clone(), Value::Local(dest_name));
+                                    Ok(())
+                                },
+                            CodeValue::Parameter { .. } | CodeValue::Actiontag { .. } => unreachable!(),
+                        }
+                    }
+
+                } } else { Ok(()) } },
+
                 Global::UserFunction { name } => { // TODO: return
                     let mut params = Vec::with_capacity(arguments.len());
                     for (arg, _) in arguments {

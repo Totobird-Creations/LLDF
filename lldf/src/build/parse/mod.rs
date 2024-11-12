@@ -44,6 +44,7 @@ impl Value {
                 Global::Constant(value) => value.to_codevalue(module, function),
 
                 Global::NoopFunction |
+                Global::Assert(_) |
                 Global::ActionFunction { .. } |
                 Global::BracketFunction { .. } |
                 Global::ElseFunction |
@@ -74,6 +75,7 @@ impl Value {
                 Global::Constant(value) => value.to_ptr_accessor_part_strings(module),
 
                 Global::NoopFunction |
+                Global::Assert(_) |
                 Global::UserFunction { .. } |
                 Global::ActionFunction { .. } |
                 Global::BracketFunction { .. } |
@@ -107,6 +109,7 @@ impl Value {
                 Global::Constant(value) => value.to_ptr_accessor_string(module),
 
                 Global::NoopFunction |
+                Global::Assert(_) |
                 Global::ActionFunction { .. } |
                 Global::BracketFunction { .. } |
                 Global::ElseFunction |

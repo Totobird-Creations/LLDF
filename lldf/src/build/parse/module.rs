@@ -20,6 +20,7 @@ pub struct ParsedModule<'l> {
 #[derive(Debug)]
 pub enum Global {
     NoopFunction,
+    Assert(AssertHandler),
     UserFunction {
         name : String
     },
@@ -48,6 +49,10 @@ pub enum Global {
         id : String
     },
     Constant(Value)
+}
+#[derive(Debug)]
+pub enum AssertHandler {
+    ConstantStrToString
 }
 #[derive(Debug)]
 pub enum ActionFunctionTag {
@@ -98,7 +103,21 @@ pub fn parse_module(module : &Module) -> Result<ParsedModule, Box<dyn Error>> {
             Some("DF_TRANSMUTE") => {
                 parsed.globals.insert(Name::Name(Box::new(module_function.name.clone())), Global::NoopFunction);
                 continue;
-            }
+            },
+
+            Some("DF_ASSERT") => {
+                if let (Some(handler), None) = (parts.next(), parts.next()) {
+                    match (handler) {
+
+                        "ConstantStrToString" => {
+                            parsed.globals.insert(Name::Name(Box::new(module_function.name.clone())), Global::Assert(AssertHandler::ConstantStrToString));
+                            continue;
+                        }
+
+                        _ => { }
+                    }
+                }
+            },
 
             Some("DF_ACTION") => {
                 if let (Some(executor), None) = (parts.next(), parts.next()) {

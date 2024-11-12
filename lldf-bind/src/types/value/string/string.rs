@@ -35,7 +35,7 @@ impl<T : DFValue> From<T> for String {
 impl From<&str> for String {
     #[inline(always)]
     fn from(value : &str) -> String { unsafe { // FIXME: Empty strings (`""`) don't work as expected.
-        transmute_unchecked::<_, &String>(&value).clone()
+        DF_ASSERT__ConstantStrToString(transmute_unchecked::<_, &String>(&value).clone())
     } }
 }
 
@@ -76,6 +76,7 @@ unsafe impl DFValue for String {
 extern "C" {
 
     fn DF_TRANSMUTE__Opaque( from : String ) -> DFOpaqueValue;
+    fn DF_ASSERT__ConstantStrToString( from : String ) -> String;
 
     fn DF_ACTION__SetVariable_String_TextValueMerging_NoSpaces( ... ) -> String;
 

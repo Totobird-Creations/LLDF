@@ -20,6 +20,7 @@ pub enum CodeValue { // TODO: Add item
         motion_variation : Option<f64>,
         colour           : Option<u32>,
         colour_variation : Option<f64>,
+        opacity          : Option<f64>,
         material         : Option<String>,
         size             : Option<f64>,
         size_variation   : Option<f64>,
@@ -250,7 +251,7 @@ impl CodeValue {
             }
             json::json!({ "id" : "snd", "data" : data })
         },
-        Self::Particle { kind, cluster_x, cluster_y, cluster_amount, motion, motion_variation, colour, colour_variation, material, size, size_variation, roll, fade_colour } => {
+        Self::Particle { kind, cluster_x, cluster_y, cluster_amount, motion, motion_variation, colour, colour_variation, opacity, material, size, size_variation, roll, fade_colour } => {
             let mut data = json::json!({});
             if let Some((x, y, z)) = motion {
                 data["x"] = json::Number::from_f64(*x).unwrap().into();
@@ -260,6 +261,7 @@ impl CodeValue {
             if let Some(motion_variation ) = motion_variation { data["motionVariation" ] = json::Number::from_f64  (*motion_variation    ).unwrap().into() }
             if let Some(colour           ) = colour           { data["rgb"             ] = json::Number::from_u128 (*colour as u128      ).unwrap().into() }
             if let Some(colour_variation ) = colour_variation { data["colorVariation"  ] = json::Number::from_f64  (*colour_variation    ).unwrap().into() }
+            if let Some(opacity          ) = opacity          { data["opacity"         ] = json::Number::from_f64  (*opacity             ).unwrap().into() }
             if let Some(material         ) = material         { data["material"        ] = json::Value::String(material.clone()) }
             if let Some(size             ) = size             { data["size"            ] = json::Number::from_f64  (*size                ).unwrap().into() }
             if let Some(size_variation   ) = size_variation   { data["sizeVariation"   ] = json::Number::from_f64  (*size_variation      ).unwrap().into() }
