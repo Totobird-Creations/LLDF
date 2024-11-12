@@ -40,18 +40,11 @@ impl From<&str> for String {
     } }
 }
 
-impl Add<String> for String {
+impl<T : Into<String>> Add<T> for String {
     type Output = String;
     #[inline(always)]
-    fn add(self, rhs : String) -> Self::Output { unsafe {
-        DF_ACTION__SetVariable_String_TextValueMerging_NoSpaces(self, rhs)
-    } }
-}
-impl Add<&str> for String {
-    type Output = String;
-    #[inline(always)]
-    fn add(self, rhs : &str) -> Self::Output { unsafe {
-        DF_ACTION__SetVariable_String_TextValueMerging_NoSpaces(self, String::from(rhs))
+    fn add(self, rhs : T) -> Self::Output { unsafe {
+        DF_ACTION__SetVariable_String_TextValueMerging_NoSpaces(self, rhs.into())
     } }
 }
 
@@ -59,34 +52,34 @@ impl String {
 
     #[lldf_bind_proc::dfdoc(SetVariable/ReplaceString { ReplacementType = AllOccurrences, RegularExpressions = Disable })]
     #[inline(always)]
-    pub fn replace(&self, replacing : String, with : String) -> String { unsafe {
-        DF_ACTION__SetVariable_ReplaceString_ReplacementType_AllOccurrences_RegularExpressions_Disable(self.to_opaque(), replacing, with)
+    pub fn replace<R : Into<String>, W : Into<String>>(&self, replacing : R, with : W) -> String { unsafe {
+        DF_ACTION__SetVariable_ReplaceString_ReplacementType_AllOccurrences_RegularExpressions_Disable(self.to_opaque(), replacing.into(), with.into())
     } }
 
     #[lldf_bind_proc::dfdoc(SetVariable/ReplaceString { ReplacementType = FirstOccurrence, RegularExpressions = Disable })]
     #[inline(always)]
-    pub fn replace_first(&self, replacing : String, with : String) -> String { unsafe {
-        DF_ACTION__SetVariable_ReplaceString_ReplacementType_FirstOccurrence_RegularExpressions_Disable(self.to_opaque(), replacing, with)
+    pub fn replace_first<R : Into<String>, W : Into<String>>(&self, replacing : R, with : W) -> String { unsafe {
+        DF_ACTION__SetVariable_ReplaceString_ReplacementType_FirstOccurrence_RegularExpressions_Disable(self.to_opaque(), replacing.into(), with.into())
     } }
 
     #[lldf_bind_proc::dfdoc(SetVariable/ReplaceString { ReplacementType = AllOccurrences, RegularExpressions = Enable })]
     #[inline(always)]
-    pub fn regex_replace(&self, regex : String, with : String) -> String { unsafe {
-        DF_ACTION__SetVariable_ReplaceString_ReplacementType_AllOccurrences_RegularExpressions_Enable(self.to_opaque(), regex, with)
+    pub fn regex_replace<R : Into<String>, W : Into<String>>(&self, regex : R, with : W) -> String { unsafe {
+        DF_ACTION__SetVariable_ReplaceString_ReplacementType_AllOccurrences_RegularExpressions_Enable(self.to_opaque(), regex.into(), with.into())
     } }
 
     #[lldf_bind_proc::dfdoc(SetVariable/ReplaceString { ReplacementType = FirstOccurrence, RegularExpressions = Enable })]
     #[inline(always)]
-    pub fn regex_replace_first(&self, regex : String, with : String) -> String { unsafe {
-        DF_ACTION__SetVariable_ReplaceString_ReplacementType_FirstOccurrence_RegularExpressions_Enable(self.to_opaque(), regex, with)
+    pub fn regex_replace_first<R : Into<String>, W : Into<String>>(&self, regex : R, with : W) -> String { unsafe {
+        DF_ACTION__SetVariable_ReplaceString_ReplacementType_FirstOccurrence_RegularExpressions_Enable(self.to_opaque(), regex.into(), with.into())
     } }
 
     // TODO: splice
 
     #[lldf_bind_proc::dfdoc(SetVariable/SplitString)]
     #[inline(always)]
-    pub fn split(&self, delimiter : String) -> List<String> { unsafe {
-        DF_ACTION__SetVariable_SplitString(self.to_opaque(), delimiter)
+    pub fn split<D : Into<String>>(&self, delimiter : D) -> List<String> { unsafe {
+        DF_ACTION__SetVariable_SplitString(self.to_opaque(), delimiter.into())
     } }
 
     #[lldf_bind_proc::dfdoc(SetVariable/SetCase { CapitalizationType = UPPERCASE })]

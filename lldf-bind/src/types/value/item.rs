@@ -136,7 +136,7 @@ impl Item {
     /// ##### Unsafe
     /// - **May cause large plot CPU usage spikes, causing plot to lagslay.**
     #[inline(always)]
-    pub unsafe fn with_head_name(&self, name : String) -> Item { unsafe {
+    pub unsafe fn with_head_name<S : Into<String>>(&self, name : S) -> Item { unsafe {
         DF_ACTION__SetVariable_SetHeadTexture(self.to_opaque(), name)
     } }
 
@@ -162,8 +162,8 @@ impl Item {
     /// ##### Warning
     /// - **Numeric tag values will be converted to strings. Thus, [`String`](String) `"0"` and [`Float`](Float) `0`** are not differentiable.
     #[inline(always)]
-    pub fn tag(&self, key : String) -> String { unsafe {
-        DF_ACTION__SetVariable_String(DF_ACTION__SetVariable_GetItemTag(self.to_opaque(), key))
+    pub fn tag<K : Into<String>>(&self, key : K) -> String { unsafe {
+        DF_ACTION__SetVariable_String(DF_ACTION__SetVariable_GetItemTag(self.to_opaque(), key.into()))
     } }
 
     /// Returns a list of existing tag keys.
@@ -175,14 +175,14 @@ impl Item {
 
     #[lldf_bind_proc::dfdoc(SetVariable/SetItemTag)]
     #[inline(always)]
-    pub fn with_tag(&self, key : String, value : String) -> Item { unsafe {
-        DF_ACTION__SetVariable_SetItemTag(self.to_opaque(), key, value)
+    pub fn with_tag<K : Into<String>, V : Into<String>>(&self, key : K, value : V) -> Item { unsafe {
+        DF_ACTION__SetVariable_SetItemTag(self.to_opaque(), key.into(), value.into())
     } }
 
     #[lldf_bind_proc::dfdoc(SetVariable/RemoveItemTag)]
     #[inline(always)]
-    pub fn without_tag(&self, key : String) -> Item { unsafe {
-        DF_ACTION__SetVariable_RemoveItemTag(self.to_opaque(), key)
+    pub fn without_tag<K : Into<String>>(&self, key : K) -> Item { unsafe {
+        DF_ACTION__SetVariable_RemoveItemTag(self.to_opaque(), key.into())
     } }
 
     #[lldf_bind_proc::dfdoc(SetVariable/ClearItemTag)]
@@ -397,8 +397,8 @@ impl Item {
     /// ##### Unsafe
     /// - **May cause large plot CPU usage spikes, causing plot to lagslay.**
     #[inline(always)]
-    pub unsafe fn with_map_texture(&self, image_uri : String) -> Item { unsafe {
-        DF_ACTION__SetVariable_SetMapTexture(self.to_opaque(), image_uri)
+    pub unsafe fn with_map_texture<S : Into<String>>(&self, image_uri : S) -> Item { unsafe {
+        DF_ACTION__SetVariable_SetMapTexture(self.to_opaque(), image_uri.into())
     } }
 
     // TODO: from_block_tag

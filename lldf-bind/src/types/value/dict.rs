@@ -31,13 +31,13 @@ impl<T : DFValue> Dict<T> {
 
     #[lldf_bind_proc::dfdoc(SetVariable/SetDictValue)]
     #[inline(always)]
-    pub fn insert<S : Into<String>>(&mut self, key : S, value : T) -> () { unsafe {
+    pub fn insert<K : Into<String>>(&mut self, key : K, value : T) -> () { unsafe {
         DF_ACTION__SetVariable_SetDictValue(self.to_opaque(), key.into(), value.to_opaque());
     } }
 
     #[lldf_bind_proc::dfdoc(SetVariable/GetDictValue)]
     #[inline(always)]
-    pub unsafe fn get_unchecked<S : Into<String>>(&self, key : S) -> T { unsafe {
+    pub unsafe fn get_unchecked<K : Into<String>>(&self, key : K) -> T { unsafe {
         transmute_unchecked(DF_ACTION__SetVariable_GetDictValue(self.to_opaque(), key.into()))
     } }
 
@@ -51,7 +51,7 @@ impl<T : DFValue> Dict<T> {
 
     #[lldf_bind_proc::dfdoc(SetVariable/RemoveDictEntry)]
     #[inline(always)]
-    pub fn remove<S : Into<String>>(&mut self, key : S) -> () { unsafe {
+    pub fn remove<K : Into<String>>(&mut self, key : K) -> () { unsafe {
         DF_ACTION__SetVariable_RemoveDictEntry(self.to_opaque(), key.into());
     } }
 
