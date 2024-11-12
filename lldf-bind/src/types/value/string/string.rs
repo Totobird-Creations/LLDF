@@ -15,16 +15,26 @@ pub struct String {
 //    } }
 //}
 
+impl String {
+
+    #[lldf_bind_proc::dfdoc(SetVariable/String)]
+    #[inline(always)]
+    pub fn new() -> Self { unsafe {
+        DF_ACTION__SetVariable_String_TextValueMerging_NoSpaces()
+    } }
+
+}
+
 impl<T : DFValue> From<T> for String {
     #[inline(always)]
     fn from(value : T) -> String { unsafe {
-        DF_ACTION__SetVariable_String_TextValueMerging_NoSpaces(value.to_opaque())
+        DF_ACTION__SetVariable_String_TextValueMerging_NoSpaces(value)
     } }
 }
 
 impl From<&str> for String {
     #[inline(always)]
-    fn from(value : &str) -> String { unsafe {
+    fn from(value : &str) -> String { unsafe { // FIXME: Empty strings (`""`) don't work as expected.
         transmute_unchecked::<_, &String>(&value).clone()
     } }
 }
@@ -67,6 +77,6 @@ extern "C" {
 
     fn DF_TRANSMUTE__Opaque( from : String ) -> DFOpaqueValue;
 
-    fn DF_ACTION__SetVariable_String_TextValueMerging_NoSpaces( from : DFOpaqueValue ) -> String;
+    fn DF_ACTION__SetVariable_String_TextValueMerging_NoSpaces( ... ) -> String;
 
 }

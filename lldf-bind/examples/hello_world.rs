@@ -27,7 +27,16 @@ fn player_swap_hands(default : PlayerSel) {
 
     //default.set_gamemode_creative();
 
-    default.send_message(Item::dragon_egg().rarity().to_string());
+    let mut a = String::from("");
+    default.send_message(a);
+
+    let mut a = List::new();
+    a.push(String::from("Hello,"));
+    let mut b = a.clone();
+    b.push(String::from("World!"));
+
+    default.send_message(a);
+    default.send_message(b);
 
 }
 

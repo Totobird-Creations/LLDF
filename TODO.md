@@ -1,11 +1,11 @@
 ### DiamondFire 'primitive' types:
 - [x] String
 - [x] Text
-- [ ] Number
-- [ ] Location
+- [x] Number
+- [x] Location
 - [x] Vector
 - [x] Sound
-- [ ] Particle
+- [x] Particle
 - [x] Potion
 - [x] Item
 - [x] List
@@ -26,16 +26,16 @@
 - [ ] Struct
 - [ ] Arrays
 - [ ] Enum
-- [ ] Union
+- [x] Union
 - [ ] Function
-  - [x] The actual function
-  - [ ] Function pointers
+  - [x] Direct function
+  - [ ] Indirect pointers
 - [x] Pointers
 
 
 ### Fun types cause I feel like it:
 - [x] Matrix
-- [ ] Quaternion
+- [ ] Quat
 
 ### The things that will be pain to implement:
 - [x] Stack allocation

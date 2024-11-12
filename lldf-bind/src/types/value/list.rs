@@ -19,10 +19,14 @@ impl<T : DFValue> Clone for List<T> {
 
 impl<T : DFValue> List<T> {
 
-    // TODO: new
+    #[lldf_bind_proc::dfdoc(SetVariable/CreateList)]
+    #[inline(always)]
+    pub fn new() -> Self { unsafe {
+        transmute_unchecked(DF_ACTION__SetVariable_CreateList())
+    } }
 
     #[inline(always)]
-    pub fn from_array<const N : usize>(array : [T; N]) -> Self { unsafe {
+    pub fn from_array<const N : usize>(array : [T; N]) -> Self { unsafe { // FIXME when arrays are made GEP-compatible
         transmute_unchecked(DF_TRANSMUTE__Array_Opaque(array))
     } }
 
@@ -30,25 +34,43 @@ impl<T : DFValue> List<T> {
 
 impl<T : DFValue> List<T> {
 
-    // TODO: push
+    #[lldf_bind_proc::dfdoc(SetVariable/AppendValue)]
+    #[inline(always)]
+    pub fn push(&mut self, value : T) -> () { unsafe {
+        DF_ACTION__SetVariable_AppendValue(self.clone().to_opaque(), value.to_opaque())
+    } }
 
-    // TODO: append
+    #[lldf_bind_proc::dfdoc(SetVariable/AppendList)]
+    #[inline(always)]
+    pub fn append(&mut self, list : List<T>) -> () { unsafe {
+        DF_ACTION__SetVariable_AppendList(self.clone().to_opaque(), list.to_opaque())
+    } }
 
     // TODO: get
 
-    // TODO: pop
+    // TODO: pop_unchecked
 
-    // TODO: remove
+    // TODO: pop (with bounds check)
 
-    // TODO: set
+    // TODO: remove_unchecked
+
+    // TODO: remove (with bounds check)
+
+    // TODO: set_unchecked
+
+    // TODO: set (with bounds check)
 
     // TODO: index_of
 
     // TODO: len
 
-    // TODO: insert
+    // TODO: insert_unchecked
+
+    // TODO: insert (with bounds check)
 
     // TODO: erase (remove by equality)
+
+    // TODO: clear
 
     // TODO: dedup
 
@@ -86,7 +108,11 @@ unsafe impl<T : DFValue> DFValue for List<T> {
 extern "C" {
 
     fn DF_TRANSMUTE__ListOpaque_Opaque( from : List<DFOpaqueValue> ) -> DFOpaqueValue;
-
     fn DF_TRANSMUTE__Array_Opaque( ... ) -> DFOpaqueValue;
+
+
+    fn DF_ACTION__SetVariable_CreateList( ) -> DFOpaqueValue;
+    fn DF_ACTION__SetVariable_AppendValue( list : DFOpaqueValue, value : DFOpaqueValue ) -> ();
+    fn DF_ACTION__SetVariable_AppendList( list : DFOpaqueValue, from : DFOpaqueValue ) -> ();
 
 }
