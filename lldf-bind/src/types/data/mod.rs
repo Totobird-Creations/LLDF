@@ -72,7 +72,7 @@ pub enum Gamemode {
 }
 
 #[lldf_bind_proc::actiontag]
-pub enum Particles {
+pub enum PotionParticles {
     Regular = "Regular",
     Ambient = "Ambient",
     None    = "None"

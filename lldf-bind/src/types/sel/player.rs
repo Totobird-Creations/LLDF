@@ -326,7 +326,7 @@ impl PlayerSel {
 
     #[lldf_bind_proc::dfdoc(PlayerAction/GivePotion { OverwriteEffect = True })]
     #[inline(always)]
-    pub fn give_potion(&self, potion : Potion, icon : Flag, particles : Particles) -> () { unsafe {
+    pub fn give_potion(&self, potion : Potion, icon : Flag, particles : PotionParticles) -> () { unsafe {
         DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
         DF_ACTION__PlayerAction_GivePotion_ShowIcon_DynamicTrue_OverwriteEffect_True_EffectParticles_DynamicTrue(icon.to_string(), particles.to_string(), potion);
         DF_ACTION__SelectObject_Reset();
