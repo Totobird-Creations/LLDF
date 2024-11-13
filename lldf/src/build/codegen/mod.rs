@@ -23,7 +23,7 @@ impl CodeLine {
     } }
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum Codeblock {
     Block(CodeblockBlock),
     Bracket {
@@ -40,12 +40,12 @@ pub struct CodeblockBlock {
     pub params : Vec<CodeValue>,
     pub tags   : Vec<CodeValue>
 }
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum BracketKind {
     Normal,
     Repeat
 }
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum BracketSide {
     Open,
     Close

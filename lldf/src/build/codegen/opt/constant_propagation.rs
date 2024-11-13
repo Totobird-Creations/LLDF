@@ -15,12 +15,12 @@ pub fn constant_propagation(line : &mut CodeLine) -> bool {
         let block = &line.blocks[i];
         if let Codeblock::Block(CodeblockBlock { block, action : Some(action), params, tags, .. }) = block {
             if (block == "set_var") {
-                // The destination variable is a line variable.
+                // Check that the destination variable is a line variable.
                 if let CodeValue::Variable { name : dest_name, scope : VariableScope::Line } = &params[0] {
-                    // The destination variable is not a parameter value.
+                    // Check that the destination variable is not tied to a parameter.
                     if (! line.blocks.iter().any(|block| block.contains_param(dest_name))) {
-                        // Check if this value can be propagated.
-                        if let Some(value) = check_value_to_propagate(action, &mut params.iter().skip(1), &tags) {
+                        // Check that this value can be propagated.
+                        if let Some(value) = check_value_to_propagate(line, i, dest_name, action, &mut params.iter().skip(1), &tags) {
                             // Check if all codeblocks in the line allow replacing the variable.
                             // Also check that the value is only set once.
                             let mut can_replace = true;
@@ -60,13 +60,34 @@ pub fn constant_propagation(line : &mut CodeLine) -> bool {
 }
 
 
-fn check_value_to_propagate<'l>(action : &str, params : &mut impl Iterator<Item = &'l CodeValue>, tags : &Vec<CodeValue>) -> Option<CodeValue> {
+fn check_value_to_propagate<'l>(
+    line : &CodeLine,
+    i : usize,
+    dest_name : &str,
+    action : &str,
+    params : &mut impl Iterator<Item = &'l CodeValue>,
+    tags : &Vec<CodeValue>
+) -> Option<CodeValue> {
 
 
     // Variable Setting
 
     if (action == "=") { match (get_chunk::<2>(params)) {
-        [Some(value), None] => { if (value.is_constant()) { return Some(value.clone()); } },
+        [Some(value), None] => {
+            if (value.is_constant()) { return Some(value.clone()); }
+            else if let CodeValue::Gamevalue { .. } = value { }
+            else {
+                // Allow propagation if the value is ONLY used in the codeblock IMMEDIATELY following the current codeblock.
+                //  Game values are never allowed to be propagated.
+                for j in 0..line.blocks.len() {
+                    let block = &line.blocks[j];
+                    if (j != i + 1 && block.is_line_var_used(dest_name)) {
+                        return None;
+                    }
+                }
+                return Some(value.clone());
+            }
+        },
         _ => { }
     } }
 
