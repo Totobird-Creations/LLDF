@@ -108,11 +108,33 @@ fn check_value_to_propagate<'l>(action : &str, params : &mut impl Iterator<Item 
 
     // TODO: %
 
-    // TODO: Exponent
+    else if (action == "EXponent") { match (get_chunk::<3>(params)) {
+        [Some(CodeValue::Number(base)), exponent, None] => { if let Ok(base) = base.parse::<f64>() {
+            let exponent = if let Some(exponent) = exponent {
+                if let CodeValue::Number(exponent) = exponent {
+                    if let Ok(exponent) = exponent.parse::<f64>() { exponent } else { return None; }
+                } else { return None; }
+            } else { 2.0 };
+            return Some(CodeValue::Number(base.powf(exponent).to_string()));
+        } }, _ => { }
+    } }
 
-    // TODO: Root
+    else if (action == "Root") { match (get_chunk::<3>(params)) {
+        [Some(CodeValue::Number(radicand)), degree, None] => { if let Ok(radicand) = radicand.parse::<f64>() {
+            let degree = if let Some(degree) = degree {
+                if let CodeValue::Number(degree) = degree {
+                    if let Ok(degree) = degree.parse::<f64>() { degree } else { return None; }
+                } else { return None; }
+            } else { 2.0 };
+            return Some(CodeValue::Number(radicand.powf(1.0 / degree).to_string()));
+        } }, _ => { }
+    } }
 
-    // TODO: Logarithm
+    else if (action == "Logarithm") { match (get_chunk::<3>(params)) {
+        [Some(CodeValue::Number(antilogarithm)), Some(CodeValue::Number(base)), None] => { if let Ok(antilogarithm) = antilogarithm.parse::<f64>() { if let Ok(base) = base.parse::<f64>() {
+            return Some(CodeValue::Number((antilogarithm.log10() / base.log10()).to_string()));
+        } } }, _ => { }
+    } }
 
     else if (action == "ParseNumber") { match (get_chunk::<2>(params)) {
         [Some(CodeValue::String(value)), None] => { if let Ok(value) = value.parse::<f64>() {
@@ -150,15 +172,61 @@ fn check_value_to_propagate<'l>(action : &str, params : &mut impl Iterator<Item 
 
     // TODO: RoundNumber
 
-    // TODO: MinNumber
+    else if (action == "MinNumber") && let Some(CodeValue::Number(base_value)) = params.next() { if let Ok(mut final_value) = base_value.parse::<f64>() {
+        for param in params {
+            if let CodeValue::Number(value) = param {
+                if let Ok(value) = value.parse::<f64>() { final_value = final_value.min(value); }
+                else { return None; }
+            } else { return None; }
+        }
+        return Some(CodeValue::Number(final_value.to_string()));
+    } }
 
-    // TODO: MaxNumber
+    else if (action == "MaxNumber") && let Some(CodeValue::Number(base_value)) = params.next() { if let Ok(mut final_value) = base_value.parse::<f64>() {
+        for param in params {
+            if let CodeValue::Number(value) = param {
+                if let Ok(value) = value.parse::<f64>() { final_value = final_value.max(value); }
+                else { return None; }
+            } else { return None; }
+        }
+        return Some(CodeValue::Number(final_value.to_string()));
+    } }
 
-    // TODO: Sine
+    else if (action == "Sine") { match (get_chunk::<2>(params)) {
+        [Some(CodeValue::Number(value)), None] => { if let Ok(mut value) = value.parse::<f64>() {
+            value *= if let Some(mode) = get_tag(tags, "Input") && mode == "Radians" { 1.0 } else { 0.0174532925199 };
+            if let Some(mode) = get_tag(tags, "Sine Variant") { match (mode.as_str()) {
+                "Sine"                   => { return Some(CodeValue::Number(value.sin().to_string())); },
+                "Inverse sine (arcsine)" => { return Some(CodeValue::Number(value.asin().to_string())); },
+                "Hyperbolic sine"        => { return Some(CodeValue::Number(value.sinh().to_string())); }
+                _ => { }
+            } }
+        } }, _ => { }
+    } }
 
-    // TODO: Cosine
+    else if (action == "Cosine") { match (get_chunk::<2>(params)) {
+        [Some(CodeValue::Number(value)), None] => { if let Ok(mut value) = value.parse::<f64>() {
+            value *= if let Some(mode) = get_tag(tags, "Input") && mode == "Radians" { 1.0 } else { 0.0174532925199 };
+            if let Some(mode) = get_tag(tags, "Cosine Variant") { match (mode.as_str()) {
+                "Cosine"                     => { return Some(CodeValue::Number(value.cos().to_string())); },
+                "Inverse cosine (arccosine)" => { return Some(CodeValue::Number(value.acos().to_string())); },
+                "Hyperbolic cosine"          => { return Some(CodeValue::Number(value.cosh().to_string())); }
+                _ => { }
+            } }
+        } }, _ => { }
+    } }
 
-    // TODO: Tangent
+    else if (action == "Tangent") { match (get_chunk::<2>(params)) {
+        [Some(CodeValue::Number(value)), None] => { if let Ok(mut value) = value.parse::<f64>() {
+            value *= if let Some(mode) = get_tag(tags, "Input") && mode == "Radians" { 1.0 } else { 0.0174532925199 };
+            if let Some(mode) = get_tag(tags, "Tangent Variant") { match (mode.as_str()) {
+                "Tangent"                      => { return Some(CodeValue::Number(value.tan().to_string())); },
+                "Inverse tangent (arctangent)" => { return Some(CodeValue::Number(value.atan().to_string())); },
+                "Hyperbolic tangent"           => { return Some(CodeValue::Number(value.tanh().to_string())); }
+                _ => { }
+            } }
+        } }, _ => { }
+    } }
 
     // TODO: Bitwise
 
@@ -188,9 +256,17 @@ fn check_value_to_propagate<'l>(action : &str, params : &mut impl Iterator<Item 
 
     // TODO: SetCase
 
-    // TODO: StringLength
+    else if (action == "StringLength") { match (get_chunk::<2>(params)) {
+        [Some(CodeValue::String(value)), None] => {
+            return Some(CodeValue::Number(value.len().to_string()));
+        }, _ => { }
+    } }
 
-    // TODO: RepeatString
+    else if (action == "RepeatString") { match (get_chunk::<3>(params)) {
+        [Some(CodeValue::String(value)), Some(CodeValue::Number(repeat)), None] => { if let Ok(repeat) = repeat.parse::<f64>() {
+            return Some(CodeValue::String(value.repeat(repeat.floor() as usize)));
+        } }, _ => { }
+    } }
 
 
     // Styled Text Manipulation
@@ -228,9 +304,31 @@ fn check_value_to_propagate<'l>(action : &str, params : &mut impl Iterator<Item 
 
     // Location Manipulation
 
-    // TODO: GetCoord
+    else if (action == "GetCoord") { match (get_chunk::<2>(params)) {
+        [Some(CodeValue::Location { x, y, z, pitch, yaw }), None] => { if let Some(origin) = get_tag(tags, "Coordinate Type") { if (origin == "Plot coordinate") {
+            if let Some(coordinate) = get_tag(tags, "Coordinate") { match (coordinate.as_str()) {
+                "X"     => { return Some(CodeValue::Number(x     .to_string())) },
+                "Y"     => { return Some(CodeValue::Number(y     .to_string())) },
+                "Z"     => { return Some(CodeValue::Number(z     .to_string())) },
+                "Pitch" => { return Some(CodeValue::Number(pitch .to_string())) },
+                "Yaw"   => { return Some(CodeValue::Number(yaw   .to_string())) },
+                _ => { }
+            } }
+        } } }, _ => { }
+    } }
 
-    // TODO: SetCoord
+    else if (action == "SetCoord") { match (get_chunk::<3>(params)) {
+        [Some(CodeValue::Location { x, y, z, pitch, yaw }), Some(CodeValue::Number(new_value)), None] => { if let Ok(new_value) = new_value.parse::<f64>() { if let Some(origin) = get_tag(tags, "Coordinate Type") { if (origin == "Plot coordinate") {
+            if let Some(coordinate) = get_tag(tags, "Coordinate") { match (coordinate.as_str()) {
+                "X"     => { return Some(CodeValue::Location { x : new_value, y : *y ,        z : *z,        pitch : *pitch,    yaw : *yaw      }) },
+                "Y"     => { return Some(CodeValue::Location { x : *x,        y : new_value , z : *z,        pitch : *pitch,    yaw : *yaw      }) },
+                "Z"     => { return Some(CodeValue::Location { x : *x,        y : *y ,        z : new_value, pitch : *pitch,    yaw : *yaw      }) },
+                "Pitch" => { return Some(CodeValue::Location { x : *x,        y : *y ,        z : *z,        pitch : new_value, yaw : *yaw      }) },
+                "Yaw"   => { return Some(CodeValue::Location { x : *x,        y : *y ,        z : *z,        pitch : *pitch,    yaw : new_value }) },
+                _ => { }
+            } }
+        } } } }, _ => { }
+    } }
 
     else if (action == "SetAllCoords") { match (get_chunk::<6>(params)) {
         [Some(CodeValue::Number(x)), Some(CodeValue::Number(y)), Some(CodeValue::Number(z)), Some(CodeValue::Number(pitch)), Some(CodeValue::Number(yaw)), None] => { if let Ok(x) = x.parse::<f64>() { if let Ok(y) = y.parse::<f64>() { if let Ok(z) = z.parse::<f64>() { if let Ok(pitch) = pitch.parse::<f64>() { if let Ok(yaw) = yaw.parse::<f64>() {
@@ -238,7 +336,16 @@ fn check_value_to_propagate<'l>(action : &str, params : &mut impl Iterator<Item 
         } } } } } }, _ => { }
     } }
 
-    // TODO: ShiftOnAxis
+    else if (action == "ShiftOnAxis") { match (get_chunk::<3>(params)) {
+        [Some(CodeValue::Location { x, y, z, pitch, yaw }), Some(CodeValue::Number(delta)), None] => { if let Ok(delta) = delta.parse::<f64>() {
+            if let Some(coordinate) = get_tag(tags, "Coordinate") { match (coordinate.as_str()) {
+                "X" => { return Some(CodeValue::Location { x : x + delta, y : *y, z : *z, pitch : *pitch, yaw : *yaw }); },
+                "Y" => { return Some(CodeValue::Location { x : *x, y : y + delta, z : *z, pitch : *pitch, yaw : *yaw }); },
+                "Z" => { return Some(CodeValue::Location { x : *x, y : *y, z : z + delta, pitch : *pitch, yaw : *yaw }); },
+                _ => { }
+            } }
+        } }, _ => { }
+    } }
 
     else if (action == "ShiftAllAxes") { match (get_chunk::<5>(params)) {
         [Some(CodeValue::Location { x, y, z, pitch, yaw }), Some(CodeValue::Number(dx)), Some(CodeValue::Number(dy)), Some(CodeValue::Number(dz)), None] => { if let Ok(dx) = dx.parse::<f64>() { if let Ok(dy) = dy.parse::<f64>() { if let Ok(dz) = dz.parse::<f64>() {
@@ -275,7 +382,16 @@ fn check_value_to_propagate<'l>(action : &str, params : &mut impl Iterator<Item 
 
     // TODO: SetItemType
 
-    // TODO: Other item operations
+    else if (action == "GetItemAmount") { match (get_chunk::<2>(params)) {
+        [Some(CodeValue::Item { count, .. }), None] => { return Some(CodeValue::Number(count.to_string())); },
+        _ => { }
+    } }
+
+    else if (action == "SetItemAmount") { match (get_chunk::<3>(params)) {
+        [Some(CodeValue::Item { id, count : _, nbt }), Some(CodeValue::Number(new_count)), None] => { if let Ok(new_count) = new_count.parse::<f64>() {
+            return Some(CodeValue::Item { id : id.clone(), count : new_count.floor() as u8, nbt : nbt.clone() });
+        } }, _ => { }
+    } }
 
 
     // Particle Manipulation
@@ -302,7 +418,14 @@ fn check_value_to_propagate<'l>(action : &str, params : &mut impl Iterator<Item 
         } }, _ => { }
     } }
 
-    // TODO: GetParticleSprd
+    else if (action == "GetParticleSprd") { match (get_chunk::<2>(params)) {
+        [Some(CodeValue::Particle { spread_x, spread_y, .. }), None] => { if let Some(direction) = get_tag(tags, "Spread") { match (direction.as_str()) {
+            "Horizontal" => { return Some(CodeValue::Number(spread_x.to_string())); },
+            "Vertical"   => { return Some(CodeValue::Number(spread_y.to_string())); }
+            _ => { }
+        } } },
+        _ => { }
+    } }
 
     else if (action == "SetParticleSprd") { match (get_chunk::<4>(params)) {
         [Some(CodeValue::Particle { kind, spread_x : _, spread_y : _, amount, motion, motion_variation, colour, colour_variation, opacity, material, size, size_variation, roll, fade_colour }), Some(CodeValue::Number(new_spread_x)), Some(CodeValue::Number(new_spread_y)), None] => { if let Ok(new_spread_x) = new_spread_x.parse::<f64>() { if let Ok(new_spread_y) = new_spread_y.parse::<f64>() {
@@ -383,13 +506,45 @@ fn check_value_to_propagate<'l>(action : &str, params : &mut impl Iterator<Item 
         }, _ => { }
     } }
 
-    // TODO: GetVectorComp
+    else if (action == "GetVectorComp") { match (get_chunk::<2>(params)) {
+        [Some(CodeValue::Vector { x, y, z }), None] => {
+            if let Some(component) = get_tag(tags, "Component") { match (component.as_str()) {
+                "X" => { return Some(CodeValue::Number(x.to_string())) },
+                "Y" => { return Some(CodeValue::Number(y.to_string())) },
+                "Z" => { return Some(CodeValue::Number(z.to_string())) },
+                _ => { }
+            } }
+        }, _ => { }
+    } }
 
-    // TODO: SetVectorComp
+    else if (action == "SetVectorComp") { match (get_chunk::<3>(params)) {
+        [Some(CodeValue::Vector { x, y, z }), Some(CodeValue::Number(new_value)), None] => { if let Ok(new_value) = new_value.parse::<f64>() {
+            if let Some(component) = get_tag(tags, "Component") { match (component.as_str()) {
+                "X" => { return Some(CodeValue::Vector { x : new_value, y : *y,        z : *z        }) },
+                "Y" => { return Some(CodeValue::Vector { x : *x,        y : new_value, z : *z        }) },
+                "Z" => { return Some(CodeValue::Vector { x : *x,        y : *y,        z : new_value }) },
+                _ => { }
+            } }
+        } }, _ => { }
+    } }
 
-    // TODO: GetVectorLength
+    else if (action == "GetVectorLength") { match (get_chunk::<2>(params)) {
+        [Some(CodeValue::Vector { x, y, z }), None] => {
+            let length_squared = x*x + y*y + z*z;
+            if let Some(squared) = get_tag(tags, "Length Type") { if (squared == "Length Squared") {
+                return Some(CodeValue::Number(length_squared.to_string()));
+            } }
+            return Some(CodeValue::Number(length_squared.sqrt().to_string()));
+        }, _ => { }
+    } }
 
-    // TODO: SetVectorLength
+    else if (action == "SetVectorLength") { match (get_chunk::<3>(params)) {
+        [Some(CodeValue::Vector { x, y, z }), Some(CodeValue::Number(new_length)), None] => { if let Ok(new_length) = new_length.parse::<f64>() {
+            let old_length = (x*x + y*y + z*z).sqrt();
+            let factor = new_length / old_length;
+            return Some(CodeValue::Vector { x : x * factor, y : y * factor, z : z * factor });
+        } }, _ => { }
+    } }
 
     else if (action == "MultiplyVector") { match (get_chunk::<3>(params)) {
         [Some(CodeValue::Vector { x, y, z }), Some(CodeValue::Number(factor)), None] => {
@@ -399,9 +554,26 @@ fn check_value_to_propagate<'l>(action : &str, params : &mut impl Iterator<Item 
         }, _ => { }
     } }
 
-    // TODO: AddVectors
+    else if (action == "AddVectors") {
+        let mut final_x = 0.0;
+        let mut final_y = 0.0;
+        let mut final_z = 0.0;
+        for param in params {
+            if let CodeValue::Vector { x, y, z } = param {
+                final_x += x; final_y += y; final_z += z;
+            } else { return None; }
+        }
+        return Some(CodeValue::Vector { x : final_x, y : final_y, z : final_z });
+    }
 
-    // TODO: SubtractVectors
+    else if (action == "SubtractVectors") && let Some(CodeValue::Vector { x : mut final_x, y : mut final_y, z : mut final_z }) = params.next() {
+        for param in params {
+            if let CodeValue::Vector { x, y, z } = param {
+                final_x -= x; final_y -= y; final_z -= z;
+            } else { return None; }
+        }
+        return Some(CodeValue::Vector { x : final_x, y : final_y, z : final_z });
+    }
 
     // TODO: AlignVector
 
@@ -409,9 +581,25 @@ fn check_value_to_propagate<'l>(action : &str, params : &mut impl Iterator<Item 
 
     // TODO: RotateAroundVec
 
-    // TODO: ReflectVector
+    else if (action == "ReflectVector") { match (get_chunk::<3>(params)) {
+        [Some(CodeValue::Vector { x : vx, y : vy, z : vz }), Some(CodeValue::Vector { x : mut nx, y : mut ny, z : mut nz }), None] => {
+            let n_length = (nx*nx + ny*ny + nz*nz).sqrt(); if (n_length != 0.0) {
+                nx = nx / n_length; ny = ny / n_length; nz = nz / n_length;
+                let dot = vx*nx + vy*ny + vz*nz;
+                return Some(CodeValue::Vector {
+                    x : vx - (2.0 * dot * nx),
+                    y : vy - (2.0 * dot * ny),
+                    z : vz - (2.0 * dot * nz)
+                });
+            }
+        }, _ => { }
+    } }
 
-    // TODO: CrossProduct
+    else if (action == "CrossProduct") { match (get_chunk::<3>(params)) {
+        [Some(CodeValue::Vector { x : ax, y : ay, z : az }), Some(CodeValue::Vector { x : bx, y : by, z : bz }), None] => {
+            return Some(CodeValue::Vector { x : ay*bz - by*az, y : az*bx - bz*ax, z : ax*by - bx*ay });
+        }, _ => { }
+    } }
 
     else if (action == "DotProduct") { match (get_chunk::<3>(params)) {
         [Some(CodeValue::Vector { x : ax, y : ay, z : az }), Some(CodeValue::Vector { x : bx, y : by, z : bz }), None] => {
