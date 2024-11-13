@@ -16,6 +16,6 @@ impl From<isize > for Int { #[inline(always)] fn from(value : isize ) -> Self { 
 
 unsafe impl DFValue for Int {
     unsafe fn to_opaque(&self) -> DFOpaqueValue { unsafe {
-        transmute_unchecked(self._opaque_type.clone())
+        transmute_unchecked(self._opaque_type)
     } }
 }

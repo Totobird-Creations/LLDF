@@ -7,7 +7,7 @@ pub trait Into<T> : Sized {
     fn into(self) -> T;
 }
 impl<T, U : From<T>> Into<U> for T {
-    #[inline]
+    #[inline(always)]
     #[track_caller]
     fn into(self) -> U {
         U::from(self)

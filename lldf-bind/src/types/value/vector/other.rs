@@ -32,6 +32,11 @@ impl<const LANES : usize> _VectorMethods<LANES> for Vector<LANES> {
         DF_ACTION__SetVariable_GetListValue( self.inner.to_opaque(), lane )
     } }
 
+
+    #[doc(hidden)]
+    #[inline(always)]
+    default fn clone(&self) -> Self { Self { inner : self.inner.clone() } }
+
 }
 
 

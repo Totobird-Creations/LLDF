@@ -4,11 +4,14 @@ use crate::core::mem::transmute_unchecked;
 
 
 /// A particle effect with customisable parameters.
-#[derive(Clone)]
 pub struct Particle {
     _opaque_type : u8
 }
 
+impl Clone for Particle {
+    #[inline(always)]
+    fn clone(&self) -> Self { unsafe { transmute_unchecked(self._opaque_type) } }
+}
 
 impl Particle {
 
@@ -31,8 +34,8 @@ impl Particle {
 
     #[lldf_bind_proc::dfdoc(SetVariable/GetParticleAmount)]
     #[inline(always)]
-    pub fn with_amount(&self, amount : UInt) -> Particle { unsafe {
-        DF_ACTION__SetVariable_SetParticleAmount(self.to_opaque(), amount)
+    pub fn with_amount<U : Into<UInt>>(&self, amount : U) -> Particle { unsafe {
+        DF_ACTION__SetVariable_SetParticleAmount(self.to_opaque(), amount.into())
     } }
 
     #[lldf_bind_proc::dfdoc(SetVariable/GetParticleSprd)]
@@ -46,8 +49,8 @@ impl Particle {
 
     #[lldf_bind_proc::dfdoc(SetVariable/SetParticleSprd)]
     #[inline(always)]
-    pub fn with_spread(&self, horizontal : Float, vertical : Float) -> Particle { unsafe {
-        DF_ACTION__SetVariable_SetParticleSprd(self.to_opaque(), horizontal, vertical)
+    pub fn with_spread<H : Into<Float>, V : Into<Float>>(&self, horizontal : H, vertical : V) -> Particle { unsafe {
+        DF_ACTION__SetVariable_SetParticleSprd(self.to_opaque(), horizontal.into(), vertical.into())
     } }
 
     #[lldf_bind_proc::dfdoc(SetVariable/GetParticleSize)]
@@ -58,15 +61,17 @@ impl Particle {
 
     #[lldf_bind_proc::dfdoc(SetVariable/SetParticleSize)]
     #[inline(always)]
-    pub fn with_size(&self, size : Float, variation_percent : Float) -> Particle { unsafe {
-        DF_ACTION__SetVariable_SetParticleSize(self.to_opaque(), size, variation_percent)
+    pub fn with_size<F : Into<Float>, V : Into<Float>>(&self, size : F, variation_percent : V) -> Particle { unsafe {
+        DF_ACTION__SetVariable_SetParticleSize(self.to_opaque(), size.into(), variation_percent.into())
     } }
 
     #[lldf_bind_proc::dfdoc(SetVariable/GetParticleMat)]
     #[inline(always)]
-    pub fn material(&self) -> String { unsafe {
+    pub unsafe fn material_unchecked(&self) -> String { unsafe {
         DF_ACTION__SetVariable_GetParticleMat(self.to_opaque())
     } }
+
+    // TODO: material (with property check)
 
     #[lldf_bind_proc::dfdoc(SetVariable/SetParticleMat)]
     #[inline(always)]
@@ -112,8 +117,8 @@ impl Particle {
 
     #[lldf_bind_proc::dfdoc(SetVariable/SetParticleOpac)]
     #[inline(always)]
-    pub fn with_opacity(&self, opacity : Float) -> Particle { unsafe {
-        DF_ACTION__SetVariable_SetParticleOpac(self.to_opaque(), opacity)
+    pub fn with_opacity<F : Into<Float>>(&self, opacity : F) -> Particle { unsafe {
+        DF_ACTION__SetVariable_SetParticleOpac(self.to_opaque(), opacity.into())
     } }
 
     #[lldf_bind_proc::dfdoc(SetVariable/GetParticleMotion)]
@@ -124,8 +129,8 @@ impl Particle {
 
     #[lldf_bind_proc::dfdoc(SetVariable/SetParticleMotion)]
     #[inline(always)]
-    pub fn with_motion(&self, motion : Vector<3>, variation_percent : Float) -> Particle { unsafe {
-        DF_ACTION__SetVariable_SetParticleMotion(self.to_opaque(), motion, variation_percent)
+    pub fn with_motion<V : Into<Float>>(&self, motion : Vector<3>, variation_percent : V) -> Particle { unsafe {
+        DF_ACTION__SetVariable_SetParticleMotion(self.to_opaque(), motion, variation_percent.into())
     } }
 
     #[lldf_bind_proc::dfdoc(SetVariable/GetParticleRoll)]
@@ -136,8 +141,8 @@ impl Particle {
 
     #[lldf_bind_proc::dfdoc(SetVariable/SetParticleRoll)]
     #[inline(always)]
-    pub fn with_roll(&self, roll : Float) -> Particle { unsafe {
-        DF_ACTION__SetVariable_SetParticleRoll(self.to_opaque(), roll)
+    pub fn with_roll<F : Into<Float>>(&self, roll : F) -> Particle { unsafe {
+        DF_ACTION__SetVariable_SetParticleRoll(self.to_opaque(), roll.into())
     } }
 
     #[cfg(any(not(feature = "en_us"), doc))]
@@ -174,10 +179,8 @@ impl Particle {
 
 
 unsafe impl DFValue for Particle {
-    #[inline]
-    unsafe fn to_opaque(&self) -> DFOpaqueValue { unsafe {
-        transmute_unchecked(self._opaque_type.clone())
-    } }
+    #[inline(always)]
+    unsafe fn to_opaque(&self) -> DFOpaqueValue { unsafe { transmute_unchecked(self._opaque_type) } }
 }
 
 

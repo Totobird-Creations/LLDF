@@ -1,11 +1,17 @@
+use core::mem::transmute_unchecked;
+
 use crate::prelude::*;
 
 
 /// An entity UUID.
-#[derive(Clone)]
 #[repr(transparent)]
 pub struct UUID {
     uuid : String
+}
+
+impl Clone for UUID {
+    #[inline(always)]
+    fn clone(&self) -> Self { Self { uuid : self.uuid.clone() } }
 }
 
 
@@ -22,8 +28,6 @@ impl UUID {
 impl UUID {
 
     #[inline(always)]
-    pub fn to_string(&self) -> String {
-        self.uuid.clone()
-    }
+    pub fn to_string(&self) -> String { unsafe{ transmute_unchecked(self.uuid.to_opaque()) } }
 
 }

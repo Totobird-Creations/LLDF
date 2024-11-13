@@ -3,10 +3,9 @@ use super::macros::derive;
 use super::marker::{ Copy, Sized };
 
 
-extern "rust-intrinsic" {
-    #[rustc_nounwind]
-    pub fn transmute_unchecked<Src, Dst>(src : Src) -> Dst;
-}
+#[rustc_intrinsic]
+#[rustc_intrinsic_must_be_overridden]
+pub const unsafe fn transmute_unchecked<Src, Dst>(_src : Src) -> Dst { loop {} }
 
 
 #[lang = "maybe_uninit"]

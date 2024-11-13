@@ -11,12 +11,11 @@ mod four;
 
 
 /// A vector with some number of lanes. Used for representing directions, motions, or offsets.
-#[derive(Clone)]
-pub struct Vector<const LANES : usize> {
+pub struct Vector<const LANES : usize> { // TODO: Clone
     inner : List<Float>
 }
 #[doc(hidden)]
-pub trait _VectorMethods<const LANES : usize> {
+pub trait _VectorMethods<const LANES : usize> : DFValue {
 
     fn new(lanes : [Float; LANES]) -> Vector<LANES>;
 
@@ -72,10 +71,17 @@ pub trait _VectorMethods<const LANES : usize> {
 
     // TODO: angle_between
 
+
+    #[doc(hidden)]
+    fn clone(&self) -> Self;
+
+}
+impl<const LANES : usize> Clone for Vector<LANES> {
+    fn clone(&self) -> Self { _VectorMethods::<LANES>::clone(self) }
 }
 
 unsafe impl<const LANES : usize> DFValue for Vector<LANES> {
-    #[inline]
+    #[inline(always)]
     unsafe fn to_opaque(&self) -> DFOpaqueValue { unsafe {
         self.inner.to_opaque()
     } }

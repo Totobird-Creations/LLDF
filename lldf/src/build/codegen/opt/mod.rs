@@ -1,42 +1,27 @@
+mod constant_propagation;
+pub use constant_propagation::*;
 mod dead_selection;
-pub use dead_selection::dead_selection;
-mod duplicate_selection;
-pub use duplicate_selection::duplicate_selection;
-mod redundant_selection;
-pub use redundant_selection::redundant_selection;
-mod redundant_equals;
-pub use redundant_equals::redundant_equals;
-mod substitutable_arithmetic;
-pub use substitutable_arithmetic::substitutable_arithmetic;
-mod substitutable_string;
-pub use substitutable_string::substitutable_string;
-mod substitutable_text;
-pub use substitutable_text::substitutable_text;
-mod constant_sound;
-pub use constant_sound::constant_sound;
-mod constant_potion;
-pub use constant_potion::constant_potion;
+pub use dead_selection::*;
+mod dead_assignment;
+pub use dead_assignment::*;
+mod dead_conditional;
+pub use dead_conditional::*;
+// TODO: duplicate_selection
 
 
-use super::{ Codeblock, CodeLine, CodeValue };
+use super::*;
 
 
 pub fn optimise(line : &mut CodeLine) -> () {
-    // TODO: Handle crossing a loop/conditional boundary.
-    // TODO: Handle `=` intended to clone values.
-    return;
     let mut did_nothing = 0;
-    while (did_nothing < 5) {
+    while (did_nothing < 2) {
         let mut did_something = false;
-        did_something &= redundant_selection(line);
-        did_something &= dead_selection(line);
-        did_something &= duplicate_selection(line);
-        did_something &= redundant_equals(line);
-        did_something &= substitutable_arithmetic(line);
-        did_something &= substitutable_string(line);
-        did_something &= substitutable_text(line);
-        did_something &= constant_sound(line);
-        did_something &= constant_potion(line);
+
+        did_something |= constant_propagation(line);
+        did_something |= dead_selection(line);
+        did_something |= dead_assignment(line);
+        did_something |= dead_conditional(line);
+
         did_nothing = if (did_something) { 0 } else { did_nothing + 1 };
     }
 }

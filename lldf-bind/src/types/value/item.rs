@@ -3,9 +3,13 @@ use crate::bind::DFOpaqueValue;
 use crate::core::mem::transmute_unchecked;
 
 
-#[derive(Clone)]
 pub struct Item {
     _opaque_type : u8
+}
+
+impl Clone for Item {
+    #[inline(always)]
+    fn clone(&self) -> Self { unsafe { transmute_unchecked(self._opaque_type) } }
 }
 
 impl Item {
@@ -137,7 +141,7 @@ impl Item {
     /// - **May cause large plot CPU usage spikes, causing plot to lagslay.**
     #[inline(always)]
     pub unsafe fn with_head_name<S : Into<String>>(&self, name : S) -> Item { unsafe {
-        DF_ACTION__SetVariable_SetHeadTexture(self.to_opaque(), name)
+        DF_ACTION__SetVariable_SetHeadTexture(self.to_opaque(), name.into())
     } }
 
     #[lldf_bind_proc::dfdoc(SetVariable/SetHeadTexture)]
@@ -408,10 +412,8 @@ impl Item {
 }
 
 unsafe impl DFValue for Item {
-    #[inline]
-    unsafe fn to_opaque(&self) -> DFOpaqueValue { unsafe {
-        transmute_unchecked(self._opaque_type.clone())
-    } }
+    #[inline(always)]
+    unsafe fn to_opaque(&self) -> DFOpaqueValue { unsafe { transmute_unchecked(self._opaque_type) } }
 }
 
 

@@ -9,5 +9,5 @@ pub struct DFOpaqueValue {
 }
 
 unsafe impl DFValue for DFOpaqueValue {
-    unsafe fn to_opaque(&self) -> DFOpaqueValue { transmute_unchecked(self._opaque_type.clone()) }
+    unsafe fn to_opaque(&self) -> DFOpaqueValue { transmute_unchecked(self._opaque_type) }
 }

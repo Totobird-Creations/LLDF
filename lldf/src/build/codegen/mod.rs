@@ -169,14 +169,10 @@ impl Codeblock {
         Codeblock::Block(block) => block.is_line_var_used(var_name),
         _ => false
     } }
-    pub fn replace_line_var(&mut self, var_name : &str, with : &str) -> () { match (self) {
-        Codeblock::Block(block) => block.replace_line_var(var_name, with),
-        _ => { }
-    } }
 
-    pub fn is_call_func(&self) -> bool { match (self) {
-        Codeblock::Block(block) => block.is_call_func(),
-        _ => false
+    pub fn setvar_like_line(&self) -> (bool, Option<&String>) { match (self) {
+        Codeblock::Block(block) => block.setvar_like_line(),
+        _ => (false, None)
     } }
 
 }
@@ -233,21 +229,22 @@ impl CodeblockBlock {
     }
 
     pub fn is_line_var_used(&self, var_name : &str) -> bool {
-        self.params.iter().any(|param| param.is_line_var_used(var_name))
+        let (setvar_like, _) = self.setvar_like_line();
+        self.params.iter().skip(if (setvar_like) { 1 } else { 0 }).any(|param| param.is_line_var_used(var_name))
             || self.tags.iter().any(|tag| tag.is_line_var_used(var_name))
     }
-    pub fn replace_line_var(&mut self, var_name : &str, with : &str) -> () {
-        for param in &mut self.params {
-            param.replace_line_var(var_name, with);
-        }
-        for tag in &mut self.tags {
-            tag.replace_line_var(var_name, with);
-        }
-    }
 
-    pub fn is_call_func(&self) -> bool {
-        self.block == "call_func"
-    }
+    pub fn setvar_like_line(&self) -> (bool, Option<&String>) { if let Some(action) = &self.action {
+        if (
+            self.block == "set_var"
+            || (self.block == "repeat" && (action != "Forever" && action != "While"))
+            || (self.block == "entity_action" && (action == "GetCustomTag" || action == "GetAllEntityTags"))
+        ) { return (true,
+            if let Some(CodeValue::Variable { name, scope : VariableScope::Line }) = self.params.get(0) {
+                Some(name)
+            } else { None }
+        ); }
+    } (false, None) }
 
 }
 

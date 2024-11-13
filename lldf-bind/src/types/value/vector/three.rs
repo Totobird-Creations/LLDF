@@ -80,6 +80,11 @@ impl _VectorMethods<3> for Vector<3> {
         DF_ACTION__SetVariable_GetVectorComp_Component_DynamicX(lane, self.to_opaque())
     } }
 
+
+    #[doc(hidden)]
+    #[inline(always)]
+    fn clone(&self) -> Self { unsafe { transmute_unchecked(self.inner._opaque_type) } }
+
 }
 
 

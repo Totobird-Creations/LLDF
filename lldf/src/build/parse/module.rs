@@ -278,7 +278,15 @@ pub fn linked_name_to_actiontag_kind(actiontag_kind : &str) -> String {
     ).intersperse(Cow::Borrowed(" ")).collect::<String>()
 }
 pub fn linked_name_to_actiontag_value(actiontag_value : &str) -> String {
-    linked_name_to_actiontag_kind(actiontag_value)
+    let lowercase = linked_name_to_actiontag_kind(actiontag_value).split(" ").map(|word| {
+        if (word.to_uppercase() == word) { Cow::Borrowed(word) }
+        else { Cow::Owned(word.to_lowercase()) }
+    }).intersperse(Cow::Borrowed(" ")).collect::<String>();
+    let mut chars = lowercase.chars();
+    match (chars.next()) {
+        None => String::new(),
+        Some(ch) => ch.to_uppercase().collect::<String>() + chars.as_str()
+    }
 }
 pub fn collect_actiontag_parts<'l>(actiontag_parts : impl Iterator<Item = &'l str>) -> Vec<ActionFunctionTag> {
     actiontag_parts.array_chunks::<2>()
@@ -327,7 +335,7 @@ pub fn linked_name_to_gamevalue_target(gamevalue_kind : &str) -> String {
     linked_name_to_actiontag_kind(gamevalue_kind)
 }
 pub fn linked_name_to_sound_id(sound_id : &str) -> String {
-    sound_id.split("_").map(|part| linked_name_to_item_id(part)).intersperse(".".to_string()).collect::<String>()
+    linked_name_to_actiontag_kind(sound_id)
 }
 pub fn linked_name_to_potion_id(potion_id : &str) -> String {
     linked_name_to_actiontag_kind(&names_to_symbols(&potion_id))

@@ -4,9 +4,13 @@ use crate::core::mem::transmute_unchecked;
 
 
 /// A potion effect with amplifier and duration.
-#[derive(Clone)]
 pub struct Potion {
     _opaque_type : u8
+}
+
+impl Clone for Potion {
+    #[inline(always)]
+    fn clone(&self) -> Self { unsafe { transmute_unchecked(self._opaque_type) } }
 }
 
 impl Potion {
@@ -14,6 +18,12 @@ impl Potion {
     #[inline(always)]
     pub fn new(kind : PotionKind) -> Potion { unsafe {
         DF_ACTION__SetVariable_SetPotionType(Self::speed().to_opaque(), kind.to_string())
+    } }
+
+    #[lldf_bind_proc::dfdoc(SetVariable/GetPotionType)]
+    #[inline(always)]
+    pub fn kind(&self) -> PotionKind { unsafe {
+        PotionKind::from_string_unchecked(DF_ACTION__SetVariable_GetPotionType(self.to_opaque()))
     } }
 
     #[lldf_bind_proc::dfdoc(SetVariable/GetPotionDur)]
@@ -46,10 +56,8 @@ impl Potion {
 
 
 unsafe impl DFValue for Potion {
-    #[inline]
-    unsafe fn to_opaque(&self) -> DFOpaqueValue { unsafe {
-        transmute_unchecked(self._opaque_type.clone())
-    } }
+    #[inline(always)]
+    unsafe fn to_opaque(&self) -> DFOpaqueValue { unsafe { transmute_unchecked(self._opaque_type) } }
 }
 
 
@@ -60,6 +68,7 @@ extern "C" {
 
 
     fn DF_ACTION__SetVariable_SetPotionType( potion : DFOpaqueValue, kind : String ) -> Potion;
+    fn DF_ACTION__SetVariable_GetPotionType( potion : DFOpaqueValue ) -> String;
     fn DF_ACTION__SetVariable_GetPotionDur( potion : DFOpaqueValue ) -> UInt;
     fn DF_ACTION__SetVariable_SetPotionDur( potion : DFOpaqueValue, duration_ticks : UInt ) -> Potion;
     fn DF_ACTION__SetVariable_GetPotionAmp( potion : DFOpaqueValue ) -> UInt;

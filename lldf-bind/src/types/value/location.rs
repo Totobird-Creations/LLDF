@@ -3,9 +3,13 @@ use crate::bind::DFOpaqueValue;
 use crate::core::mem::transmute_unchecked;
 
 
-#[derive(Clone)]
 pub struct Location {
     _opaque_type : u8
+}
+
+impl Clone for Location {
+    #[inline(always)]
+    fn clone(&self) -> Self { unsafe { transmute_unchecked(self._opaque_type) } }
 }
 
 impl Location {
@@ -90,10 +94,8 @@ impl Location {
 
 
 unsafe impl DFValue for Location {
-    #[inline]
-    unsafe fn to_opaque(&self) -> DFOpaqueValue { unsafe {
-        transmute_unchecked(self._opaque_type.clone())
-    } }
+    #[inline(always)]
+    unsafe fn to_opaque(&self) -> DFOpaqueValue { unsafe { transmute_unchecked(self._opaque_type) } }
 }
 
 

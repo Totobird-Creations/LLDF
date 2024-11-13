@@ -110,7 +110,7 @@ impl Float {
 
 unsafe impl DFValue for Float {
     unsafe fn to_opaque(&self) -> DFOpaqueValue { unsafe {
-        transmute_unchecked(self._opaque_type.clone())
+        transmute_unchecked(self._opaque_type)
     } }
 }
 impl Into<Float> for Float {

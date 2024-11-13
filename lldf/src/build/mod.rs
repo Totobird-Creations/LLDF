@@ -205,7 +205,9 @@ pub fn ccapi_submit_templates(templates : &Vec<CodeLine>) -> Result<(), Box<dyn 
     eprint!("Queueing templates... ");
     for template in templates {
         // TODO: split template to plot size.
-        let Ok(_) = sock.send(ws::Message::Text(format!("place {}", template.to_b64()))) else { return Err("Failed to queue template".into()) };
+        let template = template.to_b64();
+        //println!("{}", template);
+        let Ok(_) = sock.send(ws::Message::Text(format!("place {}", template))) else { return Err("Failed to queue template".into()) };
     }
     eprintln!("Done");
     eprint!("Placing templates... ");

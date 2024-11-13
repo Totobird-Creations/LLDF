@@ -3,9 +3,8 @@ use crate::prelude::*;
 use crate::core::ops::*;
 
 
-#[derive(Clone)]
 #[repr(transparent)]
-pub struct Matrix<const ROWS : usize, const COLUMNS : usize> {
+pub struct Matrix<const ROWS : usize, const COLUMNS : usize> { // TODO: Clone
     inner : List<Float>
 }
 

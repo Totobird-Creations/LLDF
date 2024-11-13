@@ -123,15 +123,27 @@ pub fn handle_special_const(value : &ConstantRef) -> Option<Value> {
     // Strings
     'string_failed : loop {
         if let Constant::Struct { values, is_packed : true, .. } = &**value {
-            if (values.len() == 1) { if let Constant::Array { elements, .. } = &*values[0] {
-                let mut bytes = Vec::with_capacity(elements.len());
-                for element in elements { if let Constant::Int { bits : 8, value } = &**element {
-                    bytes.push(*value as u8);
-                } else { break 'string_failed; } }
-                if let Ok(string) = String::from_utf8(bytes) {
-                    return Some(Value::ConstString(string));
+
+            if (values.len() == 1) {
+                if let Constant::Array { elements, .. } = &*values[0] {
+                    let mut bytes = Vec::with_capacity(elements.len());
+                    for element in elements { if let Constant::Int { bits : 8, value } = &**element {
+                        bytes.push(*value as u8);
+                    } else { break 'string_failed; } }
+                    if let Ok(string) = String::from_utf8(bytes) {
+                        return Some(Value::ConstString(string));
+                    }
                 }
-            }}
+            }
+
+            else if (values.len() == 2) {
+                if let Constant::Array { .. } = &*values[1] {
+                    if let Constant::GlobalReference { name, .. } = &*values[0] {
+                        return Some(Value::Global(name.clone()));
+                    }
+                }
+            }
+
         }
         break 'string_failed;
     }

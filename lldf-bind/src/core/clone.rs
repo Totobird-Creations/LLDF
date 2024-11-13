@@ -6,7 +6,7 @@ use super::marker::Sized;
 #[rustc_trivial_field_reads]
 pub trait Clone : Sized {
     fn clone(&self) -> Self;
-    #[inline] fn clone_from(&mut self, source : &Self) {
+    #[inline(always)] fn clone_from(&mut self, source : &Self) {
         *self = source.clone()
     }
 }

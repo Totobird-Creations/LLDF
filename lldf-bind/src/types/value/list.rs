@@ -6,15 +6,13 @@ use core::mem::transmute_unchecked;
 
 #[repr(transparent)]
 pub struct List<T : DFValue> {
-    _opaque_type : u8,
-    _ph          : PhantomData<T>
+    pub(crate) _opaque_type : u8,
+    _ph : PhantomData<T>
 }
 
 impl<T : DFValue> Clone for List<T> {
     #[inline(always)]
-    fn clone(&self) -> Self { unsafe {
-        transmute_unchecked(DF_ACTION__SetVariable_Specialcharequals(transmute_unchecked(self._opaque_type.clone())))
-    } }
+    fn clone(&self) -> Self { unsafe { transmute_unchecked(DF_ACTION__SetVariable_Specialcharequals(transmute_unchecked(self._opaque_type))) } }
 }
 
 impl<T : DFValue> List<T> {
@@ -166,9 +164,7 @@ impl List<String> {
 
 unsafe impl<T : DFValue> DFValue for List<T> {
     #[inline(always)]
-    unsafe fn to_opaque(&self) -> DFOpaqueValue {
-        transmute_unchecked(self._opaque_type.clone())
-    }
+    unsafe fn to_opaque(&self) -> DFOpaqueValue { transmute_unchecked(self._opaque_type) }
 }
 
 

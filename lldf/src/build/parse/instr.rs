@@ -132,7 +132,38 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
 
     Instruction::IntToPtr(_) => todo!(),
 
-    Instruction::ICmp(_) => todo!(),
+    Instruction::ICmp(ICmp { predicate, operand0, operand1, dest, .. }) => {
+        let op = match (predicate) {
+            llvm_ir::IntPredicate::EQ => "=",
+            llvm_ir::IntPredicate::NE => "!=",
+            llvm_ir::IntPredicate::UGT | llvm_ir::IntPredicate::SGT => ">",
+            llvm_ir::IntPredicate::UGE | llvm_ir::IntPredicate::SGE => ">=",
+            llvm_ir::IntPredicate::ULT | llvm_ir::IntPredicate::SLT => "<",
+            llvm_ir::IntPredicate::ULE | llvm_ir::IntPredicate::SLE => "<=",
+        };
+        let params = vec![
+            parse_oper(module, function, operand0)?.to_codevalue(module, function)?,
+            parse_oper(module, function, operand1)?.to_codevalue(module, function)?
+        ];
+        function.line.blocks.push(Codeblock::action("if_var", op, params, vec![ ]));
+        function.line.blocks.push(Codeblock::OPEN_COND_BRACKET);
+        let params = vec![
+            CodeValue::Variable { name : name_to_local(dest), scope: VariableScope::Line },
+            CodeValue::Number(String::from("1"))
+        ];
+        function.line.blocks.push(Codeblock::action("set_var", "=", params, vec![ ]));
+        function.line.blocks.push(Codeblock::CLOSE_COND_BRACKET);
+        function.line.blocks.push(Codeblock::elses());
+        function.line.blocks.push(Codeblock::OPEN_COND_BRACKET);
+        let params = vec![
+            CodeValue::Variable { name : name_to_local(dest), scope: VariableScope::Line },
+            CodeValue::Number(String::from("0"))
+        ];
+        function.line.blocks.push(Codeblock::action("set_var", "=", params, vec![ ]));
+        function.line.blocks.push(Codeblock::CLOSE_COND_BRACKET);
+        function.locals.insert(dest.clone(), Value::Local(name_to_local(dest)));
+        Ok(())
+    },
 
     Instruction::FCmp(_) => todo!(),
 
@@ -297,7 +328,7 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
                     if let Some(dest) = dest {
                         let params = vec![
                             CodeValue::Variable { name : name_to_local(dest), scope : VariableScope::Line },
-                            CodeValue::Sound { kind : SoundKind::Keyed(id.clone()), volume : 1.0, pitch : 1.0 }
+                            CodeValue::Sound { kind : SoundKind::Named(id.clone()), volume : 1.0, pitch : 1.0 }
                         ];
                         function.line.blocks.push(Codeblock::action("set_var", "=", params, vec![]));
                         function.locals.insert(dest.clone(), Value::Local(name_to_local(dest)));

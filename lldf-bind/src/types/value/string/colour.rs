@@ -4,10 +4,14 @@ use crate::core::mem::transmute_unchecked;
 
 
 /// A colour.
-#[derive(Clone)]
 #[repr(transparent)]
 pub struct Colour {
     hexcode : String
+}
+
+impl Clone for Colour {
+    #[inline(always)]
+    fn clone(&self) -> Self { Self { hexcode : self.hexcode.clone() } }
 }
 
 
@@ -36,9 +40,7 @@ impl Colour {
 impl Colour {
 
     #[inline(always)]
-    pub fn hexcode(&self) -> String {
-        self.hexcode.clone()
-    }
+    pub fn hexcode(&self) -> String { unsafe{ transmute_unchecked(self.hexcode.to_opaque()) } }
 
     #[lldf_bind_proc::dfdoc(SetVariable/GetColorChannels { ColorChannels = RGB })]
     #[inline(always)]

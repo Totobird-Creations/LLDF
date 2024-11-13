@@ -27,7 +27,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     let mut dbc : dbc::DBC = serde_json::from_str(&std::fs::read_to_string(download_dir().unwrap().join("actiondump.json"))?)?;
     let version = get_game_version();
     let items  : Option<data::Items  > = if let Some(version) = &version { serde_json::from_str(&reqwest::blocking::get(format!("https://github.com/PrismarineJS/minecraft-data/raw/refs/heads/master/data/pc/{}/items.json",  version))?.text()?)? } else { None };
-    let sounds : Option<data::Sounds > = if let Some(version) = &version { serde_json::from_str(&reqwest::blocking::get(format!("https://github.com/PrismarineJS/minecraft-data/raw/refs/heads/master/data/pc/{}/sounds.json", version))?.text()?)? } else { None };
+    //let sounds : Option<data::Sounds > = if let Some(version) = &version { serde_json::from_str(&reqwest::blocking::get(format!("https://github.com/PrismarineJS/minecraft-data/raw/refs/heads/master/data/pc/{}/sounds.json", version))?.text()?)? } else { None };
 
     let dbc_autogen_message = format!("*\\[{}\\] Automatically generated from the action dump.*", Utc::now().format("%Y-%m-%d %H:%M:%S UTC"));
 
@@ -85,23 +85,42 @@ fn main() -> Result<(), Box<dyn Error>> {
     }
 
     // Sounds
+    dbc.sounds.sort_by(|a, b| a.icon.name.cmp(&b.icon.name));
+    dbc.sounds.dedup_by(|a, b| a.icon.name == b.icon.name);
     {
         let mut file = File::create(cwd.join("src/bind/sound.rs"))?;
-        if let Some(sounds) = sounds {
-            writeln!(file, "extern \"C\" {{")?;
-            for sound in &sounds {
-                let name = sound.name.split(".").map(|part| part.to_title_case().replace(" ", "")).intersperse("_".to_string()).collect::<String>();
-                writeln!(file, "    fn DF_SOUND__{}( ) -> Sound;", name)?;
-            }
-            writeln!(file, "}}")?;
-            writeln!(file, "impl Sound {{")?;
-            for sound in &sounds {
-                let name = sound.name.split(".").map(|part| part.to_title_case().replace(" ", "")).intersperse("_".to_string()).collect::<String>();
-                writeln!(file, "    /// `{}`", sound.name)?;
-                writeln!(file, "    #[inline(always)] pub fn {}() -> Self {{ unsafe {{ DF_SOUND__{}() }} }}", sound.name.replace(".", "_"), name)?;
-            }
-            writeln!(file, "}}")?;
+        writeln!(file, "extern \"C\" {{")?;
+        for sound in &dbc.sounds {
+            let name = util::symbols_to_names(&sound.icon.name).to_title_case().replace(" ", "");
+            write!(file, "    fn DF_SOUND__{}", name)?;
+            writeln!(file, "( ) -> Sound;")?;
         }
+        writeln!(file, "}}")?;
+        writeln!(file, "impl Sound {{")?;
+        for sound in &mut dbc.sounds {
+            let name = util::symbols_to_names(&sound.icon.name).to_title_case().replace(" ", "");
+            write_doc_comment(&mut file, "    ",
+                &sound.icon.name,
+                &mut sound.icon.deprecated_note, false,
+                None,
+                &sound.icon.description,
+                false,
+                &sound.icon.example,
+                &sound.icon.works_with,
+                &sound.icon.additional_info,
+                &sound.icon.required_rank,
+                &dbc_autogen_message
+            )?;
+            writeln!(file, "    #[inline(always)] pub fn {}() -> Self {{ unsafe {{ DF_SOUND__{}() }} }}", sound.icon.name.to_snake_case(), name)?;
+        }
+        writeln!(file, "}}")?;
+        writeln!(file, "#[lldf_bind_proc::actiontag]")?;
+        writeln!(file, "pub enum SoundKind {{")?;
+        for sound in &mut dbc.sounds {
+            let name = util::symbols_to_names(&sound.icon.name).to_title_case().replace(" ", "");
+            writeln!(file, "    {} = \"{}\",", name, sound.icon.name)?;
+        }
+        writeln!(file, "}}")?;
     }
 
     // Particles

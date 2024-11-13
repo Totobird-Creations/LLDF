@@ -4,17 +4,14 @@ use crate::core::mem::transmute_unchecked;
 
 
 /// A sequence of characters.
-#[derive(Clone)]
 pub struct String {
-    _opaque_type : u8
+    pub(crate) _opaque_type : u8
 }
 
-//impl Clone for String {
-//    #[inline(always)]
-//    fn clone(&self) -> Self { unsafe {
-//        transmute_unchecked(self._opaque_type.clone())
-//    } }
-//}
+impl Clone for String {
+    #[inline(always)]
+    fn clone(&self) -> Self { unsafe { transmute_unchecked(self._opaque_type) } }
+}
 
 impl String {
 
@@ -36,7 +33,7 @@ impl<T : DFValue> From<T> for String {
 impl From<&str> for String {
     #[inline(always)]
     fn from(value : &str) -> String { unsafe { // TODO: Makes sure empty strings (`""`) still work when they aren't constant.
-        DF_ASSERT__ConstantStrToString(transmute_unchecked::<_, &String>(&value).clone())
+        DF_ASSERT__ConstantStrToString(transmute_unchecked(transmute_unchecked::<_, &String>(&value).to_opaque()))
     } }
 }
 
@@ -136,10 +133,8 @@ impl String {
 }
 
 unsafe impl DFValue for String {
-    #[inline]
-    unsafe fn to_opaque(&self) -> DFOpaqueValue { unsafe {
-        transmute_unchecked(self._opaque_type.clone())
-    } }
+    #[inline(always)]
+    unsafe fn to_opaque(&self) -> DFOpaqueValue { unsafe { transmute_unchecked(self._opaque_type) } }
 }
 
 

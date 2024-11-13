@@ -21,7 +21,7 @@ impl PlayerSel {
     #[lldf_bind_proc::dfdoc(PlayerAction/GiveItems)]
     #[inline(always)]
     pub fn give_item(&self, item : Item) -> () { unsafe {
-        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
+        DF_ACTION__SelectObject_PlayerName(self.uuids.to_opaque());
         DF_ACTION__PlayerAction_GiveItems(item);
         DF_ACTION__SelectObject_Reset();
     } }
@@ -32,51 +32,51 @@ impl PlayerSel {
 
     #[lldf_bind_proc::dfdoc(PlayerAction/SetSlotItem)]
     #[inline(always)]
-    pub fn set_item_in_slot(&self, slot : UInt, item : Item) -> () { unsafe {
-        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
-        DF_ACTION__PlayerAction_SetItemInSlot(item, slot);
+    pub fn set_item_in_slot<U : Into<UInt>, I : AsRef<Item>>(&self, slot : U, item : I) -> () { unsafe {
+        DF_ACTION__SelectObject_PlayerName(self.uuids.to_opaque());
+        DF_ACTION__PlayerAction_SetItemInSlot(item.as_ref().to_opaque(), slot.into());
         DF_ACTION__SelectObject_Reset();
     } }
 
     #[lldf_bind_proc::dfdoc(PlayerAction/SetEquipment { EquipmentSlot = MainHand })]
     #[inline(always)]
     pub fn set_mainhand_item(&self, item : Item) -> () { unsafe {
-        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
+        DF_ACTION__SelectObject_PlayerName(self.uuids.to_opaque());
         DF_ACTION__PlayerAction_SetEquipment_EquipmentSlot_MainHand(item);
         DF_ACTION__SelectObject_Reset();
     } }
     #[lldf_bind_proc::dfdoc(PlayerAction/SetEquipment { EquipmentSlot = OffHand })]
     #[inline(always)]
     pub fn set_offhand_item(&self, item : Item) -> () { unsafe {
-        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
+        DF_ACTION__SelectObject_PlayerName(self.uuids.to_opaque());
         DF_ACTION__PlayerAction_SetEquipment_EquipmentSlot_OffHand(item);
         DF_ACTION__SelectObject_Reset();
     } }
     #[lldf_bind_proc::dfdoc(PlayerAction/SetEquipment { EquipmentSlot = Head })]
     #[inline(always)]
     pub fn set_head_item(&self, item : Item) -> () { unsafe {
-        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
+        DF_ACTION__SelectObject_PlayerName(self.uuids.to_opaque());
         DF_ACTION__PlayerAction_SetEquipment_EquipmentSlot_Head(item);
         DF_ACTION__SelectObject_Reset();
     } }
     #[lldf_bind_proc::dfdoc(PlayerAction/SetEquipment { EquipmentSlot = Chest })]
     #[inline(always)]
     pub fn set_chest_item(&self, item : Item) -> () { unsafe {
-        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
+        DF_ACTION__SelectObject_PlayerName(self.uuids.to_opaque());
         DF_ACTION__PlayerAction_SetEquipment_EquipmentSlot_Chest(item);
         DF_ACTION__SelectObject_Reset();
     } }
     #[lldf_bind_proc::dfdoc(PlayerAction/SetEquipment { EquipmentSlot = Legs })]
     #[inline(always)]
     pub fn set_legs_item(&self, item : Item) -> () { unsafe {
-        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
+        DF_ACTION__SelectObject_PlayerName(self.uuids.to_opaque());
         DF_ACTION__PlayerAction_SetEquipment_EquipmentSlot_Legs(item);
         DF_ACTION__SelectObject_Reset();
     } }
     #[lldf_bind_proc::dfdoc(PlayerAction/SetEquipment { EquipmentSlot = Feet })]
     #[inline(always)]
     pub fn set_feet_item(&self, item : Item) -> () { unsafe {
-        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
+        DF_ACTION__SelectObject_PlayerName(self.uuids.to_opaque());
         DF_ACTION__PlayerAction_SetEquipment_EquipmentSlot_Feet(item);
         DF_ACTION__SelectObject_Reset();
     } }
@@ -93,7 +93,7 @@ impl PlayerSel {
     #[lldf_bind_proc::dfdoc(PlayerAction/ClearInv { ClearCraftingAndCursor = True, ClearMode = EntireInventory })]
     #[inline(always)]
     pub fn clear_inventory(&self) -> () { unsafe {
-        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
+        DF_ACTION__SelectObject_PlayerName(self.uuids.to_opaque());
         DF_ACTION__PlayerAction_ClearInv_ClearCraftingAndCursor_True_ClearMode_EntireInventory();
         DF_ACTION__SelectObject_Reset();
     } }
@@ -101,7 +101,7 @@ impl PlayerSel {
     #[lldf_bind_proc::dfdoc(PlayerAction/SetCursorItem)]
     #[inline(always)]
     pub fn set_cursor_item(&self, item : Item) -> () { unsafe {
-        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
+        DF_ACTION__SelectObject_PlayerName(self.uuids.to_opaque());
         DF_ACTION__PlayerAction_SetCursorItem(item);
         DF_ACTION__SelectObject_Reset();
     } }
@@ -109,7 +109,7 @@ impl PlayerSel {
     #[lldf_bind_proc::dfdoc(PlayerAction/SaveInv)]
     #[inline(always)]
     pub fn save_inventory(&self) -> () { unsafe {
-        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
+        DF_ACTION__SelectObject_PlayerName(self.uuids.to_opaque());
         DF_ACTION__PlayerAction_SaveInv();
         DF_ACTION__SelectObject_Reset();
     } }
@@ -117,7 +117,7 @@ impl PlayerSel {
     #[lldf_bind_proc::dfdoc(PlayerAction/LoadInv)]
     #[inline(always)]
     pub fn load_saved_inventory(&self) -> () { unsafe {
-        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
+        DF_ACTION__SelectObject_PlayerName(self.uuids.to_opaque());
         DF_ACTION__PlayerAction_LoadInv();
         DF_ACTION__SelectObject_Reset();
     } }
@@ -125,7 +125,7 @@ impl PlayerSel {
     #[lldf_bind_proc::dfdoc(PlayerAction/SetItemCooldown)]
     #[inline(always)]
     pub fn set_item_cooldown(&self, item : Item, cooldown_ticks : UInt) -> () { unsafe {
-        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
+        DF_ACTION__SelectObject_PlayerName(self.uuids.to_opaque());
         DF_ACTION__PlayerAction_SetItemCooldown(item, cooldown_ticks);
         DF_ACTION__SelectObject_Reset();
     } }
@@ -133,7 +133,7 @@ impl PlayerSel {
     #[lldf_bind_proc::dfdoc(PlayerAction/GetItemCooldown)]
     #[inline(always)]
     pub fn get_item_cooldown(&self, item : Item) -> UInt { unsafe {
-        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
+        DF_ACTION__SelectObject_PlayerName(self.uuids.to_opaque());
         let out = DF_ACTION__PlayerAction_GetItemCooldown(item);
         DF_ACTION__SelectObject_Reset();
         out
@@ -147,7 +147,7 @@ impl PlayerSel {
     #[lldf_bind_proc::dfdoc(PlayerAction/SendMessage)]
     #[inline(always)]
     pub fn send_message<T : DFValue>(&self, text : T) -> () { unsafe {
-        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
+        DF_ACTION__SelectObject_PlayerName(self.uuids.to_opaque());
         DF_ACTION__PlayerAction_SendMessage_AlignmentMode_Regular_TextValueMerging_NoSpaces_InheritStyles_False(String::new(), text.to_opaque());
         DF_ACTION__SelectObject_Reset();
     } }
@@ -157,7 +157,7 @@ impl PlayerSel {
     #[lldf_bind_proc::dfdoc(PlayerAction/SendTitle)]
     #[inline(always)]
     pub fn send_title<T : Into<Text>, S : Into<Text>>(&self, title : T, subtitle : S, fade_in_ticks : UInt, hold_ticks : UInt, fade_out_ticks : UInt) -> () { unsafe {
-        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
+        DF_ACTION__SelectObject_PlayerName(self.uuids.to_opaque());
         DF_ACTION__PlayerAction_SendTitle(title.into(), subtitle.into(), fade_in_ticks, hold_ticks, fade_out_ticks);
         DF_ACTION__SelectObject_Reset();
     } }
@@ -165,7 +165,7 @@ impl PlayerSel {
     #[lldf_bind_proc::dfdoc(PlayerAction/ActionBar)]
     #[inline(always)]
     pub fn send_actionbar<T : DFValue>(&self, text : T) -> () { unsafe {
-        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
+        DF_ACTION__SelectObject_PlayerName(self.uuids.to_opaque());
         DF_ACTION__PlayerAction_ActionBar_InheritStyles_False_TextValueMerging_NoSpaces(String::new(), text.to_opaque());
         DF_ACTION__SelectObject_Reset();
     } }
@@ -173,7 +173,7 @@ impl PlayerSel {
     #[lldf_bind_proc::dfdoc(PlayerAction/OpenBook)]
     #[inline(always)]
     pub fn open_book(&self, item : Item) -> () { unsafe {
-        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
+        DF_ACTION__SelectObject_PlayerName(self.uuids.to_opaque());
         DF_ACTION__PlayerAction_OpenBook(item);
         DF_ACTION__SelectObject_Reset();
     } }
@@ -182,7 +182,7 @@ impl PlayerSel {
     #[inline(always)]
     pub fn set_boss_bar<T : Into<Text>, F0 : Into<Float>, F1 : Into<Float>, P : Into<UInt>>(&self, title : T, progress : F0, maximum : F1, position : P, sky_effect : SkyEffect, style : BarStyle, colour : BarColour) -> () { unsafe {
         let position = DF_TRANSMUTE__Opaque_UInt(DF_ACTION__SetVariable_Specialcharplus(position.into().to_opaque(), UInt::from(1usize).to_opaque()));
-        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
+        DF_ACTION__SelectObject_PlayerName(self.uuids.to_opaque());
         DF_ACTION__PlayerAction_SpecialcharspaceSetBossBarSpecialcharspace_SkyEffect_DynamicNone_BarStyle_DynamicSolid_BarColor_DynamicPurple(sky_effect.to_string(), style.to_string(), colour.to_string(), title.into(), progress.into(), maximum.into(), position);
         DF_ACTION__SelectObject_Reset();
     } }
@@ -191,60 +191,60 @@ impl PlayerSel {
     #[inline(always)]
     pub fn remove_boss_bar<P : Into<UInt>>(&self, position : P) -> () { unsafe {
         let position = DF_TRANSMUTE__Opaque_UInt(DF_ACTION__SetVariable_Specialcharplus(position.into().to_opaque(), UInt::from(1usize).to_opaque()));
-        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
+        DF_ACTION__SelectObject_PlayerName(self.uuids.to_opaque());
         DF_ACTION__PlayerAction_RemoveBossBar(position);
         DF_ACTION__SelectObject_Reset();
     } }
     #[lldf_bind_proc::dfdoc(PlayerAction/RemoveBossBar)]
     #[inline(always)]
     pub fn clear_boss_bars(&self) -> () { unsafe {
-        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
+        DF_ACTION__SelectObject_PlayerName(self.uuids.to_opaque());
         DF_ACTION__PlayerAction_RemoveBossBar();
         DF_ACTION__SelectObject_Reset();
     } }
 
     #[lldf_bind_proc::dfdoc(PlayerAction/SendAdvancement)]
     #[inline(always)]
-    pub fn send_advancement<T : Into<Text>>(&self, title : T, icon : Item, frame : AdvancementFrame) -> () { unsafe {
-        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
-        DF_ACTION__PlayerAction_SendAdvancement_ToastType_DynamicAdvancement(frame.to_string(), title.into(), icon);
+    pub fn send_advancement<T : Into<Text>, I : AsRef<Item>>(&self, title : T, icon : I, frame : AdvancementFrame) -> () { unsafe {
+        DF_ACTION__SelectObject_PlayerName(self.uuids.to_opaque());
+        DF_ACTION__PlayerAction_SendAdvancement_ToastType_DynamicAdvancement(frame.to_string(), title.into(), icon.as_ref().to_opaque());
         DF_ACTION__SelectObject_Reset();
     } }
 
     #[lldf_bind_proc::dfdoc(PlayerAction/SetTabListInfo)]
     #[inline(always)]
     pub fn send_tablist_header<T : Into<Text>>(&self, title : T) -> () { unsafe {
-        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
+        DF_ACTION__SelectObject_PlayerName(self.uuids.to_opaque());
         DF_ACTION__PlayerAction_SetTabListInfo_PlayerListField_Header(title.into());
         DF_ACTION__SelectObject_Reset();
     } }
     #[lldf_bind_proc::dfdoc(PlayerAction/SetTabListInfo)]
     #[inline(always)]
     pub fn send_tablist_footer<T : Into<Text>>(&self, title : T) -> () { unsafe {
-        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
+        DF_ACTION__SelectObject_PlayerName(self.uuids.to_opaque());
         DF_ACTION__PlayerAction_SetTabListInfo_PlayerListField_Footer(title.into());
         DF_ACTION__SelectObject_Reset();
     } }
 
     #[lldf_bind_proc::dfdoc(PlayerAction/PlaySound)]
     #[inline(always)]
-    pub fn play_sound(&self, location : Location, sound : Sound, channel : SoundChannel) -> () { unsafe {
-        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
-        DF_ACTION__PlayerAction_PlaySound_SoundSource_DynamicMaster(channel.to_string(), sound, location);
+    pub fn play_sound<L : AsRef<Location>, S : AsRef<Sound>>(&self, location : L, sound : S, channel : SoundChannel) -> () { unsafe {
+        DF_ACTION__SelectObject_PlayerName(self.uuids.to_opaque());
+        DF_ACTION__PlayerAction_PlaySound_SoundSource_DynamicMaster(channel.to_string(), sound.as_ref().to_opaque(), location.as_ref().to_opaque());
         DF_ACTION__SelectObject_Reset();
     } }
 
     #[lldf_bind_proc::dfdoc(PlayerAction/StopSound)]
     #[inline(always)]
     pub fn stop_sound(&self, sound : Sound, channel : SoundChannel) -> () { unsafe {
-        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
+        DF_ACTION__SelectObject_PlayerName(self.uuids.to_opaque());
         DF_ACTION__PlayerAction_StopSound_SoundSource_DynamicMaster(channel.to_string(), sound);
         DF_ACTION__SelectObject_Reset();
     } }
     #[lldf_bind_proc::dfdoc(PlayerAction/StopSound)]
     #[inline(always)]
     pub fn stop_all_sounds(&self, channel : SoundChannel) -> () { unsafe {
-        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
+        DF_ACTION__SelectObject_PlayerName(self.uuids.to_opaque());
         DF_ACTION__PlayerAction_StopSound_SoundSource_DynamicMaster(channel.to_string());
         DF_ACTION__SelectObject_Reset();
     } }
@@ -327,7 +327,7 @@ impl PlayerSel {
     #[lldf_bind_proc::dfdoc(PlayerAction/GivePotion { OverwriteEffect = True })]
     #[inline(always)]
     pub fn give_potion(&self, potion : Potion, icon : Flag, particles : PotionParticles) -> () { unsafe {
-        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
+        DF_ACTION__SelectObject_PlayerName(self.uuids.to_opaque());
         DF_ACTION__PlayerAction_GivePotion_ShowIcon_DynamicTrue_OverwriteEffect_True_EffectParticles_DynamicTrue(icon.to_string(), particles.to_string(), potion);
         DF_ACTION__SelectObject_Reset();
     } }
@@ -372,7 +372,7 @@ impl PlayerSel {
     #[lldf_bind_proc::dfdoc(PlayerAction/SurvivalMode)]
     #[inline(always)]
     pub fn set_gamemode_survival(&self) -> () { unsafe {
-        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
+        DF_ACTION__SelectObject_PlayerName(self.uuids.to_opaque());
         DF_ACTION__PlayerAction_SurvivalMode();
         DF_ACTION__SelectObject_Reset();
     } }
@@ -380,7 +380,7 @@ impl PlayerSel {
     #[lldf_bind_proc::dfdoc(PlayerAction/AdventureMode)]
     #[inline(always)]
     pub fn set_gamemode_adventure(&self) -> () { unsafe {
-        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
+        DF_ACTION__SelectObject_PlayerName(self.uuids.to_opaque());
         DF_ACTION__PlayerAction_AdventureMode();
         DF_ACTION__SelectObject_Reset();
     } }
@@ -388,7 +388,7 @@ impl PlayerSel {
     #[lldf_bind_proc::dfdoc(PlayerAction/CreativeMode)]
     #[inline(always)]
     pub fn set_gamemode_creative(&self) -> () { unsafe {
-        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
+        DF_ACTION__SelectObject_PlayerName(self.uuids.to_opaque());
         DF_ACTION__PlayerAction_CreativeMode();
         DF_ACTION__SelectObject_Reset();
     } }
@@ -396,7 +396,7 @@ impl PlayerSel {
     #[lldf_bind_proc::dfdoc(PlayerAction/SpectatorMode)]
     #[inline(always)]
     pub fn set_gamemode_spectator(&self) -> () { unsafe {
-        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
+        DF_ACTION__SelectObject_PlayerName(self.uuids.to_opaque());
         DF_ACTION__PlayerAction_SpectatorMode();
         DF_ACTION__SelectObject_Reset();
     } }
@@ -404,7 +404,7 @@ impl PlayerSel {
     #[lldf_bind_proc::dfdoc(PlayerAction/SetAllowFlight)]
     #[inline(always)]
     pub fn set_allow_flight(&self, enable : Toggle) -> () { unsafe {
-        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
+        DF_ACTION__SelectObject_PlayerName(self.uuids.to_opaque());
         DF_ACTION__PlayerAction_SetAllowFlight_AllowFlight_DynamicFalse(enable.to_string());
         DF_ACTION__SelectObject_Reset();
     } }
@@ -412,7 +412,7 @@ impl PlayerSel {
     #[lldf_bind_proc::dfdoc(PlayerAction/SetAllowPVP)]
     #[inline(always)]
     pub fn set_allow_pvp(&self, enable : Toggle) -> () { unsafe {
-        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
+        DF_ACTION__SelectObject_PlayerName(self.uuids.to_opaque());
         DF_ACTION__PlayerAction_SetAllowPVP_PVP_DynamicFalse(enable.to_string());
         DF_ACTION__SelectObject_Reset();
     } }
@@ -420,7 +420,7 @@ impl PlayerSel {
     #[lldf_bind_proc::dfdoc(PlayerAction/SetDropsEnabled)]
     #[inline(always)]
     pub fn set_death_drops(&self, enable : Toggle) -> () { unsafe {
-        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
+        DF_ACTION__SelectObject_PlayerName(self.uuids.to_opaque());
         DF_ACTION__PlayerAction_SetDropsEnabled_SpawnDeathDrops_DynamicFalse(enable.to_string());
         DF_ACTION__SelectObject_Reset();
     } }
@@ -428,7 +428,7 @@ impl PlayerSel {
     #[lldf_bind_proc::dfdoc(PlayerAction/SetInventoryKept)]
     #[inline(always)]
     pub fn set_keep_inventory(&self, enable : Toggle) -> () { unsafe {
-        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
+        DF_ACTION__SelectObject_PlayerName(self.uuids.to_opaque());
         DF_ACTION__PlayerAction_SetInventoryKept_InventoryKept_DynamicFalse(enable.to_string());
         DF_ACTION__SelectObject_Reset();
     } }
@@ -436,7 +436,7 @@ impl PlayerSel {
     #[lldf_bind_proc::dfdoc(PlayerAction/SetCollidable)]
     #[inline(always)]
     pub fn set_entity_collision(&self, enable : Toggle) -> () { unsafe {
-        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
+        DF_ACTION__SelectObject_PlayerName(self.uuids.to_opaque());
         DF_ACTION__PlayerAction_SetCollidable_Collision_DynamicFalse(enable.to_string());
         DF_ACTION__SelectObject_Reset();
     } }
@@ -448,7 +448,7 @@ impl PlayerSel {
     #[lldf_bind_proc::dfdoc(PlayerAction/InstantRespawn)]
     #[inline(always)]
     pub fn set_instant_respawn(&self, enable : Toggle) -> () { unsafe {
-        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
+        DF_ACTION__SelectObject_PlayerName(self.uuids.to_opaque());
         DF_ACTION__PlayerAction_InstantRespawn_InstantRespawn_DynamicFalse(enable.to_string());
         DF_ACTION__SelectObject_Reset();
     } }
@@ -456,7 +456,7 @@ impl PlayerSel {
     #[lldf_bind_proc::dfdoc(PlayerAction/SetReducedDebug)]
     #[inline(always)]
     pub fn set_reduced_debug_info(&self, enable : Toggle) -> () { unsafe {
-        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
+        DF_ACTION__SelectObject_PlayerName(self.uuids.to_opaque());
         DF_ACTION__PlayerAction_InstantRespawn_InstantRespawn_DynamicFalse(enable.to_string());
         DF_ACTION__SelectObject_Reset();
     } }
@@ -464,7 +464,7 @@ impl PlayerSel {
     #[lldf_bind_proc::dfdoc(PlayerAction/SetHandCrafting)]
     #[inline(always)]
     pub fn set_allow_hand_crafting(&self, enable : Toggle) -> () { unsafe {
-        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
+        DF_ACTION__SelectObject_PlayerName(self.uuids.to_opaque());
         DF_ACTION__PlayerAction_SetHandCrafting_AllowHandCrafting_DynamicFalse(enable.to_string());
         DF_ACTION__SelectObject_Reset();
     } }
@@ -477,7 +477,7 @@ impl PlayerSel {
     #[lldf_bind_proc::dfdoc(PlayerAction/Teleport)]
     #[inline(always)]
     pub fn set_location(&self, location : Location) -> () { unsafe {
-        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
+        DF_ACTION__SelectObject_PlayerName(self.uuids.to_opaque());
         DF_ACTION__PlayerAction_Teleport_KeepVelocity_True_KeepCurrentRotation_True(location);
         DF_ACTION__SelectObject_Reset();
     } }
@@ -516,7 +516,7 @@ impl PlayerSel {
     #[lldf_bind_proc::dfdoc(PlayerAction/SetTickRate)]
     #[inline(always)]
     pub fn set_tick_rate(&self, ticks_per_second : UInt) -> () { unsafe {
-        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
+        DF_ACTION__SelectObject_PlayerName(self.uuids.to_opaque());
         DF_ACTION__PlayerAction_SetTickRate(ticks_per_second);
         DF_ACTION__SelectObject_Reset();
     } }
@@ -617,7 +617,7 @@ impl PlayerSel {
 
     #[inline(always)]
     fn _set_name_colour(&self, colour : NameColour) -> () { unsafe {
-        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
+        DF_ACTION__SelectObject_PlayerName(self.uuids.to_opaque());
         DF_ACTION__PlayerAction_SetNameColor_NameColor_DynamicNone(colour.to_string());
         DF_ACTION__SelectObject_Reset();
     } }
@@ -662,7 +662,7 @@ impl PlayerSel {
     #[lldf_bind_proc::dfdoc(PlayerAction/RollbackBlocks)]
     #[inline(always)]
     pub fn rollback_blocks(&self, time_seconds : UInt) -> () { unsafe {
-        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
+        DF_ACTION__SelectObject_PlayerName(self.uuids.to_opaque());
         DF_ACTION__PlayerAction_RollbackBlocks(time_seconds);
         DF_ACTION__SelectObject_Reset();
     } }
@@ -670,7 +670,7 @@ impl PlayerSel {
     #[lldf_bind_proc::dfdoc(PlayerAction/SendToPlot)]
     #[inline(always)]
     pub fn send_to_plot(&self, plot_id : UInt) -> () { unsafe {
-        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
+        DF_ACTION__SelectObject_PlayerName(self.uuids.to_opaque());
         DF_ACTION__PlayerAction_SendToPlot(String::from(plot_id));
         DF_ACTION__SelectObject_Reset();
     } }
@@ -678,7 +678,7 @@ impl PlayerSel {
     #[lldf_bind_proc::dfdoc(PlayerAction/Kick)]
     #[inline(always)]
     pub fn kick(&self) -> () { unsafe {
-        DF_ACTION__SelectObject_PlayerName(self.uuids.clone());
+        DF_ACTION__SelectObject_PlayerName(self.uuids.to_opaque());
         DF_ACTION__PlayerAction_Kick();
         DF_ACTION__SelectObject_Reset();
     } }
@@ -952,7 +952,7 @@ unsafe impl DFSel for PlayerSel {}
 
 extern "C" {
 
-    fn DF_ACTION__SelectObject_PlayerName( target : List<String> ) -> ();
+    fn DF_ACTION__SelectObject_PlayerName( target : DFOpaqueValue ) -> ();
     fn DF_ACTION__SelectObject_Reset( ) -> ();
 
     fn DF_TRANSMUTE__Opaque_UInt( from : DFOpaqueValue ) -> UInt;
@@ -960,7 +960,7 @@ extern "C" {
 
 
     fn DF_ACTION__PlayerAction_GiveItems( item : Item ) -> ();
-    fn DF_ACTION__PlayerAction_SetItemInSlot( item : Item, slot : UInt ) -> ();
+    fn DF_ACTION__PlayerAction_SetItemInSlot( item : DFOpaqueValue, slot : UInt ) -> ();
     fn DF_ACTION__PlayerAction_SetEquipment_EquipmentSlot_MainHand( item : Item ) -> ();
     fn DF_ACTION__PlayerAction_SetEquipment_EquipmentSlot_OffHand( item : Item ) -> ();
     fn DF_ACTION__PlayerAction_SetEquipment_EquipmentSlot_Head( item : Item ) -> ();
@@ -980,10 +980,10 @@ extern "C" {
     fn DF_ACTION__PlayerAction_OpenBook( item : Item ) -> ();
     fn DF_ACTION__PlayerAction_SpecialcharspaceSetBossBarSpecialcharspace_SkyEffect_DynamicNone_BarStyle_DynamicSolid_BarColor_DynamicPurple( sky_effect : String, bar_style : String, bar_colour : String, title : Text, progress : Float, maximum : Float, position : UInt ) -> ();
     fn DF_ACTION__PlayerAction_RemoveBossBar( ... ) -> ();
-    fn DF_ACTION__PlayerAction_SendAdvancement_ToastType_DynamicAdvancement( frame : String, title : Text, icon : Item ) -> ();
+    fn DF_ACTION__PlayerAction_SendAdvancement_ToastType_DynamicAdvancement( frame : String, title : Text, icon : DFOpaqueValue ) -> ();
     fn DF_ACTION__PlayerAction_SetTabListInfo_PlayerListField_Header( title : Text ) -> ();
     fn DF_ACTION__PlayerAction_SetTabListInfo_PlayerListField_Footer( title : Text ) -> ();
-    fn DF_ACTION__PlayerAction_PlaySound_SoundSource_DynamicMaster( channel : String, sound : Sound, location : Location ) -> ();
+    fn DF_ACTION__PlayerAction_PlaySound_SoundSource_DynamicMaster( channel : String, sound : DFOpaqueValue, location : DFOpaqueValue ) -> ();
     fn DF_ACTION__PlayerAction_StopSound_SoundSource_DynamicMaster( channel : String, ... ) -> ();
 
     fn DF_ACTION__PlayerAction_GivePotion_ShowIcon_DynamicTrue_OverwriteEffect_True_EffectParticles_DynamicTrue( icon : String, particles : String, potion : Potion ) -> ();

@@ -13,9 +13,9 @@ pub enum CodeValue { // TODO: Add item
     Sound { kind : SoundKind, volume : f64, pitch : f64 },
     Particle {
         kind             : String,
-        cluster_x        : f64,
-        cluster_y        : f64,
-        cluster_amount   : u64,
+        spread_x         : f64,
+        spread_y         : f64,
+        amount           : u64,
         motion           : Option<(f64, f64, f64)>,
         motion_variation : Option<f64>,
         colour           : Option<u32>,
@@ -121,9 +121,8 @@ impl AsRef<str> for ParameterType {
 impl CodeValue {
 
     pub fn is_constant(&self) -> bool { match (self) {
-        CodeValue::String    ( _  ) => true,
-        CodeValue::Text      ( _  ) => true,
-        CodeValue::Number    ( _  ) => true,
+        CodeValue::String(value) | CodeValue::Text(value) | CodeValue::Number(value)
+            => ! (value.contains("%var(") || value.contains("%index(") || value.contains("%entry(")),
         CodeValue::Location  { .. } => true,
         CodeValue::Vector    { .. } => true,
         CodeValue::Sound     { .. } => true,
@@ -246,12 +245,12 @@ impl CodeValue {
                 "pitch" : pitch
             });
             match (kind) {
-                SoundKind::Named(name ) => { data["name" ] = json::Value::String(name .clone()) },
-                SoundKind::Keyed(key  ) => { data["key"  ] = json::Value::String(key  .clone()) },
+                SoundKind::Named(name ) => { data["sound" ] = json::Value::String(name .clone()) },
+                SoundKind::Keyed(key  ) => { data["key"   ] = json::Value::String(key  .clone()) },
             }
             json::json!({ "id" : "snd", "data" : data })
         },
-        Self::Particle { kind, cluster_x, cluster_y, cluster_amount, motion, motion_variation, colour, colour_variation, opacity, material, size, size_variation, roll, fade_colour } => {
+        Self::Particle { kind, spread_x, spread_y, amount: cluster_amount, motion, motion_variation, colour, colour_variation, opacity, material, size, size_variation, roll, fade_colour } => {
             let mut data = json::json!({});
             if let Some((x, y, z)) = motion {
                 data["x"] = json::Number::from_f64(*x).unwrap().into();
@@ -269,7 +268,7 @@ impl CodeValue {
             if let Some(fade_colour      ) = fade_colour      { data["rgb_fade"        ] = json::Number::from_u128 (*fade_colour as u128 ).unwrap().into() }
             json::json!({ "id" : "part", "data" : {
                 "particle" : kind,
-                "cluster"  : { "amount" : cluster_amount, "horizontal" : cluster_x, "vertical" : cluster_y },
+                "cluster"  : { "amount" : cluster_amount, "horizontal" : spread_x, "vertical" : spread_y },
                 "data"     : data
             } })
         },

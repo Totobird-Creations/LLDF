@@ -51,7 +51,7 @@ impl<T : Into<UInt>> Mul<T> for UInt {
 
 unsafe impl DFValue for UInt {
     unsafe fn to_opaque(&self) -> DFOpaqueValue { unsafe {
-        transmute_unchecked(self._opaque_type.clone())
+        transmute_unchecked(self._opaque_type)
     } }
 }
 impl Into<UInt> for UInt {

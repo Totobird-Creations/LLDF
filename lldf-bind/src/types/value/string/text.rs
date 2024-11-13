@@ -4,15 +4,24 @@ use core::mem::transmute_unchecked;
 
 
 /// Text with extra formatting via MiniMessage tags. Used for chat messages, item names, etc.
-#[derive(Clone)]
 pub struct Text {
     _opaque_type : u8
 }
 
+impl Clone for Text {
+    #[inline(always)]
+    fn clone(&self) -> Self { unsafe { transmute_unchecked(self._opaque_type) } }
+}
+
+impl From<Text> for Text {
+    #[inline(always)]
+    fn from(value : Text) -> Text { value }
+}
+
 impl<T : DFValue> From<T> for Text {
     #[inline(always)]
-    fn from(value : T) -> Text { unsafe {
-        DF_ACTION__SetVariable_Text_InheritStyles_False_TextValueMerging_NoSpaces(value.to_opaque())
+    default fn from(value : T) -> Text { unsafe {
+        DF_ACTION__SetVariable_StyledText_InheritStyles_False_TextValueMerging_NoSpaces(value.to_opaque())
     } }
 }
 
@@ -33,7 +42,7 @@ impl<T : Into<Text>> Add<T> for Text {
     type Output = Text;
     #[inline(always)]
     fn add(self, rhs : T) -> Self::Output { unsafe {
-        DF_ACTION__SetVariable_Text_InheritStyles_False_TextValueMerging_NoSpaces(self, rhs.into())
+        DF_ACTION__SetVariable_StyledText_InheritStyles_False_TextValueMerging_NoSpaces(self, rhs.into())
     } }
 }
 
@@ -59,10 +68,10 @@ impl Text {
 
     // TODO: splice
 
-    #[lldf_bind_proc::dfdoc(SetVariable/TextContentLength)]
+    #[lldf_bind_proc::dfdoc(SetVariable/ContentLength)]
     #[inline(always)]
     pub fn len(&self) -> UInt { unsafe {
-        DF_ACTION__SetVariable_TextContentLength(self.to_opaque()) // TODO: make sure this is the correct function name
+        DF_ACTION__SetVariable_ContentLength(self.to_opaque()) // TODO: make sure this is the correct function name
     } }
 
 }
@@ -70,19 +79,17 @@ impl Text {
 
 unsafe impl DFValue for Text {
     #[inline(always)]
-    unsafe fn to_opaque(&self) -> DFOpaqueValue { unsafe {
-        transmute_unchecked(self._opaque_type.clone())
-    } }
+    unsafe fn to_opaque(&self) -> DFOpaqueValue { unsafe { transmute_unchecked(self._opaque_type) } }
 }
 
 
 extern "C" {
 
-    fn DF_ACTION__SetVariable_Text_InheritStyles_False_TextValueMerging_NoSpaces( ... ) -> Text;
+    fn DF_ACTION__SetVariable_StyledText_InheritStyles_False_TextValueMerging_NoSpaces( ... ) -> Text;
 
     fn DF_ACTION__SetVariable_ParseMiniMessageExpr( minimsg : String ) -> Text;
     fn DF_ACTION__SetVariable_GetMiniMessageExpr( from : DFOpaqueValue ) -> String;
     fn DF_ACTION__SetVariable_ClearFormatting( text : DFOpaqueValue ) -> Text;
-    fn DF_ACTION__SetVariable_TextContentLength( text : DFOpaqueValue ) -> UInt;
+    fn DF_ACTION__SetVariable_ContentLength( text : DFOpaqueValue ) -> UInt;
 
 }

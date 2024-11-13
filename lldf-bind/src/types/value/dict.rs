@@ -11,9 +11,7 @@ pub struct Dict<T : DFValue> {
 
 impl<T : DFValue> Clone for Dict<T> {
     #[inline(always)]
-    fn clone(&self) -> Self { unsafe {
-        transmute_unchecked(DF_ACTION__SetVariable_Specialcharequals(transmute_unchecked(self._opaque_type.clone())))
-    } }
+    fn clone(&self) -> Self { unsafe { transmute_unchecked(DF_ACTION__SetVariable_Specialcharequals(transmute_unchecked(self._opaque_type))) } }
 }
 
 impl<T : DFValue> Dict<T> {
@@ -83,9 +81,7 @@ impl<T : DFValue> Dict<T> {
 
 unsafe impl<T : DFValue> DFValue for Dict<T> {
     #[inline(always)]
-    unsafe fn to_opaque(&self) -> DFOpaqueValue {
-        transmute_unchecked(self._opaque_type.clone())
-    }
+    unsafe fn to_opaque(&self) -> DFOpaqueValue { transmute_unchecked(self._opaque_type) }
 }
 
 

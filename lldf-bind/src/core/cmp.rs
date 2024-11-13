@@ -10,7 +10,7 @@ pub trait PartialEq<Rhs: ?Sized = Self> {
     #[rustc_diagnostic_item = "cmp_partialeq_eq"]
     fn eq(&self, other: &Rhs) -> bool;
 
-    #[inline]
+    #[inline(always)]
     #[must_use]
     #[rustc_diagnostic_item = "cmp_partialeq_ne"]
     fn ne(&self, other : &Rhs) -> bool {
