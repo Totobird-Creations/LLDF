@@ -9,12 +9,9 @@ use llvm_ir::constant::*;
 
 
 pub fn parse_oper(module : &ParsedModule, function : &mut ParsedFunction, oper : &Operand) -> Result<Value, Box<dyn Error>> { match (oper) {
-    Operand::LocalOperand { name, .. } => {
-        let Some(value) = function.locals.get(name) else { return Err(format!("Unknown local {}", name).into()) };
-        Ok(value.clone())
-    },
-    Operand::ConstantOperand(cor) => parse_const(module, function, cor),
-    Operand::MetadataOperand      => Err("Metadata operands are unsupported".into()),
+    Operand::LocalOperand { name, .. } => Ok(Value::Local(name_to_local(name))),
+    Operand::ConstantOperand(cor)      => parse_const(module, function, cor),
+    Operand::MetadataOperand           => Err("Metadata operands are unsupported".into()),
 } }
 
 

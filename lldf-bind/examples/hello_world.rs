@@ -18,8 +18,8 @@ fn player_swap_hands(default : PlayerSel) {
 
     //default.send_message("Hello!".to_string());
 
-    test(&default, Enum::A(String::from("Hello!")));
-    test(&default, Enum::B(Item::diamond_axe()));
+    //test(&default, Enum::A(String::from("Hello!")));
+    //test(&default, Enum::B(Item::diamond_axe()));
 
     let mut i = 0;
     while (i < 3) {
@@ -30,10 +30,10 @@ fn player_swap_hands(default : PlayerSel) {
 }
 
 
-#[inline(never)]
-fn test(sel : &PlayerSel, e : Enum) {
-    match (e) {
-        Enum::A(string) => sel.send_message(string),
-        Enum::B(item) => sel.give_item(item),
-    }
-}
+//#[inline(never)]
+//fn test(sel : &PlayerSel, e : Enum) {
+//    match (e) {
+//        Enum::A(string) => sel.send_message(string),
+//        Enum::B(item) => sel.give_item(item),
+//    }
+//}

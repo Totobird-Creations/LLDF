@@ -11,17 +11,13 @@ use llvm_ir::terminator::*;
 
 
 pub struct ParsedFunction {
-    pub locals      : HashMap<Name, Value>,
-    pub line        : CodeLine,
-    pub next_temp   : usize,
-    pub needs_frame : bool
+    pub line      : CodeLine,
+    pub next_temp : usize
 }
 impl ParsedFunction {
     pub fn new() -> Self { Self {
-        locals      : HashMap::new(),
-        line        : CodeLine::new(),
-        next_temp   : 0,
-        needs_frame : false
+        line      : CodeLine::new(),
+        next_temp : 0
     } }
     pub fn create_temp_var_name(&mut self) -> String {
         let temp_var = self.next_temp;
@@ -70,7 +66,6 @@ pub fn parse_function(module : &mut ParsedModule, function : &Function) -> Resul
 
     // Parameters    
     for param in &function.parameters {
-        root_function.locals.insert(param.name.clone(), Value::Local(name_to_local(&param.name)));
         params.push(CodeValue::Parameter {
             name : name_to_string(&param.name),
             typ : ParameterType::Any, plural : false, optional : false,
@@ -105,9 +100,9 @@ pub fn parse_function(module : &mut ParsedModule, function : &Function) -> Resul
         active_block.clone()
     ], vec![ ]));
     root_function.line.blocks.push(Codeblock::action("player_action", "SendMessage", vec![
-        CodeValue::Text(format!("<dark_purple>{}<reset> <light_purple>%var(lldf.block)", function.name)),
+        CodeValue::Text(format!("<dark_purple>{}<reset> <light_purple>%var({})", function.name, BLOCK_ACTIVE)),
     ], vec![ ])); // TODO: Remove later. Intended for debugging.
-    root_function.line.blocks.push(Codeblock::call_func(format!("{}.{}.%var({})", function.name, BLOCK_ACTIVE, BLOCK_ACTIVE), vec![
+    root_function.line.blocks.push(Codeblock::call_func(format!("{}.block.%var({})", function.name, BLOCK_ACTIVE), vec![
         CodeValue::Variable { name : RETURN.to_string(), scope : VariableScope::Line },
         current_call,
         active_block,
@@ -142,8 +137,7 @@ pub fn parse_function(module : &mut ParsedModule, function : &Function) -> Resul
 pub fn parse_block(module : &mut ParsedModule, root_function : &mut ParsedFunction, function : &Function, block : &BasicBlock) -> Result<(), Box<dyn Error>> {
 
     let mut block_function = ParsedFunction::new();
-    mem::swap(&mut block_function.locals, &mut root_function.locals);
-    block_function.line.blocks.insert(0, Codeblock::function(format!("{}.{}.{}", function.name, BLOCK_ACTIVE, name_to_string(&block.name)), vec![
+    block_function.line.blocks.insert(0, Codeblock::function(format!("{}.block.{}", function.name, name_to_string(&block.name)), vec![
         CodeValue::Parameter {
             name : RETURN.to_string(),
             typ  : ParameterType::Variable, plural : false, optional : false,
@@ -236,7 +230,6 @@ pub fn parse_block(module : &mut ParsedModule, root_function : &mut ParsedFuncti
     }
 
 
-    mem::swap(&mut block_function.locals, &mut root_function.locals);
     module.functions.push(block_function);
 
     Ok(())
