@@ -1,8 +1,7 @@
+use crate::build::codegen::opt::optimise;
+
 use super::*;
 use super::super::codegen::{ CodeLine, Codeblock, ParameterType };
-
-use std::collections::HashMap;
-use std::mem;
 
 use llvm_ir::{ BasicBlock, Function, Type };
 use llvm_ir::module::Visibility;
@@ -80,7 +79,6 @@ pub fn parse_function(module : &mut ParsedModule, function : &Function) -> Resul
     // TODO: Event header
     root_function.line.blocks.insert(0, Codeblock::function(function.name.clone(), params, function.visibility != Visibility::Default));
 
-    // TODO: Don't use the block loop if there is only one block.
     // The main loop which handles transfers between blocks.
     let active_block   = CodeValue::Variable { name : BLOCK_ACTIVE   .to_string(), scope : VariableScope::Line };
     let current_block  = CodeValue::Variable { name : BLOCK_CURRENT  .to_string(), scope : VariableScope::Line };
@@ -99,9 +97,9 @@ pub fn parse_function(module : &mut ParsedModule, function : &Function) -> Resul
         current_block.clone(),
         active_block.clone()
     ], vec![ ]));
-    root_function.line.blocks.push(Codeblock::action("player_action", "SendMessage", vec![
+    /*root_function.line.blocks.push(Codeblock::action("player_action", "SendMessage", vec![ // Intended for debugging.
         CodeValue::Text(format!("<dark_purple>{}<reset> <light_purple>%var({})", function.name, BLOCK_ACTIVE)),
-    ], vec![ ])); // TODO: Remove later. Intended for debugging.
+    ], vec![ ]));*/
     root_function.line.blocks.push(Codeblock::call_func(format!("{}.block.%var({})", function.name, BLOCK_ACTIVE), vec![
         CodeValue::Variable { name : RETURN.to_string(), scope : VariableScope::Line },
         current_call,
@@ -124,17 +122,20 @@ pub fn parse_function(module : &mut ParsedModule, function : &Function) -> Resul
     ]));
 
     // Blocks
+    let mut block_functions = Vec::with_capacity(function.basic_blocks.len());
     for block in &function.basic_blocks {
-        parse_block(module, &mut root_function, function, block)?;
+        block_functions.push(parse_block(module, function, block)?);
     }
+    optimise(block_functions.iter_mut().collect::<Vec<_>>());
 
+    module.functions.append(&mut block_functions);
     module.functions.push(root_function);
 
     Ok(())
 }
 
 
-pub fn parse_block(module : &mut ParsedModule, root_function : &mut ParsedFunction, function : &Function, block : &BasicBlock) -> Result<(), Box<dyn Error>> {
+pub fn parse_block(module : &mut ParsedModule, function : &Function, block : &BasicBlock) -> Result<ParsedFunction, Box<dyn Error>> {
 
     let mut block_function = ParsedFunction::new();
     block_function.line.blocks.insert(0, Codeblock::function(format!("{}.block.{}", function.name, name_to_string(&block.name)), vec![
@@ -229,8 +230,5 @@ pub fn parse_block(module : &mut ParsedModule, root_function : &mut ParsedFuncti
 
     }
 
-
-    module.functions.push(block_function);
-
-    Ok(())
+    Ok(block_function)
 }

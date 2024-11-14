@@ -327,11 +327,7 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
                     Ok(())
                 },
 
-                Global::TempVarFunction => {
-                    if let Some(dest) = dest {
-                    }
-                    Ok(())
-                },
+                Global::TempVarFunction => Ok(()), // TODO: Test this
 
                 Global::GamevalueFunction { kind, target } => {
                     if let Some(dest) = dest {

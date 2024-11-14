@@ -8,7 +8,7 @@ use std::array;
 /// **This optimisation requires the following guarantees to be upheld:**
 /// - Variables may only be assigned ONCE, EXCEPT in `switch`-style statements.
 /// Failure to uphold the guarantees may result in broken codegen.
-pub fn constant_propagation(line : &mut CodeLine) -> bool {
+pub fn constant_propagation(line : &mut CodeLine, other_functions : &Vec<&mut ParsedFunction>) -> bool {
     let mut did_something = false;
 
     for i in (0..line.blocks.len()).rev() {
@@ -17,8 +17,12 @@ pub fn constant_propagation(line : &mut CodeLine) -> bool {
             if (block == "set_var") {
                 // Check that the destination variable is a line variable.
                 if let CodeValue::Variable { name : dest_name, scope : VariableScope::Line | VariableScope::Local } = &params[0] {
-                    // Check that the destination variable is not tied to a parameter.
-                    if (! line.blocks.iter().any(|block| block.contains_param(dest_name))) {
+                    if (
+                        // Check that the destination variable is not tied to a parameter.
+                        (! line.blocks.iter().any(|block| block.contains_param(dest_name)))
+                        // Check that the destination variable is not used in another block.
+                        && other_functions.iter().all(|other_function| ! other_function.line.blocks.iter().any(|block| block.is_line_var_used(dest_name)))
+                    ) {
                         // Check that this value can be propagated.
                         if let Some(value) = check_value_to_propagate(line, i, dest_name, action, &mut params.iter().skip(1), &tags) {
                             // Check if all codeblocks in the line allow replacing the variable.

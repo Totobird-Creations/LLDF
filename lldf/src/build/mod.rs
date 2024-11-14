@@ -137,6 +137,7 @@ pub fn ccapi_submit_templates(templates : &Vec<CodeLine>) -> Result<(), Box<dyn 
 
     // Place templaces.
     eprint!("Queueing templates... ");
+    //let Ok(_) = sock.send(ws::Message::Text("place compact".to_string())) else { return Err("Failed to place templates".into()) }; // TODO: Enable this
     for template in templates {
         // TODO: split template to plot size.
         let template = template.to_b64();

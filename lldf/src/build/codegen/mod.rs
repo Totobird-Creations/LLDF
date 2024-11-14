@@ -237,12 +237,8 @@ impl CodeblockBlock {
     }
 
     pub fn can_replace_line_var_with_constant(&self, var_name : &str) -> bool {
-        if (self.block == "call_func") {
-            ! self.is_line_var_used(var_name)
-        } else {
-            self.params.iter().all(|param| param.can_replace_line_var_with_constant(var_name))
-                || self.tags.iter().all(|tag| tag.can_replace_line_var_with_constant(var_name))
-        }
+        self.params.iter().all(|param| param.can_replace_line_var_with_constant(var_name))
+            || self.tags.iter().all(|tag| tag.can_replace_line_var_with_constant(var_name))
     }
     pub fn replace_line_var_with_constant(&mut self, var_name : &str, with : &CodeValue) -> () {
         for param in &mut self.params {
