@@ -16,7 +16,7 @@ pub fn constant_propagation(line : &mut CodeLine) -> bool {
         if let Codeblock::Block(CodeblockBlock { block, action : Some(action), params, tags, .. }) = block {
             if (block == "set_var") {
                 // Check that the destination variable is a line variable.
-                if let CodeValue::Variable { name : dest_name, scope : VariableScope::Line } = &params[0] {
+                if let CodeValue::Variable { name : dest_name, scope : VariableScope::Line | VariableScope::Local } = &params[0] {
                     // Check that the destination variable is not tied to a parameter.
                     if (! line.blocks.iter().any(|block| block.contains_param(dest_name))) {
                         // Check that this value can be propagated.
@@ -726,7 +726,7 @@ fn get_chunk<'l, const N : usize>(iterator : &mut impl Iterator<Item = &'l CodeV
 
 fn get_tag<'l>(tags : &'l Vec<CodeValue>, key : &str) -> Option<&'l String> {
     for tag in tags {
-        if let CodeValue::Actiontag { kind, value, variable : None } = tag {
+        if let CodeValue::Actiontag { kind, value, variable : None, block_override : _ } = tag {
             if (kind == key) {
                 return Some(value)
             }

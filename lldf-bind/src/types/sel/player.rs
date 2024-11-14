@@ -20,9 +20,9 @@ impl PlayerSel {
 
     #[lldf_bind_proc::dfdoc(PlayerAction/GiveItems)]
     #[inline(always)]
-    pub fn give_item(&self, item : Item) -> () { unsafe {
+    pub fn give_item<I : AsRef<Item>>(&self, item : I) -> () { unsafe {
         DF_ACTION__SelectObject_PlayerName(self.uuids.to_opaque());
-        DF_ACTION__PlayerAction_GiveItems(item);
+        DF_ACTION__PlayerAction_GiveItems(item.as_ref().to_opaque());
         DF_ACTION__SelectObject_Reset();
     } }
 
@@ -959,7 +959,7 @@ extern "C" {
     fn DF_ACTION__SetVariable_Specialcharplus( a : DFOpaqueValue, b : DFOpaqueValue ) -> DFOpaqueValue;
 
 
-    fn DF_ACTION__PlayerAction_GiveItems( item : Item ) -> ();
+    fn DF_ACTION__PlayerAction_GiveItems( item : DFOpaqueValue ) -> ();
     fn DF_ACTION__PlayerAction_SetItemInSlot( item : DFOpaqueValue, slot : UInt ) -> ();
     fn DF_ACTION__PlayerAction_SetEquipment_EquipmentSlot_MainHand( item : Item ) -> ();
     fn DF_ACTION__PlayerAction_SetEquipment_EquipmentSlot_OffHand( item : Item ) -> ();

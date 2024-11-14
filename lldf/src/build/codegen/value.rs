@@ -54,9 +54,10 @@ pub enum CodeValue { // TODO: Add item
         note        : Option<String>
     },
     Actiontag {
-        kind     : String,
-        value    : String,
-        variable : Option<Box<CodeValue>>
+        kind           : String,
+        value          : String,
+        variable       : Option<Box<CodeValue>>,
+        block_override : Option<String>
     }
 }
 
@@ -287,9 +288,9 @@ impl CodeValue {
             if let Some(note        ) = note        { data["note"        ] = json::Value::String(note        .clone()) }
             json::json!({ "id" : "pn_el", "data" : data })
         },
-        Self::Actiontag { kind, value, variable } => {
+        Self::Actiontag { kind, value, variable, block_override } => {
             let mut data = json::json!({
-                "block"  : codeblock,
+                "block"  : block_override.as_ref().map_or_else(|| codeblock.to_string(), |bo| bo.clone()),
                 "action" : action,
                 "tag"    : kind,
                 "option" : value

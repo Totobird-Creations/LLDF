@@ -13,10 +13,20 @@ pub enum Enum {
 }
 
 
-#[event(PlayerSwapHands)]
+#[event(PlayerJoin)]
 fn player_swap_hands(default : PlayerSel) {
+
+    //default.send_message("Hello!".to_string());
+
     test(&default, Enum::A(String::from("Hello!")));
     test(&default, Enum::B(Item::diamond_axe()));
+
+    let mut i = 0;
+    while (i < 3) {
+        default.send_message(String::from("BEEP"));
+        i = i + 1;
+    }
+
 }
 
 

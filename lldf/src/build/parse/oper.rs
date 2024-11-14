@@ -44,7 +44,7 @@ pub fn parse_const(module : &ParsedModule, function : &mut ParsedFunction, cor :
                                             // FIXME: This doesn't work with GEP. Use fake pointers instead.
         let temp_var = function.create_temp_var_name();
         let mut params = Vec::with_capacity(elements.len() + 1);
-        params.push(CodeValue::Variable { name : temp_var.clone(), scope : VariableScope::Line });
+        params.push(CodeValue::Variable { name : temp_var.clone(), scope : VariableScope::Local });
         for element in elements {
             params.push(parse_const(module, function, element)?.to_codevalue(module, function)?);
         }
@@ -66,6 +66,14 @@ pub fn parse_const(module : &ParsedModule, function : &mut ParsedFunction, cor :
 
     Constant::Mul(_) => todo!(),
 
+    //Constant::UDiv(_) => todo!(),
+
+    //Constant::SDiv(_) => todo!(),
+
+    //Constant::URem(_) => todo!(),
+
+    //Constant::SRem(_) => todo!(),
+
     Constant::And(_) => todo!(),
 
     Constant::Or(_) => todo!(),
@@ -77,6 +85,20 @@ pub fn parse_const(module : &ParsedModule, function : &mut ParsedFunction, cor :
     Constant::LShr(_) => todo!(),
 
     Constant::AShr(_) => todo!(),
+
+    //Constant::FAdd(_) => todo!(),
+
+    //Constant::FSub(_) => todo!(),
+
+    //Constant::FMul(_) => todo!(),
+
+    //Constant::FDiv(_) => todo!(),
+
+    //Constant::FRem(_) => todo!(),
+
+    //Constant::ExtractValue(_) => todo!(),
+
+    //Constant::InsertValue(_) => todo!(),
 
     Constant::GetElementPtr(_) => todo!(),
 
@@ -106,10 +128,12 @@ pub fn parse_const(module : &ParsedModule, function : &mut ParsedFunction, cor :
 
     Constant::FCmp(_) => todo!(),
 
+    Constant::Select(_) => todo!(),
 
-    Constant::ExtractElement(_) | Constant::InsertElement(_) | Constant::ShuffleVector(_) => Err("Vector operands are unsupported"             .into()),
+
     Constant::BlockAddress                                                                => Err("Block address operands are unsupported"      .into()),
     Constant::TokenNone                                                                   => Err("Token operands are unsupported"              .into()),
+    Constant::ExtractElement(_) | Constant::InsertElement(_) | Constant::ShuffleVector(_) => Err("Vector operands are unsupported"             .into()),
     Constant::BitCast(_)                                                                  => Err("Bit cast operands are unsupported"           .into()),
     Constant::AddrSpaceCast(_)                                                            => Err("Address space cast operands are unsupported" .into()),
 } }

@@ -33,12 +33,13 @@ pub enum Codeblock {
 }
 #[derive(Debug, Clone, PartialEq)]
 pub struct CodeblockBlock {
-    pub block  : String,
-    pub action : Option<String>,
-    pub data   : Option<String>,
-    pub attr   : Option<String>,
-    pub params : Vec<CodeValue>,
-    pub tags   : Vec<CodeValue>
+    pub block     : String,
+    pub action    : Option<String>,
+    pub subaction : Option<String>,
+    pub data      : Option<String>,
+    pub attr      : Option<String>,
+    pub params    : Vec<CodeValue>,
+    pub tags      : Vec<CodeValue>
 }
 #[derive(Debug, Clone, PartialEq)]
 pub enum BracketKind {
@@ -54,65 +55,84 @@ pub enum BracketSide {
 
 impl Codeblock {
 
-    pub const OPEN_COND_BRACKET  : Self = Self::Bracket { kind : BracketKind::Normal, side : BracketSide::Open  };
-    pub const CLOSE_COND_BRACKET : Self = Self::Bracket { kind : BracketKind::Normal, side : BracketSide::Close };
+    pub const OPEN_COND_BRACKET    : Self = Self::Bracket { kind : BracketKind::Normal, side : BracketSide::Open  };
+    pub const CLOSE_COND_BRACKET   : Self = Self::Bracket { kind : BracketKind::Normal, side : BracketSide::Close };
+    pub const OPEN_REPEAT_BRACKET  : Self = Self::Bracket { kind : BracketKind::Repeat, side : BracketSide::Open  };
+    pub const CLOSE_REPEAT_BRACKET : Self = Self::Bracket { kind : BracketKind::Repeat, side : BracketSide::Close };
 
     pub fn event<C : Into<String>, A : Into<String>>(codeblock : C, action : A) -> Self { Self::Block(CodeblockBlock {
-        block  : codeblock.into(),
-        action : Some(action.into()),
-        data   : None,
-        attr   : Some(String::from("LS-CANCEL")),
-        params : vec![],
-        tags   : vec![]
+        block     : codeblock.into(),
+        action    : Some(action.into()),
+        subaction : None,
+        data      : None,
+        attr      : Some(String::from("LS-CANCEL")),
+        params    : vec![],
+        tags      : vec![]
     }) }
 
     pub fn function<S : Into<String>>(data : S, params : Vec<CodeValue>, hidden : bool) -> Self { Self::Block(CodeblockBlock {
-        block  : String::from("func"),
-        action : None,
-        data   : Some(data.into()),
-        attr   : None,
+        block     : String::from("func"),
+        action    : None,
+        subaction : None,
+        data      : Some(data.into()),
+        attr      : None,
         params,
-        tags   : vec![ CodeValue::Actiontag {
-            kind     : String::from("Is Hidden"),
-            value    : String::from(if (hidden) { "True" } else { "False" }),
-            variable : None
+        tags      : vec![ CodeValue::Actiontag {
+            kind           : String::from("Is Hidden"),
+            value          : String::from(if (hidden) { "True" } else { "False" }),
+            variable       : None,
+            block_override : None
         } ]
     }) }
 
     pub fn call_func<S : Into<String>>(data : S, params : Vec<CodeValue>) -> Self { Self::Block(CodeblockBlock {
-        block  : String::from("call_func"),
-        action : None,
-        data   : Some(data.into()),
-        attr   : None,
+        block     : String::from("call_func"),
+        action    : None,
+        subaction : None,
+        data      : Some(data.into()),
+        attr      : None,
         params,
-        tags   : Vec::new()
+        tags      : Vec::new()
     }) }
 
     pub fn action<C : Into<String>, A : Into<String>>(codeblock : C, action : A, params : Vec<CodeValue>, tags : Vec<CodeValue>) -> Self { Self::Block(CodeblockBlock {
-        block  : codeblock.into(),
-        action : Some(action.into()),
-        data   : None,
-        attr   : None,
+        block     : codeblock.into(),
+        action    : Some(action.into()),
+        subaction : None,
+        data      : None,
+        attr      : None,
+        params,
+        tags
+    }) }
+
+    pub fn subaction<C : Into<String>, A : Into<String>, S : Into<String>>(codeblock : C, action : A, subaction : S, params : Vec<CodeValue>, tags : Vec<CodeValue>) -> Self { Self::Block(CodeblockBlock {
+        block     : codeblock.into(),
+        action    : Some(action.into()),
+        subaction : Some(subaction.into()),
+        data      : None,
+        attr      : None,
         params,
         tags
     }) }
 
     pub fn ifs<C : Into<String>, A : Into<String>>(codeblock : C, action : A, not : bool, params : Vec<CodeValue>, tags : Vec<CodeValue>) -> Self { Self::Block(CodeblockBlock {
-        block  : codeblock.into(),
-        action : Some(action.into()),
-        data   : None,
-        attr   : not.then(|| String::from("NOT")),
+        block     : codeblock.into(),
+        action    : Some(action.into()),
+        subaction : None,
+        data      : None,
+        attr      : not.then(|| String::from("NOT")),
         params,
         tags
     }) }
 
     pub fn elses() -> Self { Self::Block(CodeblockBlock {
-        block  : String::from("else"),
-        action : None,
-        data   : None,
-        attr   : None,
-        params : Vec::new(),
-        tags   : Vec::new()
+        block     : String::from("else"),
+        action    : None,
+        subaction : None,
+        data      : None,
+        attr      : None,
+        params    : Vec::new(),
+        tags      : Vec::new()
     }) }
 
 }
@@ -183,13 +203,17 @@ impl CodeblockBlock {
         let mut items = Vec::new();
         for (i, param) in self.params.iter().enumerate() {
             items.push(json::json!({
-                "item" : param.to_json(&self.block, self.action.as_ref().map_or("dynamic", |a| a)),
+                "item" : param.to_json(&self.block,
+                    self.subaction.as_ref().map_or_else(|| self.action.as_ref().map_or("dynamic", |a| a), |sa| sa.as_str())
+                ),
                 "slot" : i
             }));
         }
         for (i, tag) in self.tags.iter().rev().enumerate() {
             items.push(json::json!({
-                "item" : tag.to_json(&self.block, self.action.as_ref().map_or("dynamic", |a| a)),
+                "item" : tag.to_json(&self.block,
+                    self.subaction.as_ref().map_or_else(|| self.action.as_ref().map_or("dynamic", |a| a), |sa| sa.as_str())
+                ),
                 "slot" : 26 - i
             }));
         }
@@ -200,9 +224,10 @@ impl CodeblockBlock {
                 "items" : items
             }
         });
-        if let Some(action ) = &self.action { block["action"    ] = json::Value::String(action .to_string()); }
-        if let Some(data   ) = &self.data   { block["data"      ] = json::Value::String(data   .to_string()); }
-        if let Some(attr   ) = &self.attr   { block["attribute" ] = json::Value::String(attr   .to_string()); }
+        if let Some(action    ) = &self.action    { block["action"    ] = json::Value::String(action    .to_string()); }
+        if let Some(subaction ) = &self.subaction { block["subAction" ] = json::Value::String(subaction .to_string()); }
+        if let Some(data      ) = &self.data      { block["data"      ] = json::Value::String(data      .to_string()); }
+        if let Some(attr      ) = &self.attr      { block["attribute" ] = json::Value::String(attr      .to_string()); }
         block
     }
 
@@ -240,7 +265,7 @@ impl CodeblockBlock {
             || (self.block == "repeat" && (action != "Forever" && action != "While"))
             || (self.block == "entity_action" && (action == "GetCustomTag" || action == "GetAllEntityTags"))
         ) { return (true,
-            if let Some(CodeValue::Variable { name, scope : VariableScope::Line }) = self.params.get(0) {
+            if let Some(CodeValue::Variable { name, scope : VariableScope::Line | VariableScope::Local }) = self.params.get(0) {
                 Some(name)
             } else { None }
         ); }

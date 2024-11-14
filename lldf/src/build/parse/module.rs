@@ -1,12 +1,11 @@
 use super::*;
-use crate::build::codegen::{ BracketKind, BracketSide, CodeLine, Codeblock };
+use crate::build::codegen::{ BracketKind, BracketSide };
 
 use std::collections::HashMap;
 use std::borrow::Cow;
 
-use decomp::{ cfa::CFAPrim, cfg::ControlFlowGraph, cfr::{ CFRGroup, CFRGroups } };
 use inflector::Inflector;
-use llvm_ir::{ Function, Module };
+use llvm_ir::Module;
 use llvm_ir::module::GlobalVariable;
 
 
@@ -14,8 +13,8 @@ use llvm_ir::module::GlobalVariable;
 pub struct ParsedModule<'l> {
     pub module        : &'l Module,
     pub globals       : HashMap<Name, Global>,
-    pub init_function : Option<ParsedFunction<'l>>,
-    pub functions     : HashMap<String, ParsedFunction<'l>>
+    pub init_function : Option<ParsedFunction>,
+    pub functions     : Vec<ParsedFunction>
 }
 #[derive(Debug)]
 pub enum Global {
@@ -77,7 +76,7 @@ pub fn parse_module(module : &Module) -> Result<ParsedModule, Box<dyn Error>> {
         module,
         globals       : HashMap::new(),
         init_function : None,
-        functions     : HashMap::new()
+        functions     : Vec::new()
     };
 
     // Collect user defined functions.
@@ -211,7 +210,7 @@ pub fn parse_module(module : &Module) -> Result<ParsedModule, Box<dyn Error>> {
     }
 
     // Collect global variables.
-    let mut init_function = ParsedFunction::new(None);
+    let mut init_function = ParsedFunction::new();
     for GlobalVariable { name, /*is_constant,*/ initializer : init, .. } in &module.global_vars {
         //let mut is_constant = *is_constant;
         let var = CodeValue::Variable {
@@ -237,8 +236,7 @@ pub fn parse_module(module : &Module) -> Result<ParsedModule, Box<dyn Error>> {
     parsed.init_function = Some(init_function);
 
     for module_function in &module.functions {
-        let parsed_function = parse_function(&parsed, module_function)?;
-        parsed.functions.insert(module_function.name.clone(), parsed_function);
+        parse_function(&mut parsed, module_function)?;
     }
 
     Ok(parsed)
@@ -307,12 +305,14 @@ pub fn collect_actiontag_parts<'l>(actiontag_parts : impl Iterator<Item = &'l st
                     "randomcase" => "RAnDoM cASe".to_string(),
                     casing => casing.to_string()
                 },
-                variable : None
+                variable        : None,
+                block_override : None
             } ) }
             else { ActionFunctionTag::Value(CodeValue::Actiontag {
                 kind,
                 value,
-                variable : None
+                variable       : None,
+                block_override : None
             }) }
     } ).collect::<Vec<_>>()
 }
@@ -366,110 +366,4 @@ pub fn names_to_symbols(from : &str) -> String {
         .replace("Specialcharcaret"            , "^")
         .replace("Specialcharcolon"            , ":")
         .replace("Specialcharperiod"           , ".")
-}
-
-
-
-
-pub struct ParsedFunction<'l> {
-    pub function    : Option<&'l Function>,
-    pub locals      : HashMap<Name, Value>,
-    pub line        : CodeLine,
-    pub next_temp   : usize,
-    pub needs_frame : bool
-}
-impl<'l> ParsedFunction<'l> {
-    pub fn new(function : Option<&'l Function>) -> Self { Self {
-        function,
-        locals      : HashMap::new(),
-        line        : CodeLine::new(),
-        next_temp   : 0,
-        needs_frame : false
-    } }
-    pub fn create_temp_var_name(&mut self) -> String {
-        let temp_var = self.next_temp;
-        self.next_temp += 1;
-        format!("local.temp.{}", temp_var)
-    }
-}
-
-pub fn parse_function<'l>(module : &ParsedModule, function : &'l Function) -> Result<ParsedFunction<'l>, Box<dyn Error>> {
-    let mut parsed = ParsedFunction::new(Some(function));
-
-    for param in &function.parameters {
-        parsed.locals.insert(param.name.clone(), Value::Local(name_to_local(&param.name)));
-    }
-
-
-    // Do the CFR magic.
-    let Some(cfr) = CFAPrim::find_all(ControlFlowGraph::new(function)).map(|cfa| CFRGroups::new(&cfa)).flatten() else {
-        return Err(format!("Failed to recover control flow primitives of function `{}`.", function.name).into())
-    };
-
-    // Actually parse the function.
-    parse_cfr_groups(module, &mut parsed, &cfr)?;
-
-    if (parsed.needs_frame) {
-
-        // Create a new 'frame' which can be used to track allocated variables which need to be destroyed on function exit.
-        let frame = CodeValue::Variable { name : "lldf.alloca.frame".to_string(), scope : VariableScope::Unsaved };
-        parsed.line.blocks.insert(0, Codeblock::action("set_var", "+=", vec![ frame.clone() ], vec![]));
-        let params = vec![
-            CodeValue::Variable { name : "lldf.alloca.frame.current".to_string(), scope : VariableScope::Line },
-            frame
-        ];
-        parsed.line.blocks.insert(1, Codeblock::action("set_var", "=", params, vec![]));
-
-        // Add the code which destroys any allocated variables from this 'frame'.
-        let params = vec![
-            CodeValue::String("mem.#%var(lldf.alloca.frame.current)".to_string())
-        ];
-        let tags = vec![
-            CodeValue::Actiontag { kind : "Match Requirement".to_string(), value : "Any part of name".to_string(), variable : None },
-            CodeValue::Actiontag { kind : "Ignore Case".to_string(), value : "False".to_string(), variable : None }
-        ];
-        let block = Codeblock::action("set_var", "PurgeVars", params, tags);
-        parsed.line.blocks.push(block); // TODO: Add after every Return or ReturnNTimes codeblock.
-
-    }
-
-    Ok(parsed)
-}
-
-
-
-
-pub fn parse_cfr_groups(module : &ParsedModule, function : &mut ParsedFunction, groups : &CFRGroups) -> Result<(), Box<dyn Error>> {
-    for group in &groups.groups {
-        parse_cfr_group(module, function, group)?;
-    }
-    Ok(())
-}
-
-pub fn parse_cfr_group(module : &ParsedModule, function : &mut ParsedFunction, group : &CFRGroup) -> Result<(), Box<dyn Error>> { match (group) {
-
-    CFRGroup::Block(name) => parse_block(module, function, name),
-
-    CFRGroup::PreconditionLoop { cond, body } => todo!("precondition-loop {} {}", cond, body),
-
-    CFRGroup::PostconditionLoop { cond } => todo!("postcondition-loop {}", cond),
-
-    CFRGroup::OnewayConditional { cond, body } => todo!("oneway-conditional {} {}", cond, body),
-
-    CFRGroup::OnewayReturnConditional { cond, body } => todo!("oneway-return-conditional {} {}", cond, body),
-
-    CFRGroup::TwowayConditional { cond, body_true, body_false } => todo!("twoway-conditional {} {} {}", cond, body_true, body_false),
-
-} }
-
-
-
-
-pub fn parse_block(module : &ParsedModule, function : &mut ParsedFunction, block : &Name) -> Result<(), Box<dyn Error>> {
-    let block = function.function.unwrap().basic_blocks.iter().find(|bb| &bb.name == block).unwrap();
-    for instr in &block.instrs {
-        parse_instr(module, function, instr)?;
-    }
-    // TODO: Terminator? This might not be needed if it's part of CFR groups.
-    Ok(())
 }

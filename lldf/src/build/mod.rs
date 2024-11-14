@@ -6,16 +6,14 @@ use std::fs;
 use std::path::Path;
 use std::process::{ self, Command };
 use std::error::Error;
-use std::collections::HashMap;
 
-use codegen::{CodeLine, CodeValue, Codeblock, ParameterType, VariableScope};
+use codegen::CodeLine;
 use llvm_ir::Module;
 
-use parse::{ ParsedModule, name_to_local };
+use parse::ParsedModule;
 use serde::Deserialize as Deser;
 use toml;
 use tungstenite as ws;
-use const_str::concat;
 
 
 #[derive(Deser)]
@@ -101,71 +99,7 @@ pub fn build_modules(modules : &Vec<Module>) -> Result<Vec<ParsedModule>, Box<dy
 
 
 pub fn build_templates(modules : Vec<ParsedModule>) -> Result<Vec<CodeLine>, Box<dyn Error>> {
-    let mut templates = HashMap::new();
-
-    let init_template = "DF_INIT".to_string();
-
-    for module in modules {
-        if let Some(function) = module.init_function {
-            if (! function.line.blocks.is_empty()) {
-                templates.entry(init_template.clone()).or_insert_with(|| (vec![ ], CodeLine::new())).1.blocks.extend(function.line.blocks);
-            }
-        }
-        for (name, function) in module.functions {
-            if (! function.line.blocks.is_empty()) {
-                let params = function.function.map(|function| function.parameters.iter().map(
-                    |param| CodeValue::Parameter {
-                        name        : name_to_local(&param.name),
-                        typ         : ParameterType::Variable,
-                        plural      : false,
-                        optional    : false,
-                        description : Some(format!("Type: {}", param.ty)),
-                        note        : Some(format!("{}", param.name))
-                    }
-                ).collect()).unwrap_or_else(|| vec![ ]);
-                templates.entry(name).or_insert_with(|| (params, CodeLine::new())).1.blocks.extend(function.line.blocks);
-            }
-        }
-    }
-
-    // Handle init template.
-    if let Some(mut template) = templates.remove(&init_template) {
-        let init_var = CodeValue::Variable {
-            name  : concat!(crate::MODULE_NAME, ".init").to_string(),
-            scope : VariableScope::Unsaved
-        };
-        let one      = CodeValue::Number("1".to_string());
-        let params   = vec![ init_var, one ];
-        template.1.blocks.insert(0, Codeblock::action("set_var", "=", params.clone(), vec![]));
-        template.1.blocks.insert(0, Codeblock::OPEN_COND_BRACKET);
-        template.1.blocks.insert(0, Codeblock::ifs("if_var", "=", true, params, vec![])); // TOOD: NOT and tags
-        template.1.blocks.push(Codeblock::CLOSE_COND_BRACKET);
-        templates.entry(String::from("DF_EVENT__Event_Join")).or_insert_with(|| (vec![ ], CodeLine::new())).1.blocks.splice(0..0, template.1.blocks);
-    }
-
-    for (name, (params, ref mut template)) in &mut templates {
-        let mut parts = name.split("__");
-        let mut head_block = Codeblock::function(name, params.clone(), true);
-        match (parts.next()) {
-
-            Some("DF_EVENT") => {
-                if let (Some(trigger), None) = (parts.next(), parts.next()) {
-                    let mut trigger_parts = trigger.split("_");
-                    if let (Some(codeblock), Some(action), None) = (trigger_parts.next(), trigger_parts.next(), trigger_parts.next()) {
-                        let codeblock = parse::linked_name_to_codeblock (codeblock );
-                        let action    = parse::linked_name_to_action    (action    );
-                        head_block = Codeblock::event(codeblock, action);
-                    }
-                }
-            },
-
-            _ => { }
-        };
-        template.blocks.insert(0, head_block);
-        codegen::opt::optimise(template);
-    }
-
-    Ok(templates.into_values().map(|(_, template)| template).collect())
+    Ok(modules.into_iter().map(|module| module.functions).flatten().map(|function| function.line).collect::<Vec<_>>())
 }
 
 

@@ -1,5 +1,7 @@
 mod module;
 pub use module::*;
+mod function;
+pub use function::*;
 mod instr;
 pub use instr::*;
 mod oper;
@@ -33,7 +35,7 @@ impl Value {
         Self::ConstInt    (value ) => Ok(CodeValue::Number(value.to_string())),
         Self::ConstFloat  (value ) => Ok(CodeValue::Number(value.to_string())),
 
-        Self::Local(name) => Ok(CodeValue::Variable { name : name.clone(), scope : VariableScope::Line }),
+        Self::Local(name) => Ok(CodeValue::Variable { name : name.clone(), scope : VariableScope::Local }),
 
         Self::Global(name) => {
             let Some(global) = module.globals.get(name) else { return Err(format!("Unknown global {}", name).into()) };
@@ -134,11 +136,9 @@ impl Value {
 }
 
 
-pub fn name_to_local(name : &Name) -> String { match (name) {
-    Name::Name   (name   ) => format!("local.name.{}", name),
-    Name::Number (number ) => format!("local.number.{}", number),
+pub fn name_to_string(name : &Name) -> String { match (name) {
+    Name::Name   (name   ) => format!("name.{}", name),
+    Name::Number (number ) => format!("number.{}", number),
 } }
-pub fn name_to_global(name : &Name) -> String { match (name) {
-    Name::Name   (name   ) => format!("global.name.{}", name),
-    Name::Number (number ) => format!("global.number.{}", number),
-} }
+pub fn name_to_local(name : &Name) -> String { format!("local.#%var({}).{}", CALL, name_to_string(name)) }
+pub fn name_to_global(name : &Name) -> String { format!("global.{}", name_to_string(name)) }

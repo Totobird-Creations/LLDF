@@ -28,14 +28,9 @@ version = "0.5"
 [dependencies.str_inflector]
 version = "0.12"
 
-[dependencies.decomp]
-version          = ">=0.1.4"
-default-features = false
-features         = [ "llvm-17" ]
-
 [dependencies.llvm-ir]
 version  = "0.11"
-features = [ "llvm-17" ]
+features = [ "llvm-16", "prefer-dynamic" ]
 
 
 [dependencies.serde_json]
