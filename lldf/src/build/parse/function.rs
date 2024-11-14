@@ -4,7 +4,7 @@ use super::*;
 use super::super::codegen::{ CodeLine, Codeblock, ParameterType };
 
 use llvm_ir::{ BasicBlock, Function, Type };
-use llvm_ir::module::Visibility;
+use llvm_ir::module::{Linkage, Visibility};
 use llvm_ir::terminator::*;
 
 
@@ -76,8 +76,20 @@ pub fn parse_function(module : &mut ParsedModule, function : &Function) -> Resul
             CodeValue::Variable { name : name_to_string(&param.name), scope : VariableScope::Line }
         ], vec![ ]));
     }
-    // TODO: Event header
-    root_function.line.blocks.insert(0, Codeblock::function(function.name.clone(), params, function.visibility != Visibility::Default));
+
+    // Line head
+    let visible = function.visibility == Visibility::Default && matches!(function.linkage, Linkage::External | Linkage::ExternalWeak | Linkage::AvailableExternally);
+    let mut head_codeblock = Codeblock::function(function.name.clone(), params, ! visible);
+    let mut name_parts = function.name.split("__");
+    if let (Some(df), Some(event), None) = (name_parts.next(), name_parts.next(), name_parts.next()) { if (df == "DF_EVENT") {
+        let mut event_parts = event.split("_");
+        if let (Some(codeblock), Some(action), None) = (event_parts.next(), event_parts.next(), event_parts.next()) {
+            let codeblock = linked_name_to_codeblock (codeblock );
+            let action    = linked_name_to_action    (action    );
+            head_codeblock = Codeblock::event(codeblock, action)
+        }
+    } }
+    root_function.line.blocks.insert(0, head_codeblock);
 
     // The main loop which handles transfers between blocks.
     let active_block   = CodeValue::Variable { name : BLOCK_ACTIVE   .to_string(), scope : VariableScope::Line };
