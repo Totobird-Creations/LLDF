@@ -9,13 +9,13 @@ pub fn dead_assignment(line : &mut CodeLine, other_functions : &Vec<&mut ParsedF
         let block = &line.blocks[i];
         if let (true, Some(dest_name)) = block.setvar_like_line() {
             // Check that the destination variable is not used in another block.
-            if (other_functions.iter().all(|other_function| ! other_function.line.blocks.iter().any(|block| block.is_line_var_used(dest_name)))) {
+            if (other_functions.iter().all(|other_function| ! other_function.line.blocks.iter().any(|block| block.is_var_used(dest_name)))) {
 
                 // Check that the variable is never read from.
                 let mut can_remove = true;
                 for j in 0..line.blocks.len() {
                     let other_block = &line.blocks[j];
-                    if (other_block.is_line_var_used(dest_name)) { can_remove = false; break; }
+                    if (other_block.is_var_used(dest_name)) { can_remove = false; break; }
                 }
                 if (can_remove) {
 

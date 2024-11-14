@@ -157,14 +157,14 @@ impl CodeValue {
         _ => false
     } }
 
-    pub fn can_replace_line_var_with_constant(&self, var_name : &str) -> bool { match (self) {
+    pub fn can_replace_var_with_constant(&self, var_name : &str) -> bool { match (self) {
         CodeValue::String(value) | CodeValue::Text(value) | CodeValue::Number(value) | CodeValue::Variable { name : value, .. }
             => ! (value.contains(&format!("%index({},", var_name)) || value.contains(&format!("%entry({},", var_name))),
         CodeValue::Parameter { name, .. } => name != var_name,
-        CodeValue::Actiontag { variable : Some(variable), .. } => variable.can_replace_line_var_with_constant(var_name),
+        CodeValue::Actiontag { variable : Some(variable), .. } => variable.can_replace_var_with_constant(var_name),
         _ => true
     } }
-    pub fn replace_line_var_with_constant(&mut self, var_name : &str, with : &CodeValue) -> () { match (self) {
+    pub fn replace_var_with_constant(&mut self, var_name : &str, with : &CodeValue) -> () { match (self) {
         CodeValue::String(value) | CodeValue::Text(value) | CodeValue::Number(value)
             => {
                 let replacing = format!("%var({})", var_name);
@@ -184,7 +184,7 @@ impl CodeValue {
         CodeValue::Parameter { name, .. } => { if (name == var_name) { panic!("Attempted to replace line var in parameter") } },
         CodeValue::Actiontag { value, variable, .. } => {
             if let Some(var) = variable {
-                var.replace_line_var_with_constant(var_name, with);
+                var.replace_var_with_constant(var_name, with);
                 if (var.is_constant()) {
                     *value    = var.to_pvar_string();
                     *variable = None;
@@ -201,33 +201,14 @@ impl CodeValue {
         _ => unreachable!()
     } }
 
-    pub fn is_line_var_used(&self, var_name : &str) -> bool { match (self) {
+    pub fn is_var_used(&self, var_name : &str) -> bool { match (self) {
         CodeValue::String(value) | CodeValue::Text(value) | CodeValue::Number(value)
             => value.contains(&format!("%var({})", var_name)) || value.contains(&format!("%index({},", var_name)) || value.contains(&format!("%entry({},", var_name)),
         CodeValue::Variable { name, .. }
             => (name == var_name) || name.contains(&format!("%var({})", var_name)) || name.contains(&format!("%index({},", var_name)) || name.contains(&format!("%entry({},", var_name)),
         CodeValue::Parameter { name, .. } => name == var_name,
-        CodeValue::Actiontag { variable : Some(variable), .. } => variable.is_line_var_used(var_name),
+        CodeValue::Actiontag { variable : Some(variable), .. } => variable.is_var_used(var_name),
         _ => false
-    } }
-    pub fn replace_line_var(&mut self, var_name : &str, with : &str) -> () { match (self) {
-        CodeValue::String(value) | CodeValue::Text(value) | CodeValue::Number(value)
-            => { *value = value
-                    .replace(&format!("%var({})", var_name), &format!("%var({})", with))
-                    .replace(&format!("%index({},", var_name), &format!("%index({},", with))
-                    .replace(&format!("%entry({},", var_name), &format!("%entry({},", with));
-            },
-        CodeValue::Variable { name, .. } => {
-            if (name == var_name) { *name = with.to_string(); }
-            else { *name = name
-                    .replace(&format!("%var({})", var_name), &format!("%var({})", with))
-                    .replace(&format!("%index({},", var_name), &format!("%index({},", with))
-                    .replace(&format!("%entry({},", var_name), &format!("%entry({},", with));
-            }
-        },
-        CodeValue::Parameter { name, .. } => { if (name == var_name) { *name = with.to_string(); } },
-        CodeValue::Actiontag { variable : Some(variable), .. } => variable.replace_line_var(var_name, with),
-        _ => { }
     } }
 
 }

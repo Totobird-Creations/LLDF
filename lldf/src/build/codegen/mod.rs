@@ -176,17 +176,17 @@ impl Codeblock {
         _ => false
     } }
 
-    pub fn can_replace_line_var_with_constant(&self, var_name : &str) -> bool { match (self) {
-        Codeblock::Block(block) => block.can_replace_line_var_with_constant(var_name),
+    pub fn can_replace_var_with_constant(&self, var_name : &str) -> bool { match (self) {
+        Codeblock::Block(block) => block.can_replace_var_with_constant(var_name),
         _ => true
     } }
-    pub fn replace_line_var_with_constant(&mut self, var_name : &str, with : &CodeValue) -> () { match (self) {
-        Codeblock::Block(block) => block.replace_line_var_with_constant(var_name, with),
+    pub fn replace_var_with_constant(&mut self, var_name : &str, with : &CodeValue) -> () { match (self) {
+        Codeblock::Block(block) => block.replace_var_with_constant(var_name, with),
         _ => { }
     } }
 
-    pub fn is_line_var_used(&self, var_name : &str) -> bool { match (self) {
-        Codeblock::Block(block) => block.is_line_var_used(var_name),
+    pub fn is_var_used(&self, var_name : &str) -> bool { match (self) {
+        Codeblock::Block(block) => block.is_var_used(var_name),
         _ => false
     } }
 
@@ -236,23 +236,23 @@ impl CodeblockBlock {
             || self.tags.iter().any(|tag| tag.contains_param(var_name))
     }
 
-    pub fn can_replace_line_var_with_constant(&self, var_name : &str) -> bool {
-        self.params.iter().all(|param| param.can_replace_line_var_with_constant(var_name))
-            || self.tags.iter().all(|tag| tag.can_replace_line_var_with_constant(var_name))
+    pub fn can_replace_var_with_constant(&self, var_name : &str) -> bool {
+        self.params.iter().all(|param| param.can_replace_var_with_constant(var_name))
+            || self.tags.iter().all(|tag| tag.can_replace_var_with_constant(var_name))
     }
-    pub fn replace_line_var_with_constant(&mut self, var_name : &str, with : &CodeValue) -> () {
+    pub fn replace_var_with_constant(&mut self, var_name : &str, with : &CodeValue) -> () {
         for param in &mut self.params {
-            param.replace_line_var_with_constant(var_name, with);
+            param.replace_var_with_constant(var_name, with);
         }
         for tag in &mut self.tags {
-            tag.replace_line_var_with_constant(var_name, with);
+            tag.replace_var_with_constant(var_name, with);
         }
     }
 
-    pub fn is_line_var_used(&self, var_name : &str) -> bool {
+    pub fn is_var_used(&self, var_name : &str) -> bool {
         let (setvar_like, _) = self.setvar_like_line();
-        self.params.iter().skip(if (setvar_like) { 1 } else { 0 }).any(|param| param.is_line_var_used(var_name))
-            || self.tags.iter().any(|tag| tag.is_line_var_used(var_name))
+        self.params.iter().skip(if (setvar_like) { 1 } else { 0 }).any(|param| param.is_var_used(var_name))
+            || self.tags.iter().any(|tag| tag.is_var_used(var_name))
     }
 
     pub fn setvar_like_line(&self) -> (bool, Option<&String>) { if let Some(action) = &self.action {

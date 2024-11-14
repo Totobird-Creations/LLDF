@@ -21,7 +21,7 @@ pub fn constant_propagation(line : &mut CodeLine, other_functions : &Vec<&mut Pa
                         // Check that the destination variable is not tied to a parameter.
                         (! line.blocks.iter().any(|block| block.contains_param(dest_name)))
                         // Check that the destination variable is not used in another block.
-                        && other_functions.iter().all(|other_function| ! other_function.line.blocks.iter().any(|block| block.is_line_var_used(dest_name)))
+                        && other_functions.iter().all(|other_function| ! other_function.line.blocks.iter().any(|block| block.is_var_used(dest_name)))
                     ) {
                         // Check that this value can be propagated.
                         if let Some(value) = check_value_to_propagate(line, i, dest_name, action, &mut params.iter().skip(1), &tags) {
@@ -31,7 +31,7 @@ pub fn constant_propagation(line : &mut CodeLine, other_functions : &Vec<&mut Pa
                             let mut write_count = 0usize;
                             for j in 0..line.blocks.len() {
                                 let other_block = &line.blocks[j];
-                                if (! other_block.can_replace_line_var_with_constant(dest_name)) { can_replace = false; break; }
+                                if (! other_block.can_replace_var_with_constant(dest_name)) { can_replace = false; break; }
                                 if let (_, Some(other_dest_var)) = other_block.setvar_like_line() {
                                     if (other_dest_var == dest_name) {
                                         write_count += 1;
@@ -46,7 +46,7 @@ pub fn constant_propagation(line : &mut CodeLine, other_functions : &Vec<&mut Pa
                                 line.blocks.remove(i);
 
                                 for block in &mut line.blocks {
-                                    block.replace_line_var_with_constant(&dest_name, &value);
+                                    block.replace_var_with_constant(&dest_name, &value);
                                 }
 
                                 // Allow the optimiser to try another pass.
@@ -85,7 +85,7 @@ fn check_value_to_propagate<'l>(
                 //  Game values are never allowed to be propagated.
                 for j in 0..line.blocks.len() {
                     let block = &line.blocks[j];
-                    if (j != i + 1 && block.is_line_var_used(dest_name)) {
+                    if (j != i + 1 && block.is_var_used(dest_name)) {
                         return None;
                     }
                 }
