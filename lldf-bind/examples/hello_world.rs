@@ -16,24 +16,17 @@ pub enum Enum {
 #[event(PlayerJoin)]
 fn player_swap_hands(default : PlayerSel) {
 
-    //default.send_message("Hello!".to_string());
-
-    //test(&default, Enum::A(String::from("Hello!")));
-    //test(&default, Enum::B(Item::diamond_axe()));
-
-    let mut i = 0;
-    while (i < 3) {
-        default.send_message(String::from("BEEP"));
-        i = i + 1;
+    if (test(&default, true, true)) {
+        default.send_message("YES!".to_string());
+    } else {
+        default.send_message("no.".to_string());
     }
 
 }
 
 
-//#[inline(never)]
-//fn test(sel : &PlayerSel, e : Enum) {
-//    match (e) {
-//        Enum::A(string) => sel.send_message(string),
-//        Enum::B(item) => sel.give_item(item),
-//    }
-//}
+#[inline(never)]
+#[no_mangle]
+fn test(sel : &PlayerSel, a : bool, b : bool) -> bool {
+    a && b
+}

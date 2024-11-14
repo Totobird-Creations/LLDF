@@ -18,6 +18,7 @@ use super::codegen::{ CodeValue, VariableScope };
 pub enum Value {
 
     // Constants
+    Null,
     ConstString(String),
     ConstInt(u64),
     ConstFloat(f64),
@@ -31,6 +32,7 @@ impl Value {
 
     pub fn to_codevalue(&self, module : &ParsedModule, function : &mut ParsedFunction) -> Result<CodeValue, Box<dyn Error>> { match (self) {
 
+        Self::Null                 => Ok(CodeValue::Number("0".to_string())),
         Self::ConstString (value ) => Ok(CodeValue::String(value.clone())),
         Self::ConstInt    (value ) => Ok(CodeValue::Number(value.to_string())),
         Self::ConstFloat  (value ) => Ok(CodeValue::Number(value.to_string())),
@@ -65,7 +67,7 @@ impl Value {
 
     pub fn to_ptr_accessor_part_strings(&self, module : &ParsedModule) -> Result<(String, String), Box<dyn Error>> { match (self) {
 
-        Self::ConstString(_) | Self::ConstInt(_) | Self::ConstFloat(_)
+        Self::Null | Self::ConstString(_) | Self::ConstInt(_) | Self::ConstFloat(_)
             => { Err("Can not use constant as pointer accessor".into()) },
 
         Self::Local(name) => Ok((format!("%index({},1)", name), format!("%index({},2)", name))),
@@ -97,7 +99,7 @@ impl Value {
 
     pub fn to_ptr_accessor_string(&self, module : &ParsedModule) -> Result<String, Box<dyn Error>> { match (self) {
 
-        Self::ConstString(_) | Self::ConstInt(_) | Self::ConstFloat(_)
+        Self::Null | Self::ConstString(_) | Self::ConstInt(_) | Self::ConstFloat(_)
             => { Err("Can not use constant as pointer accessor".into()) },
 
         Self::Local(name) => Ok(format!("%index({},1):%index({},2)", name, name)),

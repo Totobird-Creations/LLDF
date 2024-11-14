@@ -53,7 +53,7 @@ pub fn parse_const(module : &ParsedModule, function : &mut ParsedFunction, cor :
 
     Constant::Undef(_) => todo!(),
 
-    Constant::Poison(_) => todo!(),
+    Constant::Poison(_) => Ok(Value::Null),
 
     Constant::GlobalReference { name, .. } => Ok(Value::Global(name.clone())),
 
@@ -62,14 +62,6 @@ pub fn parse_const(module : &ParsedModule, function : &mut ParsedFunction, cor :
     Constant::Sub(_) => todo!(),
 
     Constant::Mul(_) => todo!(),
-
-    //Constant::UDiv(_) => todo!(),
-
-    //Constant::SDiv(_) => todo!(),
-
-    //Constant::URem(_) => todo!(),
-
-    //Constant::SRem(_) => todo!(),
 
     Constant::And(_) => todo!(),
 
@@ -82,20 +74,6 @@ pub fn parse_const(module : &ParsedModule, function : &mut ParsedFunction, cor :
     Constant::LShr(_) => todo!(),
 
     Constant::AShr(_) => todo!(),
-
-    //Constant::FAdd(_) => todo!(),
-
-    //Constant::FSub(_) => todo!(),
-
-    //Constant::FMul(_) => todo!(),
-
-    //Constant::FDiv(_) => todo!(),
-
-    //Constant::FRem(_) => todo!(),
-
-    //Constant::ExtractValue(_) => todo!(),
-
-    //Constant::InsertValue(_) => todo!(),
 
     Constant::GetElementPtr(_) => todo!(),
 

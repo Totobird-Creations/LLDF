@@ -10,7 +10,7 @@ use llvm_ir::Operand;
 
 pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr : &Instruction) -> Result<(), Box<dyn Error>> { match (instr) {
 
-    Instruction::Add(Add { operand0, operand1, dest, .. }) => {
+    Instruction::Add(Add { operand0, operand1, dest, .. }) | Instruction::FAdd(FAdd { operand0, operand1, dest, .. }) => {
         let params = vec![
             CodeValue::Variable { name : name_to_local(dest), scope: VariableScope::Local },
             parse_oper(module, function, operand0)?.to_codevalue(module, function)?,
@@ -20,9 +20,25 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
         Ok(())
     },
 
-    Instruction::Sub(_) => todo!(),
+    Instruction::Sub(Sub { operand0, operand1, dest, .. }) | Instruction::FSub(FSub { operand0, operand1, dest, .. }) => {
+        let params = vec![
+            CodeValue::Variable { name : name_to_local(dest), scope: VariableScope::Local },
+            parse_oper(module, function, operand0)?.to_codevalue(module, function)?,
+            parse_oper(module, function, operand1)?.to_codevalue(module, function)?
+        ];
+        function.line.blocks.push(Codeblock::action("set_var", "-", params, vec![ ]));
+        Ok(())
+    },
 
-    Instruction::Mul(_) => todo!(),
+    Instruction::Mul(Mul { operand0, operand1, dest, .. }) | Instruction::FMul(FMul { operand0, operand1, dest, .. }) => {
+        let params = vec![
+            CodeValue::Variable { name : name_to_local(dest), scope: VariableScope::Local },
+            parse_oper(module, function, operand0)?.to_codevalue(module, function)?,
+            parse_oper(module, function, operand1)?.to_codevalue(module, function)?
+        ];
+        function.line.blocks.push(Codeblock::action("set_var", "x", params, vec![ ]));
+        Ok(())
+    },
 
     Instruction::UDiv(_) => todo!(),
 
@@ -32,23 +48,55 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
 
     Instruction::SRem(_) => todo!(),
 
-    Instruction::And(_) => todo!(),
+    Instruction::And(And { operand0, operand1, dest, .. }) => {
+        let params = vec![
+            CodeValue::Variable { name : name_to_local(dest), scope: VariableScope::Local },
+            parse_oper(module, function, operand0)?.to_codevalue(module, function)?,
+            parse_oper(module, function, operand1)?.to_codevalue(module, function)?
+        ];
+        function.line.blocks.push(Codeblock::action("set_var", "Bitwise", params, vec![
+            CodeValue::Actiontag { kind : "Operator".to_string(), value : "&".to_string(), variable : None, block_override : None }
+        ]));
+        Ok(())
+    },
 
-    Instruction::Or(_) => todo!(),
+    Instruction::Or(Or { operand0, operand1, dest, .. }) => {
+        let params = vec![
+            CodeValue::Variable { name : name_to_local(dest), scope: VariableScope::Local },
+            parse_oper(module, function, operand0)?.to_codevalue(module, function)?,
+            parse_oper(module, function, operand1)?.to_codevalue(module, function)?
+        ];
+        function.line.blocks.push(Codeblock::action("set_var", "Bitwise", params, vec![
+            CodeValue::Actiontag { kind : "Operator".to_string(), value : "|".to_string(), variable : None, block_override : None }
+        ]));
+        Ok(())
+    },
 
-    Instruction::Xor(_) => todo!(),
-
-    Instruction::FAdd(_) => todo!(),
-
-    Instruction::FSub(_) => todo!(),
-
-    Instruction::FMul(_) => todo!(),
+    Instruction::Xor(Xor { operand0, operand1, dest, .. }) => {
+        let params = vec![
+            CodeValue::Variable { name : name_to_local(dest), scope: VariableScope::Local },
+            parse_oper(module, function, operand0)?.to_codevalue(module, function)?,
+            parse_oper(module, function, operand1)?.to_codevalue(module, function)?
+        ];
+        function.line.blocks.push(Codeblock::action("set_var", "Bitwise", params, vec![
+            CodeValue::Actiontag { kind : "Operator".to_string(), value : "^".to_string(), variable : None, block_override : None }
+        ]));
+        Ok(())
+    },
 
     Instruction::FDiv(_) => todo!(),
 
     Instruction::FRem(_) => todo!(),
 
-    Instruction::FNeg(_) => todo!(),
+    Instruction::FNeg(FNeg { operand, dest, .. }) => {
+        let params = vec![
+            CodeValue::Variable { name : name_to_local(dest), scope: VariableScope::Local },
+            CodeValue::Number("0".to_string()),
+            parse_oper(module, function, operand)?.to_codevalue(module, function)?
+        ];
+        function.line.blocks.push(Codeblock::action("set_var", "-", params, vec![ ]));
+        Ok(())
+    },
 
     Instruction::ExtractValue(_) => todo!(),
 
@@ -116,25 +164,25 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
 
     Instruction::Trunc(Trunc { operand, dest, .. }) => handle_passthru(module, function, operand, dest),
 
-    Instruction::ZExt(_) => todo!(),
+    Instruction::ZExt(ZExt { operand, dest, .. }) => handle_passthru(module, function, operand, dest),
 
-    Instruction::SExt(_) => todo!(),
+    Instruction::SExt(SExt { operand, dest, .. }) => handle_passthru(module, function, operand, dest),
 
-    Instruction::FPTrunc(_) => todo!(),
+    Instruction::FPTrunc(FPTrunc { operand, dest, .. }) => handle_passthru(module, function, operand, dest),
 
-    Instruction::FPExt(_) => todo!(),
+    Instruction::FPExt(FPExt { operand, dest, .. }) => handle_passthru(module, function, operand, dest),
 
-    Instruction::FPToUI(_) => todo!(),
+    Instruction::FPToUI(FPToUI { operand, dest, .. }) => handle_passthru(module, function, operand, dest),
 
-    Instruction::FPToSI(_) => todo!(),
+    Instruction::FPToSI(FPToSI { operand, dest, .. }) => handle_passthru(module, function, operand, dest),
 
-    Instruction::UIToFP(UIToFP { operand, dest, .. }) => handle_passthru(module, function, operand, dest),
+    Instruction::UIToFP(UIToFP { operand, dest, .. }) => handle_passthru(module, function, operand, dest), // TODO: Make sure this works with sign.
 
-    Instruction::SIToFP(_) => todo!(),
+    Instruction::SIToFP(SIToFP { operand, dest, .. }) => handle_passthru(module, function, operand, dest), // TODO: Make sure this works with sign.
 
-    Instruction::PtrToInt(PtrToInt { operand, dest, .. }) => handle_passthru(module, function, operand, dest), // TODO: Make sure PtrToInt works
+    Instruction::PtrToInt(PtrToInt { operand, dest, .. }) => handle_passthru(module, function, operand, dest), // TODO: Make sure this works
 
-    Instruction::IntToPtr(_) => todo!(),
+    Instruction::IntToPtr(IntToPtr { operand, dest, .. }) => handle_passthru(module, function, operand, dest), // TODO: Make sure this works
 
     Instruction::ICmp(ICmp { predicate, operand0, operand1, dest, .. }) => {
         let op = match (predicate) {
@@ -268,8 +316,13 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
 
                 } } else { Ok(()) } },
 
-                Global::UserFunction { name } => { // TODO: return
-                    let mut params = Vec::with_capacity(arguments.len());
+                Global::UserFunction { name } => {
+                    let mut params = Vec::with_capacity(arguments.len() + 1);
+                    // Return value
+                    if let Some(dest) = dest {
+                        params.push(CodeValue::Variable { name : name_to_local(dest), scope : VariableScope::Local });
+                    }
+                    // Parameters
                     for (arg, _) in arguments {
                         let mut value = parse_oper(module, function, arg)?.to_codevalue(module, function)?;
                         if let CodeValue::Variable { .. } = value { } else {
