@@ -5,7 +5,7 @@ use core::mem::transmute_unchecked;
 
 /// Text with extra formatting via MiniMessage tags. Used for chat messages, item names, etc.
 pub struct Text {
-    _opaque_type : u8
+    _opaque_type : u64
 }
 
 impl Clone for Text {

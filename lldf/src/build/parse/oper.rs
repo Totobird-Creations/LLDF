@@ -156,6 +156,8 @@ pub fn parse_const(module : &ParsedModule, function : &mut ParsedFunction, cor :
 
     Constant::IntToPtr(IntToPtr { operand, .. }) => parse_const(module, function, operand), // TODO: Make sure this works
 
+    Constant::BitCast(BitCast { operand, .. }) => parse_const(module, function, operand), // TODO: Make sure this works
+
     Constant::ICmp(ICmp { predicate, operand0, operand1 }) => {
         let temp_var = function.create_temp_var_name();
         let operand0 = parse_const(module, function, operand0)?;
@@ -185,7 +187,6 @@ pub fn parse_const(module : &ParsedModule, function : &mut ParsedFunction, cor :
     Constant::BlockAddress                                                                                      => Err("Block address operands are unsupported"      .into()),
     Constant::TokenNone                                                                                         => Err("Token operands are unsupported"              .into()),
     Constant::Vector(_) | Constant::ExtractElement(_) | Constant::InsertElement(_) | Constant::ShuffleVector(_) => Err("Vector operands are unsupported"             .into()),
-    Constant::BitCast(_)                                                                                        => Err("Bit cast operands are unsupported"           .into()),
     Constant::AddrSpaceCast(_)                                                                                  => Err("Address space cast operands are unsupported" .into()),
 } }
 

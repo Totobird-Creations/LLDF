@@ -121,7 +121,7 @@ fn check_value_to_propagate<'l>(
         return Some(CodeValue::Number(final_value.to_string()));
     } }
 
-    else if (action == "*") && let Some(CodeValue::Number(base_value)) = params.next() { if let Ok(mut final_value) = base_value.parse::<f64>() {
+    else if (action == "x") && let Some(CodeValue::Number(base_value)) = params.next() { if let Ok(mut final_value) = base_value.parse::<f64>() {
         for param in params {
             if let CodeValue::Number(value) = param {
                 if let Ok(value) = value.parse::<f64>() { final_value *= value; }

@@ -8,7 +8,7 @@ use crate::core::mem::transmute_unchecked;
 /// - A pitch of `0.0` is forward, `PI` is down, `-PI` is up.
 /// - A yaw of `0.0` is south, `PI / 2.0` is west, `PI` is north, `-PI / 2.0` is east.
 pub struct Location {
-    _opaque_type : u8
+    _opaque_type : u64
 }
 
 impl Clone for Location {
@@ -20,8 +20,8 @@ impl Location {
 
     #[lldf_bind_proc::dfdoc(SetVariable/SetAllCoords { CoordinateType = PlotCoordinate })]
     #[inline(always)]
-    pub fn new<F0 : Into<Float>, F1 : Into<Float>, F2 : Into<Float>, F3 : Into<Float>, F4 : Into<Float>>(x : F0, y : F1, z : F2, pitch : F3, yaw : F4) -> Self { unsafe {
-        DF_ACTION__SetVariable_SetAllCoords_CoordinateType_PlotCoordinate(x.into(), y.into(), z.into(), pitch.into(), yaw.into())
+    pub fn new<F0 : Into<Float>, F1 : Into<Float>, F2 : Into<Float>, F3 : Into<Float>, F4 : Into<Float>>(x : F0, y : F1, z : F2, pitch_rad : F3, yaw_rad : F4) -> Self { unsafe {
+        DF_ACTION__SetVariable_SetAllCoords_CoordinateType_PlotCoordinate(x.into(), y.into(), z.into(), pitch_rad.into().to_degrees(), yaw_rad.into().to_degrees())
     } }
 
     #[lldf_bind_proc::dfdoc(SetVariable/GetCoord { CoordinateType = PlotCoordinate, Coordinate = X })]
@@ -96,9 +96,18 @@ impl Location {
         Vector::new([x, y, z])
     } }
 
-    // TODO: with_xyz
+    #[lldf_bind_proc::dfdoc(SetVariable/SetAllCoords)]
+    #[inline(always)]
+    pub fn with_xyz<F0 : Into<Float>, F1 : Into<Float>, F2 : Into<Float>>(&self, x : F0, y : F1, z : F2) -> Location { unsafe {
+        DF_ACTION__SetVariable_SetAllCoords_CoordinateType_PlotCoordinate(self.to_opaque(), x.into(), y.into(), z.into())
+    } }
 
-    // TODO: with_xyzv
+    #[lldf_bind_proc::dfdoc(SetVariable/SetAllCoords)]
+    #[inline(always)]
+    pub fn with_xyzv<V : AsRef<Vector<3>>>(&self, xyz : V) -> Location { unsafe {
+        let xyz = xyz.as_ref();
+        DF_ACTION__SetVariable_SetAllCoords_CoordinateType_PlotCoordinate(self.to_opaque(), xyz.x(), xyz.y(), xyz.z())
+    } }
 
     // TODO: shift_xyz
 
@@ -109,7 +118,7 @@ impl Location {
     /// - The return value is in **radians**.
     #[inline(always)]
     pub fn pitch(&self) -> Float { unsafe {
-        DF_ACTION__SetVariable_GetCoord_CoordinateType_PlotCoordinate_Coordinate_Pitch(self.to_opaque()).deg_to_rad()
+        DF_ACTION__SetVariable_GetCoord_CoordinateType_PlotCoordinate_Coordinate_Pitch(self.to_opaque()).to_radians()
     } }
 
     #[lldf_bind_proc::dfdoc(SetVariable/SetCoord { CoordinateType = PlotCoordinate, Coordinate = Pitch })]
@@ -117,13 +126,13 @@ impl Location {
     /// - The angle value is in **radians**.
     #[inline(always)]
     pub fn with_pitch<F : Into<Float>>(&self, pitch_rad : F) -> Location { unsafe {
-        DF_ACTION__SetVariable_SetCoord_CoordinateType_PlotCoordinate_Coordinate_Pitch(self.to_opaque(), pitch_rad.into().rad_to_deg())
+        DF_ACTION__SetVariable_SetCoord_CoordinateType_PlotCoordinate_Coordinate_Pitch(self.to_opaque(), pitch_rad.into().to_degrees())
     } }
 
     #[lldf_bind_proc::dfdoc(SetVariable/ShiftRotation { RotationAxis = Pitch })]
     #[inline(always)]
     pub fn shift_pitch<F : Into<Float>>(&self, dpitch : F) -> Location { unsafe {
-        DF_ACTION__SetVariable_ShiftRotation_RotationAxis_Pitch(self.to_opaque(), dpitch.into().rad_to_deg())
+        DF_ACTION__SetVariable_ShiftRotation_RotationAxis_Pitch(self.to_opaque(), dpitch.into().to_degrees())
     } }
 
     #[lldf_bind_proc::dfdoc(SetVariable/GetCoord { CoordinateType = PlotCoordinate, Coordinate = Yaw })]
@@ -131,7 +140,7 @@ impl Location {
     /// - The return value is in **radians**.
     #[inline(always)]
     pub fn yaw(&self) -> Float { unsafe {
-        DF_ACTION__SetVariable_GetCoord_CoordinateType_PlotCoordinate_Coordinate_Yaw(self.to_opaque()).deg_to_rad()
+        DF_ACTION__SetVariable_GetCoord_CoordinateType_PlotCoordinate_Coordinate_Yaw(self.to_opaque()).to_radians()
     } }
 
     #[lldf_bind_proc::dfdoc(SetVariable/SetCoord { CoordinateType = PlotCoordinate, Coordinate = Yaw })]
@@ -139,18 +148,26 @@ impl Location {
     /// - The angle value is in **radians**.
     #[inline(always)]
     pub fn with_yaw<F : Into<Float>>(&self, yaw_rad : F) -> Location { unsafe {
-        DF_ACTION__SetVariable_SetCoord_CoordinateType_PlotCoordinate_Coordinate_Yaw(self.to_opaque(), yaw_rad.into().rad_to_deg())
+        DF_ACTION__SetVariable_SetCoord_CoordinateType_PlotCoordinate_Coordinate_Yaw(self.to_opaque(), yaw_rad.into().to_degrees())
     } }
 
     #[lldf_bind_proc::dfdoc(SetVariable/ShiftRotation { RotationAxis = Yaw })]
     #[inline(always)]
     pub fn shift_yaw<F : Into<Float>>(&self, dyaw : F) -> Location { unsafe {
-        DF_ACTION__SetVariable_ShiftRotation_RotationAxis_Yaw(self.to_opaque(), dyaw.into().rad_to_deg())
+        DF_ACTION__SetVariable_ShiftRotation_RotationAxis_Yaw(self.to_opaque(), dyaw.into().to_degrees())
     } }
 
     // TODO: rot
 
-    // TODO: with_rot
+    #[lldf_bind_proc::dfdoc(SetVariable/SetAllCoords)]
+    /// ##### Note:
+    /// - The angle values are in **radians**.
+    #[inline(always)]
+    pub fn with_rot<F0 : Into<Float>, F1 : Into<Float>>(&self, pitch_rad : F0, yaw_rad : F1) -> Location { unsafe {
+        DF_ACTION__SetVariable_SetAllCoords_CoordinateType_PlotCoordinate(self.to_opaque(), Item::air(), Item::air(), Item::air(), pitch_rad.into().to_degrees(), yaw_rad.into().to_degrees())
+    } }
+
+    // TODO: with_rotv
 
     // TODO: shift_rot
 
@@ -183,6 +200,7 @@ impl Location {
     #[lldf_bind_proc::dfdoc(SetVariable/RandomLoc)]
     #[inline(always)]
     pub fn random_in<L : AsRef<Location>>(&self, other : L) -> Location { unsafe {
+        let other = other.as_ref();
         DF_ACTION__SetVariable_RandomLoc(self.to_opaque(), other.to_opaque())
     } }
 
@@ -223,7 +241,7 @@ unsafe impl DFValue for Location {
 
 extern "C" {
 
-    fn DF_ACTION__SetVariable_SetAllCoords_CoordinateType_PlotCoordinate( x : Float, y : Float, z : Float, pitch : Float, yaw : Float ) -> Location;
+    fn DF_ACTION__SetVariable_SetAllCoords_CoordinateType_PlotCoordinate( ... ) -> Location;
     fn DF_ACTION__SetVariable_GetCoord_CoordinateType_PlotCoordinate_Coordinate_X( location : DFOpaqueValue ) -> Float;
     fn DF_ACTION__SetVariable_GetCoord_CoordinateType_PlotCoordinate_Coordinate_Y( location : DFOpaqueValue ) -> Float;
     fn DF_ACTION__SetVariable_GetCoord_CoordinateType_PlotCoordinate_Coordinate_Z( location : DFOpaqueValue ) -> Float;

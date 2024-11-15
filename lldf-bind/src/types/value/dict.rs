@@ -5,7 +5,7 @@ use crate::core::mem::transmute_unchecked;
 
 
 pub struct Dict<T : DFValue> {
-    _opaque_type : u8,
+    _opaque_type : u64,
     _ph          : PhantomData<T>
 }
 

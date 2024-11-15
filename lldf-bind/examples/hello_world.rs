@@ -9,19 +9,6 @@ use lldf_bind::prelude::*;
 
 #[event(PlayerJoin)]
 fn player_join(default : PlayerSel) {
-    default.send_message(
-        test(Sound::custom("minecraft:entity.allay.hurt")) // Does not have a name because it's a custom sound.
-    );
-    default.send_message(
-        test(Sound::allay_hurt()) // Does have a name.
-    );
-    
-}
-
-#[no_mangle]
-fn test(sound : Sound) -> String {
-    match (sound.kind()) { // The name of the sound
-        Some(kind) => kind.to_string(),
-        None       => "No sound kind found".to_string()
-    }
+    let loc = Location::new(1.0, 2.0, 3.0, Float::from(68.234).to_radians(), 5.0);
+    default.send_message(loc);
 }

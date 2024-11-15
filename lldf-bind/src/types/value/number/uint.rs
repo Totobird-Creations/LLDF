@@ -3,7 +3,7 @@ use super::*;
 
 #[repr(transparent)]
 pub struct UInt {
-    pub(crate) _opaque_type : u8
+    pub(crate) _opaque_type : u64
 }
 impl Clone for UInt { fn clone(&self) -> Self { *self } }
 impl Copy for UInt {}

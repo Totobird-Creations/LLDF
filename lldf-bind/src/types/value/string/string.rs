@@ -5,7 +5,7 @@ use crate::core::mem::transmute_unchecked;
 
 /// A sequence of characters.
 pub struct String {
-    pub(crate) _opaque_type : u8
+    pub(crate) _opaque_type : u64
 }
 
 impl Clone for String {

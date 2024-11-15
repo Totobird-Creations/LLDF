@@ -5,7 +5,7 @@ use crate::core::mem::transmute_unchecked;
 
 /// A vanilla sound or a custom sound from a resource pack.
 pub struct Sound {
-    _opaque_type : u8
+    _opaque_type : u64
 }
 
 impl Clone for Sound {

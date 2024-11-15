@@ -5,7 +5,7 @@ use crate::core::mem::transmute_unchecked;
 
 /// A potion effect with amplifier and duration.
 pub struct Potion {
-    _opaque_type : u8
+    _opaque_type : u64
 }
 
 impl Clone for Potion {

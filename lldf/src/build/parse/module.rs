@@ -64,7 +64,10 @@ pub enum Global {
 }
 #[derive(Debug)]
 pub enum AssertHandler {
-    ConstantStrToString
+    /// Fixes empty strings being optimised away.
+    ConstantStrToString,
+    /// Fixes `f64` being represented as `u64` under certain conditions.
+    NoOptF64
 }
 #[derive(Debug)]
 pub enum ActionFunctionTag {
@@ -125,7 +128,12 @@ pub fn parse_module(module : &Module) -> Result<ParsedModule, Box<dyn Error>> {
                         "ConstantStrToString" => {
                             parsed.globals.insert(Name::Name(Box::new(module_function.name.clone())), Global::Assert(AssertHandler::ConstantStrToString));
                             continue;
-                        }
+                        },
+
+                        "NoOptF64" => {
+                            parsed.globals.insert(Name::Name(Box::new(module_function.name.clone())), Global::Assert(AssertHandler::NoOptF64));
+                            continue;
+                        },
 
                         _ => { }
                     }

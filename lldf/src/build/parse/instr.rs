@@ -1,3 +1,5 @@
+use std::mem::transmute;
+
 use super::*;
 
 use llvm_ir::instruction::*;
@@ -220,6 +222,8 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
 
     Instruction::IntToPtr(IntToPtr { operand, dest, .. }) => handle_passthru(module, function, operand, dest), // TODO: Make sure this works
 
+    Instruction::BitCast(BitCast { operand, dest, .. }) => handle_passthru(module, function, operand, dest), // TODO: Make sure this works
+
     Instruction::ICmp(ICmp { predicate, operand0, operand1, dest, .. }) => {
         let operand0 = parse_oper(module, function, operand0)?;
         let operand1 = parse_oper(module, function, operand1)?;
@@ -309,7 +313,13 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
                                 },
                             CodeValue::Parameter { .. } | CodeValue::Actiontag { .. } => unreachable!(),
                         }
-                    }
+                    },
+
+                    AssertHandler::NoOptF64 => {
+                        let value    = parse_oper(module, function, &arguments[0].0)?;
+                        let dest_var = CodeValue::Variable { name : name_to_local(dest), scope : VariableScope::Local };
+                        handle_nooptf64(module, function, &value, dest_var)
+                    },
 
                 } } else { Ok(()) } },
 
@@ -471,7 +481,6 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
     Instruction::VAArg(_)                                                                          => Err("Variadic argument instructions are unsupported"  .into()),
     Instruction::Shl(_) | Instruction::LShr(_) | Instruction::AShr(_)                              => Err("Bit shift instructions are unsupported"          .into()),
     Instruction::Fence(_) | Instruction::CmpXchg(_) | Instruction::AtomicRMW(_)                    => Err("Atomic instructions are unsupported"             .into()),
-    Instruction::BitCast(_)                                                                        => Err("Bit cast instructions are unsupported"           .into()),
     Instruction::AddrSpaceCast(_)                                                                  => Err("Address space cast instructions are unsupported" .into()),
     Instruction::Freeze(_)                                                                         => Err("Propagation freeze instructions are unsupported" .into()),
     Instruction::LandingPad(_) | Instruction::CatchPad(_) | Instruction::CleanupPad(_)             => Err("Exception handling instructions are unsupported" .into()),
@@ -485,4 +494,33 @@ fn handle_passthru(module : &ParsedModule, function : &mut ParsedFunction, opera
     ];
     function.line.blocks.push(Codeblock::action("set_var", "=", params, vec![ ]));
     Ok(())
+}
+
+
+fn handle_nooptf64(module : &ParsedModule, function : &mut ParsedFunction, value : &Value, dest_var : CodeValue) -> Result<(), Box<dyn Error>> {
+    match (value) {
+        Value::Null => {
+            function.line.blocks.push(Codeblock::action("set_var", "=", vec![ dest_var.clone(), CodeValue::Number("0".to_string()) ], vec![ ]));
+            Ok(())
+        },
+        Value::ConstInt(value) => {
+            let value = unsafe{ transmute::<_, f64>(value) };
+            function.line.blocks.push(Codeblock::action("set_var", "=", vec![ dest_var.clone(), CodeValue::Number(value.to_string()) ], vec![ ]));
+            Ok(())
+        },
+        Value::ConstFloat(value) => {
+            function.line.blocks.push(Codeblock::action("set_var", "=", vec![ dest_var.clone(), CodeValue::Number(value.to_string()) ], vec![ ]));
+            Ok(())
+        },
+        Value::Global(name) => {
+            let global = module.globals.get(&name);
+            if let Some(global) = global { match (global) {
+                Global::Constant(value) => handle_nooptf64(module, function, value, dest_var),
+                _ => Err("Non-constant values can not be handled by NoOptF64".into())
+            } }
+            else { Err(format!("Unknown global {}", name).into()) }
+        },
+        Value::Local(_) => Err("Non-constant values can not be handled by NoOptF64".into()),
+        Value::ConstString(_) => Err("Strings can not be handled by NoOptF64".into()),
+    }
 }

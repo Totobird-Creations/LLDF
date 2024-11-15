@@ -6,7 +6,7 @@ use core::mem::transmute_unchecked;
 
 #[repr(transparent)]
 pub struct List<T : DFValue> {
-    pub(crate) _opaque_type : u8,
+    pub(crate) _opaque_type : u64,
     _ph : PhantomData<T>
 }
 
