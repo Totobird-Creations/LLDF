@@ -31,9 +31,30 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
         Ok(())
     },
 
-    Instruction::UDiv(_) | Instruction::SDiv(_) => todo!(),
+    Instruction::UDiv(UDiv { operand0, operand1, dest, .. }) | Instruction::SDiv(SDiv { operand0, operand1, dest, .. }) => {
+        let dest_name = name_to_local(dest);
+        let operand0 = parse_oper(module, function, operand0)?.to_codevalue(module, function)?;
+        let operand1 = parse_oper(module, function, operand1)?.to_codevalue(module, function)?;
+        function.line.blocks.push(Codeblock::action("set_var", "/", vec![
+            CodeValue::Variable { name : dest_name.to_string(), scope: VariableScope::Local },
+            operand0, operand1
+        ], vec![
+            CodeValue::Actiontag { kind : "Division Mode".to_string(), value : "Default".to_string(), variable : None, block_override: None }
+        ]));
+        handle_trunc(module, function, &dest_name, Value::Local(dest_name.clone()))
+    },
 
-    Instruction::URem(_) | Instruction::SRem(_) => todo!(),
+    Instruction::URem(URem { operand0, operand1, dest, .. }) | Instruction::SRem(SRem { operand0, operand1, dest, .. }) | Instruction::FRem(FRem { operand0, operand1, dest, .. }) => {
+        let operand0 = parse_oper(module, function, operand0)?.to_codevalue(module, function)?;
+        let operand1 = parse_oper(module, function, operand1)?.to_codevalue(module, function)?;
+        function.line.blocks.push(Codeblock::action("set_var", "%", vec![
+            CodeValue::Variable { name : name_to_local(dest), scope: VariableScope::Local },
+            operand0, operand1
+        ], vec![
+            CodeValue::Actiontag { kind : "Remainder Mode".to_string(), value : "Remainder".to_string(), variable : None, block_override: None }
+        ]));
+        Ok(())
+    },
 
     Instruction::And(And { operand0, operand1, dest, .. }) => {
         let operand0 = parse_oper(module, function, operand0)?;
@@ -64,18 +85,6 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
             operand0, operand1
         ], vec![
             CodeValue::Actiontag { kind : "Division Mode".to_string(), value : "Default".to_string(), variable : None, block_override : None }
-        ]));
-        Ok(())
-    },
-
-    Instruction::FRem(FRem { operand0, operand1, dest, .. }) => {
-        let operand0 = parse_oper(module, function, operand0)?.to_codevalue(module, function)?;
-        let operand1 = parse_oper(module, function, operand1)?.to_codevalue(module, function)?;
-        function.line.blocks.push(Codeblock::action("set_var", "%", vec![
-            CodeValue::Variable { name : name_to_local(dest), scope: VariableScope::Local },
-            operand0, operand1
-        ], vec![
-            CodeValue::Actiontag { kind : "Remainder Mode".to_string(), value : "Remainder".to_string(), variable : None, block_override : None }
         ]));
         Ok(())
     },
@@ -156,20 +165,9 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
     // Shift the second element of the pointer (represented as a 2-element list).
     Instruction::GetElementPtr(GetElementPtr { address, indices, dest, .. }) => {
         if (indices.len() != 1) { return Err("Multi-index GEP instructions are unsupported".into()); }
-        let address  = parse_oper(module, function, address)?;
-        let index    = parse_oper(module, function, &indices[0])?.to_codevalue(module, function)?;
-        let temp_var = CodeValue::Variable { name : function.create_temp_var_name(), scope : VariableScope::Local };
-        let accessor = address.to_ptr_accessor_part_strings(module)?;
-        function.line.blocks.push(Codeblock::action("set_var", "+", vec![
-            temp_var.clone(),
-            CodeValue::Number(accessor.1),
-            index
-        ], vec![ ]));
-        function.line.blocks.push(Codeblock::action("set_var", "CreateList", vec![
-            CodeValue::Variable { name : name_to_local(dest), scope: VariableScope::Local },
-            CodeValue::String(accessor.0),
-            temp_var
-        ], vec![]));
+        let address = parse_oper(module, function, address)?;
+        let index   = parse_oper(module, function, &indices[0])?;
+        handle_gep(module, function, &name_to_local(dest), address, index)?;
         Ok(())
     },
 
@@ -183,7 +181,10 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
     Instruction::BitCast(BitCast { operand, dest, .. })
         => handle_passthru(module, function, operand, dest),
 
-    Instruction::FPToUI(_) | Instruction::FPToSI(_) => todo!(),
+    Instruction::FPToUI(FPToUI { operand, dest, .. }) | Instruction::FPToSI(FPToSI { operand, dest, .. }) => {
+        let operand = parse_oper(module, function, operand)?;
+        handle_trunc(module, function, &name_to_local(dest), operand)
+    },
 
     Instruction::PtrToInt(PtrToInt { operand, dest, .. }) |
     Instruction::IntToPtr(IntToPtr { operand, dest, .. })

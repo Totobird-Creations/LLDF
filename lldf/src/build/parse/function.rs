@@ -67,7 +67,8 @@ pub fn parse_function(module : &mut ParsedModule, function : &Function) -> Resul
     for param in &function.parameters {
         params.push(CodeValue::Parameter {
             name : name_to_string(&param.name),
-            typ : ParameterType::Any, plural : false, optional : false,
+            typ : handle_param_type(module, &*param.ty)?,
+            plural : false, optional : false,
             description : Some(format!("{}", param.name)),
             note        : Some(format!("Type: {}", param.ty))
         });
@@ -244,23 +245,42 @@ pub fn parse_block(module : &mut ParsedModule, function : &Function, block : &Ba
             ], vec![ ]));
         },
 
-        Terminator::IndirectBr(_) => todo!(),
+        Terminator::IndirectBr(_) => { return Err("IndirectBr terminators are unsupported (No BlockAddress)".into()) },
 
-        Terminator::Invoke(_) => todo!(),
+        Terminator::Invoke(_) => { return Err("Invoke terminators are unsupported (No Exceptions)".into()) },
 
-        Terminator::Resume(_) => todo!(),
+        Terminator::Resume(_) => { return Err("Resume terminators are unsupported".into()) },
 
-        Terminator::Unreachable(_) => todo!(),
+        Terminator::Unreachable(_) => { }, // TODO: Add panic?
 
-        Terminator::CleanupRet(_) => todo!(),
+        Terminator::CleanupRet(_) => { return Err("CleanupRet terminators are unsupported".into()) },
 
-        Terminator::CatchRet(_) => todo!(),
+        Terminator::CatchRet(_) => { return Err("CatchRet terminators are unsupported".into()) },
 
-        Terminator::CatchSwitch(_) => todo!(),
+        Terminator::CatchSwitch(_) => { return Err("CatchSwitch terminators are unsupported".into()) },
 
-        Terminator::CallBr(_) => todo!(),
+        Terminator::CallBr(_) => { return Err("CallBr terminators are unsupported".into()) },
 
     }
 
     Ok(block_function)
+}
+
+
+
+fn handle_param_type(module : &ParsedModule, typ : &Type) -> Result<ParameterType, Box<dyn Error>> {
+    match (typ) {
+        Type::VoidType | Type::IntegerType { .. } | Type::FPType(_) => Ok(ParameterType::Number),
+        Type::PointerType { .. }                                    => Ok(ParameterType::List),
+        Type::FuncType { .. }                                       => Ok(ParameterType::String),
+        Type::ArrayType { .. } | Type::StructType { .. }            => Ok(ParameterType::List),
+        Type::NamedStructType { name }                              => handle_param_type(module, &*module.types.named_struct(name)),
+        Type::VectorType { .. } => Err("Vector types are unsupported".into()),
+        Type::X86_MMXType       => Err("X86_MMX types are unsupported".into()),
+        Type::X86_AMXType       => Err("X86_AMX types are unsupported".into()),
+        Type::MetadataType      => Err("Metadata types are unsupported".into()),
+        Type::LabelType         => Err("Label types are unsupported".into()),
+        Type::TokenType         => Err("Token types are unsupported".into()),
+        Type::TargetExtType     => Err("TargetExt types are unsupported".into())
+    }
 }

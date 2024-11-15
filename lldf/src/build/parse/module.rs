@@ -7,12 +7,14 @@ use std::borrow::Cow;
 use inflector::Inflector;
 use llvm_ir::Module;
 use llvm_ir::module::GlobalVariable;
+use llvm_ir::types::Types;
 
 
 
 pub struct ParsedModule<'l> {
     pub module        : &'l Module,
     pub globals       : HashMap<Name, Global>,
+    pub types         : &'l Types,
     pub init_function : Option<ParsedFunction>,
     pub functions     : Vec<ParsedFunction>
 }
@@ -91,6 +93,7 @@ pub fn parse_module(module : &Module) -> Result<ParsedModule, Box<dyn Error>> {
     let mut parsed = ParsedModule {
         module,
         globals       : HashMap::new(),
+        types         : &module.types,
         init_function : None,
         functions     : Vec::new()
     };
