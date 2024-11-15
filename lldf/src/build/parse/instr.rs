@@ -10,32 +10,23 @@ use llvm_ir::Operand;
 pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr : &Instruction) -> Result<(), Box<dyn Error>> { match (instr) {
 
     Instruction::Add(Add { operand0, operand1, dest, .. }) | Instruction::FAdd(FAdd { operand0, operand1, dest, .. }) => {
-        let operand0 = parse_oper(module, function, operand0)?.to_codevalue(module, function)?;
-        let operand1 = parse_oper(module, function, operand1)?.to_codevalue(module, function)?;
-        function.line.blocks.push(Codeblock::action("set_var", "+", vec![
-            CodeValue::Variable { name : name_to_local(dest), scope: VariableScope::Local },
-            operand0, operand1
-        ], vec![ ]));
+        let operand0 = parse_oper(module, function, operand0)?;
+        let operand1 = parse_oper(module, function, operand1)?;
+        handle_arithmetic(module, function, &name_to_local(dest), operand0, operand1, "+")?;
         Ok(())
     },
 
     Instruction::Sub(Sub { operand0, operand1, dest, .. }) | Instruction::FSub(FSub { operand0, operand1, dest, .. }) => {
-        let operand0 = parse_oper(module, function, operand0)?.to_codevalue(module, function)?;
-        let operand1 = parse_oper(module, function, operand1)?.to_codevalue(module, function)?;
-        function.line.blocks.push(Codeblock::action("set_var", "-", vec![
-            CodeValue::Variable { name : name_to_local(dest), scope: VariableScope::Local },
-            operand0, operand1
-        ], vec![ ]));
+        let operand0 = parse_oper(module, function, operand0)?;
+        let operand1 = parse_oper(module, function, operand1)?;
+        handle_arithmetic(module, function, &name_to_local(dest), operand0, operand1, "-")?;
         Ok(())
     },
 
     Instruction::Mul(Mul { operand0, operand1, dest, .. }) | Instruction::FMul(FMul { operand0, operand1, dest, .. }) => {
-        let operand0 = parse_oper(module, function, operand0)?.to_codevalue(module, function)?;
-        let operand1 = parse_oper(module, function, operand1)?.to_codevalue(module, function)?;
-        function.line.blocks.push(Codeblock::action("set_var", "x", vec![
-            CodeValue::Variable { name : name_to_local(dest), scope: VariableScope::Local },
-            operand0, operand1
-        ], vec![ ]));
+        let operand0 = parse_oper(module, function, operand0)?;
+        let operand1 = parse_oper(module, function, operand1)?;
+        handle_arithmetic(module, function, &name_to_local(dest), operand0, operand1, "x")?;
         Ok(())
     },
 
@@ -48,38 +39,23 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
     Instruction::SRem(_) => todo!(),
 
     Instruction::And(And { operand0, operand1, dest, .. }) => {
-        let operand0 = parse_oper(module, function, operand0)?.to_codevalue(module, function)?;
-        let operand1 = parse_oper(module, function, operand1)?.to_codevalue(module, function)?;
-        function.line.blocks.push(Codeblock::action("set_var", "Bitwise", vec![
-            CodeValue::Variable { name : name_to_local(dest), scope: VariableScope::Local },
-            operand0, operand1
-        ], vec![
-            CodeValue::Actiontag { kind : "Operator".to_string(), value : "&".to_string(), variable : None, block_override : None }
-        ]));
+        let operand0 = parse_oper(module, function, operand0)?;
+        let operand1 = parse_oper(module, function, operand1)?;
+        handle_bitwise(module, function, &name_to_local(dest), operand0, operand1, "&")?;
         Ok(())
     },
 
     Instruction::Or(Or { operand0, operand1, dest, .. }) => {
-        let operand0 = parse_oper(module, function, operand0)?.to_codevalue(module, function)?;
-        let operand1 = parse_oper(module, function, operand1)?.to_codevalue(module, function)?;
-        function.line.blocks.push(Codeblock::action("set_var", "Bitwise", vec![
-            CodeValue::Variable { name : name_to_local(dest), scope: VariableScope::Local },
-            operand0, operand1
-        ], vec![
-            CodeValue::Actiontag { kind : "Operator".to_string(), value : "|".to_string(), variable : None, block_override : None }
-        ]));
+        let operand0 = parse_oper(module, function, operand0)?;
+        let operand1 = parse_oper(module, function, operand1)?;
+        handle_bitwise(module, function, &name_to_local(dest), operand0, operand1, "|")?;
         Ok(())
     },
 
     Instruction::Xor(Xor { operand0, operand1, dest, .. }) => {
-        let operand0 = parse_oper(module, function, operand0)?.to_codevalue(module, function)?;
-        let operand1 = parse_oper(module, function, operand1)?.to_codevalue(module, function)?;
-        function.line.blocks.push(Codeblock::action("set_var", "Bitwise", vec![
-            CodeValue::Variable { name : name_to_local(dest), scope: VariableScope::Local },
-            operand0, operand1
-        ], vec![
-            CodeValue::Actiontag { kind : "Operator".to_string(), value : "^".to_string(), variable : None, block_override : None }
-        ]));
+        let operand0 = parse_oper(module, function, operand0)?;
+        let operand1 = parse_oper(module, function, operand1)?;
+        handle_bitwise(module, function, &name_to_local(dest), operand0, operand1, "^")?;
         Ok(())
     },
 
@@ -218,22 +194,22 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
 
     Instruction::SIToFP(SIToFP { operand, dest, .. }) => handle_passthru(module, function, operand, dest),
 
-    Instruction::PtrToInt(PtrToInt { operand, dest, .. }) => handle_passthru(module, function, operand, dest), // TODO: Make sure this works
+    Instruction::PtrToInt(PtrToInt { operand, dest, .. }) => handle_passthru(module, function, operand, dest),
 
-    Instruction::IntToPtr(IntToPtr { operand, dest, .. }) => handle_passthru(module, function, operand, dest), // TODO: Make sure this works
+    Instruction::IntToPtr(IntToPtr { operand, dest, .. }) => handle_passthru(module, function, operand, dest),
 
-    Instruction::BitCast(BitCast { operand, dest, .. }) => handle_passthru(module, function, operand, dest), // TODO: Make sure this works
+    Instruction::BitCast(BitCast { operand, dest, .. }) => handle_passthru(module, function, operand, dest),
 
     Instruction::ICmp(ICmp { predicate, operand0, operand1, dest, .. }) => {
         let operand0 = parse_oper(module, function, operand0)?;
         let operand1 = parse_oper(module, function, operand1)?;
-        parse_icmp(module, function, &name_to_local(dest), *predicate, operand0, operand1)
+        handle_icmp(module, function, &name_to_local(dest), *predicate, operand0, operand1)
     },
 
     Instruction::FCmp(FCmp { predicate, operand0, operand1, dest, .. }) => {
         let operand0 = parse_oper(module, function, operand0)?;
         let operand1 = parse_oper(module, function, operand1)?;
-        parse_fcmp(module, function, &name_to_local(dest), *predicate, operand0, operand1)
+        handle_fcmp(module, function, &name_to_local(dest), *predicate, operand0, operand1)
     },
 
     Instruction::Phi(Phi { incoming_values, dest, .. }) => {
@@ -261,7 +237,7 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
         let condition   = parse_oper(module, function, condition   )?;
         let true_value  = parse_oper(module, function, true_value  )?;
         let false_value = parse_oper(module, function, false_value )?;
-        parse_select(module, function, &name_to_local(dest), condition, true_value, false_value)
+        handle_select(module, function, &name_to_local(dest), condition, true_value, false_value)
     },
 
     // Call a function, or the function behind a pointer.
@@ -387,7 +363,7 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
                     Ok(())
                 },
 
-                Global::TempVarFunction => Ok(()), // TODO: Test this
+                Global::TempVarFunction => Ok(()),
 
                 Global::GamevalueFunction { kind, target } => {
                     if let Some(dest) = dest {
@@ -467,7 +443,7 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
                     Ok(())
                 },
 
-                Global::Constant(_) => todo!(),
+                Global::Constant(_) => Err("Can not call a constant".into()),
 
             }
         } else {

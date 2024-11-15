@@ -5,7 +5,8 @@
     iter_map_windows,
     str_from_utf16_endian,
     iter_array_chunks,
-    let_chains
+    let_chains,
+    slice_as_chunks
 )]
 
 

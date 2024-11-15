@@ -1,7 +1,45 @@
 use super::*;
 
 
-pub fn parse_icmp(
+pub fn handle_arithmetic(
+    module   : &ParsedModule,
+    function : &mut ParsedFunction,
+    dest_var : &str,
+    operand0 : Value,
+    operand1 : Value,
+    op       : &str
+) -> Result<(), Box<dyn Error>> {
+    let operand0 = operand0.to_codevalue(module, function)?;
+    let operand1 = operand1.to_codevalue(module, function)?;
+    function.line.blocks.push(Codeblock::action("set_var", op, vec![
+        CodeValue::Variable { name : dest_var.to_string(), scope: VariableScope::Local },
+        operand0, operand1
+    ], vec![ ]));
+    Ok(())
+}
+
+
+pub fn handle_bitwise(
+    module   : &ParsedModule,
+    function : &mut ParsedFunction,
+    dest_var : &str,
+    operand0 : Value,
+    operand1 : Value,
+    op       : &str
+) -> Result<(), Box<dyn Error>> {
+    let operand0 = operand0.to_codevalue(module, function)?;
+    let operand1 = operand1.to_codevalue(module, function)?;
+    function.line.blocks.push(Codeblock::action("set_var", "Bitwise", vec![
+        CodeValue::Variable { name : dest_var.to_string(), scope: VariableScope::Local },
+        operand0, operand1
+    ], vec![
+        CodeValue::Actiontag { kind : "Operator".to_string(), value : op.to_string(), variable : None, block_override : None }
+    ]));
+    Ok(())
+}
+
+
+pub fn handle_icmp(
     module    : &ParsedModule,
     function  : &mut ParsedFunction,
     dest_var  : &str,
@@ -39,7 +77,7 @@ pub fn parse_icmp(
 }
 
 
-pub fn parse_fcmp(
+pub fn handle_fcmp(
     module    : &ParsedModule,
     function  : &mut ParsedFunction,
     dest_var  : &str,
@@ -91,7 +129,7 @@ pub fn parse_fcmp(
 }
 
 
-pub fn parse_select(
+pub fn handle_select(
     module      : &ParsedModule,
     function    : &mut ParsedFunction, 
     dest_var    : &str,
