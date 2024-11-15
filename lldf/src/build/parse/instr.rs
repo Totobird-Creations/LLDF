@@ -2,6 +2,7 @@ use std::mem::transmute;
 
 use super::*;
 
+use llvm_ir::function::ParameterAttribute;
 use llvm_ir::instruction::*;
 use llvm_ir::Operand;
 
@@ -299,29 +300,7 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
 
                 } } else { Ok(()) } },
 
-                Global::UserFunction { name } => {
-                    let mut params = Vec::with_capacity(arguments.len() + 1);
-                    // Return value
-                    if let Some(dest) = dest {
-                        params.push(CodeValue::Variable { name : name_to_local(dest), scope : VariableScope::Local });
-                    }
-                    // Parameters
-                    for (arg, _) in arguments {
-                        let mut value = parse_oper(module, function, arg)?.to_codevalue(module, function)?;
-                        if let CodeValue::Variable { .. } = value { } else {
-                            let temp_var = CodeValue::Variable { name : function.create_temp_var_name(), scope : VariableScope::Local };
-                            let params = vec![
-                                temp_var.clone(),
-                                value
-                            ];
-                            function.line.blocks.push(Codeblock::action("set_var", "=", params, vec![ ]));
-                            value = temp_var;
-                        }
-                        params.push(value);
-                    }
-                    function.line.blocks.push(Codeblock::call_func(name, params));
-                    Ok(())
-                },
+                Global::UserFunction { name } => handle_call(module, function, name, arguments, dest),
 
                 Global::ActionFunction { codeblock, action, tags } => {
 
@@ -447,8 +426,7 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
 
             }
         } else {
-            function.line.blocks.push(Codeblock::call_func(format!("%var({})", calling.to_ptr_accessor_string(module)?), vec![])); // TODO: params, return, actiontag, 
-            Ok(())
+            handle_call(module, function, &format!("%var({})", calling.to_ptr_accessor_string(module)?), arguments, dest)
         }
     },
 
@@ -499,4 +477,29 @@ fn handle_nooptf64(module : &ParsedModule, function : &mut ParsedFunction, value
         Value::Local(_) => Err("Non-constant values can not be handled by NoOptF64".into()),
         Value::ConstString(_) => Err("Strings can not be handled by NoOptF64".into()),
     }
+}
+
+
+fn handle_call(module : &ParsedModule, function : &mut ParsedFunction, calling : &str, arguments : &Vec<(Operand, Vec<ParameterAttribute>)>, dest : &Option<Name>) -> Result<(), Box<dyn Error>> {
+    let mut params = Vec::with_capacity(arguments.len() + 1);
+    // Return value
+    if let Some(dest) = dest {
+        params.push(CodeValue::Variable { name : name_to_local(dest), scope : VariableScope::Local });
+    }
+    // Parameters
+    for (arg, _) in arguments {
+        let mut value = parse_oper(module, function, arg)?.to_codevalue(module, function)?;
+        if let CodeValue::Variable { .. } = value { } else {
+            let temp_var = CodeValue::Variable { name : function.create_temp_var_name(), scope : VariableScope::Local };
+            let params = vec![
+                temp_var.clone(),
+                value
+            ];
+            function.line.blocks.push(Codeblock::action("set_var", "=", params, vec![ ]));
+            value = temp_var;
+        }
+        params.push(value);
+    }
+    function.line.blocks.push(Codeblock::call_func(calling, params));
+    Ok(())
 }
