@@ -31,17 +31,13 @@ pub fn parse_const(module : &ParsedModule, function : &mut ParsedFunction, cor :
         Float::PPC_FP128     => Err("PPC_FP128 floats are unsupported" .into()),
     },
 
-    Constant::Null(_) => Ok(Value::Null),
+    Constant::Null(_) | Constant::Undef(_) | Constant::Poison(_) => Ok(Value::Null),
 
     Constant::AggregateZero(_) => todo!(),
 
     Constant::Struct { values, .. } => handle_aggregate(module, function, values),
 
     Constant::Array { elements, .. } => handle_aggregate(module, function, elements),
-
-    Constant::Undef(_) => Ok(Value::Null),
-
-    Constant::Poison(_) => Ok(Value::Null),
 
     Constant::GlobalReference { name, .. } => Ok(Value::Global(name.clone())),
 
@@ -119,29 +115,23 @@ pub fn parse_const(module : &ParsedModule, function : &mut ParsedFunction, cor :
 
     Constant::GetElementPtr(_) => todo!(),
 
-    Constant::Trunc(Trunc { operand, .. }) => parse_const(module, function, operand),
-
-    Constant::ZExt(ZExt { operand, .. }) => parse_const(module, function, operand),
-
-    Constant::SExt(SExt { operand, .. }) => parse_const(module, function, operand),
-
-    Constant::FPTrunc(FPTrunc { operand, .. }) => parse_const(module, function, operand),
-
-    Constant::FPExt(FPExt { operand, .. }) => parse_const(module, function, operand),
+    Constant::Trunc(Trunc { operand, .. }) |
+    Constant::ZExt(ZExt { operand, .. }) |
+    Constant::SExt(SExt { operand, .. }) |
+    Constant::FPTrunc(FPTrunc { operand, .. }) |
+    Constant::FPExt(FPExt { operand, .. }) |
+    Constant::UIToFP(UIToFP { operand, .. }) |
+    Constant::SIToFP(SIToFP { operand, .. }) |
+    Constant::BitCast(BitCast { operand, .. })
+        => parse_const(module, function, operand),
 
     Constant::FPToUI(_) => todo!(),
 
     Constant::FPToSI(_) => todo!(),
 
-    Constant::UIToFP(UIToFP { operand, .. }) => parse_const(module, function, operand),
-
-    Constant::SIToFP(SIToFP { operand, .. }) => parse_const(module, function, operand),
-
-    Constant::PtrToInt(PtrToInt { operand, .. }) => parse_const(module, function, operand),
-
-    Constant::IntToPtr(IntToPtr { operand, .. }) => parse_const(module, function, operand),
-
-    Constant::BitCast(BitCast { operand, .. }) => parse_const(module, function, operand),
+    Constant::PtrToInt(PtrToInt { operand, .. }) |
+    Constant::IntToPtr(IntToPtr { operand, .. })
+        => parse_const(module, function, operand),
 
     Constant::ICmp(ICmp { predicate, operand0, operand1 }) => {
         let temp_var = function.create_temp_var_name();

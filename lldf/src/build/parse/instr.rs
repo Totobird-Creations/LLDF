@@ -31,13 +31,9 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
         Ok(())
     },
 
-    Instruction::UDiv(_) => todo!(),
+    Instruction::UDiv(_) | Instruction::SDiv(_) => todo!(),
 
-    Instruction::SDiv(_) => todo!(),
-
-    Instruction::URem(_) => todo!(),
-
-    Instruction::SRem(_) => todo!(),
+    Instruction::URem(_) | Instruction::SRem(_) => todo!(),
 
     Instruction::And(And { operand0, operand1, dest, .. }) => {
         let operand0 = parse_oper(module, function, operand0)?;
@@ -177,29 +173,21 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
         Ok(())
     },
 
-    Instruction::Trunc(Trunc { operand, dest, .. }) => handle_passthru(module, function, operand, dest),
+    Instruction::Trunc(Trunc { operand, dest, .. }) |
+    Instruction::ZExt(ZExt { operand, dest, .. }) |
+    Instruction::SExt(SExt { operand, dest, .. }) |
+    Instruction::FPTrunc(FPTrunc { operand, dest, .. }) |
+    Instruction::FPExt(FPExt { operand, dest, .. }) |
+    Instruction::UIToFP(UIToFP { operand, dest, .. }) |
+    Instruction::SIToFP(SIToFP { operand, dest, .. }) |
+    Instruction::BitCast(BitCast { operand, dest, .. })
+        => handle_passthru(module, function, operand, dest),
 
-    Instruction::ZExt(ZExt { operand, dest, .. }) => handle_passthru(module, function, operand, dest),
+    Instruction::FPToUI(_) | Instruction::FPToSI(_) => todo!(),
 
-    Instruction::SExt(SExt { operand, dest, .. }) => handle_passthru(module, function, operand, dest),
-
-    Instruction::FPTrunc(FPTrunc { operand, dest, .. }) => handle_passthru(module, function, operand, dest),
-
-    Instruction::FPExt(FPExt { operand, dest, .. }) => handle_passthru(module, function, operand, dest),
-
-    Instruction::FPToUI(_) => todo!(),
-
-    Instruction::FPToSI(_) => todo!(),
-
-    Instruction::UIToFP(UIToFP { operand, dest, .. }) => handle_passthru(module, function, operand, dest),
-
-    Instruction::SIToFP(SIToFP { operand, dest, .. }) => handle_passthru(module, function, operand, dest),
-
-    Instruction::PtrToInt(PtrToInt { operand, dest, .. }) => handle_passthru(module, function, operand, dest),
-
-    Instruction::IntToPtr(IntToPtr { operand, dest, .. }) => handle_passthru(module, function, operand, dest),
-
-    Instruction::BitCast(BitCast { operand, dest, .. }) => handle_passthru(module, function, operand, dest),
+    Instruction::PtrToInt(PtrToInt { operand, dest, .. }) |
+    Instruction::IntToPtr(IntToPtr { operand, dest, .. })
+        => handle_passthru(module, function, operand, dest),
 
     Instruction::ICmp(ICmp { predicate, operand0, operand1, dest, .. }) => {
         let operand0 = parse_oper(module, function, operand0)?;
