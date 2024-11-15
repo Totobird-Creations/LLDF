@@ -49,7 +49,15 @@ impl<T : Into<UInt>> Mul<T> for UInt {
     } }
 }
 
+impl PartialEq<UInt> for UInt {
+    #[inline(always)]
+    fn eq(&self, other: &UInt) -> bool {
+        self._opaque_type == other._opaque_type
+    }
+}
+
 unsafe impl DFValue for UInt {
+    #[inline(always)]
     unsafe fn to_opaque(&self) -> DFOpaqueValue { unsafe {
         transmute_unchecked(self._opaque_type)
     } }

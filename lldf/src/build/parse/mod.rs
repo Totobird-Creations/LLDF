@@ -6,12 +6,15 @@ mod instr;
 pub use instr::*;
 mod oper;
 pub use oper::*;
+mod common;
+pub use common::*;
 
 use std::error::Error;
 
 use llvm_ir::Name;
+use llvm_ir::{ FPPredicate, IntPredicate };
 
-use super::codegen::{ CodeValue, VariableScope };
+use super::codegen::{ Codeblock, CodeValue, SoundKind, VariableScope };
 
 
 #[derive(Clone, Debug)]
@@ -20,7 +23,7 @@ pub enum Value {
     // Constants
     Null,
     ConstString(String),
-    ConstInt(u64),
+    ConstInt(i64),
     ConstFloat(f64),
 
     Local(String),
@@ -55,6 +58,7 @@ impl Value {
                 Global::TempVarFunction |
                 Global::GamevalueFunction { .. } |
                 Global::SoundFunction { .. } |
+                Global::ParticleFunction { .. } |
                 Global::PotionFunction { .. } |
                 Global::ItemFunction { .. }
                     => unreachable!(),
@@ -87,6 +91,7 @@ impl Value {
                 Global::TempVarFunction |
                 Global::GamevalueFunction { .. } |
                 Global::SoundFunction { .. } |
+                Global::ParticleFunction { .. } |
                 Global::PotionFunction { .. } |
                 Global::ItemFunction { .. }
                     => unreachable!(),
@@ -120,6 +125,7 @@ impl Value {
                 Global::TempVarFunction |
                 Global::GamevalueFunction { .. } |
                 Global::SoundFunction { .. } |
+                Global::ParticleFunction { .. } |
                 Global::PotionFunction { .. } |
                 Global::ItemFunction { .. }
                     => unreachable!(),

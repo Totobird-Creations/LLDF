@@ -26,7 +26,21 @@ impl Sound {
         SoundKind::from_string_unchecked(DF_ACTION__SetVariable_GetSoundType(self.to_opaque()))
     } }
 
-    // TODO: kind (with named type check)
+    #[lldf_bind_proc::dfdoc(SetVariable/GetParticleMat)]
+    #[inline(always)]
+    pub fn kind(&self) -> Option<SoundKind> { unsafe {
+        let kind = DF_ACTION__SetVariable_GetSoundType(self.to_opaque());
+        DF_ACTION__IfVariable_VarIsType_VariableType_String(kind.to_opaque());
+        let success = DF_TEMPVAR();
+        DF_BRACKET__Normal_Open();
+        DF_ACTION__SetVariable_Specialcharequals(success, UInt::from(1usize).to_opaque());
+        DF_BRACKET__Normal_Close();
+        DF_ELSE();
+        DF_BRACKET__Normal_Open();
+        DF_ACTION__SetVariable_Specialcharequals(success, UInt::from(0usize).to_opaque());
+        DF_BRACKET__Normal_Close();
+        return if (transmute_unchecked::<_, UInt>(success) == UInt::from(0usize)) { None } else { Some(SoundKind::from_string_unchecked(kind)) };
+    } }
 
     #[lldf_bind_proc::dfdoc(SetVariable/SetCustomSound)]
     #[inline(always)]
@@ -36,11 +50,9 @@ impl Sound {
 
     #[lldf_bind_proc::dfdoc(SetVariable/GetCustomSound)]
     #[inline(always)]
-    pub unsafe fn key_unchecked(&self) -> String { unsafe {
+    pub fn key(&self) -> String { unsafe {
         DF_ACTION__SetVariable_GetCustomSound(self.to_opaque())
     } }
-
-    // TODO: key (with keyed type check)
 
     #[lldf_bind_proc::dfdoc(SetVariable/GetSoundVolume)]
     #[inline(always)]
@@ -66,13 +78,33 @@ impl Sound {
         DF_ACTION__SetVariable_SetSoundPitch(self.to_opaque(), pitch.into())
     } }
 
-    // TODO: variant_unchecked
+    #[lldf_bind_proc::dfdoc(SetVariable/GetSoundVariant)]
+    #[inline(always)]
+    pub unsafe fn variant_unchecked(&self) -> String { unsafe {
+        DF_ACTION__SetVariable_GetSoundVariant(self.to_opaque())
+    } }
 
-    // TODO: variant (with named type check)
+    #[lldf_bind_proc::dfdoc(SetVariable/GetSoundVariant)]
+    #[inline(always)]
+    pub fn variant(&self) -> Option<String> { unsafe {
+        let variant = DF_ACTION__SetVariable_GetSoundVariant(self.to_opaque());
+        DF_ACTION__IfVariable_VarIsType_VariableType_String(variant.to_opaque());
+        let success = DF_TEMPVAR();
+        DF_BRACKET__Normal_Open();
+        DF_ACTION__SetVariable_Specialcharequals(success, UInt::from(1usize).to_opaque());
+        DF_BRACKET__Normal_Close();
+        DF_ELSE();
+        DF_BRACKET__Normal_Open();
+        DF_ACTION__SetVariable_Specialcharequals(success, UInt::from(0usize).to_opaque());
+        DF_BRACKET__Normal_Close();
+        return if (transmute_unchecked::<_, UInt>(success) == UInt::from(0usize)) { None } else { Some(variant) };
+    } }
 
-    // TODO: with_variant_unchecked
-
-    // TODO: with_variant (with named type check)
+    #[lldf_bind_proc::dfdoc(SetVariable/SetSoundVariant)]
+    #[inline(always)]
+    pub fn with_variant<S : Into<String>>(&self, variant : S) -> Self { unsafe {
+        DF_ACTION__SetVariable_SetSoundVariant(self.to_opaque(), variant.into())
+    } }
 
 }
 
@@ -85,6 +117,13 @@ unsafe impl DFValue for Sound {
 
 extern "C" {
 
+    fn DF_TEMPVAR() -> DFOpaqueValue;
+    fn DF_ACTION__IfVariable_VarIsType_VariableType_String( value : DFOpaqueValue ) -> ();
+    fn DF_BRACKET__Normal_Open() -> ();
+    fn DF_BRACKET__Normal_Close() -> ();
+    fn DF_ELSE() -> ();
+    fn DF_ACTION__SetVariable_Specialcharequals( variable : DFOpaqueValue, value : DFOpaqueValue ) -> ();
+
     fn DF_ACTION__SetVariable_SetSoundType( sound : DFOpaqueValue, kind : String ) -> Sound;
     fn DF_ACTION__SetVariable_GetSoundType( sound : DFOpaqueValue ) -> String;
     fn DF_ACTION__SetVariable_SetCustomSound( sound : DFOpaqueValue, key : String ) -> Sound;
@@ -93,6 +132,8 @@ extern "C" {
     fn DF_ACTION__SetVariable_GetSoundVolume( sound : DFOpaqueValue ) -> Float;
     fn DF_ACTION__SetVariable_SetSoundPitch( sound : DFOpaqueValue, pitch : Float ) -> Sound;
     fn DF_ACTION__SetVariable_GetSoundPitch( sound : DFOpaqueValue ) -> Float;
+    fn DF_ACTION__SetVariable_SetSoundVariant( sound : DFOpaqueValue, variant : String ) -> Sound;
+    fn DF_ACTION__SetVariable_GetSoundVariant( sound : DFOpaqueValue ) -> String;
 
 }
 

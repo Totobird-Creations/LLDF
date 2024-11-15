@@ -132,6 +132,12 @@ impl String {
 
 }
 
+// TODO: Parse<Int>
+
+// TODO: Parse<UInt>
+
+// TODO: Parse<Float>
+
 unsafe impl DFValue for String {
     #[inline(always)]
     unsafe fn to_opaque(&self) -> DFOpaqueValue { unsafe { transmute_unchecked(self._opaque_type) } }

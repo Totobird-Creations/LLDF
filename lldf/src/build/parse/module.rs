@@ -41,6 +41,19 @@ pub enum Global {
     SoundFunction {
         id : String
     },
+    ParticleFunction {
+        id               : String,
+        motion           : bool,
+        motion_variation : bool,
+        colour           : bool,
+        colour_variation : bool,
+        opacity          : bool,
+        material         : bool,
+        size             : bool,
+        size_variation   : bool,
+        roll             : bool,
+        fade_colour      : bool
+    },
     PotionFunction {
         id : String
     },
@@ -91,6 +104,7 @@ pub fn parse_module(module : &Module) -> Result<ParsedModule, Box<dyn Error>> {
             module_function.name == "llvm.lifetime.start.p0"
             || module_function.name == "llvm.lifetime.end.p0"
             || module_function.name == "llvm.assume"
+            || module_function.name == "llvm.experimental.noalias.scope.decl"
         ) {
             parsed.globals.insert(Name::Name(Box::new(module_function.name.clone())), Global::NoopFunction);
             continue;
@@ -178,6 +192,48 @@ pub fn parse_module(module : &Module) -> Result<ParsedModule, Box<dyn Error>> {
                     let id = linked_name_to_sound_id(sound);
                     parsed.globals.insert(Name::Name(Box::new(module_function.name.clone())), Global::SoundFunction { id });
                     continue;
+                }
+            },
+
+            Some("DF_PARTICLE") => {
+                if let (Some(particle), None) = (parts.next(), parts.next()) {
+                    let mut particle_parts = particle.split("_");
+                    if let Some(id) = particle_parts.next() {
+                        let     id               = linked_name_to_particle_id(id);
+                        let mut motion           = false;
+                        let mut motion_variation = false;
+                        let mut colour           = false;
+                        let mut colour_variation = false;
+                        let mut opacity          = false;
+                        let mut material         = false;
+                        let mut size             = false;
+                        let mut size_variation   = false;
+                        let mut roll             = false;
+                        let mut fade_colour      = false;
+                        for part in particle_parts { match (part) {
+                            "Motion"          => { motion           = true; },
+                            "MotionVariation" => { motion_variation = true; },
+                            "Color"           => { colour           = true; },
+                            "ColorVariation"  => { colour_variation = true; },
+                            "Opacity"         => { opacity          = true; },
+                            "Material"        => { material         = true; },
+                            "Size"            => { size             = true; },
+                            "SizeVariation"   => { size_variation   = true; },
+                            "Roll"            => { roll             = true; },
+                            "FadeColor"       => { fade_colour      = true; },
+                            _ => { return Err(format!("Unknown particle field {:?}", part).into()) }
+                        } }
+                        parsed.globals.insert(Name::Name(Box::new(module_function.name.clone())), Global::ParticleFunction { id,
+                            motion, motion_variation,
+                            colour, colour_variation,
+                            opacity,
+                            material,
+                            size, size_variation,
+                            roll,
+                            fade_colour
+                        });
+                        continue;
+                    }
                 }
             },
 
@@ -335,6 +391,9 @@ pub fn linked_name_to_gamevalue_target(gamevalue_kind : &str) -> String {
     linked_name_to_actiontag_kind(gamevalue_kind)
 }
 pub fn linked_name_to_sound_id(sound_id : &str) -> String {
+    linked_name_to_actiontag_kind(sound_id)
+}
+pub fn linked_name_to_particle_id(sound_id : &str) -> String {
     linked_name_to_actiontag_kind(sound_id)
 }
 pub fn linked_name_to_potion_id(potion_id : &str) -> String {

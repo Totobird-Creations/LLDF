@@ -66,12 +66,28 @@ impl Particle {
     } }
 
     #[lldf_bind_proc::dfdoc(SetVariable/GetParticleMat)]
+    /// ##### Unsafe
+    /// - **Does not do a property check**
     #[inline(always)]
     pub unsafe fn material_unchecked(&self) -> String { unsafe {
         DF_ACTION__SetVariable_GetParticleMat(self.to_opaque())
     } }
 
-    // TODO: material (with property check)
+    #[lldf_bind_proc::dfdoc(SetVariable/GetParticleMat)]
+    #[inline(always)]
+    pub fn material(&self) -> Option<String> { unsafe { // TODO: Is GetParticleMat not working?
+        let material = DF_ACTION__SetVariable_GetParticleMat(self.to_opaque());
+        DF_ACTION__IfVariable_VarIsType_VariableType_String(material.to_opaque());
+        let success = DF_TEMPVAR();
+        DF_BRACKET__Normal_Open();
+        DF_ACTION__SetVariable_Specialcharequals(success, UInt::from(1usize).to_opaque());
+        DF_BRACKET__Normal_Close();
+        DF_ELSE();
+        DF_BRACKET__Normal_Open();
+        DF_ACTION__SetVariable_Specialcharequals(success, UInt::from(0usize).to_opaque());
+        DF_BRACKET__Normal_Close();
+        return if (transmute_unchecked::<_, UInt>(success) == UInt::from(0usize)) { None } else { Some(material) };
+    } }
 
     #[lldf_bind_proc::dfdoc(SetVariable/SetParticleMat)]
     #[inline(always)]
@@ -185,6 +201,13 @@ unsafe impl DFValue for Particle {
 
 
 extern "C" {
+
+    fn DF_TEMPVAR() -> DFOpaqueValue;
+    fn DF_ACTION__IfVariable_VarIsType_VariableType_String( value : DFOpaqueValue ) -> ();
+    fn DF_BRACKET__Normal_Open() -> ();
+    fn DF_BRACKET__Normal_Close() -> ();
+    fn DF_ELSE() -> ();
+    fn DF_ACTION__SetVariable_Specialcharequals( variable : DFOpaqueValue, value : DFOpaqueValue ) -> ();
 
     fn DF_ACTION__SetVariable_SetParticleType( particle : DFOpaqueValue, kind : String ) -> Particle;
     fn DF_ACTION__SetVariable_GetParticleType( particle : DFOpaqueValue ) -> String;

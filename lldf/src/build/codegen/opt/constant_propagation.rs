@@ -8,6 +8,8 @@ use std::array;
 /// **This optimisation requires the following guarantees to be upheld:**
 /// - Variables may only be assigned ONCE, EXCEPT in `switch`-style statements.
 /// Failure to uphold the guarantees may result in broken codegen.
+/// 
+/// TODO: Make this work with `IF_VARIABLE` codeblocks.
 pub fn constant_propagation(line : &mut CodeLine, other_functions : &Vec<&mut ParsedFunction>) -> bool {
     let mut did_something = false;
 

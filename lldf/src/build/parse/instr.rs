@@ -1,6 +1,3 @@
-use crate::build::codegen::SoundKind;
-use crate::build::codegen::{ CodeValue, Codeblock, VariableScope };
-
 use super::*;
 
 use llvm_ir::instruction::*;
@@ -11,32 +8,32 @@ use llvm_ir::Operand;
 pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr : &Instruction) -> Result<(), Box<dyn Error>> { match (instr) {
 
     Instruction::Add(Add { operand0, operand1, dest, .. }) | Instruction::FAdd(FAdd { operand0, operand1, dest, .. }) => {
-        let params = vec![
+        let operand0 = parse_oper(module, function, operand0)?.to_codevalue(module, function)?;
+        let operand1 = parse_oper(module, function, operand1)?.to_codevalue(module, function)?;
+        function.line.blocks.push(Codeblock::action("set_var", "+", vec![
             CodeValue::Variable { name : name_to_local(dest), scope: VariableScope::Local },
-            parse_oper(module, function, operand0)?.to_codevalue(module, function)?,
-            parse_oper(module, function, operand1)?.to_codevalue(module, function)?
-        ];
-        function.line.blocks.push(Codeblock::action("set_var", "+", params, vec![ ]));
+            operand0, operand1
+        ], vec![ ]));
         Ok(())
     },
 
     Instruction::Sub(Sub { operand0, operand1, dest, .. }) | Instruction::FSub(FSub { operand0, operand1, dest, .. }) => {
-        let params = vec![
+        let operand0 = parse_oper(module, function, operand0)?.to_codevalue(module, function)?;
+        let operand1 = parse_oper(module, function, operand1)?.to_codevalue(module, function)?;
+        function.line.blocks.push(Codeblock::action("set_var", "-", vec![
             CodeValue::Variable { name : name_to_local(dest), scope: VariableScope::Local },
-            parse_oper(module, function, operand0)?.to_codevalue(module, function)?,
-            parse_oper(module, function, operand1)?.to_codevalue(module, function)?
-        ];
-        function.line.blocks.push(Codeblock::action("set_var", "-", params, vec![ ]));
+            operand0, operand1
+        ], vec![ ]));
         Ok(())
     },
 
     Instruction::Mul(Mul { operand0, operand1, dest, .. }) | Instruction::FMul(FMul { operand0, operand1, dest, .. }) => {
-        let params = vec![
+        let operand0 = parse_oper(module, function, operand0)?.to_codevalue(module, function)?;
+        let operand1 = parse_oper(module, function, operand1)?.to_codevalue(module, function)?;
+        function.line.blocks.push(Codeblock::action("set_var", "x", vec![
             CodeValue::Variable { name : name_to_local(dest), scope: VariableScope::Local },
-            parse_oper(module, function, operand0)?.to_codevalue(module, function)?,
-            parse_oper(module, function, operand1)?.to_codevalue(module, function)?
-        ];
-        function.line.blocks.push(Codeblock::action("set_var", "x", params, vec![ ]));
+            operand0, operand1
+        ], vec![ ]));
         Ok(())
     },
 
@@ -49,94 +46,135 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
     Instruction::SRem(_) => todo!(),
 
     Instruction::And(And { operand0, operand1, dest, .. }) => {
-        let params = vec![
+        let operand0 = parse_oper(module, function, operand0)?.to_codevalue(module, function)?;
+        let operand1 = parse_oper(module, function, operand1)?.to_codevalue(module, function)?;
+        function.line.blocks.push(Codeblock::action("set_var", "Bitwise", vec![
             CodeValue::Variable { name : name_to_local(dest), scope: VariableScope::Local },
-            parse_oper(module, function, operand0)?.to_codevalue(module, function)?,
-            parse_oper(module, function, operand1)?.to_codevalue(module, function)?
-        ];
-        function.line.blocks.push(Codeblock::action("set_var", "Bitwise", params, vec![
+            operand0, operand1
+        ], vec![
             CodeValue::Actiontag { kind : "Operator".to_string(), value : "&".to_string(), variable : None, block_override : None }
         ]));
         Ok(())
     },
 
     Instruction::Or(Or { operand0, operand1, dest, .. }) => {
-        let params = vec![
+        let operand0 = parse_oper(module, function, operand0)?.to_codevalue(module, function)?;
+        let operand1 = parse_oper(module, function, operand1)?.to_codevalue(module, function)?;
+        function.line.blocks.push(Codeblock::action("set_var", "Bitwise", vec![
             CodeValue::Variable { name : name_to_local(dest), scope: VariableScope::Local },
-            parse_oper(module, function, operand0)?.to_codevalue(module, function)?,
-            parse_oper(module, function, operand1)?.to_codevalue(module, function)?
-        ];
-        function.line.blocks.push(Codeblock::action("set_var", "Bitwise", params, vec![
+            operand0, operand1
+        ], vec![
             CodeValue::Actiontag { kind : "Operator".to_string(), value : "|".to_string(), variable : None, block_override : None }
         ]));
         Ok(())
     },
 
     Instruction::Xor(Xor { operand0, operand1, dest, .. }) => {
-        let params = vec![
+        let operand0 = parse_oper(module, function, operand0)?.to_codevalue(module, function)?;
+        let operand1 = parse_oper(module, function, operand1)?.to_codevalue(module, function)?;
+        function.line.blocks.push(Codeblock::action("set_var", "Bitwise", vec![
             CodeValue::Variable { name : name_to_local(dest), scope: VariableScope::Local },
-            parse_oper(module, function, operand0)?.to_codevalue(module, function)?,
-            parse_oper(module, function, operand1)?.to_codevalue(module, function)?
-        ];
-        function.line.blocks.push(Codeblock::action("set_var", "Bitwise", params, vec![
+            operand0, operand1
+        ], vec![
             CodeValue::Actiontag { kind : "Operator".to_string(), value : "^".to_string(), variable : None, block_override : None }
         ]));
         Ok(())
     },
 
-    Instruction::FDiv(_) => todo!(),
-
-    Instruction::FRem(_) => todo!(),
-
-    Instruction::FNeg(FNeg { operand, dest, .. }) => {
-        let params = vec![
+    Instruction::FDiv(FDiv { operand0, operand1, dest, .. }) => {
+        let operand0 = parse_oper(module, function, operand0)?.to_codevalue(module, function)?;
+        let operand1 = parse_oper(module, function, operand1)?.to_codevalue(module, function)?;
+        function.line.blocks.push(Codeblock::action("set_var", "/", vec![
             CodeValue::Variable { name : name_to_local(dest), scope: VariableScope::Local },
-            CodeValue::Number("0".to_string()),
-            parse_oper(module, function, operand)?.to_codevalue(module, function)?
-        ];
-        function.line.blocks.push(Codeblock::action("set_var", "-", params, vec![ ]));
+            operand0, operand1
+        ], vec![
+            CodeValue::Actiontag { kind : "Division Mode".to_string(), value : "Default".to_string(), variable : None, block_override : None }
+        ]));
         Ok(())
     },
 
-    Instruction::ExtractValue(_) => todo!(),
+    Instruction::FRem(FRem { operand0, operand1, dest, .. }) => {
+        let operand0 = parse_oper(module, function, operand0)?.to_codevalue(module, function)?;
+        let operand1 = parse_oper(module, function, operand1)?.to_codevalue(module, function)?;
+        function.line.blocks.push(Codeblock::action("set_var", "%", vec![
+            CodeValue::Variable { name : name_to_local(dest), scope: VariableScope::Local },
+            operand0, operand1
+        ], vec![
+            CodeValue::Actiontag { kind : "Remainder Mode".to_string(), value : "Remainder".to_string(), variable : None, block_override : None }
+        ]));
+        Ok(())
+    },
 
-    Instruction::InsertValue(_) => todo!(),
+    Instruction::FNeg(FNeg { operand, dest, .. }) => {
+        let operand = parse_oper(module, function, operand)?.to_codevalue(module, function)?;
+        function.line.blocks.push(Codeblock::action("set_var", "-", vec![
+            CodeValue::Variable { name : name_to_local(dest), scope: VariableScope::Local },
+            CodeValue::Number("0".to_string()), operand
+        ], vec![ ]));
+        Ok(())
+    },
+
+    Instruction::ExtractValue(ExtractValue { aggregate, indices, dest, .. }) => {
+        if (indices.len() != 1) { return Err("Multi-index ExtractValue instructions are unsupported".into()); }
+        let aggregate = parse_oper(module, function, aggregate)?.to_codevalue(module, function)?;
+        function.line.blocks.push(Codeblock::action("set_var", "GetListValue", vec![
+            CodeValue::Variable { name : name_to_local(dest), scope: VariableScope::Local },
+            aggregate,
+            CodeValue::Number((indices[0] + 1).to_string())
+        ], vec![ ]));
+        Ok(())
+    },
+
+    Instruction::InsertValue(InsertValue { aggregate, element, indices, dest, .. }) => {
+        let dest_var  = CodeValue::Variable { name : name_to_local(dest), scope: VariableScope::Local };
+        let aggregate = parse_oper(module, function, aggregate)?.to_codevalue(module, function)?;
+        function.line.blocks.push(Codeblock::action("set_var", "=", vec![
+            dest_var.clone(),
+            aggregate
+        ], vec![ ]));
+        let element = parse_oper(module, function, element)?.to_codevalue(module, function)?;
+        for index in indices {
+            function.line.blocks.push(Codeblock::action("set_var", "SetListValue", vec![
+                dest_var.clone(),
+                CodeValue::Number((index + 1).to_string()),
+                element.clone()
+            ], vec![ ]));
+        }
+        Ok(())
+    },
 
     // Sets `dest` to a 2-element list with the first element being a unique `unsaved` variable name, and the second being 0.
     // The unique name is tied to the function it was called in, and can be discarded on return.
     Instruction::Alloca(Alloca { dest, .. }) => {
         let counter = CodeValue::Variable { name : ALLOCA.to_string(), scope : VariableScope::Unsaved };
         function.line.blocks.push(Codeblock::action("set_var", "+=", vec![ counter.clone() ], vec![ ]));
-        let params = vec![
+        function.line.blocks.push(Codeblock::action("set_var", "CreateList", vec![
             CodeValue::Variable { name : name_to_local(dest), scope: VariableScope::Local },
             CodeValue::String(format!("mem.#%var(lldf.call).%var({})", ALLOCA)),
             CodeValue::Number("0".to_string())
-        ];
-        function.line.blocks.push(Codeblock::action("set_var", "CreateList", params, vec![ ]));
+        ], vec![ ]));
         Ok(())
     },
 
     // Gets the value pointed to by a pointer (An `unsaved` variable with name `%var(%index(address,1):%index(address,2))`) and sets `dest` to it.
     Instruction::Load(Load { address, dest, .. }) => {
         let dest_var = CodeValue::Variable { name : name_to_local(dest), scope : VariableScope::Local };
-        let address = parse_oper(module, function, address)?;
-        let params = vec![
+        let address = parse_oper(module, function, address)?.to_ptr_accessor_codevalue(module)?;
+        function.line.blocks.push(Codeblock::action("set_var", "=", vec![
             dest_var,
-            address.to_ptr_accessor_codevalue(module)?
-        ];
-        function.line.blocks.push(Codeblock::action("set_var", "=", params, vec![ ]));
+            address
+        ], vec![ ]));
         Ok(())
     },
 
     // Sets the value pointed to by a pointer (An `unsaved` variable with name `%var(%index(address,1):%index(address,2))`) to a value.
     Instruction::Store(Store { address, value, .. }) => {
-        let address = parse_oper(module, function, address)?;
-        let value   = parse_oper(module, function, value)?;
-        let params  = vec![
-            address.to_ptr_accessor_codevalue(module)?,
-            value.to_codevalue(module, function)?,
-        ];
-        function.line.blocks.push(Codeblock::action("set_var", "=", params, vec![ ]));
+        let address = parse_oper(module, function, address)?.to_ptr_accessor_codevalue(module)?;
+        let value   = parse_oper(module, function, value)?.to_codevalue(module, function)?;
+        function.line.blocks.push(Codeblock::action("set_var", "=", vec![
+            address,
+            value,
+        ], vec![ ]));
         Ok(())
     },
 
@@ -144,21 +182,19 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
     Instruction::GetElementPtr(GetElementPtr { address, indices, dest, .. }) => {
         if (indices.len() != 1) { return Err("Multi-index GEP instructions are unsupported".into()); }
         let address  = parse_oper(module, function, address)?;
-        let index    = parse_oper(module, function, &indices[0])?;
+        let index    = parse_oper(module, function, &indices[0])?.to_codevalue(module, function)?;
         let temp_var = CodeValue::Variable { name : function.create_temp_var_name(), scope : VariableScope::Local };
         let accessor = address.to_ptr_accessor_part_strings(module)?;
-        let params = vec![
+        function.line.blocks.push(Codeblock::action("set_var", "+", vec![
             temp_var.clone(),
             CodeValue::Number(accessor.1),
-            index.to_codevalue(module, function)?
-        ];
-        function.line.blocks.push(Codeblock::action("set_var", "+", params, vec![ ]));
-        let params = vec![
+            index
+        ], vec![ ]));
+        function.line.blocks.push(Codeblock::action("set_var", "CreateList", vec![
             CodeValue::Variable { name : name_to_local(dest), scope: VariableScope::Local },
             CodeValue::String(accessor.0),
             temp_var
-        ];
-        function.line.blocks.push(Codeblock::action("set_var", "CreateList", params, vec![]));
+        ], vec![]));
         Ok(())
     },
 
@@ -172,54 +208,33 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
 
     Instruction::FPExt(FPExt { operand, dest, .. }) => handle_passthru(module, function, operand, dest),
 
-    Instruction::FPToUI(FPToUI { operand, dest, .. }) => handle_passthru(module, function, operand, dest),
+    Instruction::FPToUI(_) => todo!(),
 
-    Instruction::FPToSI(FPToSI { operand, dest, .. }) => handle_passthru(module, function, operand, dest),
+    Instruction::FPToSI(_) => todo!(),
 
-    Instruction::UIToFP(UIToFP { operand, dest, .. }) => handle_passthru(module, function, operand, dest), // TODO: Make sure this works with sign.
+    Instruction::UIToFP(UIToFP { operand, dest, .. }) => handle_passthru(module, function, operand, dest),
 
-    Instruction::SIToFP(SIToFP { operand, dest, .. }) => handle_passthru(module, function, operand, dest), // TODO: Make sure this works with sign.
+    Instruction::SIToFP(SIToFP { operand, dest, .. }) => handle_passthru(module, function, operand, dest),
 
     Instruction::PtrToInt(PtrToInt { operand, dest, .. }) => handle_passthru(module, function, operand, dest), // TODO: Make sure this works
 
     Instruction::IntToPtr(IntToPtr { operand, dest, .. }) => handle_passthru(module, function, operand, dest), // TODO: Make sure this works
 
     Instruction::ICmp(ICmp { predicate, operand0, operand1, dest, .. }) => {
-        let op = match (predicate) {
-            llvm_ir::IntPredicate::EQ => "=",
-            llvm_ir::IntPredicate::NE => "!=",
-            llvm_ir::IntPredicate::UGT | llvm_ir::IntPredicate::SGT => ">",
-            llvm_ir::IntPredicate::UGE | llvm_ir::IntPredicate::SGE => ">=",
-            llvm_ir::IntPredicate::ULT | llvm_ir::IntPredicate::SLT => "<",
-            llvm_ir::IntPredicate::ULE | llvm_ir::IntPredicate::SLE => "<=",
-        };
-        let params = vec![
-            parse_oper(module, function, operand0)?.to_codevalue(module, function)?,
-            parse_oper(module, function, operand1)?.to_codevalue(module, function)?
-        ];
-        function.line.blocks.push(Codeblock::action("if_var", op, params, vec![ ]));
-        function.line.blocks.push(Codeblock::OPEN_COND_BRACKET);
-        let params = vec![
-            CodeValue::Variable { name : name_to_local(dest), scope: VariableScope::Local },
-            CodeValue::Number(String::from("1"))
-        ];
-        function.line.blocks.push(Codeblock::action("set_var", "=", params, vec![ ]));
-        function.line.blocks.push(Codeblock::CLOSE_COND_BRACKET);
-        function.line.blocks.push(Codeblock::elses());
-        function.line.blocks.push(Codeblock::OPEN_COND_BRACKET);
-        let params = vec![
-            CodeValue::Variable { name : name_to_local(dest), scope: VariableScope::Local },
-            CodeValue::Number(String::from("0"))
-        ];
-        function.line.blocks.push(Codeblock::action("set_var", "=", params, vec![ ]));
-        function.line.blocks.push(Codeblock::CLOSE_COND_BRACKET);
-        Ok(())
+        let operand0 = parse_oper(module, function, operand0)?;
+        let operand1 = parse_oper(module, function, operand1)?;
+        parse_icmp(module, function, &name_to_local(dest), *predicate, operand0, operand1)
     },
 
-    Instruction::FCmp(_) => todo!(),
+    Instruction::FCmp(FCmp { predicate, operand0, operand1, dest, .. }) => {
+        let operand0 = parse_oper(module, function, operand0)?;
+        let operand1 = parse_oper(module, function, operand1)?;
+        parse_fcmp(module, function, &name_to_local(dest), *predicate, operand0, operand1)
+    },
 
     Instruction::Phi(Phi { incoming_values, dest, .. }) => {
         for (value, block) in incoming_values {
+            let value = parse_oper(module, function, value)?.to_codevalue(module, function)?;
             function.line.blocks.push(Codeblock::action("if_var", "StringMatches", vec![
                 CodeValue::Variable { name : BLOCK_PREVIOUS.to_string(), scope : VariableScope::Line },
                 CodeValue::String(name_to_string(block))
@@ -228,11 +243,10 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
                 CodeValue::Actiontag { kind : "Regular Expressions".to_string(), value : "Disable".to_string(), variable : None, block_override : None },
             ]));
             function.line.blocks.push(Codeblock::OPEN_COND_BRACKET);
-            let params = vec![
+            function.line.blocks.push(Codeblock::action("set_var", "=", vec![
                 CodeValue::Variable { name : name_to_local(dest), scope: VariableScope::Local },
-                parse_oper(module, function, value)?.to_codevalue(module, function)?
-            ];
-            function.line.blocks.push(Codeblock::action("set_var", "=", params, vec![ ]));
+                value
+            ], vec![ ]));
             function.line.blocks.push(Codeblock::CLOSE_COND_BRACKET);
         }
         Ok(())
@@ -240,27 +254,10 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
 
     // If `condition` is 0 (false), set `dest` to `false_value`, else `true_value`. 
     Instruction::Select(Select { condition, true_value, false_value, dest, .. }) => {
-        let params = vec![
-            parse_oper(module, function, condition)?.to_codevalue(module, function)?,
-            CodeValue::Number("0".to_string())
-        ];
-        function.line.blocks.push(Codeblock::action("if_var", "=", params, vec![ ]));
-        function.line.blocks.push(Codeblock::OPEN_COND_BRACKET);
-        let params = vec![
-            CodeValue::Variable { name : name_to_local(dest), scope: VariableScope::Local },
-            parse_oper(module, function, false_value)?.to_codevalue(module, function)?
-        ];
-        function.line.blocks.push(Codeblock::action("set_var", "=", params, vec![ ]));
-        function.line.blocks.push(Codeblock::CLOSE_COND_BRACKET);
-        function.line.blocks.push(Codeblock::elses());
-        function.line.blocks.push(Codeblock::OPEN_COND_BRACKET);
-        let params = vec![
-            CodeValue::Variable { name : name_to_local(dest), scope: VariableScope::Local },
-            parse_oper(module, function, true_value)?.to_codevalue(module, function)?
-        ];
-        function.line.blocks.push(Codeblock::action("set_var", "=", params, vec![ ]));
-        function.line.blocks.push(Codeblock::CLOSE_COND_BRACKET);
-        Ok(())
+        let condition   = parse_oper(module, function, condition   )?;
+        let true_value  = parse_oper(module, function, true_value  )?;
+        let false_value = parse_oper(module, function, false_value )?;
+        parse_select(module, function, &name_to_local(dest), condition, true_value, false_value)
     },
 
     // Call a function, or the function behind a pointer.
@@ -398,6 +395,40 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
                         let params = vec![
                             CodeValue::Variable { name : name_to_local(dest), scope : VariableScope::Local },
                             CodeValue::Sound { kind : SoundKind::Named(id.clone()), volume : 1.0, pitch : 1.0 }
+                        ];
+                        function.line.blocks.push(Codeblock::action("set_var", "=", params, vec![]));
+                    }
+                    Ok(())
+                },
+
+                Global::ParticleFunction { id,
+                    motion, motion_variation,
+                    colour, colour_variation,
+                    opacity,
+                    material,
+                    size, size_variation,
+                    roll,
+                    fade_colour
+                } => {
+                    if let Some(dest) = dest {
+                        let params = vec![
+                            CodeValue::Variable { name : name_to_local(dest), scope : VariableScope::Local },
+                            CodeValue::Particle {
+                                kind             : id.clone(),
+                                spread_x         : 0.0,
+                                spread_y         : 0.0,
+                                amount           : 1,
+                                motion           : motion           .then(|| (0.0, 0.0, 0.0)),
+                                motion_variation : motion_variation .then(|| 0.0),
+                                colour           : colour           .then(|| 0),
+                                colour_variation : colour_variation .then(|| 0.0),
+                                opacity          : opacity          .then(|| 1.0),
+                                material         : material         .then(|| "minecraft:stone".to_string()),
+                                size             : size             .then(|| 1.0),
+                                size_variation   : size_variation   .then(|| 0.0),
+                                roll             : roll             .then(|| 0.0),
+                                fade_colour      : fade_colour      .then(|| 0)
+                            }
                         ];
                         function.line.blocks.push(Codeblock::action("set_var", "=", params, vec![]));
                     }

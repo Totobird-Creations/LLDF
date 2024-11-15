@@ -3,6 +3,10 @@ use crate::bind::DFOpaqueValue;
 use crate::core::mem::transmute_unchecked;
 
 
+/// A location in the plot.
+/// - A position of `<0.0, 0.0, 0.0>` represents the north-west-bottom corner of the plot.
+/// - A pitch of `0.0` is forward, `PI` is down, `-PI` is up.
+/// - A yaw of `0.0` is south, `PI / 2.0` is west, `PI` is north, `-PI / 2.0` is east.
 pub struct Location {
     _opaque_type : u8
 }
@@ -20,47 +24,155 @@ impl Location {
         DF_ACTION__SetVariable_SetAllCoords_CoordinateType_PlotCoordinate(x.into(), y.into(), z.into(), pitch.into(), yaw.into())
     } }
 
-    // TODO: with_x
+    #[lldf_bind_proc::dfdoc(SetVariable/GetCoord { CoordinateType = PlotCoordinate, Coordinate = X })]
+    #[inline(always)]
+    pub fn x(&self) -> Float { unsafe {
+        DF_ACTION__SetVariable_GetCoord_CoordinateType_PlotCoordinate_Coordinate_X(self.to_opaque())
+    } }
 
-    // TODO: with_y
+    #[lldf_bind_proc::dfdoc(SetVariable/SetCoord { CoordinateType = PlotCoordinate, Coordinate = X })]
+    #[inline(always)]
+    pub fn with_x<F : Into<Float>>(&self, x : F) -> Location { unsafe {
+        DF_ACTION__SetVariable_SetCoord_CoordinateType_PlotCoordinate_Coordinate_X(self.to_opaque(), x.into())
+    } }
 
-    // TODO: with_z
+    #[lldf_bind_proc::dfdoc(SetVariable/ShiftOnAxis { Coordinate = X })]
+    #[inline(always)]
+    pub fn shift_x<F : Into<Float>>(&self, dx : F) -> Location { unsafe {
+        DF_ACTION__SetVariable_ShiftOnAxis_Coordinate_X(self.to_opaque(), dx.into())
+    } }
 
-    // TODO: with_pos
+    #[lldf_bind_proc::dfdoc(SetVariable/GetCoord { CoordinateType = PlotCoordinate, Coordinate = Y })]
+    #[inline(always)]
+    pub fn y(&self) -> Float { unsafe {
+        DF_ACTION__SetVariable_GetCoord_CoordinateType_PlotCoordinate_Coordinate_Y(self.to_opaque())
+    } }
 
-    // TODO: with_pitch
+    #[lldf_bind_proc::dfdoc(SetVariable/SetCoord { CoordinateType = PlotCoordinate, Coordinate = Y })]
+    #[inline(always)]
+    pub fn with_y<F : Into<Float>>(&self, y : F) -> Location { unsafe {
+        DF_ACTION__SetVariable_SetCoord_CoordinateType_PlotCoordinate_Coordinate_Y(self.to_opaque(), y.into())
+    } }
 
-    // TODO: with_yaw
+    #[lldf_bind_proc::dfdoc(SetVariable/ShiftOnAxis { Coordinate = Y })]
+    #[inline(always)]
+    pub fn shift_y<F : Into<Float>>(&self, dy : F) -> Location { unsafe {
+        DF_ACTION__SetVariable_ShiftOnAxis_Coordinate_Y(self.to_opaque(), dy.into())
+    } }
+
+    #[lldf_bind_proc::dfdoc(SetVariable/GetCoord { CoordinateType = PlotCoordinate, Coordinate = Z })]
+    #[inline(always)]
+    pub fn z(&self) -> Float { unsafe {
+        DF_ACTION__SetVariable_GetCoord_CoordinateType_PlotCoordinate_Coordinate_Z(self.to_opaque())
+    } }
+
+    #[lldf_bind_proc::dfdoc(SetVariable/SetCoord { CoordinateType = PlotCoordinate, Coordinate = Z })]
+    #[inline(always)]
+    pub fn with_z<F : Into<Float>>(&self, z : F) -> Location { unsafe {
+        DF_ACTION__SetVariable_SetCoord_CoordinateType_PlotCoordinate_Coordinate_Z(self.to_opaque(), z.into())
+    } }
+
+    #[lldf_bind_proc::dfdoc(SetVariable/ShiftOnAxis { Coordinate = Z })]
+    #[inline(always)]
+    pub fn shift_z<F : Into<Float>>(&self, dz : F) -> Location { unsafe {
+        DF_ACTION__SetVariable_ShiftOnAxis_Coordinate_Z(self.to_opaque(), dz.into())
+    } }
+
+    #[lldf_bind_proc::dfdoc(SetVariable/GetCoord { CoordinateType = PlotCoordinate })]
+    #[inline(always)]
+    pub fn xyz(&self) -> (Float, Float, Float) { unsafe {
+        let x = DF_ACTION__SetVariable_GetCoord_CoordinateType_PlotCoordinate_Coordinate_X(self.to_opaque());
+        let y = DF_ACTION__SetVariable_GetCoord_CoordinateType_PlotCoordinate_Coordinate_Y(self.to_opaque());
+        let z = DF_ACTION__SetVariable_GetCoord_CoordinateType_PlotCoordinate_Coordinate_Z(self.to_opaque());
+        (x, y, z)
+    } }
+
+    #[lldf_bind_proc::dfdoc(SetVariable/GetCoord { CoordinateType = PlotCoordinate })]
+    #[inline(always)]
+    pub fn xyzv(&self) -> Vector<3> { unsafe {
+        let x = DF_ACTION__SetVariable_GetCoord_CoordinateType_PlotCoordinate_Coordinate_X(self.to_opaque());
+        let y = DF_ACTION__SetVariable_GetCoord_CoordinateType_PlotCoordinate_Coordinate_Y(self.to_opaque());
+        let z = DF_ACTION__SetVariable_GetCoord_CoordinateType_PlotCoordinate_Coordinate_Z(self.to_opaque());
+        Vector::new([x, y, z])
+    } }
+
+    // TODO: with_xyz
+
+    // TODO: with_xyzv
+
+    // TODO: shift_xyz
+
+    // TODO: shiftv_xyz, Add<Vector<3>>
+
+    #[lldf_bind_proc::dfdoc(SetVariable/GetCoord { CoordinateType = PlotCoordinate, Coordinate = Pitch })]
+    /// ##### Note:
+    /// - The return value is in **radians**.
+    #[inline(always)]
+    pub fn pitch(&self) -> Float { unsafe {
+        DF_ACTION__SetVariable_GetCoord_CoordinateType_PlotCoordinate_Coordinate_Pitch(self.to_opaque()).deg_to_rad()
+    } }
+
+    #[lldf_bind_proc::dfdoc(SetVariable/SetCoord { CoordinateType = PlotCoordinate, Coordinate = Pitch })]
+    /// ##### Note:
+    /// - The angle value is in **radians**.
+    #[inline(always)]
+    pub fn with_pitch<F : Into<Float>>(&self, pitch_rad : F) -> Location { unsafe {
+        DF_ACTION__SetVariable_SetCoord_CoordinateType_PlotCoordinate_Coordinate_Pitch(self.to_opaque(), pitch_rad.into().rad_to_deg())
+    } }
+
+    #[lldf_bind_proc::dfdoc(SetVariable/ShiftRotation { RotationAxis = Pitch })]
+    #[inline(always)]
+    pub fn shift_pitch<F : Into<Float>>(&self, dpitch : F) -> Location { unsafe {
+        DF_ACTION__SetVariable_ShiftRotation_RotationAxis_Pitch(self.to_opaque(), dpitch.into().rad_to_deg())
+    } }
+
+    #[lldf_bind_proc::dfdoc(SetVariable/GetCoord { CoordinateType = PlotCoordinate, Coordinate = Yaw })]
+    /// ##### Note:
+    /// - The return value is in **radians**.
+    #[inline(always)]
+    pub fn yaw(&self) -> Float { unsafe {
+        DF_ACTION__SetVariable_GetCoord_CoordinateType_PlotCoordinate_Coordinate_Yaw(self.to_opaque()).deg_to_rad()
+    } }
+
+    #[lldf_bind_proc::dfdoc(SetVariable/SetCoord { CoordinateType = PlotCoordinate, Coordinate = Yaw })]
+    /// ##### Note:
+    /// - The angle value is in **radians**.
+    #[inline(always)]
+    pub fn with_yaw<F : Into<Float>>(&self, yaw_rad : F) -> Location { unsafe {
+        DF_ACTION__SetVariable_SetCoord_CoordinateType_PlotCoordinate_Coordinate_Yaw(self.to_opaque(), yaw_rad.into().rad_to_deg())
+    } }
+
+    #[lldf_bind_proc::dfdoc(SetVariable/ShiftRotation { RotationAxis = Yaw })]
+    #[inline(always)]
+    pub fn shift_yaw<F : Into<Float>>(&self, dyaw : F) -> Location { unsafe {
+        DF_ACTION__SetVariable_ShiftRotation_RotationAxis_Yaw(self.to_opaque(), dyaw.into().rad_to_deg())
+    } }
+
+    // TODO: rot
 
     // TODO: with_rot
 
-    // TODO: with_dir
+    // TODO: shift_rot
+
+    // TODO: shiftv_rot
+
+    // TODO: direction
+
+    // TODO: with_look_to
 
     // TODO: with_facing
 
-    // TODO: x
+    // TODO: shift_forward
 
-    // TODO: y
+    // TODO: shift_up
 
-    // TODO: z
+    // TODO: shift_right
 
-    // TODO: yaw
+    // TODO: shift_relative
 
-    // TODO: pitch
-
-    // TODO: shift_axis
-
-    // TODO: shiftv_axis
-
-    // TODO: shift_dir
-
-    // TODO: shiftv_dir
+    // TODO: shiftv_relative
 
     // TODO: move_toward
-
-    // TODO: dir
-
-    // TODO: shift_rot
 
     // TODO: align
 
@@ -68,9 +180,13 @@ impl Location {
 
     // TODO: midpoint
 
-    // TODO: random
+    #[lldf_bind_proc::dfdoc(SetVariable/RandomLoc)]
+    #[inline(always)]
+    pub fn random_in<L : AsRef<Location>>(&self, other : L) -> Location { unsafe {
+        DF_ACTION__SetVariable_RandomLoc(self.to_opaque(), other.to_opaque())
+    } }
 
-    // TODO: delta
+    // TODO: delta, Sub<Location>
 
     // TODO: noise_simplex
 
@@ -88,7 +204,13 @@ impl Location {
 
     // TODO: noise_value1
 
+    // TODO: raycast_unchecked
+
     // TODO: raycast
+
+    // TODO: raycastv_unchecked
+
+    // TODO: raycastv
 
 }
 
@@ -102,5 +224,22 @@ unsafe impl DFValue for Location {
 extern "C" {
 
     fn DF_ACTION__SetVariable_SetAllCoords_CoordinateType_PlotCoordinate( x : Float, y : Float, z : Float, pitch : Float, yaw : Float ) -> Location;
+    fn DF_ACTION__SetVariable_GetCoord_CoordinateType_PlotCoordinate_Coordinate_X( location : DFOpaqueValue ) -> Float;
+    fn DF_ACTION__SetVariable_GetCoord_CoordinateType_PlotCoordinate_Coordinate_Y( location : DFOpaqueValue ) -> Float;
+    fn DF_ACTION__SetVariable_GetCoord_CoordinateType_PlotCoordinate_Coordinate_Z( location : DFOpaqueValue ) -> Float;
+    fn DF_ACTION__SetVariable_GetCoord_CoordinateType_PlotCoordinate_Coordinate_Pitch( location : DFOpaqueValue ) -> Float;
+    fn DF_ACTION__SetVariable_GetCoord_CoordinateType_PlotCoordinate_Coordinate_Yaw( location : DFOpaqueValue ) -> Float;
+    fn DF_ACTION__SetVariable_SetCoord_CoordinateType_PlotCoordinate_Coordinate_X( location : DFOpaqueValue, x : Float ) -> Location;
+    fn DF_ACTION__SetVariable_SetCoord_CoordinateType_PlotCoordinate_Coordinate_Y( location : DFOpaqueValue, y : Float ) -> Location;
+    fn DF_ACTION__SetVariable_SetCoord_CoordinateType_PlotCoordinate_Coordinate_Z( location : DFOpaqueValue, z : Float ) -> Location;
+    fn DF_ACTION__SetVariable_SetCoord_CoordinateType_PlotCoordinate_Coordinate_Pitch( location : DFOpaqueValue, pitch : Float ) -> Location;
+    fn DF_ACTION__SetVariable_SetCoord_CoordinateType_PlotCoordinate_Coordinate_Yaw( location : DFOpaqueValue, yaw : Float ) -> Location;
+    fn DF_ACTION__SetVariable_ShiftOnAxis_Coordinate_X( location : DFOpaqueValue, dx : Float ) -> Location;
+    fn DF_ACTION__SetVariable_ShiftOnAxis_Coordinate_Y( location : DFOpaqueValue, dy : Float ) -> Location;
+    fn DF_ACTION__SetVariable_ShiftOnAxis_Coordinate_Z( location : DFOpaqueValue, dz : Float ) -> Location;
+    fn DF_ACTION__SetVariable_ShiftRotation_RotationAxis_Pitch( location : DFOpaqueValue, dpitch : Float ) -> Location;
+    fn DF_ACTION__SetVariable_ShiftRotation_RotationAxis_Yaw( location : DFOpaqueValue, dyaw : Float ) -> Location;
+
+    fn DF_ACTION__SetVariable_RandomLoc( a : DFOpaqueValue, b : DFOpaqueValue ) -> Location;
 
 }

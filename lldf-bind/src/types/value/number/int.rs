@@ -2,7 +2,7 @@ use super::*;
 
 
 pub struct Int {
-    _opaque_type : u8
+    pub(crate) _opaque_type : u8
 }
 impl Clone for Int { fn clone(&self) -> Self { *self } }
 impl Copy for Int {}

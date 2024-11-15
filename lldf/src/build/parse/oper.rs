@@ -1,6 +1,6 @@
-use crate::build::codegen::Codeblock;
-
 use super::*;
+
+use std::mem::transmute;
 
 use llvm_ir::operand::*;
 use llvm_ir::constant::*;
@@ -19,7 +19,7 @@ pub fn parse_oper(module : &ParsedModule, function : &mut ParsedFunction, oper :
 
 pub fn parse_const(module : &ParsedModule, function : &mut ParsedFunction, cor : &Constant) -> Result<Value, Box<dyn Error>> { match (cor) {
 
-    Constant::Int { value, .. } => Ok(Value::ConstInt(*value)), // Unsigned vs signed
+    Constant::Int { value, .. } => Ok(Value::ConstInt(unsafe{ transmute(*value) })),
 
     Constant::Float(value) => match (value) {
         Float::Half          => Err("Half floats are unsupported"   .into()),
@@ -31,14 +31,13 @@ pub fn parse_const(module : &ParsedModule, function : &mut ParsedFunction, cor :
         Float::PPC_FP128     => Err("PPC_FP128 floats are unsupported" .into()),
     },
 
-    Constant::Null(_) => todo!(),
+    Constant::Null(_) => Ok(Value::Null),
 
     Constant::AggregateZero(_) => todo!(),
 
     Constant::Struct { .. } => todo!(),
 
-    Constant::Array { elements, .. } => {   // TODO: Handle >26 element lists.
-                                            // FIXME: This doesn't work with GEP. Use fake pointers instead.
+    Constant::Array { elements, .. } => { // TODO: Handle >26 element lists.
         let temp_var = function.create_temp_var_name();
         let mut params = Vec::with_capacity(elements.len() + 1);
         params.push(CodeValue::Variable { name : temp_var.clone(), scope : VariableScope::Local });
@@ -49,25 +48,83 @@ pub fn parse_const(module : &ParsedModule, function : &mut ParsedFunction, cor :
         Ok(Value::Local(temp_var))
     },
 
-    Constant::Vector(_) => todo!(),
-
-    Constant::Undef(_) => todo!(),
+    Constant::Undef(_) => Ok(Value::Null),
 
     Constant::Poison(_) => Ok(Value::Null),
 
     Constant::GlobalReference { name, .. } => Ok(Value::Global(name.clone())),
 
-    Constant::Add(_) => todo!(),
+    Constant::Add(Add { operand0, operand1 }) => {
+        let temp_var = function.create_temp_var_name();
+        let operand0 = parse_const(module, function, operand0)?.to_codevalue(module, function)?;
+        let operand1 = parse_const(module, function, operand1)?.to_codevalue(module, function)?;
+        function.line.blocks.push(Codeblock::action("set_var", "+", vec![
+            CodeValue::Variable { name : temp_var.clone(), scope: VariableScope::Local },
+            operand0, operand1
+        ], vec![ ]));
+        Ok(Value::Local(temp_var))
+    },
 
-    Constant::Sub(_) => todo!(),
+    Constant::Sub(Sub { operand0, operand1 }) => {
+        let temp_var = function.create_temp_var_name();
+        let operand0 = parse_const(module, function, operand0)?.to_codevalue(module, function)?;
+        let operand1 = parse_const(module, function, operand1)?.to_codevalue(module, function)?;
+        function.line.blocks.push(Codeblock::action("set_var", "-", vec![
+            CodeValue::Variable { name : temp_var.clone(), scope: VariableScope::Local },
+            operand0, operand1
+        ], vec![ ]));
+        Ok(Value::Local(temp_var))
+    },
 
-    Constant::Mul(_) => todo!(),
+    Constant::Mul(Mul { operand0, operand1 }) => {
+        let temp_var = function.create_temp_var_name();
+        let operand0 = parse_const(module, function, operand0)?.to_codevalue(module, function)?;
+        let operand1 = parse_const(module, function, operand1)?.to_codevalue(module, function)?;
+        function.line.blocks.push(Codeblock::action("set_var", "x", vec![
+            CodeValue::Variable { name : temp_var.clone(), scope: VariableScope::Local },
+            operand0, operand1
+        ], vec![ ]));
+        Ok(Value::Local(temp_var))
+    },
 
-    Constant::And(_) => todo!(),
+    Constant::And(And { operand0, operand1 }) => {
+        let temp_var = function.create_temp_var_name();
+        let operand0 = parse_const(module, function, operand0)?.to_codevalue(module, function)?;
+        let operand1 = parse_const(module, function, operand1)?.to_codevalue(module, function)?;
+        function.line.blocks.push(Codeblock::action("set_var", "Bitwise", vec![
+            CodeValue::Variable { name : temp_var.clone(), scope: VariableScope::Local },
+            operand0, operand1
+        ], vec![
+            CodeValue::Actiontag { kind : "Operator".to_string(), value : "&".to_string(), variable : None, block_override : None }
+        ]));
+        Ok(Value::Local(temp_var))
+    },
 
-    Constant::Or(_) => todo!(),
+    Constant::Or(Or { operand0, operand1 }) => {
+        let temp_var = function.create_temp_var_name();
+        let operand0 = parse_const(module, function, operand0)?.to_codevalue(module, function)?;
+        let operand1 = parse_const(module, function, operand1)?.to_codevalue(module, function)?;
+        function.line.blocks.push(Codeblock::action("set_var", "Bitwise", vec![
+            CodeValue::Variable { name : temp_var.clone(), scope: VariableScope::Local },
+            operand0, operand1
+        ], vec![
+            CodeValue::Actiontag { kind : "Operator".to_string(), value : "|".to_string(), variable : None, block_override : None }
+        ]));
+        Ok(Value::Local(temp_var))
+    },
 
-    Constant::Xor(_) => todo!(),
+    Constant::Xor(Xor { operand0, operand1 }) => {
+        let temp_var = function.create_temp_var_name();
+        let operand0 = parse_const(module, function, operand0)?.to_codevalue(module, function)?;
+        let operand1 = parse_const(module, function, operand1)?.to_codevalue(module, function)?;
+        function.line.blocks.push(Codeblock::action("set_var", "Bitwise", vec![
+            CodeValue::Variable { name : temp_var.clone(), scope: VariableScope::Local },
+            operand0, operand1
+        ], vec![
+            CodeValue::Actiontag { kind : "Operator".to_string(), value : "^".to_string(), variable : None, block_override : None }
+        ]));
+        Ok(Value::Local(temp_var))
+    },
 
     Constant::Shl(_) => todo!(),
 
@@ -79,38 +136,57 @@ pub fn parse_const(module : &ParsedModule, function : &mut ParsedFunction, cor :
 
     Constant::Trunc(Trunc { operand, .. }) => parse_const(module, function, operand),
 
-    Constant::ZExt(_) => todo!(),
+    Constant::ZExt(ZExt { operand, .. }) => parse_const(module, function, operand),
 
-    Constant::SExt(_) => todo!(),
+    Constant::SExt(SExt { operand, .. }) => parse_const(module, function, operand),
 
-    Constant::FPTrunc(_) => todo!(),
+    Constant::FPTrunc(FPTrunc { operand, .. }) => parse_const(module, function, operand),
 
-    Constant::FPExt(_) => todo!(),
+    Constant::FPExt(FPExt { operand, .. }) => parse_const(module, function, operand),
 
     Constant::FPToUI(_) => todo!(),
 
     Constant::FPToSI(_) => todo!(),
 
-    Constant::UIToFP(_) => todo!(),
+    Constant::UIToFP(UIToFP { operand, .. }) => parse_const(module, function, operand),
 
-    Constant::SIToFP(_) => todo!(),
+    Constant::SIToFP(SIToFP { operand, .. }) => parse_const(module, function, operand),
 
-    Constant::PtrToInt(PtrToInt { operand, .. }) => parse_const(module, function, operand),
+    Constant::PtrToInt(PtrToInt { operand, .. }) => parse_const(module, function, operand), // TODO: Make sure this works
 
-    Constant::IntToPtr(_) => todo!(),
+    Constant::IntToPtr(IntToPtr { operand, .. }) => parse_const(module, function, operand), // TODO: Make sure this works
 
-    Constant::ICmp(_) => todo!(),
+    Constant::ICmp(ICmp { predicate, operand0, operand1 }) => {
+        let temp_var = function.create_temp_var_name();
+        let operand0 = parse_const(module, function, operand0)?;
+        let operand1 = parse_const(module, function, operand1)?;
+        parse_icmp(module, function, &temp_var, *predicate, operand0, operand1)?;
+        Ok(Value::Local(temp_var))
+    },
 
-    Constant::FCmp(_) => todo!(),
+    Constant::FCmp(FCmp { predicate, operand0, operand1 }) => {
+        let temp_var = function.create_temp_var_name();
+        let operand0 = parse_const(module, function, operand0)?;
+        let operand1 = parse_const(module, function, operand1)?;
+        parse_fcmp(module, function, &temp_var, *predicate, operand0, operand1)?;
+        Ok(Value::Local(temp_var))
+    },
 
-    Constant::Select(_) => todo!(),
+    Constant::Select(Select { condition, true_value, false_value }) => {
+        let temp_var = function.create_temp_var_name();
+        let condition   = parse_const(module, function, condition   )?;
+        let true_value  = parse_const(module, function, true_value  )?;
+        let false_value = parse_const(module, function, false_value )?;
+        parse_select(module, function, &temp_var, condition, true_value, false_value)?;
+        Ok(Value::Local(temp_var))
+    },
 
 
-    Constant::BlockAddress                                                                => Err("Block address operands are unsupported"      .into()),
-    Constant::TokenNone                                                                   => Err("Token operands are unsupported"              .into()),
-    Constant::ExtractElement(_) | Constant::InsertElement(_) | Constant::ShuffleVector(_) => Err("Vector operands are unsupported"             .into()),
-    Constant::BitCast(_)                                                                  => Err("Bit cast operands are unsupported"           .into()),
-    Constant::AddrSpaceCast(_)                                                            => Err("Address space cast operands are unsupported" .into()),
+    Constant::BlockAddress                                                                                      => Err("Block address operands are unsupported"      .into()),
+    Constant::TokenNone                                                                                         => Err("Token operands are unsupported"              .into()),
+    Constant::Vector(_) | Constant::ExtractElement(_) | Constant::InsertElement(_) | Constant::ShuffleVector(_) => Err("Vector operands are unsupported"             .into()),
+    Constant::BitCast(_)                                                                                        => Err("Bit cast operands are unsupported"           .into()),
+    Constant::AddrSpaceCast(_)                                                                                  => Err("Address space cast operands are unsupported" .into()),
 } }
 
 

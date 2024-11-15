@@ -7,26 +7,21 @@
 use lldf_bind::prelude::*;
 
 
-pub enum Enum {
-    A(String),
-    B(Item)
-}
-
-
 #[event(PlayerJoin)]
-fn player_swap_hands(default : PlayerSel) {
-
-    if (test(&default, true, true)) {
-        default.send_message("YES!".to_string());
-    } else {
-        default.send_message("no.".to_string());
-    }
-
+fn player_join(default : PlayerSel) {
+    default.send_message(
+        test(Sound::custom("minecraft:entity.allay.hurt")) // Does not have a name because it's a custom sound.
+    );
+    default.send_message(
+        test(Sound::allay_hurt()) // Does have a name.
+    );
+    
 }
 
-
-#[inline(never)]
 #[no_mangle]
-fn test(sel : &PlayerSel, a : bool, b : bool) -> bool {
-    a && b
+fn test(sound : Sound) -> String {
+    match (sound.kind()) { // The name of the sound
+        Some(kind) => kind.to_string(),
+        None       => "No sound kind found".to_string()
+    }
 }

@@ -180,7 +180,7 @@ pub fn parse_block(module : &mut ParsedModule, function : &Function, block : &Ba
 
     match (&block.term) {
 
-        llvm_ir::Terminator::Ret(Ret { return_operand, .. }) => {
+        Terminator::Ret(Ret { return_operand, .. }) => {
             if let Some(return_operand) = return_operand {
                 let codeblock = Codeblock::action("set_var", "=", vec![
                     CodeValue::Variable { name : RETURN.to_string(), scope : VariableScope::Line },
@@ -194,14 +194,14 @@ pub fn parse_block(module : &mut ParsedModule, function : &Function, block : &Ba
             ], vec![ ]));
         },
 
-        llvm_ir::Terminator::Br(Br { dest, .. }) => {
+        Terminator::Br(Br { dest, .. }) => {
             block_function.line.blocks.push(Codeblock::action("set_var", "=", vec![
                 CodeValue::Variable { name : BLOCK_ACTIVE.to_string(), scope : VariableScope::Line },
                 CodeValue::String(name_to_string(dest))
             ], vec![ ]));
         },
 
-        llvm_ir::Terminator::CondBr(CondBr { condition, true_dest, false_dest, .. }) => {
+        Terminator::CondBr(CondBr { condition, true_dest, false_dest, .. }) => {
             let codeblock = Codeblock::ifs("if_var", "=", false, vec![
                 parse_oper(module, &mut block_function, condition)?.to_codevalue(module, &mut block_function)?,
                 CodeValue::Number("0".to_string())
@@ -222,23 +222,43 @@ pub fn parse_block(module : &mut ParsedModule, function : &Function, block : &Ba
             block_function.line.blocks.push(Codeblock::CLOSE_COND_BRACKET);
         },
 
-        llvm_ir::Terminator::Switch(_) => todo!(),
+        Terminator::Switch(Switch { operand, dests, default_dest, .. }) => {
+            let operand = parse_oper(module, &mut block_function, operand)?.to_codevalue(module, &mut block_function)?;
+            for (case, dest) in dests {
+                let case = parse_const(module, &mut block_function, case)?.to_codevalue(module, &mut block_function)?;
+                block_function.line.blocks.push(Codeblock::ifs("if_var", "=", false, vec![
+                    operand.clone(),
+                    case
+                ], vec![ ]));
+                block_function.line.blocks.push(Codeblock::OPEN_COND_BRACKET);
+                block_function.line.blocks.push(Codeblock::action("set_var", "=", vec![
+                    CodeValue::Variable { name : BLOCK_ACTIVE.to_string(), scope : VariableScope::Line },
+                    CodeValue::String(name_to_string(dest))
+                ], vec![ ]));
+                block_function.line.blocks.push(Codeblock::action("control", "Return", vec![ ], vec![ ]));
+                block_function.line.blocks.push(Codeblock::CLOSE_COND_BRACKET);
+            }
+            block_function.line.blocks.push(Codeblock::action("set_var", "=", vec![
+                CodeValue::Variable { name : BLOCK_ACTIVE.to_string(), scope : VariableScope::Line },
+                CodeValue::String(name_to_string(default_dest))
+            ], vec![ ]));
+        },
 
-        llvm_ir::Terminator::IndirectBr(_) => todo!(),
+        Terminator::IndirectBr(_) => todo!(),
 
-        llvm_ir::Terminator::Invoke(_) => todo!(),
+        Terminator::Invoke(_) => todo!(),
 
-        llvm_ir::Terminator::Resume(_) => todo!(),
+        Terminator::Resume(_) => todo!(),
 
-        llvm_ir::Terminator::Unreachable(_) => todo!(),
+        Terminator::Unreachable(_) => todo!(),
 
-        llvm_ir::Terminator::CleanupRet(_) => todo!(),
+        Terminator::CleanupRet(_) => todo!(),
 
-        llvm_ir::Terminator::CatchRet(_) => todo!(),
+        Terminator::CatchRet(_) => todo!(),
 
-        llvm_ir::Terminator::CatchSwitch(_) => todo!(),
+        Terminator::CatchSwitch(_) => todo!(),
 
-        llvm_ir::Terminator::CallBr(_) => todo!(),
+        Terminator::CallBr(_) => todo!(),
 
     }
 
