@@ -33,7 +33,7 @@ impl<T : DFValue> From<T> for String {
 impl From<&str> for String {
     #[inline(always)]
     fn from(value : &str) -> String { unsafe { // TODO: Makes sure empty strings (`""`) still work when they aren't constant.
-        DF_ASSERT__ConstantStrToString(transmute_unchecked(transmute_unchecked::<_, &String>(&value).to_opaque()))
+        DF_ASSERT__ConstantStrToString(value)
     } }
 }
 
@@ -142,11 +142,15 @@ unsafe impl DFValue for String {
     #[inline(always)]
     unsafe fn to_opaque(&self) -> DFOpaqueValue { unsafe { transmute_unchecked(self._opaque_type) } }
 }
+impl ToString for String {
+    #[inline(always)]
+    fn to_string(&self) -> String { self.clone() }
+}
 
 
 extern "C" {
 
-    fn DF_ASSERT__ConstantStrToString( from : String ) -> String;
+    fn DF_ASSERT__ConstantStrToString( from : &str ) -> String;
 
     fn DF_ACTION__SetVariable_String_TextValueMerging_NoSpaces( ... ) -> String;
     fn DF_ACTION__SetVariable_ReplaceString_ReplacementType_AllOccurrences_RegularExpressions_Disable( string : DFOpaqueValue, replacing : String, with : String ) -> String;

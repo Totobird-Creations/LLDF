@@ -21,7 +21,7 @@ impl ParsedFunction {
     pub fn create_temp_var_name(&mut self) -> String {
         let temp_var = self.next_temp;
         self.next_temp += 1;
-        format!("local.#$var({}).temp.{}", CALL, temp_var)
+        format!("local.#%var({}).temp.{}", CALL, temp_var)
     }
 }
 
@@ -251,7 +251,7 @@ pub fn parse_block(module : &mut ParsedModule, function : &Function, block : &Ba
 
         Terminator::Resume(_) => { return Err("Resume terminators are unsupported".into()) },
 
-        Terminator::Unreachable(_) => { }, // TODO: Add panic?
+        Terminator::Unreachable(_) => { },
 
         Terminator::CleanupRet(_) => { return Err("CleanupRet terminators are unsupported".into()) },
 

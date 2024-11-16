@@ -30,6 +30,11 @@ pub enum Global {
         action    : String,
         tags      : Vec<ActionFunctionTag>
     },
+    SwitchFunction {
+        codeblock : String,
+        action    : String,
+        tags      : Vec<ActionFunctionTag>
+    },
     BracketFunction {
         kind : BracketKind,
         side : BracketSide
@@ -150,6 +155,21 @@ pub fn parse_module(module : &Module) -> Result<ParsedModule, Box<dyn Error>> {
                         let codeblock = linked_name_to_codeblock (codeblock );
                         let action    = linked_name_to_action    (action    );
                         parsed.globals.insert(Name::Name(Box::new(module_function.name.clone())), Global::ActionFunction {
+                            codeblock, action,
+                            tags : collect_actiontag_parts(executor_parts)
+                        });
+                        continue;
+                    }
+                }
+            },
+
+            Some("DF_SWITCH") => {
+                if let (Some(executor), None) = (parts.next(), parts.next()) {
+                    let mut executor_parts = executor.split("_");
+                    if let (Some(codeblock), Some(action)) = (executor_parts.next(), executor_parts.next()) {
+                        let codeblock = linked_name_to_codeblock (codeblock );
+                        let action    = linked_name_to_action    (action    );
+                        parsed.globals.insert(Name::Name(Box::new(module_function.name.clone())), Global::SwitchFunction {
                             codeblock, action,
                             tags : collect_actiontag_parts(executor_parts)
                         });

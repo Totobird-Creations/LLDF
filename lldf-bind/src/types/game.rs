@@ -261,7 +261,11 @@ impl Game {
 /// `CONTROL`
 impl Game {
 
-    // TODO: Wait
+    #[lldf_bind_proc::dfdoc(Control/Wait { TimeUnit = Ticks })]
+    #[inline(always)]
+    pub fn sleep<U : Into<UInt>>(time_ticks : U) -> () { unsafe {
+        DF_ACTION__Control_Wait_TimeUnit_Ticks(time_ticks.into())
+    } }
 
     // TODO: End
 
@@ -293,6 +297,8 @@ impl Game {
 
 
 extern "C" {
+
+    fn DF_ACTION__Control_Wait_TimeUnit_Ticks( time_ticks : UInt ) -> ();
 
     fn DF_GAMEVALUE__PlotPlayerUUIDs_Default( ) -> List<String>;
     fn DF_GAMEVALUE__SelectionTargetUUIDs_Default( ) -> List<String>;

@@ -30,16 +30,7 @@ impl Sound {
     #[inline(always)]
     pub fn kind(&self) -> Option<SoundKind> { unsafe {
         let kind = DF_ACTION__SetVariable_GetSoundType(self.to_opaque());
-        DF_ACTION__IfVariable_VarIsType_VariableType_String(kind.to_opaque());
-        let success = DF_TEMPVAR();
-        DF_BRACKET__Normal_Open();
-        DF_ACTION__SetVariable_Specialcharequals(success, UInt::from(1usize).to_opaque());
-        DF_BRACKET__Normal_Close();
-        DF_ELSE();
-        DF_BRACKET__Normal_Open();
-        DF_ACTION__SetVariable_Specialcharequals(success, UInt::from(0usize).to_opaque());
-        DF_BRACKET__Normal_Close();
-        return if (transmute_unchecked::<_, UInt>(success) == UInt::from(0usize)) { None } else { Some(SoundKind::from_string_unchecked(kind)) };
+        DF_SWITCH__IfVariable_VarIsType_VariableType_String(kind.to_opaque(), None, Some(SoundKind::from_string_unchecked(kind)))
     } }
 
     #[lldf_bind_proc::dfdoc(SetVariable/SetCustomSound)]
@@ -116,6 +107,8 @@ unsafe impl DFValue for Sound {
 
 
 extern "C" {
+
+    fn DF_SWITCH__IfVariable_VarIsType_VariableType_String( condition : DFOpaqueValue, false_value : Option<SoundKind>, true_value : Option<SoundKind> ) -> Option<SoundKind>;
 
     fn DF_TEMPVAR() -> DFOpaqueValue;
     fn DF_ACTION__IfVariable_VarIsType_VariableType_String( value : DFOpaqueValue ) -> ();

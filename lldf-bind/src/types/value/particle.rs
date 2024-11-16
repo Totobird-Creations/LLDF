@@ -73,6 +73,7 @@ impl Particle {
         DF_ACTION__SetVariable_GetParticleMat(self.to_opaque())
     } }
 
+    #[deprecated = "GetParticleMat is currently broken on DiamondFire"]
     #[lldf_bind_proc::dfdoc(SetVariable/GetParticleMat)]
     #[inline(always)]
     pub fn material(&self) -> Option<String> { unsafe { // TODO: Is GetParticleMat not working?
@@ -89,6 +90,7 @@ impl Particle {
         return if (transmute_unchecked::<_, UInt>(success) == UInt::from(0usize)) { None } else { Some(material) };
     } }
 
+    #[deprecated = "GetParticleMat is currently broken on DiamondFire"]
     #[lldf_bind_proc::dfdoc(SetVariable/SetParticleMat)]
     #[inline(always)]
     pub fn with_material(&self, material : Item) -> Particle { unsafe {

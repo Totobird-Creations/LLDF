@@ -186,17 +186,19 @@ pub fn parse_const(module : &ParsedModule, function : &mut ParsedFunction, cor :
 fn handle_aggregate(function : &mut ParsedFunction, elements : &Vec<CodeValue>) -> Result<Value, Box<dyn Error>> {
     let temp_var = function.create_temp_var_name();
     let (chunks, remainder) = elements.as_chunks::<26>();
-    for (i, chunk) in chunks.iter().enumerate() {
+    let mut first = true;
+    for chunk in chunks {
         let mut params = Vec::with_capacity(27);
         params.push(CodeValue::Variable { name : temp_var.clone(), scope : VariableScope::Local });
         params.extend_from_slice(chunk);
-        function.line.blocks.push(Codeblock::action("set_var", if (i == 0) { "CreateList" } else { "AppendValue" }, params, vec![ ]));
+        function.line.blocks.push(Codeblock::action("set_var", if (first) { "CreateList" } else { "AppendValue" }, params, vec![ ]));
+        first = false;
     }
     if (remainder.len() > 0) {
         let mut params = Vec::with_capacity(27);
         params.push(CodeValue::Variable { name : temp_var.clone(), scope : VariableScope::Local });
         params.extend_from_slice(remainder);
-        function.line.blocks.push(Codeblock::action("set_var", "AppendValue", params, vec![ ]));
+        function.line.blocks.push(Codeblock::action("set_var", if (first) { "CreateList" } else { "AppendValue" }, params, vec![ ]));
     }
     Ok(Value::Local(temp_var))
 }

@@ -53,6 +53,7 @@ impl Value {
                 Global::NoopFunction |
                 Global::Assert(_) |
                 Global::ActionFunction { .. } |
+                Global::SwitchFunction { .. } |
                 Global::BracketFunction { .. } |
                 Global::ElseFunction |
                 Global::TempVarFunction |
@@ -86,6 +87,7 @@ impl Value {
                 Global::Assert(_) |
                 Global::UserFunction { .. } |
                 Global::ActionFunction { .. } |
+                Global::SwitchFunction { .. } |
                 Global::BracketFunction { .. } |
                 Global::ElseFunction |
                 Global::TempVarFunction |
@@ -120,6 +122,7 @@ impl Value {
                 Global::NoopFunction |
                 Global::Assert(_) |
                 Global::ActionFunction { .. } |
+                Global::SwitchFunction { .. } |
                 Global::BracketFunction { .. } |
                 Global::ElseFunction |
                 Global::TempVarFunction |

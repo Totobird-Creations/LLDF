@@ -77,6 +77,27 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
         Ok(())
     },
 
+    Instruction::Shl(Shl { operand0, operand1, dest, .. }) => {
+        let operand0 = parse_oper(module, function, operand0)?;
+        let operand1 = parse_oper(module, function, operand1)?;
+        handle_bitwise(module, function, &name_to_local(dest), operand0, operand1, "<<")?;
+        Ok(())
+    },
+
+    Instruction::LShr(LShr { operand0, operand1, dest, .. }) => {
+        let operand0 = parse_oper(module, function, operand0)?;
+        let operand1 = parse_oper(module, function, operand1)?;
+        handle_bitwise(module, function, &name_to_local(dest), operand0, operand1, ">>>")?;
+        Ok(())
+    },
+
+    Instruction::AShr(AShr { operand0, operand1, dest, .. }) => {
+        let operand0 = parse_oper(module, function, operand0)?;
+        let operand1 = parse_oper(module, function, operand1)?;
+        handle_bitwise(module, function, &name_to_local(dest), operand0, operand1, ">>")?;
+        Ok(())
+    },
+
     Instruction::FDiv(FDiv { operand0, operand1, dest, .. }) => {
         let operand0 = parse_oper(module, function, operand0)?.to_codevalue(module, function)?;
         let operand1 = parse_oper(module, function, operand1)?.to_codevalue(module, function)?;
@@ -321,6 +342,53 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
                     Ok(())
                 },
 
+                Global::SwitchFunction { codeblock, action, tags } => {
+                    if let Some(dest) = dest {
+
+                        let mut final_tags  = Vec::with_capacity(tags.len());
+                        let mut skip_params = 0;
+                        for tag in tags { match (tag) {
+                            ActionFunctionTag::Value(value) => { final_tags.push(value.clone()); },
+                            ActionFunctionTag::Dynamic { kind, default_value } => {
+                                let temp_var = CodeValue::Variable { name : function.create_temp_var_name(), scope : VariableScope::Local };
+                                let params = vec![
+                                    temp_var.clone(),
+                                    parse_oper(module, function, &arguments[skip_params].0)?.to_codevalue(module, function)?
+                                ];
+                                function.line.blocks.push(Codeblock::action("set_var", "=", params, vec![ ]));
+                                final_tags.push(CodeValue::Actiontag { kind : kind.clone(), value : default_value.clone(), variable : Some(Box::new(temp_var)), block_override : None });
+                                skip_params += 1;
+                            },
+                        } }
+
+                        let mut final_params = Vec::with_capacity(arguments.len() - 2);
+                        for i in skip_params..(arguments.len() - 2) {
+                            let (arg, _) = &arguments[i];
+                            final_params.push(parse_oper(module, function, arg)?.to_codevalue(module, function)?);
+                        }
+
+                        let dest_var    = CodeValue::Variable { name : name_to_local(dest), scope : VariableScope::Local };
+                        let false_value = parse_oper(module, function, &arguments[arguments.len() - 2].0)?.to_codevalue(module, function)?;
+                        let true_value  = parse_oper(module, function, &arguments[arguments.len() - 1].0)?.to_codevalue(module, function)?;
+
+                        function.line.blocks.push(Codeblock::ifs(codeblock, action, false, final_params, final_tags));
+                        function.line.blocks.push(Codeblock::OPEN_COND_BRACKET);
+                        function.line.blocks.push(Codeblock::action("set_var", "=", vec![
+                            dest_var.clone(),
+                            true_value
+                        ], vec![ ]));
+                        function.line.blocks.push(Codeblock::CLOSE_COND_BRACKET);
+                        function.line.blocks.push(Codeblock::elses());
+                        function.line.blocks.push(Codeblock::OPEN_COND_BRACKET);
+                        function.line.blocks.push(Codeblock::action("set_var", "=", vec![
+                            dest_var.clone(),
+                            false_value
+                        ], vec![ ]));
+                        function.line.blocks.push(Codeblock::CLOSE_COND_BRACKET);
+                    }
+                    Ok(())
+                },
+
                 Global::BracketFunction { kind, side } => {
                     function.line.blocks.push(Codeblock::Bracket { kind : kind.clone(), side : side.clone() });
                     Ok(())
@@ -422,7 +490,6 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
 
     Instruction::ExtractElement(_) | Instruction::InsertElement(_) | Instruction::ShuffleVector(_) => Err("Vector instructions are unsupported"             .into()),
     Instruction::VAArg(_)                                                                          => Err("Variadic argument instructions are unsupported"  .into()),
-    Instruction::Shl(_) | Instruction::LShr(_) | Instruction::AShr(_)                              => Err("Bit shift instructions are unsupported"          .into()),
     Instruction::Fence(_) | Instruction::CmpXchg(_) | Instruction::AtomicRMW(_)                    => Err("Atomic instructions are unsupported"             .into()),
     Instruction::AddrSpaceCast(_)                                                                  => Err("Address space cast instructions are unsupported" .into()),
     Instruction::Freeze(_)                                                                         => Err("Propagation freeze instructions are unsupported" .into()),
@@ -455,15 +522,18 @@ fn handle_nooptf64(module : &ParsedModule, function : &mut ParsedFunction, value
             function.line.blocks.push(Codeblock::action("set_var", "=", vec![ dest_var.clone(), CodeValue::Number(value.to_string()) ], vec![ ]));
             Ok(())
         },
+        Value::Local(name) => {
+            function.line.blocks.push(Codeblock::action("set_var", "=", vec![ dest_var.clone(), CodeValue::Variable { name : name.clone(), scope : VariableScope::Local } ], vec![ ]));
+            Ok(())
+        },
         Value::Global(name) => {
             let global = module.globals.get(&name);
             if let Some(global) = global { match (global) {
                 Global::Constant(value) => handle_nooptf64(module, function, value, dest_var),
-                _ => Err("Non-constant values can not be handled by NoOptF64".into())
+                _ => Err("Non-constant global values can not be handled by NoOptF64".into())
             } }
             else { Err(format!("Unknown global {}", name).into()) }
         },
-        Value::Local(_) => Err("Non-constant values can not be handled by NoOptF64".into()),
         Value::ConstString(_) => Err("Strings can not be handled by NoOptF64".into()),
     }
 }

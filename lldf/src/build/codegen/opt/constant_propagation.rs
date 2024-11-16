@@ -8,8 +8,6 @@ use std::array;
 /// **This optimisation requires the following guarantees to be upheld:**
 /// - Variables may only be assigned ONCE, EXCEPT in `switch`-style statements.
 /// Failure to uphold the guarantees may result in broken codegen.
-/// 
-/// TODO: Make this work with `IF_VARIABLE` codeblocks.
 pub fn constant_propagation(line : &mut CodeLine, other_functions : &Vec<&mut ParsedFunction>) -> bool {
     let mut did_something = false;
 
@@ -471,7 +469,10 @@ fn check_value_to_propagate<'l>(
         } }, _ => { }
     } }
 
-    // TODO: GetParticleMat
+    else if (action == "GetParticleMat") { match (get_chunk::<2>(params)) {
+        [Some(CodeValue::Particle { material, .. }), None] => { return Some(material.as_ref().map_or_else(|| CodeValue::Number("0".to_string()), |material| CodeValue::String(material.clone()))); },
+        _ => { }
+    } }
 
     // TODO: SetParticleMat
 
