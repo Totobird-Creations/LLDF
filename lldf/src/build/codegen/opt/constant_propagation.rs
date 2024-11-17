@@ -16,7 +16,7 @@ pub fn constant_propagation(line : &mut CodeLine, other_functions : &Vec<&mut Pa
         if let Codeblock::Block(CodeblockBlock { block, action : Some(action), params, tags, .. }) = block {
             if (block == "set_var") {
                 // Check that the destination variable is a line variable.
-                if let CodeValue::Variable { name : dest_name, scope : VariableScope::Line | VariableScope::Local } = &params[0] {
+                if let CodeValue::Variable { name : dest_name, scope : VariableScope::Line | VariableScope::Local } = &params[0] { if (! dest_name.starts_with("lldf.noopt.")) {
                     if (
                         // Check that the destination variable is not tied to a parameter.
                         (! line.blocks.iter().any(|block| block.contains_param(dest_name)))
@@ -55,7 +55,7 @@ pub fn constant_propagation(line : &mut CodeLine, other_functions : &Vec<&mut Pa
                             }
                         }
                     }
-                }
+                } }
             }
         }
     }

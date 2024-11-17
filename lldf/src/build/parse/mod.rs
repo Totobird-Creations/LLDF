@@ -42,19 +42,65 @@ impl Value {
         Self::ConstFloat  (value ) => Ok(CodeValue::Number(value.to_string())),
 
         Self::Local(name) => Ok(CodeValue::Variable { name : name.clone(), scope : VariableScope::Local }),
-        Self::Global(name) => Ok(CodeValue::Variable { name : format!("{}:0", name), scope : VariableScope::Unsaved }),
+        Self::Global(name) => Ok(CodeValue::Variable { name : name.clone(), scope : VariableScope::Unsaved }),
 
         Self::GlobalRef(name) => {
             let Some(global) = module.globals.get(name) else { return Err(format!("Unknown global {}", name).into()) };
             match (global) {
 
-                Global::UserFunction { name } => Ok(CodeValue::String(name.clone())),
+                Global::UserFunction { name } => {
+                    let temp_var = CodeValue::Variable { name : function.create_temp_var_name(), scope : VariableScope::Local };
+                    function.line.blocks.push(Codeblock::action("set_var", "CreateList", vec![
+                        temp_var.clone(),
+                        CodeValue::String(name.clone()),
+                        CodeValue::Number("0".to_string())
+                    ], vec![ ]));
+                    Ok(temp_var)
+                },
 
                 Global::Constant(value) => value.to_codevalue(module, function),
 
                 Global::NoopFunction |
                 Global::Assert(_) |
                 Global::ActionFunction { .. } |
+                Global::ProcessFunction(_) |
+                Global::BracketFunction { .. } |
+                Global::ElseFunction |
+                Global::TempVarFunction |
+                Global::GamevalueFunction { .. } |
+                Global::SoundFunction { .. } |
+                Global::ParticleFunction { .. } |
+                Global::PotionFunction { .. } |
+                Global::ItemFunction { .. }
+                    => unreachable!(),
+
+            }
+        }
+
+    } }
+
+
+    pub fn to_codevalue_string(&self, module : &ParsedModule) -> Result<String, Box<dyn Error>> { match (self) {
+
+        Self::Null                 => Ok("0".to_string()),
+        Self::ConstString (value ) => Ok(value.clone()),
+        Self::ConstInt    (value ) => Ok(value.to_string()),
+        Self::ConstFloat  (value ) => Ok(value.to_string()),
+
+        Self::Local(name) | Self::Global(name) => Ok(format!("%var({})", name)),
+
+        Self::GlobalRef(name) => {
+            let Some(global) = module.globals.get(name) else { return Err(format!("Unknown global {}", name).into()) };
+            match (global) {
+
+                Global::UserFunction { name } => Ok(name.to_string()),
+
+                Global::Constant(value) => value.to_codevalue_string(module),
+
+                Global::NoopFunction |
+                Global::Assert(_) |
+                Global::ActionFunction { .. } |
+                Global::ProcessFunction(_) |
                 Global::BracketFunction { .. } |
                 Global::ElseFunction |
                 Global::TempVarFunction |
@@ -76,8 +122,7 @@ impl Value {
         Self::Null | Self::ConstString(_) | Self::ConstInt(_) | Self::ConstFloat(_)
             => { Err("Can not use constant as pointer accessor".into()) },
 
-        Self::Local(name) => Ok((format!("%index({},1)", name), format!("%index({},2)", name))),
-        Self::Global(name) => Ok((name.clone(), "0".to_string())),
+        Self::Local(name) | Self::Global(name) => Ok((format!("%index({},1)", name), format!("%index({},2)", name))),
 
         Self::GlobalRef(name) => {
             let Some(global) = module.globals.get(name) else { return Err(format!("Unknown global {}", name).into()) };
@@ -89,6 +134,7 @@ impl Value {
                 Global::Assert(_) |
                 Global::UserFunction { .. } |
                 Global::ActionFunction { .. } |
+                Global::ProcessFunction(_) |
                 Global::BracketFunction { .. } |
                 Global::ElseFunction |
                 Global::TempVarFunction |
@@ -110,20 +156,20 @@ impl Value {
         Self::Null | Self::ConstString(_) | Self::ConstInt(_) | Self::ConstFloat(_)
             => { Err("Can not use constant as pointer accessor".into()) },
 
-        Self::Local(name) => Ok(format!("%index({},1):%index({},2)", name, name)),
-        Self::Global(name) => Ok(format!("{}:0", name)),
+        Self::Local(name) | Self::Global(name) => Ok(format!("%index({},1):%index({},2)", name, name)),
 
         Self::GlobalRef(name) => {
             let Some(global) = module.globals.get(name) else { return Err(format!("Unknown global {}", name).into()) };
             match (global) {
 
-                Global::UserFunction { name } => Ok(name.clone()),
+                Global::UserFunction { name } => Ok(format!("{}:0", name)),
 
                 Global::Constant(value) => value.to_ptr_accessor_string(module),
 
                 Global::NoopFunction |
                 Global::Assert(_) |
                 Global::ActionFunction { .. } |
+                Global::ProcessFunction(_) |
                 Global::BracketFunction { .. } |
                 Global::ElseFunction |
                 Global::TempVarFunction |

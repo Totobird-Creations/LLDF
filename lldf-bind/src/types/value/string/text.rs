@@ -13,6 +13,11 @@ impl Clone for Text {
     fn clone(&self) -> Self { unsafe { transmute_unchecked(self._opaque_type) } }
 }
 
+impl Text {
+    #[inline(always)]
+    pub fn new() -> Self { Text::from("") }
+}
+
 impl From<Text> for Text {
     #[inline(always)]
     fn from(value : Text) -> Text { value }

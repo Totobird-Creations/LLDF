@@ -20,12 +20,16 @@ pub macro actiontag {
             fn clone(&self) -> Self { Self { Opaque : unsafe{ self.Opaque } } }
         }
 
-        /*impl $ident { $(
+        impl $ident { $(
             #[doc = crate::core::concat!("`", $varvalue, "`")]
-            #[allow(non_upper_case_globals)]
+            #[allow(non_snake_case)]
             $( #[$($varattrs)*] )*
-            $vis const $varident : Self = Self { StaticStr : $varvalue };
-        )* }*/
+            $vis fn $varident() -> Self {
+                use crate::core::convert::From;
+                use crate::types::DFValue;
+                Self { Opaque : unsafe{ crate::types::String::from($varvalue).to_opaque() } }
+            }
+        )* }
 
         impl crate::core::string::ToString for $ident {
             fn to_string(&self) -> crate::types::String {

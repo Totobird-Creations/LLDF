@@ -3,6 +3,9 @@ use super::cmp::{ PartialEq, PartialOrd, Ordering };
 use super::marker::Copy;
 use super::ops::*;
 use super::option::Option;
+use super::string::ToString;
+use super::convert::From;
+use crate::types::{ String, UInt, Int };
 
 impl Clone for bool  { #[inline(never)] fn clone(&self) -> Self { *self } }
 impl Clone for u8    { #[inline(never)] fn clone(&self) -> Self { *self } }
@@ -108,3 +111,19 @@ impl PartialOrd for u128  { #[inline(never)] fn partial_cmp(&self, _ : &Self) ->
 impl PartialOrd for i128  { #[inline(never)] fn partial_cmp(&self, _ : &Self) -> Option<Ordering> { loop { /* compiler built-in */ } } }
 impl PartialOrd for usize { #[inline(never)] fn partial_cmp(&self, _ : &Self) -> Option<Ordering> { loop { /* compiler built-in */ } } }
 impl PartialOrd for isize { #[inline(never)] fn partial_cmp(&self, _ : &Self) -> Option<Ordering> { loop { /* compiler built-in */ } } }
+
+impl ToString for bool { #[inline(always)] fn to_string(&self) -> String {
+    String::from(if (*self) { "true" } else { "false" })
+} }
+impl ToString for u8 { #[inline(always)] fn to_string(&self) -> String { UInt::from(*self).to_string() } }
+impl ToString for i8 { #[inline(always)] fn to_string(&self) -> String { Int::from(*self).to_string() } }
+impl ToString for u16 { #[inline(always)] fn to_string(&self) -> String { UInt::from(*self).to_string() } }
+impl ToString for i16 { #[inline(always)] fn to_string(&self) -> String { Int::from(*self).to_string() } }
+impl ToString for u32 { #[inline(always)] fn to_string(&self) -> String { UInt::from(*self).to_string() } }
+impl ToString for i32 { #[inline(always)] fn to_string(&self) -> String { Int::from(*self).to_string() } }
+impl ToString for u64 { #[inline(always)] fn to_string(&self) -> String { UInt::from(*self).to_string() } }
+impl ToString for i64 { #[inline(always)] fn to_string(&self) -> String { Int::from(*self).to_string() } }
+impl ToString for u128 { #[inline(always)] fn to_string(&self) -> String { UInt::from(*self).to_string() } }
+impl ToString for i128 { #[inline(always)] fn to_string(&self) -> String { Int::from(*self).to_string() } }
+impl ToString for usize { #[inline(always)] fn to_string(&self) -> String { UInt::from(*self).to_string() } }
+impl ToString for isize { #[inline(always)] fn to_string(&self) -> String { Int::from(*self).to_string() } }

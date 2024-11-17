@@ -3,7 +3,8 @@ use crate::build::codegen::opt::optimise;
 use super::*;
 use super::super::codegen::{ CodeLine, Codeblock, ParameterType };
 
-use llvm_ir::{ BasicBlock, Function, Type };
+use llvm_ir::instruction::Phi;
+use llvm_ir::{ BasicBlock, Function, Instruction, Type };
 use llvm_ir::module::{Linkage, Visibility};
 use llvm_ir::terminator::*;
 
@@ -33,6 +34,7 @@ pub const BLOCK_CURRENT  : &'static str = "lldf.block.current";
 pub const BLOCK_PREVIOUS : &'static str = "lldf.block.previous";
 pub const RETURN         : &'static str = "lldf.return";
 pub const ALLOCA         : &'static str = "lldf.alloca";
+pub const PID            : &'static str = "lldf.pid";
 
 
 pub fn parse_function(module : &mut ParsedModule, function : &Function) -> Result<(), Box<dyn Error>> {
@@ -80,7 +82,7 @@ pub fn parse_function(module : &mut ParsedModule, function : &Function) -> Resul
 
     // Line head
     let visible = function.visibility == Visibility::Default && matches!(function.linkage, Linkage::External | Linkage::ExternalWeak | Linkage::AvailableExternally);
-    let mut head_codeblock = Codeblock::function(function.name.clone(), params, ! visible);
+    let mut head_codeblock = Codeblock::function(format!("{}:0", function.name), params, ! visible);
     let mut name_parts = function.name.split("__");
     if let (Some(df), Some(event), None) = (name_parts.next(), name_parts.next(), name_parts.next()) { if (df == "DF_EVENT") {
         let mut event_parts = event.split("_");
@@ -100,7 +102,7 @@ pub fn parse_function(module : &mut ParsedModule, function : &Function) -> Resul
         active_block.clone(),
         CodeValue::String(name_to_string(&function.basic_blocks[0].name))
     ], vec![ ]));
-    root_function.line.blocks.push(Codeblock::subaction("repeat", "While", "VarIsType", vec![
+    root_function.line.blocks.push(Codeblock::repeat("While", "VarIsType", false, vec![
         active_block.clone()
     ], vec![
         CodeValue::Actiontag { kind : "Variable Type".to_string(), value : "String".to_string(), variable : None, block_override : Some("if_var".to_string()) }
@@ -172,8 +174,40 @@ pub fn parse_block(module : &mut ParsedModule, function : &Function, block : &Ba
         }
     ], true));
 
-    for instr in &block.instrs {
-        parse_instr(module, &mut block_function, instr)?;
+    // Phi instructions are handled first to prevent overwriting variables from previous blocks.
+    let mut instrs         = block.instrs.iter().peekable();
+    let mut phi_dest_names = Vec::new();
+    while let Some(Instruction::Phi(Phi { incoming_values, dest, .. })) = instrs.peek() {
+        instrs.next();
+        let dest_name = name_to_local(dest);
+        for (value, block) in incoming_values {
+            let value = parse_oper(module, &mut block_function, value)?.to_codevalue(module, &mut block_function)?;
+            block_function.line.blocks.push(Codeblock::action("if_var", "StringMatches", vec![
+                CodeValue::Variable { name : BLOCK_PREVIOUS.to_string(), scope : VariableScope::Line },
+                CodeValue::String(name_to_string(block))
+            ], vec![
+                CodeValue::Actiontag { kind : "Ignore Case".to_string(), value : "False".to_string(), variable : None, block_override : None },
+                CodeValue::Actiontag { kind : "Regular Expressions".to_string(), value : "Disable".to_string(), variable : None, block_override : None },
+            ]));
+            block_function.line.blocks.push(Codeblock::OPEN_COND_BRACKET);
+            block_function.line.blocks.push(Codeblock::action("set_var", "=", vec![
+                CodeValue::Variable { name : format!("lldf.phi.{}", dest_name), scope: VariableScope::Local },
+                value
+            ], vec![ ]));
+            block_function.line.blocks.push(Codeblock::CLOSE_COND_BRACKET);
+        }
+        phi_dest_names.push(dest_name);
+    }
+    for dest_name in phi_dest_names {
+        block_function.line.blocks.push(Codeblock::action("set_var", "=", vec![
+            CodeValue::Variable { name : dest_name.clone(), scope: VariableScope::Local },
+            CodeValue::Variable { name : format!("lldf.phi.{}", dest_name), scope: VariableScope::Local }
+        ], vec![ ]));
+    }
+
+    // Handle the rest of the instructions.
+    for instr in instrs {
+        parse_instr_postphi(module, &mut block_function, instr)?;
     }
 
     // TODO: Reload the selection after entering the next block.

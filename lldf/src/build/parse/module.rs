@@ -29,6 +29,7 @@ pub enum Global {
         action    : String,
         tags      : Vec<ActionFunctionTag>
     },
+    ProcessFunction(ProcessHandler),
     BracketFunction {
         kind : BracketKind,
         side : BracketSide
@@ -69,6 +70,11 @@ pub enum AssertHandler {
     ConstantStrToString,
     /// Fixes `f64` being represented as `u64` under certain conditions.
     NoOptF64
+}
+#[derive(Debug)]
+pub enum ProcessHandler {
+    Spawn,
+    Join
 }
 #[derive(Debug)]
 pub enum ActionFunctionTag {
@@ -155,6 +161,20 @@ pub fn parse_module(module : &Module) -> Result<ParsedModule, Box<dyn Error>> {
                     }
                 }
             },
+
+            Some("DF_PROCESS") => {
+                if let (Some(handler), None) = (parts.next(), parts.next()) { match (handler) {
+                    "Spawn" => {
+                        parsed.globals.insert(Name::Name(Box::new(module_function.name.clone())), Global::ProcessFunction(ProcessHandler::Spawn));
+                        continue;
+                    },
+                    "Join" => {
+                        parsed.globals.insert(Name::Name(Box::new(module_function.name.clone())), Global::ProcessFunction(ProcessHandler::Join));
+                        continue;
+                    },
+                    _ => { }
+                } }
+            }
 
             Some("DF_BRACKET") => {
                 if let (Some(typ), None) = (parts.next(), parts.next()) {
@@ -310,7 +330,7 @@ pub fn parse_module(module : &Module) -> Result<ParsedModule, Box<dyn Error>> {
         Codeblock::OPEN_COND_BRACKET,
         Codeblock::action("set_var", "=", vec![ init_var, CodeValue::Number("1".to_string()) ], vec![ ])
     ].into_iter());
-    init_function.line.blocks.push(Codeblock::call_func("DF_EVENT__LLDF_PlotStart", vec![ ]));
+    init_function.line.blocks.push(Codeblock::call_func("DF_EVENT__LLDF_PlotStart:0", vec![ ]));
     init_function.line.blocks.push(Codeblock::CLOSE_COND_BRACKET);
     if let Some(player_join_function) = parsed.functions.iter_mut().find(|function| if let Some(Codeblock::Block(CodeblockBlock { block, action : Some(action), .. })) = function.line.blocks.get(0) && block == "event" && action == "Join" { true } else { false }) {
         player_join_function.line.blocks.splice(1..1, init_function.line.blocks);
@@ -318,6 +338,18 @@ pub fn parse_module(module : &Module) -> Result<ParsedModule, Box<dyn Error>> {
         init_function.line.blocks.insert(0, Codeblock::event("event", "Join"));
         parsed.functions.push(init_function);
     }
+
+    // Process spawn handler.
+    let mut process_spawn_function = ParsedFunction::new();
+    process_spawn_function.line.blocks.push(Codeblock::process("lldf.spawn", true));
+    process_spawn_function.line.blocks.push(Codeblock::call_func("%var(lldf.noopt.spawn)", vec![ ]));
+    process_spawn_function.line.blocks.push(Codeblock::action("set_var", "PurgeVars", vec![
+        CodeValue::String("lldf.pid_running.%var(lldf.noopt.pid)".to_string())
+    ], vec![
+        CodeValue::Actiontag { kind : "Match Requirement".to_string(), value : "Any part of name".to_string(), variable : None, block_override : None },
+        CodeValue::Actiontag { kind : "Ignore Case".to_string(), value : "False".to_string(), variable : None, block_override : None }
+    ]));
+    parsed.functions.push(process_spawn_function);
 
     Ok(parsed)
 }

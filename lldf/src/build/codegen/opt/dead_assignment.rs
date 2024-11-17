@@ -7,7 +7,7 @@ pub fn dead_assignment(line : &mut CodeLine, other_functions : &Vec<&mut ParsedF
 
     for i in (0..line.blocks.len()).rev() {
         let block = &line.blocks[i];
-        if let (true, Some(dest_name)) = block.setvar_like_line() {
+        if let (true, Some(dest_name)) = block.setvar_like_line() { if (! dest_name.starts_with("lldf.noopt.")) {
             // Check that the destination variable is not used in another block.
             if (other_functions.iter().all(|other_function| ! other_function.line.blocks.iter().any(|block| block.is_var_used(dest_name)))) {
 
@@ -27,7 +27,7 @@ pub fn dead_assignment(line : &mut CodeLine, other_functions : &Vec<&mut ParsedF
                 }
 
             }
-        }
+        } }
     }
 
     did_something

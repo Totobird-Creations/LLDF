@@ -168,9 +168,9 @@ impl PlayerSel {
 
     #[lldf_bind_proc::dfdoc(PlayerAction/SendTitle)]
     #[inline(always)]
-    pub fn send_title<T : Into<Text>, S : Into<Text>>(&self, title : T, subtitle : S, fade_in_ticks : UInt, hold_ticks : UInt, fade_out_ticks : UInt) -> () { unsafe {
+    pub fn send_title<T : Into<Text>, S : Into<Text>, U0 : Into<UInt>, U1 : Into<UInt>, U2 : Into<UInt>>(&self, title : T, subtitle : S, fade_in_ticks : U0, hold_ticks : U1, fade_out_ticks : U2) -> () { unsafe {
         DF_ACTION__SelectObject_PlayerName(self.uuids.to_opaque());
-        DF_ACTION__PlayerAction_SendTitle(title.into(), subtitle.into(), fade_in_ticks, hold_ticks, fade_out_ticks);
+        DF_ACTION__PlayerAction_SendTitle(title.into(), subtitle.into(), hold_ticks.into(), fade_in_ticks.into(), fade_out_ticks.into());
         DF_ACTION__SelectObject_Reset();
     } }
 

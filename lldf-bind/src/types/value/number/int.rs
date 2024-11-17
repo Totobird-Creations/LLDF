@@ -19,3 +19,18 @@ unsafe impl DFValue for Int {
         transmute_unchecked(self._opaque_type)
     } }
 }
+
+
+impl ToString for Int {
+    #[inline(always)]
+    fn to_string(&self) -> String { unsafe {
+        DF_ACTION__SetVariable_String(self.to_opaque())
+    } }
+}
+
+
+extern "C" {
+
+    fn DF_ACTION__SetVariable_String( from : DFOpaqueValue ) -> String;
+
+}

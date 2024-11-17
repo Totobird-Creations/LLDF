@@ -22,3 +22,9 @@ fn player_join(default : PlayerSel) {
     default.set_gamemode_adventure();
     default.set_item_in_slot(5usize, items::queue_disabled());
 }
+
+#[event(PlayerLeave)]
+fn player_leave(default : PlayerSel) {
+    let uuid = unsafe{ default.uuid_unchecked() };
+    queue::remove(&uuid);
+}

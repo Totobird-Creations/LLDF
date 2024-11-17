@@ -8,7 +8,7 @@ use llvm_ir::Operand;
 
 
 
-pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr : &Instruction) -> Result<(), Box<dyn Error>> { match (instr) {
+pub fn parse_instr_postphi(module : &ParsedModule, function : &mut ParsedFunction, instr : &Instruction) -> Result<(), Box<dyn Error>> { match (instr) {
 
     Instruction::Add(Add { operand0, operand1, dest, .. }) | Instruction::FAdd(FAdd { operand0, operand1, dest, .. }) => {
         let operand0 = parse_oper(module, function, operand0)?;
@@ -223,25 +223,7 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
         handle_fcmp(module, function, &name_to_local(dest), *predicate, operand0, operand1)
     },
 
-    Instruction::Phi(Phi { incoming_values, dest, .. }) => {
-        for (value, block) in incoming_values {
-            let value = parse_oper(module, function, value)?.to_codevalue(module, function)?;
-            function.line.blocks.push(Codeblock::action("if_var", "StringMatches", vec![
-                CodeValue::Variable { name : BLOCK_PREVIOUS.to_string(), scope : VariableScope::Line },
-                CodeValue::String(name_to_string(block))
-            ], vec![
-                CodeValue::Actiontag { kind : "Ignore Case".to_string(), value : "False".to_string(), variable : None, block_override : None },
-                CodeValue::Actiontag { kind : "Regular Expressions".to_string(), value : "Disable".to_string(), variable : None, block_override : None },
-            ]));
-            function.line.blocks.push(Codeblock::OPEN_COND_BRACKET);
-            function.line.blocks.push(Codeblock::action("set_var", "=", vec![
-                CodeValue::Variable { name : name_to_local(dest), scope: VariableScope::Local },
-                value
-            ], vec![ ]));
-            function.line.blocks.push(Codeblock::CLOSE_COND_BRACKET);
-        }
-        Ok(())
-    },
+    Instruction::Phi(_) => unreachable!(),
 
     // If `condition` is 0 (false), set `dest` to `false_value`, else `true_value`. 
     Instruction::Select(Select { condition, true_value, false_value, dest, .. }) => {
@@ -341,6 +323,48 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
                     function.line.blocks.push(Codeblock::action(codeblock, action, final_params, final_tags));
                     Ok(())
                 },
+
+                Global::ProcessFunction(handler) => { match (handler) {
+
+                    ProcessHandler::Spawn => {
+                        if let Some(dest) = dest {
+                            let counter = CodeValue::Variable { name : PID.to_string(), scope : VariableScope::Unsaved };
+                            let counted = CodeValue::Variable { name : "lldf.noopt.pid".to_string(), scope : VariableScope::Local };
+                            function.line.blocks.push(Codeblock::action("set_var", "+=", vec![ counter.clone() ], vec![ ]));
+                            function.line.blocks.push(Codeblock::action("set_var", "=", vec![ counted.clone(), counter ], vec![ ]));
+                            function.line.blocks.push(Codeblock::action("set_var", "=", vec![
+                                CodeValue::Variable { name : name_to_local(dest), scope: VariableScope::Local },
+                                counted
+                            ], vec![ ]));
+                            function.line.blocks.push(Codeblock::action("set_var", "=", vec![
+                                CodeValue::Variable { name : "lldf.pid_running.%var(lldf.noopt.pid)".to_string(), scope : VariableScope::Unsaved },
+                                CodeValue::Number("1".to_string())
+                            ], vec![ ]));
+    
+                            let data = parse_oper(module, function, &arguments[0].0)?.to_ptr_accessor_string(module)?;
+                            function.line.blocks.push(Codeblock::action("set_var", "=", vec![
+                                CodeValue::Variable { name : "lldf.noopt.spawn".to_string(), scope : VariableScope::Local },
+                                CodeValue::String(data)
+                            ], vec![ ]));
+                            function.line.blocks.push(Codeblock::start_process("lldf.spawn", Some(false)));
+                        }
+                        Ok(())
+                    },
+
+                    ProcessHandler::Join => {
+                        let pid = parse_oper(module, function, &arguments[0].0)?.to_codevalue_string(module)?;
+                        function.line.blocks.push(Codeblock::repeat("While", "VarExists", false, vec![
+                            CodeValue::Variable { name : format!("lldf.pid_running.{}", pid), scope : VariableScope::Unsaved },
+                        ], vec![ ]));
+                        function.line.blocks.push(Codeblock::OPEN_REPEAT_BRACKET);
+                        function.line.blocks.push(Codeblock::action("control", "Wait", vec![ CodeValue::Number("1".to_string()) ], vec![
+                            CodeValue::Actiontag { kind : "Time Unit".to_string(), value : "Ticks".to_string(), variable : None, block_override : None }
+                        ]));
+                        function.line.blocks.push(Codeblock::CLOSE_REPEAT_BRACKET);
+                        Ok(())
+                    },
+
+                } },
 
                 Global::BracketFunction { kind, side } => {
                     function.line.blocks.push(Codeblock::Bracket { kind : kind.clone(), side : side.clone() });
@@ -516,6 +540,6 @@ fn handle_call(module : &ParsedModule, function : &mut ParsedFunction, calling :
         }
         params.push(value);
     }
-    function.line.blocks.push(Codeblock::call_func(calling, params));
+    function.line.blocks.push(Codeblock::call_func(format!("{}:0", calling), params));
     Ok(())
 }

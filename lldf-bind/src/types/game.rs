@@ -250,27 +250,6 @@ impl Game {
 
 }
 
-/// `START_PROCESS`
-impl Game {
-
-    // TODO: StartProcess
-    // Probably a method which takes a function, then calls the function through a process.
-
-}
-
-/// `CONTROL`
-impl Game {
-
-    #[lldf_bind_proc::dfdoc(Control/Wait { TimeUnit = Ticks })]
-    #[inline(always)]
-    pub fn sleep<U : Into<UInt>>(time_ticks : U) -> () { unsafe {
-        DF_ACTION__Control_Wait_TimeUnit_Ticks(time_ticks.into())
-    } }
-
-    // TODO: End
-
-}
-
 /// `Game Value` / `Plot Values`
 impl Game {
 
@@ -297,8 +276,6 @@ impl Game {
 
 
 extern "C" {
-
-    fn DF_ACTION__Control_Wait_TimeUnit_Ticks( time_ticks : UInt ) -> ();
 
     fn DF_GAMEVALUE__PlotPlayerUUIDs_Default( ) -> List<Uuid>;
     fn DF_GAMEVALUE__SelectionTargetUUIDs_Default( ) -> List<Uuid>;

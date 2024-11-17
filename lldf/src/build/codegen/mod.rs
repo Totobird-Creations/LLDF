@@ -85,6 +85,21 @@ impl Codeblock {
         } ]
     }) }
 
+    pub fn process<S : Into<String>>(data : S, hidden : bool) -> Self { Self::Block(CodeblockBlock {
+        block     : String::from("process"),
+        action    : None,
+        subaction : None,
+        data      : Some(data.into()),
+        attr      : None,
+        params    : Vec::new(),
+        tags      : vec![ CodeValue::Actiontag {
+            kind           : String::from("Is Hidden"),
+            value          : String::from(if (hidden) { "True" } else { "False" }),
+            variable       : None,
+            block_override : None
+        } ]
+    }) }
+
     pub fn call_func<S : Into<String>>(data : S, params : Vec<CodeValue>) -> Self { Self::Block(CodeblockBlock {
         block     : String::from("call_func"),
         action    : None,
@@ -93,6 +108,23 @@ impl Codeblock {
         attr      : None,
         params,
         tags      : Vec::new()
+    }) }
+
+    pub fn start_process<S : Into<String>>(data : S, share_local_vars : Option<bool>) -> Self { Self::Block(CodeblockBlock {
+        block     : String::from("start_process"),
+        action    : None,
+        subaction : None,
+        data      : Some(data.into()),
+        attr      : None,
+        params    : Vec::new(),
+        tags      : vec![
+            CodeValue::Actiontag {
+                kind  : "Local Variables".to_string(),
+                value : share_local_vars.map_or_else(|| "Don't copy", |slv| if (slv) { "Share" } else { "Copy" }).to_string(),
+                variable : None, block_override : None
+            },
+            CodeValue::Actiontag { kind : "Target Mode".to_string(), value : "With no targets".to_string(), variable : None, block_override : None }
+        ]
     }) }
 
     pub fn action<C : Into<String>, A : Into<String>>(codeblock : C, action : A, params : Vec<CodeValue>, tags : Vec<CodeValue>) -> Self { Self::Block(CodeblockBlock {
@@ -105,20 +137,20 @@ impl Codeblock {
         tags
     }) }
 
-    pub fn subaction<C : Into<String>, A : Into<String>, S : Into<String>>(codeblock : C, action : A, subaction : S, params : Vec<CodeValue>, tags : Vec<CodeValue>) -> Self { Self::Block(CodeblockBlock {
-        block     : codeblock.into(),
-        action    : Some(action.into()),
-        subaction : Some(subaction.into()),
-        data      : None,
-        attr      : None,
-        params,
-        tags
-    }) }
-
     pub fn ifs<C : Into<String>, A : Into<String>>(codeblock : C, action : A, not : bool, params : Vec<CodeValue>, tags : Vec<CodeValue>) -> Self { Self::Block(CodeblockBlock {
         block     : codeblock.into(),
         action    : Some(action.into()),
         subaction : None,
+        data      : None,
+        attr      : not.then(|| String::from("NOT")),
+        params,
+        tags
+    }) }
+
+    pub fn repeat<A : Into<String>, S : Into<String>>(action : A, subaction : S, not : bool, params : Vec<CodeValue>, tags : Vec<CodeValue>) -> Self { Self::Block(CodeblockBlock {
+        block     : "repeat".to_string(),
+        action    : Some(action.into()),
+        subaction : Some(subaction.into()),
         data      : None,
         attr      : not.then(|| String::from("NOT")),
         params,

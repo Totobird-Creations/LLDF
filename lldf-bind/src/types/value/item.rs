@@ -38,7 +38,7 @@ impl Item {
         DF_ACTION__SetVariable_GetItemName(self.to_opaque())
     } }
 
-    #[lldf_bind_proc::dfdoc(SetVariable/SetItemName)]
+    //#[lldf_bind_proc::dfdoc(SetVariable/SetItemName)] // TODO: Fix this being deprecated
     #[inline(always)]
     pub fn with_name<T : Into<Text>>(&self, name : T) -> Item { unsafe {
         DF_ACTION__SetVariable_SetItemName(self.to_opaque(), name.into())

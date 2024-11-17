@@ -68,10 +68,20 @@ impl Into<UInt> for UInt {
 }
 
 
+impl ToString for UInt {
+    #[inline(always)]
+    fn to_string(&self) -> String { unsafe {
+        DF_ACTION__SetVariable_String(self.to_opaque())
+    } }
+}
+
+
 extern "C" {
 
     fn DF_ACTION__SetVariable_Specialcharplus( left : UInt, right : UInt ) -> UInt;
     fn DF_ACTION__SetVariable_Specialcharminus( left : UInt, right : UInt ) -> UInt;
     fn DF_ACTION__SetVariable_x( left : UInt, right : UInt ) -> UInt;
+
+    fn DF_ACTION__SetVariable_String( from : DFOpaqueValue ) -> String;
 
 }
