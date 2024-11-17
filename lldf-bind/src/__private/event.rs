@@ -53,7 +53,25 @@ pub macro event_trigger {
 
     // `PLAYER_EVENT` `Click Events`
 
-    // TODO: RightClick
+    { PlayerRightClick, $original_func_ident:ident } => { event_trigger_inner!{ DF_EVENT__Event_RightClick, $original_func_ident, {
+        { unsafe {
+            extern "C" {
+                fn DF_ACTION__SelectObject_EventTarget_EventTarget_Default( ) -> ();
+                fn DF_GAMEVALUE__SelectionTargetUUIDs_Default( ) -> ::lldf_bind::types::List<::lldf_bind::types::Uuid>;
+                fn DF_ACTION__SelectObject_Reset( ) -> ();
+            }
+            DF_ACTION__SelectObject_EventTarget_EventTarget_Default();
+            let uuids = DF_GAMEVALUE__SelectionTargetUUIDs_Default();
+            DF_ACTION__SelectObject_Reset();
+            ::lldf_bind::types::PlayerSel::from_uuids_unchecked(uuids)
+        } },
+        { unsafe {
+            extern "C" {
+                fn DF_GAMEVALUE__EventItem_Default() -> Item;
+            }
+            DF_GAMEVALUE__EventItem_Default()
+        } }
+    }} },
 
     // TODO: LeftClick
 

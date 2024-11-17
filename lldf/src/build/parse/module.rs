@@ -391,12 +391,13 @@ pub fn linked_name_to_action(action : &str) -> String {
     propercase(&names_to_symbols(action), false).replace(" ", "")
 }
 pub fn linked_name_to_actiontag_kind(actiontag_kind : &str) -> String {
+    if (actiontag_kind == "ItemsToRemove") { return String::from("Items to remove"); } // FIXME: Report this because bad capitalisation
     propercase(actiontag_kind, true)
 }
-pub fn linked_name_to_actiontag_value(actiontag_value : &str) -> String {
-    let lowercase = linked_name_to_actiontag_kind(actiontag_value).split(" ").map(|word| {
+pub fn linked_name_to_actiontag_value(actiontag_kind : &str, actiontag_value : &str) -> String {
+    let lowercase = propercase(actiontag_value, true).split(" ").map(|word| {
         if (word.to_uppercase() == word) { Cow::Borrowed(word) }
-        else { Cow::Owned(word.to_lowercase()) }
+        else { Cow::Owned(if (actiontag_kind == "Items to remove") { word.to_title_case() } else { word.to_lowercase() }) }
     }).intersperse(Cow::Borrowed(" ")).collect::<String>();
     let mut chars = lowercase.chars();
     match (chars.next()) {
@@ -407,8 +408,8 @@ pub fn linked_name_to_actiontag_value(actiontag_value : &str) -> String {
 pub fn collect_actiontag_parts<'l>(actiontag_parts : impl Iterator<Item = &'l str>) -> Vec<ActionFunctionTag> {
     actiontag_parts.array_chunks::<2>()
         .map(|[kind, value]| {
-            let kind  = propercase(kind, true);
-            let value = linked_name_to_actiontag_value(value);
+            let kind  = linked_name_to_actiontag_kind(kind);
+            let value = linked_name_to_actiontag_value(&kind, value);
             if (value.starts_with("Dynamic")) { ActionFunctionTag::Dynamic {
                 kind,
                 default_value : value[8..].to_sentence_case()

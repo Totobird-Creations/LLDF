@@ -44,9 +44,9 @@ impl PlayerSel {
 
     #[lldf_bind_proc::dfdoc(PlayerAction/SetSlotItem)]
     #[inline(always)]
-    pub fn set_item_in_slot<U : Into<UInt>, I : AsRef<Item>>(&self, slot : U, item : I) -> () { unsafe {
+    pub fn set_item_in_slot<U : Into<UInt>>(&self, slot : U, item : Item) -> () { unsafe {
         DF_ACTION__SelectObject_PlayerName(self.uuids.to_opaque());
-        DF_ACTION__PlayerAction_SetSlotItem(item.as_ref().to_opaque(), slot.into());
+        DF_ACTION__PlayerAction_SetSlotItem(item.to_opaque(), slot.into());
         DF_ACTION__SelectObject_Reset();
     } }
 

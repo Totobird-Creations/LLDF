@@ -42,7 +42,7 @@ impl Value {
         Self::ConstFloat  (value ) => Ok(CodeValue::Number(value.to_string())),
 
         Self::Local(name) => Ok(CodeValue::Variable { name : name.clone(), scope : VariableScope::Local }),
-        Self::Global(name) => Ok(CodeValue::Variable { name : name.clone(), scope : VariableScope::Unsaved }),
+        Self::Global(name) => Ok(CodeValue::Variable { name : format!("{}:0", name), scope : VariableScope::Unsaved }),
 
         Self::GlobalRef(name) => {
             let Some(global) = module.globals.get(name) else { return Err(format!("Unknown global {}", name).into()) };
@@ -87,7 +87,8 @@ impl Value {
         Self::ConstInt    (value ) => Ok(value.to_string()),
         Self::ConstFloat  (value ) => Ok(value.to_string()),
 
-        Self::Local(name) | Self::Global(name) => Ok(format!("%var({})", name)),
+        Self::Local(name) => Ok(format!("%var({})", name)),
+        Self::Global(name) => Ok(format!("{}:0", name)),
 
         Self::GlobalRef(name) => {
             let Some(global) = module.globals.get(name) else { return Err(format!("Unknown global {}", name).into()) };
@@ -122,7 +123,8 @@ impl Value {
         Self::Null | Self::ConstString(_) | Self::ConstInt(_) | Self::ConstFloat(_)
             => { Err("Can not use constant as pointer accessor".into()) },
 
-        Self::Local(name) | Self::Global(name) => Ok((format!("%index({},1)", name), format!("%index({},2)", name))),
+        Self::Local(name) => Ok((format!("%index({},1)", name), format!("%index({},2)", name))),
+        Self::Global(name) => Ok((name.clone(), "0".to_string())),
 
         Self::GlobalRef(name) => {
             let Some(global) = module.globals.get(name) else { return Err(format!("Unknown global {}", name).into()) };
@@ -156,7 +158,8 @@ impl Value {
         Self::Null | Self::ConstString(_) | Self::ConstInt(_) | Self::ConstFloat(_)
             => { Err("Can not use constant as pointer accessor".into()) },
 
-        Self::Local(name) | Self::Global(name) => Ok(format!("%index({},1):%index({},2)", name, name)),
+        Self::Local(name) => Ok(format!("%index({},1):%index({},2)", name, name)),
+        Self::Global(name) => Ok(format!("{}:0", name)),
 
         Self::GlobalRef(name) => {
             let Some(global) = module.globals.get(name) else { return Err(format!("Unknown global {}", name).into()) };

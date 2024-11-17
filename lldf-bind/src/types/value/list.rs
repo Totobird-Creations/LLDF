@@ -101,8 +101,8 @@ impl<T : DFValue> List<T> {
 
     #[lldf_bind_proc::dfdoc(SetVariable/RemoveListValue)]
     #[inline(always)]
-    pub fn erase(&mut self, value : &T) -> () { unsafe {
-        DF_ACTION__SetVariable_RemoveListValue(self as *mut _ as *mut _, value.to_opaque());
+    pub fn erase(&mut self, value : &T) -> () { unsafe { // TODO: Only on non-list non-dict elements.
+        DF_ACTION__SetVariable_RemoveListValue_ItemsToRemove_AllMatches(self as *mut _ as *mut _, value.to_opaque());
     } }
 
     #[inline(always)]
@@ -189,7 +189,7 @@ extern "C" {
     fn DF_ACTION__SetVariable_PopListValue( list : *mut DFOpaqueValue, ... ) -> DFOpaqueValue;
     fn DF_ACTION__SetVariable_SetListValue( list : *mut DFOpaqueValue, index : UInt, value : DFOpaqueValue ) -> ();
     fn DF_ACTION__SetVariable_ListLength( list : DFOpaqueValue ) -> UInt;
-    fn DF_ACTION__SetVariable_RemoveListValue( list : *mut DFOpaqueValue, value : DFOpaqueValue ) -> ();
+    fn DF_ACTION__SetVariable_RemoveListValue_ItemsToRemove_AllMatches( list : *mut DFOpaqueValue, value : DFOpaqueValue ) -> ();
     fn DF_ACTION__SetVariable_ReverseList( list : DFOpaqueValue ) -> DFOpaqueValue;
     fn DF_ACTION__SetVariable_RandomizeList( list : DFOpaqueValue ) -> DFOpaqueValue;
     fn DF_ACTION__SetVariable_FlattenList( list : DFOpaqueValue ) -> DFOpaqueValue;

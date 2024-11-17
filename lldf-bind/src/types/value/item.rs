@@ -12,6 +12,22 @@ impl Clone for Item {
     fn clone(&self) -> Self { unsafe { transmute_unchecked(self._opaque_type) } }
 }
 
+impl PartialEq for Item {
+    #[inline(always)]
+    fn eq(&self, other : &Self) -> bool { unsafe {
+        DF_ACTION__IfVariable_ItemEquals_ComparisonMode_ExactlyEquals(self.to_opaque(), other.to_opaque());
+        let success = DF_TEMPVAR();
+        DF_BRACKET__Normal_Open();
+        DF_ACTION__SetVariable_Specialcharequals(success, UInt::from(1usize).to_opaque());
+        DF_BRACKET__Normal_Close();
+        DF_ELSE();
+        DF_BRACKET__Normal_Open();
+        DF_ACTION__SetVariable_Specialcharequals(success, UInt::from(0usize).to_opaque());
+        DF_BRACKET__Normal_Close();
+        return transmute_unchecked::<_, UInt>(success) != UInt::from(0usize);
+    } }
+}
+
 impl Item {
 
     #[lldf_bind_proc::dfdoc(SetVariable/GetItemType { ReturnValueType = ItemID })]
@@ -418,6 +434,13 @@ unsafe impl DFValue for Item {
 
 
 extern "C" {
+
+    fn DF_TEMPVAR() -> DFOpaqueValue;
+    fn DF_ACTION__IfVariable_ItemEquals_ComparisonMode_ExactlyEquals( a : DFOpaqueValue, b : DFOpaqueValue ) -> ();
+    fn DF_BRACKET__Normal_Open() -> ();
+    fn DF_BRACKET__Normal_Close() -> ();
+    fn DF_ELSE() -> ();
+    fn DF_ACTION__SetVariable_Specialcharequals( variable : DFOpaqueValue, value : DFOpaqueValue ) -> ();
 
     fn DF_ACTION__SetVariable_String( from : DFOpaqueValue ) -> String;
 
