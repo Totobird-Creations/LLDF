@@ -29,8 +29,9 @@ version = "0.5"
 version = "0.12"
 
 [dependencies.llvm-ir]
-version  = "0.11"
-features = [ "llvm-16", "prefer-dynamic" ]
+git    = "https://github.com/Benjins/llvm-ir/"
+branch = "bns-llvm-19-upgrade"
+features = [ "llvm-19", "prefer-dynamic" ]
 
 
 [dependencies.serde_json]

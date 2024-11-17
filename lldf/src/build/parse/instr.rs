@@ -342,53 +342,6 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
                     Ok(())
                 },
 
-                Global::SwitchFunction { codeblock, action, tags } => {
-                    if let Some(dest) = dest {
-
-                        let mut final_tags  = Vec::with_capacity(tags.len());
-                        let mut skip_params = 0;
-                        for tag in tags { match (tag) {
-                            ActionFunctionTag::Value(value) => { final_tags.push(value.clone()); },
-                            ActionFunctionTag::Dynamic { kind, default_value } => {
-                                let temp_var = CodeValue::Variable { name : function.create_temp_var_name(), scope : VariableScope::Local };
-                                let params = vec![
-                                    temp_var.clone(),
-                                    parse_oper(module, function, &arguments[skip_params].0)?.to_codevalue(module, function)?
-                                ];
-                                function.line.blocks.push(Codeblock::action("set_var", "=", params, vec![ ]));
-                                final_tags.push(CodeValue::Actiontag { kind : kind.clone(), value : default_value.clone(), variable : Some(Box::new(temp_var)), block_override : None });
-                                skip_params += 1;
-                            },
-                        } }
-
-                        let mut final_params = Vec::with_capacity(arguments.len() - 2);
-                        for i in skip_params..(arguments.len() - 2) {
-                            let (arg, _) = &arguments[i];
-                            final_params.push(parse_oper(module, function, arg)?.to_codevalue(module, function)?);
-                        }
-
-                        let dest_var    = CodeValue::Variable { name : name_to_local(dest), scope : VariableScope::Local };
-                        let false_value = parse_oper(module, function, &arguments[arguments.len() - 2].0)?.to_codevalue(module, function)?;
-                        let true_value  = parse_oper(module, function, &arguments[arguments.len() - 1].0)?.to_codevalue(module, function)?;
-
-                        function.line.blocks.push(Codeblock::ifs(codeblock, action, false, final_params, final_tags));
-                        function.line.blocks.push(Codeblock::OPEN_COND_BRACKET);
-                        function.line.blocks.push(Codeblock::action("set_var", "=", vec![
-                            dest_var.clone(),
-                            true_value
-                        ], vec![ ]));
-                        function.line.blocks.push(Codeblock::CLOSE_COND_BRACKET);
-                        function.line.blocks.push(Codeblock::elses());
-                        function.line.blocks.push(Codeblock::OPEN_COND_BRACKET);
-                        function.line.blocks.push(Codeblock::action("set_var", "=", vec![
-                            dest_var.clone(),
-                            false_value
-                        ], vec![ ]));
-                        function.line.blocks.push(Codeblock::CLOSE_COND_BRACKET);
-                    }
-                    Ok(())
-                },
-
                 Global::BracketFunction { kind, side } => {
                     function.line.blocks.push(Codeblock::Bracket { kind : kind.clone(), side : side.clone() });
                     Ok(())

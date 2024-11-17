@@ -72,51 +72,11 @@ pub fn parse_const(module : &ParsedModule, function : &mut ParsedFunction, cor :
         Ok(Value::Local(temp_var))
     },
 
-    Constant::And(And { operand0, operand1 }) => {
-        let temp_var = function.create_temp_var_name();
-        let operand0 = parse_const(module, function, operand0)?;
-        let operand1 = parse_const(module, function, operand1)?;
-        handle_bitwise(module, function, &temp_var, operand0, operand1, "&")?;
-        Ok(Value::Local(temp_var))
-    },
-
-    Constant::Or(Or { operand0, operand1 }) => {
-        let temp_var = function.create_temp_var_name();
-        let operand0 = parse_const(module, function, operand0)?;
-        let operand1 = parse_const(module, function, operand1)?;
-        handle_bitwise(module, function, &temp_var, operand0, operand1, "|")?;
-        Ok(Value::Local(temp_var))
-    },
-
     Constant::Xor(Xor { operand0, operand1 }) => {
         let temp_var = function.create_temp_var_name();
         let operand0 = parse_const(module, function, operand0)?;
         let operand1 = parse_const(module, function, operand1)?;
         handle_bitwise(module, function, &temp_var, operand0, operand1, "^")?;
-        Ok(Value::Local(temp_var))
-    },
-
-    Constant::Shl(Shl { operand0, operand1 }) => {
-        let temp_var = function.create_temp_var_name();
-        let operand0 = parse_const(module, function, operand0)?;
-        let operand1 = parse_const(module, function, operand1)?;
-        handle_bitwise(module, function, &temp_var, operand0, operand1, "<<")?;
-        Ok(Value::Local(temp_var))
-    },
-
-    Constant::LShr(LShr { operand0, operand1 }) => {
-        let temp_var = function.create_temp_var_name();
-        let operand0 = parse_const(module, function, operand0)?;
-        let operand1 = parse_const(module, function, operand1)?;
-        handle_bitwise(module, function, &temp_var, operand0, operand1, ">>>")?;
-        Ok(Value::Local(temp_var))
-    },
-
-    Constant::AShr(AShr { operand0, operand1 }) => {
-        let temp_var = function.create_temp_var_name();
-        let operand0 = parse_const(module, function, operand0)?;
-        let operand1 = parse_const(module, function, operand1)?;
-        handle_bitwise(module, function, &temp_var, operand0, operand1, ">>")?;
         Ok(Value::Local(temp_var))
     },
 
@@ -130,54 +90,17 @@ pub fn parse_const(module : &ParsedModule, function : &mut ParsedFunction, cor :
     },
 
     Constant::Trunc(Trunc { operand, .. }) |
-    Constant::ZExt(ZExt { operand, .. }) |
-    Constant::SExt(SExt { operand, .. }) |
-    Constant::FPTrunc(FPTrunc { operand, .. }) |
-    Constant::FPExt(FPExt { operand, .. }) |
-    Constant::UIToFP(UIToFP { operand, .. }) |
-    Constant::SIToFP(SIToFP { operand, .. }) |
     Constant::BitCast(BitCast { operand, .. })
         => parse_const(module, function, operand),
-
-    Constant::FPToUI(FPToUI { operand, .. }) | Constant::FPToSI(FPToSI { operand, .. }) => {
-        let temp_var = function.create_temp_var_name();
-        let operand = parse_const(module, function, operand)?;
-        handle_trunc(module, function, &temp_var, operand)?;
-        Ok(Value::Local(temp_var))
-    },
 
     Constant::PtrToInt(PtrToInt { operand, .. }) |
     Constant::IntToPtr(IntToPtr { operand, .. })
         => parse_const(module, function, operand),
 
-    Constant::ICmp(ICmp { predicate, operand0, operand1 }) => {
-        let temp_var = function.create_temp_var_name();
-        let operand0 = parse_const(module, function, operand0)?;
-        let operand1 = parse_const(module, function, operand1)?;
-        handle_icmp(module, function, &temp_var, *predicate, operand0, operand1)?;
-        Ok(Value::Local(temp_var))
-    },
-
-    Constant::FCmp(FCmp { predicate, operand0, operand1 }) => {
-        let temp_var = function.create_temp_var_name();
-        let operand0 = parse_const(module, function, operand0)?;
-        let operand1 = parse_const(module, function, operand1)?;
-        handle_fcmp(module, function, &temp_var, *predicate, operand0, operand1)?;
-        Ok(Value::Local(temp_var))
-    },
-
-    Constant::Select(Select { condition, true_value, false_value }) => {
-        let temp_var = function.create_temp_var_name();
-        let condition   = parse_const(module, function, condition   )?;
-        let true_value  = parse_const(module, function, true_value  )?;
-        let false_value = parse_const(module, function, false_value )?;
-        handle_select(module, function, &temp_var, condition, true_value, false_value)?;
-        Ok(Value::Local(temp_var))
-    },
-
 
     Constant::BlockAddress                                                                                      => Err("Block address operands are unsupported"      .into()),
     Constant::TokenNone                                                                                         => Err("Token operands are unsupported"              .into()),
+    Constant::PtrAuth { .. }                                                                                    => Err("PtrAuth operands are unsupported"             .into()),
     Constant::Vector(_) | Constant::ExtractElement(_) | Constant::InsertElement(_) | Constant::ShuffleVector(_) => Err("Vector operands are unsupported"             .into()),
     Constant::AddrSpaceCast(_)                                                                                  => Err("Address space cast operands are unsupported" .into()),
 } }
