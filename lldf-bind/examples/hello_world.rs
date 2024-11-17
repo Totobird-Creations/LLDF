@@ -9,7 +9,8 @@ use lldf_bind::prelude::*;
 
 #[event(PlayerJoin)]
 fn player_join(default : PlayerSel) { // Enums aren't working
-    default.send_message(Sound::allay_death().kind().to_string());
+    default.send_message( Sound::allay_death()                   .kind().to_string());
+    default.send_message( Sound::custom("lldftest:custom_sound") .kind().to_string());
 }
 
 

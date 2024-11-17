@@ -11,7 +11,7 @@ mod four;
 
 
 /// A vector with some number of lanes. Used for representing directions, motions, or offsets.
-pub struct Vector<const LANES : usize> { // TODO: Clone
+pub struct Vector<const LANES : usize> {
     inner : List<Float>
 }
 #[doc(hidden)]

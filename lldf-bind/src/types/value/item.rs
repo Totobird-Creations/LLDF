@@ -148,7 +148,7 @@ impl Item {
     /// ##### Unsafe
     /// - **May cause large plot CPU usage spikes, causing plot to lagslay.**
     #[inline(always)]
-    pub unsafe fn with_head_uuid(&self, uuid : UUID) -> Item { unsafe {
+    pub unsafe fn with_head_uuid(&self, uuid : Uuid) -> Item { unsafe {
         DF_ACTION__SetVariable_SetHeadTexture(self.to_opaque(), uuid.to_string())
     } }
 
@@ -374,15 +374,15 @@ impl Item {
     #[doc(cfg(not(feature = "en_us")))]
     #[lldf_bind_proc::dfdoc(SetVariable/SetItemColor)]
     #[inline(always)]
-    pub fn with_colour(&self, colour : Colour) -> Colour { unsafe {
-        Colour::from_hexcode_unchecked(DF_ACTION__SetVariable_SetItemColor(self.to_opaque(), colour.hexcode()))
+    pub fn with_colour(&self, colour : Colour) -> Item { unsafe {
+        DF_ACTION__SetVariable_SetItemColor(self.to_opaque(), colour.hexcode())
     } }
     #[cfg(any(feature = "en_us", doc))]
     #[doc(cfg(feature = "en_us"))]
     #[lldf_bind_proc::dfdoc(SetVariable/SetItemColor)]
     #[inline(always)]
-    pub fn with_color(&self, color : Color) -> Color { unsafe {
-        Colour::from_hexcode_unchecked(DF_ACTION__SetVariable_SetItemColor(self.to_opaque(), color.hexcode()))
+    pub fn with_color(&self, color : Color) -> Item { unsafe {
+        DF_ACTION__SetVariable_SetItemColor(self.to_opaque(), color.hexcode())
     } }
 
     #[lldf_bind_proc::dfdoc(SetVariable/GetItemAttribute)]

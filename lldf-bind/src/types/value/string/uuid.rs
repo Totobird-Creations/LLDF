@@ -1,21 +1,25 @@
-use core::mem::transmute_unchecked;
-
 use crate::prelude::*;
+use crate::bind::DFOpaqueValue;
+use crate::core::mem::transmute_unchecked;
 
 
 /// An entity UUID.
 #[repr(transparent)]
-pub struct UUID {
+pub struct Uuid {
     uuid : String
 }
 
-impl Clone for UUID {
+impl Clone for Uuid {
     #[inline(always)]
     fn clone(&self) -> Self { Self { uuid : self.uuid.clone() } }
 }
 
+unsafe impl DFValue for Uuid {
+    unsafe fn to_opaque(&self) -> DFOpaqueValue { self.uuid.to_opaque() }
+}
 
-impl UUID {
+
+impl Uuid {
 
     /// Creates a `UUID` from a string.
     /// 
@@ -25,7 +29,7 @@ impl UUID {
 
 }
 
-impl UUID {
+impl Uuid {
 
     #[inline(always)]
     pub fn to_string(&self) -> String { unsafe{ transmute_unchecked(self.uuid.to_opaque()) } }

@@ -51,13 +51,13 @@ impl Text {
     #[lldf_bind_proc::dfdoc(SetVariable/ParseMiniMessageExpr)]
     #[inline(always)]
     pub fn from_minimsg<S : Into<String>>(minimsg : S) -> Text { unsafe {
-        DF_ACTION__SetVariable_ParseMiniMessageExpr(minimsg.into()) // TODO: make sure this is the correct function name
+        DF_ACTION__SetVariable_ParseMiniMessageExpr_ParseLegacyColorCodes_False_AllowedTags_Full(minimsg.into())
     } }
 
     #[lldf_bind_proc::dfdoc(SetVariable/GetMiniMessageExpr)]
     #[inline(always)]
     pub fn to_minimsg(&self) -> String { unsafe {
-        DF_ACTION__SetVariable_GetMiniMessageExpr(self.to_opaque()) // TODO: make sure this is the correct function name
+        DF_ACTION__SetVariable_GetMiniMessageExpr(self.to_opaque())
     } }
 
     #[lldf_bind_proc::dfdoc(SetVariable/ClearFormatting)]
@@ -71,7 +71,7 @@ impl Text {
     #[lldf_bind_proc::dfdoc(SetVariable/ContentLength)]
     #[inline(always)]
     pub fn len(&self) -> UInt { unsafe {
-        DF_ACTION__SetVariable_ContentLength(self.to_opaque()) // TODO: make sure this is the correct function name
+        DF_ACTION__SetVariable_ContentLength(self.to_opaque())
     } }
 
 }
@@ -87,7 +87,7 @@ extern "C" {
 
     fn DF_ACTION__SetVariable_StyledText_InheritStyles_False_TextValueMerging_NoSpaces( ... ) -> Text;
 
-    fn DF_ACTION__SetVariable_ParseMiniMessageExpr( minimsg : String ) -> Text;
+    fn DF_ACTION__SetVariable_ParseMiniMessageExpr_ParseLegacyColorCodes_False_AllowedTags_Full( minimsg : String ) -> Text;
     fn DF_ACTION__SetVariable_GetMiniMessageExpr( from : DFOpaqueValue ) -> String;
     fn DF_ACTION__SetVariable_ClearFormatting( text : DFOpaqueValue ) -> Text;
     fn DF_ACTION__SetVariable_ContentLength( text : DFOpaqueValue ) -> UInt;

@@ -10,7 +10,7 @@ pub use colour::Colour;
 #[doc(cfg(feature = "en_us"))]
 pub use colour::Colour as Color;
 mod uuid;
-pub use uuid::UUID;
+pub use uuid::Uuid;
 
 
 use crate::prelude::*;

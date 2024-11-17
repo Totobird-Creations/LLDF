@@ -1,5 +1,5 @@
 use super::*;
-use crate::build::codegen::{ BracketKind, BracketSide };
+use crate::build::codegen::{ BracketKind, BracketSide, CodeblockBlock };
 
 use std::collections::HashMap;
 use std::borrow::Cow;
@@ -12,11 +12,10 @@ use llvm_ir::types::Types;
 
 
 pub struct ParsedModule<'l> {
-    pub module        : &'l Module,
-    pub globals       : HashMap<Name, Global>,
-    pub types         : &'l Types,
-    pub init_function : Option<ParsedFunction>,
-    pub functions     : Vec<ParsedFunction>
+    pub module    : &'l Module,
+    pub globals   : HashMap<Name, Global>,
+    pub types     : &'l Types,
+    pub functions : Vec<ParsedFunction>
 }
 #[derive(Debug)]
 pub enum Global {
@@ -92,10 +91,9 @@ pub fn parse_module(module : &Module) -> Result<ParsedModule, Box<dyn Error>> {
 
     let mut parsed = ParsedModule {
         module,
-        globals       : HashMap::new(),
-        types         : &module.types,
-        init_function : None,
-        functions     : Vec::new()
+        globals   : HashMap::new(),
+        types     : &module.types,
+        functions : Vec::new()
     };
 
     // Collect user defined functions.
@@ -278,18 +276,18 @@ pub fn parse_module(module : &Module) -> Result<ParsedModule, Box<dyn Error>> {
 
     // Collect global variables.
     let mut init_function = ParsedFunction::new();
-    for GlobalVariable { name, /*is_constant,*/ initializer : init, .. } in &module.global_vars {
-        //let mut is_constant = *is_constant;
+    for GlobalVariable { name, initializer : init, .. } in &module.global_vars {
         let var = CodeValue::Variable {
             name  : format!("{}:0", name_to_global(name)),
             scope : VariableScope::Unsaved
         };
         if let Some(init) = init {
             // Handle special cases like strings.
-            let value = if let Some(value) = handle_special_const(&init) {
-                value
-            } else { // Otherwise just create a global.
-                todo!()
+            let value = if let Some(value) = handle_special_const(&init) { value }
+            else { // Otherwise just create a global.
+                let value = parse_const(&parsed, &mut init_function, init)?.to_codevalue(&parsed, &mut init_function)?;
+                init_function.line.blocks.push(Codeblock::action("set_var", "=", vec![ var, value ], vec![ ]));
+                Value::Global(name_to_global(name))
             };
             //let params = vec![ var.clone(), match (value.to_codevalue(&parsed, &mut init_function)) { Ok(v) => v, Err(e) => { return Err(e) } } ];
             //init_function.line.blocks.push(Codeblock::action("set_var", "=", params, vec![ ]));
@@ -300,13 +298,52 @@ pub fn parse_module(module : &Module) -> Result<ParsedModule, Box<dyn Error>> {
             //parsed.globals.insert(name.clone(), Global::Constant(Value::CodeValue(var)));
         }
     }
-    parsed.init_function = Some(init_function);
 
     for module_function in &module.functions {
         parse_function(&mut parsed, module_function)?;
     }
 
+    // Init special event handler.
+    let init_var = CodeValue::Variable { name : "lldf.init".to_string(), scope : VariableScope::Unsaved };
+    init_function.line.blocks.splice(0..0, [
+        Codeblock::ifs("if_var", "=", true, vec![ init_var.clone(), CodeValue::Number("1".to_string()) ], vec![ ]),
+        Codeblock::OPEN_COND_BRACKET,
+        Codeblock::action("set_var", "=", vec![ init_var, CodeValue::Number("1".to_string()) ], vec![ ])
+    ].into_iter());
+    init_function.line.blocks.push(Codeblock::call_func("DF_EVENT__LLDF_PlotStart", vec![ ]));
+    init_function.line.blocks.push(Codeblock::CLOSE_COND_BRACKET);
+    if let Some(player_join_function) = parsed.functions.iter_mut().find(|function| if let Some(Codeblock::Block(CodeblockBlock { block, action : Some(action), .. })) = function.line.blocks.get(0) && block == "event" && action == "Join" { true } else { false }) {
+        player_join_function.line.blocks.splice(1..1, init_function.line.blocks);
+    } else {
+        init_function.line.blocks.insert(0, Codeblock::event("event", "Join"));
+        parsed.functions.push(init_function);
+    }
+
     Ok(parsed)
+}
+
+pub fn propercase(string : &str, standard_decapitalisation : bool) -> String {
+    let mut out = String::with_capacity(string.len() * 2);
+    let mut last_ch = 'A';
+    for (i, ch) in string.chars().rev().enumerate() {
+        out.push(ch);
+        if (ch.is_uppercase() && (! last_ch.is_uppercase()) && (i + 1 != string.len())) { out.push(' '); }
+        last_ch = ch;
+    }
+    let out = out.chars().rev().collect::<String>();
+    if (! standard_decapitalisation) { return out; }
+    out.split(" ").enumerate().map(|(i, word)|
+        if (i == 0) { Cow::Borrowed(word) } 
+        else {
+            let word_lc = word.to_lowercase();
+            match (word_lc.as_str()) {
+                "a"    | "and" | "as"   | "at"   | "but"  | "by"   | "for" | "from" | "if" | "in"   |
+                "into" | "nor" | "of"   | "off"  | "on"   | "once" | "or"  | "over" | "so" | "than" |
+                "that" | "to"  | "upon" | "when" | "with" | "yet"  => Cow::Owned(word_lc),
+                _ => Cow::Borrowed(word)
+            }
+        }
+    ).intersperse(Cow::Borrowed(" ")).collect::<String>()
 }
 
 pub fn linked_name_to_codeblock(codeblock : &str) -> String {
@@ -319,28 +356,10 @@ pub fn linked_name_to_codeblock(codeblock : &str) -> String {
     }
 }
 pub fn linked_name_to_action(action : &str) -> String {
-    linked_name_to_actiontag_kind(&names_to_symbols(action)).replace(" ", "")
+    propercase(&names_to_symbols(action), false).replace(" ", "")
 }
 pub fn linked_name_to_actiontag_kind(actiontag_kind : &str) -> String {
-    let mut out = String::with_capacity(actiontag_kind.len() * 2);
-    let mut last_ch = 'A';
-    for (i, ch) in actiontag_kind.chars().rev().enumerate() {
-        out.push(ch);
-        if (ch.is_uppercase() && (! last_ch.is_uppercase()) && (i + 1 != actiontag_kind.len())) { out.push(' '); }
-        last_ch = ch;
-    }
-    out.chars().rev().collect::<String>().split(" ").enumerate().map(|(i, word)|
-        if (i == 0) { Cow::Borrowed(word) } 
-        else {
-            let word_lc = word.to_lowercase();
-            match (word_lc.as_str()) {
-                "a"    | "and" | "as"   | "at"   | "but"  | "by"   | "for" | "from" | "if" | "in"   |
-                "into" | "nor" | "of"   | "off"  | "on"   | "once" | "or"  | "over" | "so" | "than" |
-                "that" | "to"  | "upon" | "when" | "with" | "yet"  => Cow::Owned(word_lc),
-                _ => Cow::Borrowed(word)
-            }
-        }
-    ).intersperse(Cow::Borrowed(" ")).collect::<String>()
+    propercase(actiontag_kind, true)
 }
 pub fn linked_name_to_actiontag_value(actiontag_value : &str) -> String {
     let lowercase = linked_name_to_actiontag_kind(actiontag_value).split(" ").map(|word| {
@@ -356,7 +375,7 @@ pub fn linked_name_to_actiontag_value(actiontag_value : &str) -> String {
 pub fn collect_actiontag_parts<'l>(actiontag_parts : impl Iterator<Item = &'l str>) -> Vec<ActionFunctionTag> {
     actiontag_parts.array_chunks::<2>()
         .map(|[kind, value]| {
-            let kind  = linked_name_to_actiontag_kind(kind);
+            let kind  = propercase(kind, true);
             let value = linked_name_to_actiontag_value(value);
             if (value.starts_with("Dynamic")) { ActionFunctionTag::Dynamic {
                 kind,
@@ -399,16 +418,16 @@ pub fn linked_name_to_gamevalue_kind(gamevalue_kind : &str) -> String {
     out
 }
 pub fn linked_name_to_gamevalue_target(gamevalue_kind : &str) -> String {
-    linked_name_to_actiontag_kind(gamevalue_kind)
+    propercase(gamevalue_kind, true)
 }
 pub fn linked_name_to_sound_id(sound_id : &str) -> String {
-    linked_name_to_actiontag_kind(sound_id)
+    propercase(sound_id, true)
 }
 pub fn linked_name_to_particle_id(sound_id : &str) -> String {
-    linked_name_to_actiontag_kind(sound_id)
+    propercase(sound_id, true)
 }
 pub fn linked_name_to_potion_id(potion_id : &str) -> String {
-    linked_name_to_actiontag_kind(&names_to_symbols(&potion_id))
+    propercase(&names_to_symbols(&potion_id), true)
 }
 pub fn linked_name_to_item_id(item_id : &str) -> String {
     item_id.to_snake_case()

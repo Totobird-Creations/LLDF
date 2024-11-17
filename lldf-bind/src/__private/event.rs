@@ -9,19 +9,24 @@ pub enum Calling_an_event_trigger_is_not_allowed {}
 pub macro event_trigger {
 
 
+    { PlotStart, $original_func_ident:ident } => { event_trigger_inner!{ DF_EVENT__LLDF_PlotStart, $original_func_ident } },
+
+    // TODO: PlotStop
+
+
     // `PLAYER_EVENT` `Plot and Server Events`
 
     { PlayerJoin, $original_func_ident:ident } => { event_trigger_inner!{ DF_EVENT__Event_Join, $original_func_ident, {
         { unsafe {
             extern "C" {
                 fn DF_ACTION__SelectObject_EventTarget_EventTarget_Default( ) -> ();
-                fn DF_GAMEVALUE__SelectionTargetUUIDs_Default( ) -> ::lldf_bind::types::List<::lldf_bind::types::String>;
+                fn DF_GAMEVALUE__SelectionTargetUUIDs_Default( ) -> ::lldf_bind::types::List<::lldf_bind::types::Uuid>;
                 fn DF_ACTION__SelectObject_Reset( ) -> ();
             }
             DF_ACTION__SelectObject_EventTarget_EventTarget_Default();
             let uuids = DF_GAMEVALUE__SelectionTargetUUIDs_Default();
             DF_ACTION__SelectObject_Reset();
-            ::lldf_bind::types::PlayerSel::from_uuids(uuids)
+            ::lldf_bind::types::PlayerSel::from_uuids_unchecked(uuids)
         } }
     }} },
 
@@ -29,13 +34,13 @@ pub macro event_trigger {
         { unsafe {
             extern "C" {
                 fn DF_ACTION__SelectObject_EventTarget_EventTarget_Default( ) -> ();
-                fn DF_GAMEVALUE__SelectionTargetUUIDs_Default( ) -> ::lldf_bind::types::List<::lldf_bind::types::String>;
+                fn DF_GAMEVALUE__SelectionTargetUUIDs_Default( ) -> ::lldf_bind::types::List<::lldf_bind::types::Uuid>;
                 fn DF_ACTION__SelectObject_Reset( ) -> ();
             }
             DF_ACTION__SelectObject_EventTarget_EventTarget_Default();
             let uuids = DF_GAMEVALUE__SelectionTargetUUIDs_Default();
             DF_ACTION__SelectObject_Reset();
-            ::lldf_bind::types::PlayerSel::from_uuids(uuids)
+            ::lldf_bind::types::PlayerSel::from_uuids_unchecked(uuids)
         } }
     }} },
 
@@ -70,13 +75,13 @@ pub macro event_trigger {
         { unsafe {
             extern "C" {
                 fn DF_ACTION__SelectObject_EventTarget_EventTarget_Default( ) -> ();
-                fn DF_GAMEVALUE__SelectionTargetUUIDs_Default( ) -> ::lldf_bind::types::List<::lldf_bind::types::String>;
+                fn DF_GAMEVALUE__SelectionTargetUUIDs_Default( ) -> ::lldf_bind::types::List<::lldf_bind::types::Uuid>;
                 fn DF_ACTION__SelectObject_Reset( ) -> ();
             }
             DF_ACTION__SelectObject_EventTarget_EventTarget_Default();
             let uuids = DF_GAMEVALUE__SelectionTargetUUIDs_Default();
             DF_ACTION__SelectObject_Reset();
-            ::lldf_bind::types::PlayerSel::from_uuids(uuids)
+            ::lldf_bind::types::PlayerSel::from_uuids_unchecked(uuids)
         } }
     }} },
 
@@ -222,13 +227,13 @@ pub macro event_trigger {
 
 
 macro event_trigger_inner {
-    ( $trigger_func_ident:ident, $original_func_ident:ident, { $( $arg:expr ),* } ) => {
+    ( $trigger_func_ident:ident, $original_func_ident:ident $(, { $( $arg:expr ),* })? $(,)? ) => {
 
         #[no_mangle]
         extern "C" fn $trigger_func_ident(_ : ::lldf_bind::__private::Calling_an_event_trigger_is_not_allowed) {
             $original_func_ident(
                 unsafe{ *(::lldf_bind::core::mem::transmute_unchecked::<_, &_>(&())) }
-                $( , $arg )*
+                $($( , $arg )*)?
             );
         }
 

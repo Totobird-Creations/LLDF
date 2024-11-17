@@ -256,7 +256,7 @@ pub fn parse_instr(module : &ParsedModule, function : &mut ParsedFunction, instr
     Instruction::Call(Call { function : calling, arguments, dest, .. }) => {
         let Some(calling) = calling.as_ref().right() else { return Err("Inline assembly is unsupported".into()) };
         let calling = parse_oper(module, function, calling)?;
-        if let Value::Global(name) = &calling {
+        if let Value::GlobalRef(name) = &calling {
             let Some(global) = module.globals.get(name) else { return Err(format!("Unknown global {}", name).into()) };
             match (global) {
 
@@ -480,6 +480,10 @@ fn handle_nooptf64(module : &ParsedModule, function : &mut ParsedFunction, value
             Ok(())
         },
         Value::Global(name) => {
+            function.line.blocks.push(Codeblock::action("set_var", "=", vec![ dest_var.clone(), CodeValue::Variable { name : name.clone(), scope : VariableScope::Unsaved } ], vec![ ]));
+            Ok(())
+        },
+        Value::GlobalRef(name) => {
             let global = module.globals.get(&name);
             if let Some(global) = global { match (global) {
                 Global::Constant(value) => handle_nooptf64(module, function, value, dest_var),

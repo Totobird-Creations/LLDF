@@ -27,7 +27,8 @@ pub enum Value {
     ConstFloat(f64),
 
     Local(String),
-    Global(Name)
+    Global(String),
+    GlobalRef(Name)
 
 }
 impl Value {
@@ -41,8 +42,9 @@ impl Value {
         Self::ConstFloat  (value ) => Ok(CodeValue::Number(value.to_string())),
 
         Self::Local(name) => Ok(CodeValue::Variable { name : name.clone(), scope : VariableScope::Local }),
+        Self::Global(name) => Ok(CodeValue::Variable { name : format!("{}:0", name), scope : VariableScope::Unsaved }),
 
-        Self::Global(name) => {
+        Self::GlobalRef(name) => {
             let Some(global) = module.globals.get(name) else { return Err(format!("Unknown global {}", name).into()) };
             match (global) {
 
@@ -75,8 +77,9 @@ impl Value {
             => { Err("Can not use constant as pointer accessor".into()) },
 
         Self::Local(name) => Ok((format!("%index({},1)", name), format!("%index({},2)", name))),
+        Self::Global(name) => Ok((name.clone(), "0".to_string())),
 
-        Self::Global(name) => {
+        Self::GlobalRef(name) => {
             let Some(global) = module.globals.get(name) else { return Err(format!("Unknown global {}", name).into()) };
             match (global) {
 
@@ -108,8 +111,9 @@ impl Value {
             => { Err("Can not use constant as pointer accessor".into()) },
 
         Self::Local(name) => Ok(format!("%index({},1):%index({},2)", name, name)),
+        Self::Global(name) => Ok(format!("{}:0", name)),
 
-        Self::Global(name) => {
+        Self::GlobalRef(name) => {
             let Some(global) = module.globals.get(name) else { return Err(format!("Unknown global {}", name).into()) };
             match (global) {
 

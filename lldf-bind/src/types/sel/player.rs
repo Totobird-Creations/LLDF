@@ -1,17 +1,23 @@
 use crate::prelude::*;
 use crate::bind::DFOpaqueValue;
+use crate::core::mem::transmute_unchecked;
 
 
 /// A selection consisting of any number of player entities.
 #[repr(transparent)]
 pub struct PlayerSel {
-    pub(crate) uuids : List<String>
+    pub(crate) uuids : List<Uuid>
 }
 
 impl PlayerSel {
 
     #[doc(hidden)]
-    pub unsafe fn from_uuids(uuids : List<String>) -> Self { Self { uuids } }
+    pub unsafe fn from_uuid_unchecked(uuid : Uuid) -> Self {
+        Self { uuids : transmute_unchecked(DF_ACTION__SetVariable_CreateList(uuid)) }
+    }
+
+    #[doc(hidden)]
+    pub unsafe fn from_uuids_unchecked(uuids : List<Uuid>) -> Self { Self { uuids } }
 
 }
 
@@ -26,7 +32,13 @@ impl PlayerSel {
         DF_ACTION__SelectObject_Reset();
     } }
 
-    // TODO: SetHotbar
+    #[lldf_bind_proc::dfdoc(PlayerAction/SetHotbar)] // FIXME: Arrays are completely broken
+    #[inline(always)]
+    pub fn set_hotbar_items(&self, items : [Item; 9]) -> () { unsafe {
+        DF_ACTION__SelectObject_PlayerName(self.uuids.to_opaque());
+        DF_ACTION__PlayerAction_SetHotbar(items);
+        DF_ACTION__SelectObject_Reset();
+    } }
 
     // TODO: SetInventory
 
@@ -34,7 +46,7 @@ impl PlayerSel {
     #[inline(always)]
     pub fn set_item_in_slot<U : Into<UInt>, I : AsRef<Item>>(&self, slot : U, item : I) -> () { unsafe {
         DF_ACTION__SelectObject_PlayerName(self.uuids.to_opaque());
-        DF_ACTION__PlayerAction_SetItemInSlot(item.as_ref().to_opaque(), slot.into());
+        DF_ACTION__PlayerAction_SetSlotItem(item.as_ref().to_opaque(), slot.into());
         DF_ACTION__SelectObject_Reset();
     } }
 
@@ -909,7 +921,12 @@ impl PlayerSel {
 
     // TODO: name
 
-    // TODO: uuid
+    #[inline(always)]
+    pub unsafe fn uuid_unchecked(&self) -> Uuid { unsafe {
+        self.uuids.get_unchecked(0usize)
+    } }
+
+    // TODO: uuid (with sel size check)
 
     // TODO: gamemode
 
@@ -937,7 +954,7 @@ impl PlayerSel {
     // TODO: len
 
     #[inline(always)]
-    pub fn uuids<'l>(&'l self) -> &'l List<String> { &self.uuids }
+    pub fn uuids<'l>(&'l self) -> &'l List<Uuid> { &self.uuids }
 
     // TODO: names
 
@@ -959,8 +976,11 @@ extern "C" {
     fn DF_ACTION__SetVariable_Specialcharplus( a : DFOpaqueValue, b : DFOpaqueValue ) -> DFOpaqueValue;
 
 
+    fn DF_ACTION__SetVariable_CreateList( ... ) -> DFOpaqueValue;
+
     fn DF_ACTION__PlayerAction_GiveItems( item : DFOpaqueValue ) -> ();
-    fn DF_ACTION__PlayerAction_SetItemInSlot( item : DFOpaqueValue, slot : UInt ) -> ();
+    fn DF_ACTION__PlayerAction_SetHotbar( items : [Item; 9] ) -> ();
+    fn DF_ACTION__PlayerAction_SetSlotItem( item : DFOpaqueValue, slot : UInt ) -> ();
     fn DF_ACTION__PlayerAction_SetEquipment_EquipmentSlot_MainHand( item : Item ) -> ();
     fn DF_ACTION__PlayerAction_SetEquipment_EquipmentSlot_OffHand( item : Item ) -> ();
     fn DF_ACTION__PlayerAction_SetEquipment_EquipmentSlot_Head( item : Item ) -> ();

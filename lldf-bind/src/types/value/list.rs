@@ -35,13 +35,13 @@ impl<T : DFValue> List<T> {
     #[lldf_bind_proc::dfdoc(SetVariable/AppendValue)]
     #[inline(always)]
     pub fn push(&mut self, value : T) -> () { unsafe {
-        DF_ACTION__SetVariable_AppendValue(self.to_opaque(), value.to_opaque())
+        DF_ACTION__SetVariable_AppendValue(self as *mut _ as *mut _, value.to_opaque())
     } }
 
     #[lldf_bind_proc::dfdoc(SetVariable/AppendList)]
     #[inline(always)]
     pub fn append(&mut self, other : Self) -> () { unsafe {
-        DF_ACTION__SetVariable_AppendList(self.to_opaque(), other.to_opaque())
+        DF_ACTION__SetVariable_AppendList(self as *mut _ as *mut _, other.to_opaque())
     } }
 
     #[lldf_bind_proc::dfdoc(SetVariable/GetListValue)]
@@ -60,7 +60,7 @@ impl<T : DFValue> List<T> {
     /// - **Does not do a non-empty check**
     #[inline(always)]
     pub unsafe fn pop_unchecked(&mut self) -> T { unsafe {
-        transmute_unchecked(DF_ACTION__SetVariable_PopListValue(self.to_opaque()))
+        transmute_unchecked(DF_ACTION__SetVariable_PopListValue(self as *mut _ as *mut _))
     } }
 
     // TODO: pop (with bounds check)
@@ -71,7 +71,7 @@ impl<T : DFValue> List<T> {
     #[inline(always)]
     pub unsafe fn remove_unchecked<U : Into<UInt>>(&mut self, index : U) -> T { unsafe {
         let index = DF_ACTION__SetVariable_Specialcharplus( index.into(), UInt::from(1usize) );
-        transmute_unchecked(DF_ACTION__SetVariable_PopListValue(self.to_opaque(), index))
+        transmute_unchecked(DF_ACTION__SetVariable_PopListValue(self as *mut _ as *mut _, index))
     } }
 
     // TODO: remove (with bounds check)
@@ -82,7 +82,7 @@ impl<T : DFValue> List<T> {
     #[inline(always)]
     pub unsafe fn set_unchecked<U : Into<UInt>>(&mut self, index : U, value : T) -> () { unsafe {
         let index = DF_ACTION__SetVariable_Specialcharplus( index.into(), UInt::from(1usize) );
-        DF_ACTION__SetVariable_SetListValue(self.to_opaque(), index, value.to_opaque());
+        DF_ACTION__SetVariable_SetListValue(self as *mut _ as *mut _, index, value.to_opaque());
     } }
 
     // TODO: set (with bounds check)
@@ -99,7 +99,11 @@ impl<T : DFValue> List<T> {
 
     // TODO: insert (with bounds check)
 
-    // TODO: erase (remove by equality)
+    #[lldf_bind_proc::dfdoc(SetVariable/RemoveListValue)]
+    #[inline(always)]
+    pub fn erase(&mut self, value : &T) -> () { unsafe {
+        DF_ACTION__SetVariable_RemoveListValue(self as *mut _ as *mut _, value.to_opaque());
+    } }
 
     #[inline(always)]
     pub fn clear(&mut self) -> () { unsafe { // TODO: test this to make sure it works properly
@@ -179,12 +183,13 @@ extern "C" {
     fn DF_ACTION__SetVariable_Specialcharplus( a : UInt, b : UInt ) -> UInt;
 
     fn DF_ACTION__SetVariable_CreateList( ) -> DFOpaqueValue;
-    fn DF_ACTION__SetVariable_AppendValue( list : DFOpaqueValue, value : DFOpaqueValue ) -> ();
-    fn DF_ACTION__SetVariable_AppendList( list : DFOpaqueValue, from : DFOpaqueValue ) -> ();
+    fn DF_ACTION__SetVariable_AppendValue( list : *mut DFOpaqueValue, value : DFOpaqueValue ) -> ();
+    fn DF_ACTION__SetVariable_AppendList( list : *mut DFOpaqueValue, from : DFOpaqueValue ) -> ();
     fn DF_ACTION__SetVariable_GetListValue( list : DFOpaqueValue, index : UInt ) -> DFOpaqueValue;
-    fn DF_ACTION__SetVariable_PopListValue( list : DFOpaqueValue, ... ) -> DFOpaqueValue;
-    fn DF_ACTION__SetVariable_SetListValue( list : DFOpaqueValue, index : UInt, value : DFOpaqueValue ) -> ();
+    fn DF_ACTION__SetVariable_PopListValue( list : *mut DFOpaqueValue, ... ) -> DFOpaqueValue;
+    fn DF_ACTION__SetVariable_SetListValue( list : *mut DFOpaqueValue, index : UInt, value : DFOpaqueValue ) -> ();
     fn DF_ACTION__SetVariable_ListLength( list : DFOpaqueValue ) -> UInt;
+    fn DF_ACTION__SetVariable_RemoveListValue( list : *mut DFOpaqueValue, value : DFOpaqueValue ) -> ();
     fn DF_ACTION__SetVariable_ReverseList( list : DFOpaqueValue ) -> DFOpaqueValue;
     fn DF_ACTION__SetVariable_RandomizeList( list : DFOpaqueValue ) -> DFOpaqueValue;
     fn DF_ACTION__SetVariable_FlattenList( list : DFOpaqueValue ) -> DFOpaqueValue;

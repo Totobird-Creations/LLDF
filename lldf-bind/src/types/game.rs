@@ -300,8 +300,8 @@ extern "C" {
 
     fn DF_ACTION__Control_Wait_TimeUnit_Ticks( time_ticks : UInt ) -> ();
 
-    fn DF_GAMEVALUE__PlotPlayerUUIDs_Default( ) -> List<String>;
-    fn DF_GAMEVALUE__SelectionTargetUUIDs_Default( ) -> List<String>;
+    fn DF_GAMEVALUE__PlotPlayerUUIDs_Default( ) -> List<Uuid>;
+    fn DF_GAMEVALUE__SelectionTargetUUIDs_Default( ) -> List<Uuid>;
 
     fn DF_ACTION__SelectObject_PlayerName( target : *const DFOpaqueValue ) -> ();
 

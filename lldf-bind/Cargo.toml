@@ -65,6 +65,8 @@ incomplete_features = "allow"
 improper_ctypes              = "allow"
 clashing_extern_declarations = "allow"
 
+static_mut_refs = "allow"
+
 unused_parens = "allow"
 
 

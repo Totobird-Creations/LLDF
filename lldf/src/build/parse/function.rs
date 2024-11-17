@@ -67,7 +67,7 @@ pub fn parse_function(module : &mut ParsedModule, function : &Function) -> Resul
     for param in &function.parameters {
         params.push(CodeValue::Parameter {
             name : name_to_string(&param.name),
-            typ : handle_param_type(module, &*param.ty)?,
+            typ : ParameterType::Any,
             plural : false, optional : false,
             description : Some(format!("{}", param.name)),
             note        : Some(format!("Type: {}", param.ty))
@@ -84,11 +84,11 @@ pub fn parse_function(module : &mut ParsedModule, function : &Function) -> Resul
     let mut name_parts = function.name.split("__");
     if let (Some(df), Some(event), None) = (name_parts.next(), name_parts.next(), name_parts.next()) { if (df == "DF_EVENT") {
         let mut event_parts = event.split("_");
-        if let (Some(codeblock), Some(action), None) = (event_parts.next(), event_parts.next(), event_parts.next()) {
+        if let (Some(codeblock), Some(action), None) = (event_parts.next(), event_parts.next(), event_parts.next()) { if (codeblock != "LLDF") {
             let codeblock = linked_name_to_codeblock (codeblock );
             let action    = linked_name_to_action    (action    );
             head_codeblock = Codeblock::event(codeblock, action)
-        }
+        } }
     } }
     root_function.line.blocks.insert(0, head_codeblock);
 
@@ -264,23 +264,4 @@ pub fn parse_block(module : &mut ParsedModule, function : &Function, block : &Ba
     }
 
     Ok(block_function)
-}
-
-
-
-fn handle_param_type(module : &ParsedModule, typ : &Type) -> Result<ParameterType, Box<dyn Error>> {
-    match (typ) {
-        Type::VoidType | Type::IntegerType { .. } | Type::FPType(_) => Ok(ParameterType::Number),
-        Type::PointerType { .. }                                    => Ok(ParameterType::List),
-        Type::FuncType { .. }                                       => Ok(ParameterType::String),
-        Type::ArrayType { .. } | Type::StructType { .. }            => Ok(ParameterType::List),
-        Type::NamedStructType { name }                              => handle_param_type(module, &*module.types.named_struct(name)),
-        Type::VectorType { .. } => Err("Vector types are unsupported".into()),
-        Type::X86_MMXType       => Err("X86_MMX types are unsupported".into()),
-        Type::X86_AMXType       => Err("X86_AMX types are unsupported".into()),
-        Type::MetadataType      => Err("Metadata types are unsupported".into()),
-        Type::LabelType         => Err("Label types are unsupported".into()),
-        Type::TokenType         => Err("Token types are unsupported".into()),
-        Type::TargetExtType     => Err("TargetExt types are unsupported".into())
-    }
 }
