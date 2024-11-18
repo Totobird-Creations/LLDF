@@ -17,13 +17,13 @@ pub fn setup() {
 #[inline(always)]
 pub fn add(player : &PlayerSel) {
     unsafe{ QUEUED_UUIDS.assume_init_mut() }.append(player.uuids().clone());
-    player.give_item(items::queue_enabled());
+    player.set_item_in_slot(5usize, items::queue_enabled().clone());
 }
 
 #[inline(always)]
 pub fn remove(player : &PlayerSel) {
     unsafe{ QUEUED_UUIDS.assume_init_mut() }.erase(unsafe{ &player.uuid_unchecked() });
-    player.give_item(items::queue_disabled());
+    player.set_item_in_slot(5usize, items::queue_disabled().clone());
 }
 
 #[inline(always)]

@@ -50,7 +50,7 @@ impl<T : DFValue> List<T> {
     #[inline(always)]
     pub unsafe fn get_unchecked<U : Into<UInt>>(&self, index : U) -> T { unsafe {
         let index = DF_ACTION__SetVariable_Specialcharplus( index.into(), UInt::from(1usize) );
-        transmute_unchecked(DF_ACTION__SetVariable_GetListValue(self.to_opaque(), index))
+        transmute_unchecked(DF_ACTION__SetVariable_GetListValue(self as *const _ as *const _, index))
     } }
 
     // TODO: get (with bounds check)
@@ -92,7 +92,7 @@ impl<T : DFValue> List<T> {
     #[lldf_bind_proc::dfdoc(SetVariable/ListLength)]
     #[inline(always)]
     pub fn len(&self) -> UInt { unsafe {
-        DF_ACTION__SetVariable_ListLength(self.to_opaque())
+        DF_ACTION__SetVariable_ListLength(self as *const _ as *const _)
     } }
 
     // TODO: insert_unchecked
@@ -123,13 +123,13 @@ impl<T : DFValue> List<T> {
     #[lldf_bind_proc::dfdoc(SetVariable/ReverseList)]
     #[inline(always)]
     pub fn reversed(&self) -> Self { unsafe {
-        transmute_unchecked(DF_ACTION__SetVariable_ReverseList(self.to_opaque()))
+        transmute_unchecked(DF_ACTION__SetVariable_ReverseList(self as *const _ as *const _))
     } }
 
     #[lldf_bind_proc::dfdoc(SetVariable/RandomizeList)]
     #[inline(always)]
     pub fn shuffled(&self) -> Self { unsafe {
-        transmute_unchecked(DF_ACTION__SetVariable_RandomizeList(self.to_opaque()))
+        transmute_unchecked(DF_ACTION__SetVariable_RandomizeList(self as *const _ as *const _))
     } }
 
     // TODO: random (random element)
@@ -141,7 +141,7 @@ impl<T : DFSortableValue> List<T> {
     #[lldf_bind_proc::dfdoc(SetVariable/SortList)]
     #[inline(always)]
     pub fn sorted(&self) -> Self { unsafe {
-        transmute_unchecked(DF_ACTION__SetVariable_SortList(self.to_opaque()))
+        transmute_unchecked(DF_ACTION__SetVariable_SortList(self as *const _ as *const _))
     } }
 
 }
@@ -151,7 +151,7 @@ impl<T : DFValue> List<List<T>> {
     #[lldf_bind_proc::dfdoc(SetVariable/FlattenList)]
     #[inline(always)]
     pub fn flattened(&self) -> List<T> { unsafe {
-        transmute_unchecked(DF_ACTION__SetVariable_FlattenList(self.to_opaque()))
+        transmute_unchecked(DF_ACTION__SetVariable_FlattenList(self as *const _ as *const _))
     } }
 
 }
@@ -161,7 +161,7 @@ impl List<String> {
     #[lldf_bind_proc::dfdoc(SetVariable/JoinString)]
     #[inline(always)]
     pub fn join<S : Into<String>>(&self, delimiter : S) -> String { unsafe {
-        DF_ACTION__SetVariable_JoinString(self.to_opaque(), delimiter.into())
+        DF_ACTION__SetVariable_JoinString(self as *const _ as *const _, delimiter.into())
     } }
 
 }
@@ -185,15 +185,15 @@ extern "C" {
     fn DF_ACTION__SetVariable_CreateList( ) -> DFOpaqueValue;
     fn DF_ACTION__SetVariable_AppendValue( list : *mut DFOpaqueValue, value : DFOpaqueValue ) -> ();
     fn DF_ACTION__SetVariable_AppendList( list : *mut DFOpaqueValue, from : DFOpaqueValue ) -> ();
-    fn DF_ACTION__SetVariable_GetListValue( list : DFOpaqueValue, index : UInt ) -> DFOpaqueValue;
+    fn DF_ACTION__SetVariable_GetListValue( list : *const DFOpaqueValue, index : UInt ) -> DFOpaqueValue;
     fn DF_ACTION__SetVariable_PopListValue( list : *mut DFOpaqueValue, ... ) -> DFOpaqueValue;
     fn DF_ACTION__SetVariable_SetListValue( list : *mut DFOpaqueValue, index : UInt, value : DFOpaqueValue ) -> ();
-    fn DF_ACTION__SetVariable_ListLength( list : DFOpaqueValue ) -> UInt;
+    fn DF_ACTION__SetVariable_ListLength( list : *const DFOpaqueValue ) -> UInt;
     fn DF_ACTION__SetVariable_RemoveListValue_ItemsToRemove_AllMatches( list : *mut DFOpaqueValue, value : DFOpaqueValue ) -> ();
-    fn DF_ACTION__SetVariable_ReverseList( list : DFOpaqueValue ) -> DFOpaqueValue;
-    fn DF_ACTION__SetVariable_RandomizeList( list : DFOpaqueValue ) -> DFOpaqueValue;
-    fn DF_ACTION__SetVariable_FlattenList( list : DFOpaqueValue ) -> DFOpaqueValue;
-    fn DF_ACTION__SetVariable_SortList( list : DFOpaqueValue ) -> DFOpaqueValue;
-    fn DF_ACTION__SetVariable_JoinString( list : DFOpaqueValue, delimiter : String ) -> String;
+    fn DF_ACTION__SetVariable_ReverseList( list : *const DFOpaqueValue ) -> DFOpaqueValue;
+    fn DF_ACTION__SetVariable_RandomizeList( list : *const DFOpaqueValue ) -> DFOpaqueValue;
+    fn DF_ACTION__SetVariable_FlattenList( list : *const DFOpaqueValue ) -> DFOpaqueValue;
+    fn DF_ACTION__SetVariable_SortList( list : *const DFOpaqueValue ) -> DFOpaqueValue;
+    fn DF_ACTION__SetVariable_JoinString( list : *const DFOpaqueValue, delimiter : String ) -> String;
 
 }

@@ -4,6 +4,7 @@ use super::*;
 
 use llvm_ir::function::ParameterAttribute;
 use llvm_ir::instruction::*;
+use llvm_ir::types::{ Type, Typed };
 use llvm_ir::Operand;
 
 
@@ -317,7 +318,10 @@ pub fn parse_instr_postphi(module : &ParsedModule, function : &mut ParsedFunctio
                         final_params.push(CodeValue::Variable { name : name_to_local(dest), scope : VariableScope::Local });
                     }
                     for (arg, _) in arguments.iter().skip(skip_params) {
-                        final_params.push(parse_oper(module, function, arg)?.to_codevalue(module, function)?);
+                        final_params.push(match (&*arg.get_type(&module.types)) {
+                            Type::PointerType { .. } => parse_oper(module, function, arg)?.to_ptr_accessor_codevalue(module)?,
+                            _                        => parse_oper(module, function, arg)?.to_codevalue(module, function)?
+                        });
                     }
 
                     function.line.blocks.push(Codeblock::action(codeblock, action, final_params, final_tags));

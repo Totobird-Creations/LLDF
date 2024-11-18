@@ -17,6 +17,7 @@ use crate::build::parse::ParsedFunction;
 
 
 pub fn optimise(mut functions : Vec<&mut ParsedFunction>) -> () {
+    return;
     let mut did_nothing = 0;
     while (did_nothing < 2) {
         let mut did_something = false;

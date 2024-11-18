@@ -42,7 +42,15 @@ impl Value {
         Self::ConstFloat  (value ) => Ok(CodeValue::Number(value.to_string())),
 
         Self::Local(name) => Ok(CodeValue::Variable { name : name.clone(), scope : VariableScope::Local }),
-        Self::Global(name) => Ok(CodeValue::Variable { name : format!("{}:0", name), scope : VariableScope::Unsaved }),
+        Self::Global(name) => {
+            let temp_var = CodeValue::Variable { name : function.create_temp_var_name(), scope : VariableScope::Local };
+            function.line.blocks.push(Codeblock::action("set_var", "CreateList", vec![
+                temp_var.clone(),
+                CodeValue::String(name.clone()),
+                CodeValue::Number("0".to_string())
+            ], vec![ ]));
+            Ok(temp_var)
+        },
 
         Self::GlobalRef(name) => {
             let Some(global) = module.globals.get(name) else { return Err(format!("Unknown global {}", name).into()) };

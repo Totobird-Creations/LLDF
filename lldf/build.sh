@@ -1,3 +1,4 @@
+# Sets the `LLVM_SYS_191_PREFIX` environment variable to the LLVM 19.1.3 directory.
 sh ./setenv.sh
 
 rm ./rustc-ice-*.txt

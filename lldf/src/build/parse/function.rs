@@ -181,7 +181,6 @@ pub fn parse_block(module : &mut ParsedModule, function : &Function, block : &Ba
         instrs.next();
         let dest_name = name_to_local(dest);
         for (value, block) in incoming_values {
-            let value = parse_oper(module, &mut block_function, value)?.to_codevalue(module, &mut block_function)?;
             block_function.line.blocks.push(Codeblock::action("if_var", "StringMatches", vec![
                 CodeValue::Variable { name : BLOCK_PREVIOUS.to_string(), scope : VariableScope::Line },
                 CodeValue::String(name_to_string(block))
@@ -190,6 +189,7 @@ pub fn parse_block(module : &mut ParsedModule, function : &Function, block : &Ba
                 CodeValue::Actiontag { kind : "Regular Expressions".to_string(), value : "Disable".to_string(), variable : None, block_override : None },
             ]));
             block_function.line.blocks.push(Codeblock::OPEN_COND_BRACKET);
+            let value = parse_oper(module, &mut block_function, value)?.to_codevalue(module, &mut block_function)?;
             block_function.line.blocks.push(Codeblock::action("set_var", "=", vec![
                 CodeValue::Variable { name : format!("lldf.phi.{}", dest_name), scope: VariableScope::Local },
                 value
