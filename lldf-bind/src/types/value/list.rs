@@ -5,17 +5,17 @@ use core::mem::transmute_unchecked;
 
 
 #[repr(transparent)]
-pub struct List<T : DFValue> {
+pub struct List<T : Clone> {
     pub(crate) _opaque_type : u64,
     _ph : PhantomData<T>
 }
 
-impl<T : DFValue> Clone for List<T> {
+impl<T : Clone> Clone for List<T> {
     #[inline(always)]
     fn clone(&self) -> Self { unsafe { transmute_unchecked(DF_ACTION__SetVariable_Specialcharequals(transmute_unchecked(self._opaque_type))) } }
 }
 
-impl<T : DFValue> List<T> {
+impl<T : Clone> List<T> {
 
     #[lldf_bind_proc::dfdoc(SetVariable/CreateList)]
     #[inline(always)]
@@ -25,23 +25,23 @@ impl<T : DFValue> List<T> {
 
     #[inline(always)]
     pub fn from_array<const N : usize>(array : [T; N]) -> Self { unsafe { // FIXME when arrays are made GEP-compatible
-        transmute_unchecked(DF_TRANSMUTE__Array_Opaque(array))
+        transmute_unchecked(DF_TRANSMUTE__Opaque(array))
     } }
 
 }
 
-impl<T : DFValue> List<T> {
+impl<T : Clone> List<T> {
 
     #[lldf_bind_proc::dfdoc(SetVariable/AppendValue)]
     #[inline(always)]
     pub fn push(&mut self, value : T) -> () { unsafe {
-        DF_ACTION__SetVariable_AppendValue(self as *mut _ as *mut _, value.to_opaque())
+        DF_ACTION__SetVariable_AppendValue(self as *mut _ as *mut _, DF_TRANSMUTE__Opaque(value))
     } }
 
     #[lldf_bind_proc::dfdoc(SetVariable/AppendList)]
     #[inline(always)]
     pub fn append(&mut self, other : Self) -> () { unsafe {
-        DF_ACTION__SetVariable_AppendList(self as *mut _ as *mut _, other.to_opaque())
+        DF_ACTION__SetVariable_AppendList(self as *mut _ as *mut _, DF_TRANSMUTE__Opaque(other))
     } }
 
     #[lldf_bind_proc::dfdoc(SetVariable/GetListValue)]
@@ -82,7 +82,7 @@ impl<T : DFValue> List<T> {
     #[inline(always)]
     pub unsafe fn set_unchecked<U : Into<UInt>>(&mut self, index : U, value : T) -> () { unsafe {
         let index = DF_ACTION__SetVariable_Specialcharplus( index.into(), UInt::from(1usize) );
-        DF_ACTION__SetVariable_SetListValue(self as *mut _ as *mut _, index, value.to_opaque());
+        DF_ACTION__SetVariable_SetListValue(self as *mut _ as *mut _, index, DF_TRANSMUTE__Opaque(value));
     } }
 
     // TODO: set (with bounds check)
@@ -102,7 +102,7 @@ impl<T : DFValue> List<T> {
     #[lldf_bind_proc::dfdoc(SetVariable/RemoveListValue)]
     #[inline(always)]
     pub fn erase(&mut self, value : &T) -> () { unsafe { // TODO: Only on non-list non-dict elements.
-        DF_ACTION__SetVariable_RemoveListValue_ItemsToRemove_AllMatches(self as *mut _ as *mut _, value.to_opaque());
+        DF_ACTION__SetVariable_RemoveListValue_ItemsToRemove_AllMatches(self as *mut _ as *mut _, DF_TRANSMUTE__Opaque(value));
     } }
 
     #[inline(always)]
@@ -167,8 +167,20 @@ impl List<String> {
 }
 
 unsafe impl<T : DFValue> DFValue for List<T> {
+
     #[inline(always)]
     unsafe fn to_opaque(&self) -> DFOpaqueValue { transmute_unchecked(self._opaque_type) }
+
+    #[inline(always)]
+    fn to_string(&self) -> String { unsafe {
+        DF_ACTION__SetVariable_String_TextValueMerging_NoSpaces(String::new(), self)
+    } }
+
+    #[inline(always)]
+    fn to_text(&self) -> Text { unsafe {
+        DF_ACTION__SetVariable_StyledText_InheritStyles_False_TextValueMerging_NoSpaces(Text::new(), self)
+    } }
+
 }
 
 
@@ -177,7 +189,10 @@ unsafe impl<T : DFValue> DFValue for List<T> {
 
 extern "C" {
 
-    fn DF_TRANSMUTE__Array_Opaque( ... ) -> DFOpaqueValue;
+    fn DF_ACTION__SetVariable_String_TextValueMerging_NoSpaces( ... ) -> String;
+    fn DF_ACTION__SetVariable_StyledText_InheritStyles_False_TextValueMerging_NoSpaces( ... ) -> Text;
+
+    fn DF_TRANSMUTE__Opaque( ... ) -> DFOpaqueValue;
 
     fn DF_ACTION__SetVariable_Specialcharequals( from : DFOpaqueValue ) -> DFOpaqueValue;
     fn DF_ACTION__SetVariable_Specialcharplus( a : UInt, b : UInt ) -> UInt;

@@ -18,18 +18,6 @@ impl Text {
     pub fn new() -> Self { Text::from("") }
 }
 
-impl From<Text> for Text {
-    #[inline(always)]
-    fn from(value : Text) -> Text { value }
-}
-
-impl<T : DFValue> From<T> for Text {
-    #[inline(always)]
-    default fn from(value : T) -> Text { unsafe {
-        DF_ACTION__SetVariable_StyledText_InheritStyles_False_TextValueMerging_NoSpaces(value.to_opaque())
-    } }
-}
-
 impl From<&str> for Text {
     #[inline(always)]
     fn from(value : &str) -> Text {
@@ -67,7 +55,7 @@ impl Text {
 
     #[lldf_bind_proc::dfdoc(SetVariable/ClearFormatting)]
     #[inline(always)]
-    pub fn without_fmt(&self) -> Text { unsafe {
+    pub fn without_fmt(&self) -> String { unsafe {
         DF_ACTION__SetVariable_ClearFormatting(self.to_opaque())
     } }
 
@@ -83,8 +71,16 @@ impl Text {
 
 
 unsafe impl DFValue for Text {
+
     #[inline(always)]
     unsafe fn to_opaque(&self) -> DFOpaqueValue { unsafe { transmute_unchecked(self._opaque_type) } }
+
+    #[inline(always)]
+    fn to_string(&self) -> String { self.without_fmt() }
+
+    #[inline(always)]
+    fn to_text(&self) -> Text { self.clone() }
+
 }
 
 
@@ -94,7 +90,7 @@ extern "C" {
 
     fn DF_ACTION__SetVariable_ParseMiniMessageExpr_ParseLegacyColorCodes_False_AllowedTags_Full( minimsg : String ) -> Text;
     fn DF_ACTION__SetVariable_GetMiniMessageExpr( from : DFOpaqueValue ) -> String;
-    fn DF_ACTION__SetVariable_ClearFormatting( text : DFOpaqueValue ) -> Text;
+    fn DF_ACTION__SetVariable_ClearFormatting( text : DFOpaqueValue ) -> String;
     fn DF_ACTION__SetVariable_ContentLength( text : DFOpaqueValue ) -> UInt;
 
 }

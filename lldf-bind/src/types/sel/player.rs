@@ -11,12 +11,10 @@ pub struct PlayerSel {
 
 impl PlayerSel {
 
-    #[doc(hidden)]
     pub unsafe fn from_uuid_unchecked(uuid : Uuid) -> Self {
         Self { uuids : transmute_unchecked(DF_ACTION__SetVariable_CreateList(uuid)) }
     }
 
-    #[doc(hidden)]
     pub unsafe fn from_uuids_unchecked(uuids : List<Uuid>) -> Self { Self { uuids } }
 
 }
@@ -158,9 +156,9 @@ impl PlayerSel {
 
     #[lldf_bind_proc::dfdoc(PlayerAction/SendMessage)]
     #[inline(always)]
-    pub fn send_message<T : DFValue>(&self, text : T) -> () { unsafe {
+    pub fn send_message<T : Into<Text>>(&self, text : T) -> () { unsafe {
         DF_ACTION__SelectObject_PlayerName(self.uuids.to_opaque());
-        DF_ACTION__PlayerAction_SendMessage_AlignmentMode_Regular_TextValueMerging_NoSpaces_InheritStyles_False(String::new(), text.to_opaque());
+        DF_ACTION__PlayerAction_SendMessage_AlignmentMode_Regular_TextValueMerging_NoSpaces_InheritStyles_False(String::new(), text.into());
         DF_ACTION__SelectObject_Reset();
     } }
 
@@ -994,7 +992,7 @@ extern "C" {
     fn DF_ACTION__PlayerAction_SetItemCooldown( item : Item, cooldown_ticks : UInt ) -> ();
     fn DF_ACTION__PlayerAction_GetItemCooldown( item : Item ) -> UInt;
 
-    fn DF_ACTION__PlayerAction_SendMessage_AlignmentMode_Regular_TextValueMerging_NoSpaces_InheritStyles_False( _ : String, message : DFOpaqueValue ) -> ();
+    fn DF_ACTION__PlayerAction_SendMessage_AlignmentMode_Regular_TextValueMerging_NoSpaces_InheritStyles_False( _ : String, message : Text ) -> ();
     fn DF_ACTION__PlayerAction_SendTitle( title : Text, subtitle : Text, fade_in_ticks : UInt, hold_ticks : UInt, fade_out_ticks : UInt ) -> ();
     fn DF_ACTION__PlayerAction_ActionBar_InheritStyles_False_TextValueMerging_NoSpaces( _ : String, message : DFOpaqueValue ) -> ();
     fn DF_ACTION__PlayerAction_OpenBook( item : Item ) -> ();

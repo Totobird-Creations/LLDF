@@ -49,39 +49,52 @@ impl<T : Into<UInt>> Mul<T> for UInt {
     } }
 }
 
-impl PartialEq<UInt> for UInt {
+impl<T : Into<UInt> + Clone> PartialEq<T> for UInt {
     #[inline(always)]
-    fn eq(&self, other: &UInt) -> bool {
-        self._opaque_type == other._opaque_type
+    fn eq(&self, other: &T) -> bool {
+        self._opaque_type == other.clone().into()._opaque_type
+    }
+}
+
+impl<T : Into<UInt> + Clone> PartialOrd<T> for UInt {
+    #[inline(always)]
+    fn partial_cmp(&self, other : &T) -> Option<Ordering> {
+        self._opaque_type.partial_cmp(&other.clone().into()._opaque_type)
     }
 }
 
 unsafe impl DFValue for UInt {
+
     #[inline(always)]
     unsafe fn to_opaque(&self) -> DFOpaqueValue { unsafe {
         transmute_unchecked(self._opaque_type)
     } }
+
+    #[inline(always)]
+    fn to_string(&self) -> String { unsafe {
+        DF_ACTION__SetVariable_String_TextValueMerging_NoSpaces(self)
+    } }
+
+    #[inline(always)]
+    fn to_text(&self) -> Text { unsafe {
+        DF_ACTION__SetVariable_StyledText_InheritStyles_False_TextValueMerging_NoSpaces(self)
+    } }
+
 }
+
 impl Into<UInt> for UInt {
     #[inline(always)]
     fn into(self) -> UInt { self }
 }
 
 
-impl ToString for UInt {
-    #[inline(always)]
-    fn to_string(&self) -> String { unsafe {
-        DF_ACTION__SetVariable_String(self.to_opaque())
-    } }
-}
-
-
 extern "C" {
+
+    fn DF_ACTION__SetVariable_String_TextValueMerging_NoSpaces( ... ) -> String;
+    fn DF_ACTION__SetVariable_StyledText_InheritStyles_False_TextValueMerging_NoSpaces( ... ) -> Text;
 
     fn DF_ACTION__SetVariable_Specialcharplus( left : UInt, right : UInt ) -> UInt;
     fn DF_ACTION__SetVariable_Specialcharminus( left : UInt, right : UInt ) -> UInt;
     fn DF_ACTION__SetVariable_x( left : UInt, right : UInt ) -> UInt;
-
-    fn DF_ACTION__SetVariable_String( from : DFOpaqueValue ) -> String;
 
 }

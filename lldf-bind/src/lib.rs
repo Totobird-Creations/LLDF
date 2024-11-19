@@ -11,7 +11,8 @@
     doc_cfg,
     transparent_unions,
     specialization,
-    trivial_bounds
+    trivial_bounds,
+    unboxed_closures
 )]
 
 #![no_main]

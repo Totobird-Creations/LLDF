@@ -224,7 +224,7 @@ pub fn parse_instr_postphi(module : &ParsedModule, function : &mut ParsedFunctio
         handle_fcmp(module, function, &name_to_local(dest), *predicate, operand0, operand1)
     },
 
-    Instruction::Phi(_) => unreachable!(),
+    Instruction::Phi(_) => unreachable!(), // This should have been handled prior, in `function.rs` `parse_block()`.
 
     // If `condition` is 0 (false), set `dest` to `false_value`, else `true_value`. 
     Instruction::Select(Select { condition, true_value, false_value, dest, .. }) => {
@@ -245,10 +245,27 @@ pub fn parse_instr_postphi(module : &ParsedModule, function : &mut ParsedFunctio
 
                 Global::NoopFunction => {
                     if let Some(dest) = dest {
-                        if (arguments.len() != 1) { return Err("Noop function with destination local must have one argument".into()); }
+                        if (arguments.len() != 1) { return Err("Noop function with destination local must have one argument".into()); } // TODO: Add an argument count check to all call handlers.
                         let params = vec![
                             CodeValue::Variable { name : name_to_local(dest), scope : VariableScope::Local },
                             parse_oper(module, function, &arguments[0].0)?.to_codevalue(module, function)?
+                        ];
+                        function.line.blocks.push(Codeblock::action("set_var", "=", params, vec![ ]));
+                    }
+                    Ok(())
+                },
+
+                Global::OpaqueTransmuteFunction => {
+                    if let Some(dest) = dest {
+                        if (arguments.len() != 1) { return Err("Noop function with destination local must have one argument".into()); }
+                        let arg = &arguments[0].0;
+                        let arg = match (&*arg.get_type(&module.types)) {
+                            Type::PointerType { .. } => parse_oper(module, function, arg)?.to_ptr_accessor_codevalue(module)?,
+                            _                        => parse_oper(module, function, arg)?.to_codevalue(module, function)?
+                        };
+                        let params = vec![
+                            CodeValue::Variable { name : name_to_local(dest), scope : VariableScope::Local },
+                            arg
                         ];
                         function.line.blocks.push(Codeblock::action("set_var", "=", params, vec![ ]));
                     }

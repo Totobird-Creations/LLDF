@@ -234,12 +234,27 @@ impl Location {
 
 
 unsafe impl DFValue for Location {
+
     #[inline(always)]
     unsafe fn to_opaque(&self) -> DFOpaqueValue { unsafe { transmute_unchecked(self._opaque_type) } }
+
+    #[inline(always)]
+    fn to_string(&self) -> String { unsafe {
+        DF_ACTION__SetVariable_String_TextValueMerging_NoSpaces(self)
+    } }
+
+    #[inline(always)]
+    fn to_text(&self) -> Text { unsafe {
+        DF_ACTION__SetVariable_StyledText_InheritStyles_False_TextValueMerging_NoSpaces(self)
+    } }
+
 }
 
 
 extern "C" {
+
+    fn DF_ACTION__SetVariable_String_TextValueMerging_NoSpaces( ... ) -> String;
+    fn DF_ACTION__SetVariable_StyledText_InheritStyles_False_TextValueMerging_NoSpaces( ... ) -> Text;
 
     fn DF_ACTION__SetVariable_SetAllCoords_CoordinateType_PlotCoordinate( ... ) -> Location;
     fn DF_ACTION__SetVariable_GetCoord_CoordinateType_PlotCoordinate_Coordinate_X( location : DFOpaqueValue ) -> Float;

@@ -69,6 +69,7 @@ impl Value {
                 Global::Constant(value) => value.to_codevalue(module, function),
 
                 Global::NoopFunction |
+                Global::OpaqueTransmuteFunction |
                 Global::Assert(_) |
                 Global::ActionFunction { .. } |
                 Global::ProcessFunction(_) |
@@ -107,6 +108,7 @@ impl Value {
                 Global::Constant(value) => value.to_codevalue_string(module),
 
                 Global::NoopFunction |
+                Global::OpaqueTransmuteFunction |
                 Global::Assert(_) |
                 Global::ActionFunction { .. } |
                 Global::ProcessFunction(_) |
@@ -141,6 +143,7 @@ impl Value {
                 Global::Constant(value) => value.to_ptr_accessor_part_strings(module),
 
                 Global::NoopFunction |
+                Global::OpaqueTransmuteFunction |
                 Global::Assert(_) |
                 Global::UserFunction { .. } |
                 Global::ActionFunction { .. } |
@@ -178,6 +181,7 @@ impl Value {
                 Global::Constant(value) => value.to_ptr_accessor_string(module),
 
                 Global::NoopFunction |
+                Global::OpaqueTransmuteFunction |
                 Global::Assert(_) |
                 Global::ActionFunction { .. } |
                 Global::ProcessFunction(_) |

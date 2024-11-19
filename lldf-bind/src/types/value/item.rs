@@ -183,13 +183,13 @@ impl Item {
     /// - **Numeric tag values will be converted to strings. Thus, [`String`](String) `"0"` and [`Float`](Float) `0`** are not differentiable.
     #[inline(always)]
     pub fn tag<K : Into<String>>(&self, key : K) -> String { unsafe {
-        DF_ACTION__SetVariable_String(DF_ACTION__SetVariable_GetItemTag(self.to_opaque(), key.into()))
+        DF_ACTION__SetVariable_String_TextValueMerging_NoSpaces(DF_ACTION__SetVariable_GetItemTag(self.to_opaque(), key.into()))
     } }
 
     /// Returns a list of existing tag keys.
     #[inline(always)]
     pub fn tags(&self) -> List<String> { unsafe {
-        let dict = DF_ACTION__SetVariable_GetAllItemTags(self.to_opaque());
+        let dict = transmute_unchecked::<_, Dict<String>>(DF_ACTION__SetVariable_GetAllItemTags(self.to_opaque()));
         dict.keys()
     } }
 
@@ -428,12 +428,27 @@ impl Item {
 }
 
 unsafe impl DFValue for Item {
+
     #[inline(always)]
     unsafe fn to_opaque(&self) -> DFOpaqueValue { unsafe { transmute_unchecked(self._opaque_type) } }
+
+    #[inline(always)]
+    fn to_string(&self) -> String { unsafe {
+        DF_ACTION__SetVariable_String_TextValueMerging_NoSpaces(self)
+    } }
+
+    #[inline(always)]
+    fn to_text(&self) -> Text { unsafe {
+        DF_ACTION__SetVariable_StyledText_InheritStyles_False_TextValueMerging_NoSpaces(self)
+    } }
+
 }
 
 
 extern "C" {
+
+    fn DF_ACTION__SetVariable_String_TextValueMerging_NoSpaces( ... ) -> String;
+    fn DF_ACTION__SetVariable_StyledText_InheritStyles_False_TextValueMerging_NoSpaces( ... ) -> Text;
 
     fn DF_TEMPVAR() -> DFOpaqueValue;
     fn DF_ACTION__IfVariable_ItemEquals_ComparisonMode_ExactlyEquals( a : DFOpaqueValue, b : DFOpaqueValue ) -> ();
@@ -441,8 +456,6 @@ extern "C" {
     fn DF_BRACKET__Normal_Close() -> ();
     fn DF_ELSE() -> ();
     fn DF_ACTION__SetVariable_Specialcharequals( variable : DFOpaqueValue, value : DFOpaqueValue ) -> ();
-
-    fn DF_ACTION__SetVariable_String( from : DFOpaqueValue ) -> String;
 
     fn DF_TRANSMUTE__Opaque_UInt( from : DFOpaqueValue ) -> UInt;
     fn DF_ACTION__SetVariable_Specialcharplus( a : DFOpaqueValue, b : DFOpaqueValue ) -> DFOpaqueValue;
@@ -464,7 +477,7 @@ extern "C" {
     fn DF_ACTION__SetVariable_GetHeadOwner_TextValue_OwnerUUID( item : DFOpaqueValue ) -> String;
     fn DF_ACTION__SetVariable_SetHeadTexture( item : DFOpaqueValue, name_uuid_or_texture : String ) -> Item;
     fn DF_ACTION__SetVariable_GetItemTag( item : DFOpaqueValue, key : String ) -> DFOpaqueValue;
-    fn DF_ACTION__SetVariable_GetAllItemTags( item : DFOpaqueValue ) -> Dict<DFOpaqueValue>;
+    fn DF_ACTION__SetVariable_GetAllItemTags( item : DFOpaqueValue ) -> DFOpaqueValue;
     fn DF_ACTION__SetVariable_SetItemTag( item : DFOpaqueValue, key : String, value : String ) -> Item;
     fn DF_ACTION__SetVariable_RemoveItemTag( item : DFOpaqueValue, key : String ) -> Item;
     fn DF_ACTION__SetVariable_ClearItemTag( item : DFOpaqueValue ) -> Item;

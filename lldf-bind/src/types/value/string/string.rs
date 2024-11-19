@@ -23,13 +23,6 @@ impl String {
 
 }
 
-impl<T : DFValue> From<T> for String {
-    #[inline(always)]
-    fn from(value : T) -> String { unsafe {
-        DF_ACTION__SetVariable_String_TextValueMerging_NoSpaces(value)
-    } }
-}
-
 impl From<&str> for String {
     #[inline(always)]
     fn from(value : &str) -> String { unsafe { // TODO: Makes sure empty strings (`""`) still work when they aren't constant.
@@ -139,16 +132,24 @@ impl String {
 // TODO: Parse<Float>
 
 unsafe impl DFValue for String {
+
     #[inline(always)]
     unsafe fn to_opaque(&self) -> DFOpaqueValue { unsafe { transmute_unchecked(self._opaque_type) } }
-}
-impl ToString for String {
+
     #[inline(always)]
     fn to_string(&self) -> String { self.clone() }
+
+    #[inline(always)]
+    fn to_text(&self) -> Text { unsafe {
+        DF_ACTION__SetVariable_StyledText_InheritStyles_False_TextValueMerging_NoSpaces(self)
+    } }
+
 }
 
 
 extern "C" {
+
+    fn DF_ACTION__SetVariable_StyledText_InheritStyles_False_TextValueMerging_NoSpaces( ... ) -> Text;
 
     fn DF_ASSERT__ConstantStrToString( from : &str ) -> String;
 

@@ -20,6 +20,7 @@ pub struct ParsedModule<'l> {
 #[derive(Debug)]
 pub enum Global {
     NoopFunction,
+    OpaqueTransmuteFunction,
     Assert(AssertHandler),
     UserFunction {
         name : String
@@ -124,7 +125,7 @@ pub fn parse_module(module : &Module) -> Result<ParsedModule, Box<dyn Error>> {
         match (parts.next()) {
 
             Some("DF_TRANSMUTE") => {
-                parsed.globals.insert(Name::Name(Box::new(module_function.name.clone())), Global::NoopFunction);
+                parsed.globals.insert(Name::Name(Box::new(module_function.name.clone())), Global::OpaqueTransmuteFunction);
                 continue;
             },
 

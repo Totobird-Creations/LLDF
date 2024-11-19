@@ -37,10 +37,24 @@ impl<const LANES : usize> _VectorMethods<LANES> for Vector<LANES> {
     #[inline(always)]
     default fn clone(&self) -> Self { Self { inner : self.inner.clone() } }
 
+    #[doc(hidden)]
+    #[inline(always)]
+    default fn to_string(&self) -> String {
+        String::from("<") + unsafe{ DF_ACTION__SetVariable_JoinString(&self.inner as *const _ as *const _, String::from(", ")) } + String::from(">")
+    }
+
+    #[doc(hidden)]
+    #[inline(always)]
+    default fn to_text(&self) -> Text {
+        Text::from("<") + Text::from(unsafe{ DF_ACTION__SetVariable_JoinString(&self.inner as *const _ as *const _, String::from(", ")) }) + Text::from(">")
+    }
+
 }
 
 
 extern "C" {
+
+    fn DF_ACTION__SetVariable_JoinString( list : *const DFOpaqueValue, delimiter : String ) -> String;
 
     fn DF_ACTION__SetVariable_Specialcharplus( a : UInt, b : UInt ) -> UInt;
 
@@ -54,7 +68,7 @@ extern "C" {
 }
 
 
-#[cfg(doc)]
+#[cfg(doc)] // TODO: fix this.
 impl<const LANES : usize> Vector<LANES> {
 
     #[lldf_bind_proc::dfdoc(SetVariable/Vector)]

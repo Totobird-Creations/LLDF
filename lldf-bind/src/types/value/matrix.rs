@@ -120,11 +120,11 @@ impl<const A_ROWS : usize, const A_COLUMNS_B_ROWS : usize, const B_COLUMNS : usi
             let a_i0 = (row - 1usize) * A_COLUMNS_B_ROWS;
             let column = DF_ACTION__Repeat_Multiple(UInt::from(B_COLUMNS)); DF_BRACKET__Repeat_Open();
                 let cell = DF_TEMPVAR();
-                DF_ACTION__SetVariable_Specialcharequals(cell.to_opaque(), Float::from(0.0));
+                DF_ACTION__SetVariable_Specialcharequals(cell, Float::from(0.0));
                 let i = DF_ACTION__Repeat_Multiple(UInt::from(A_COLUMNS_B_ROWS)); DF_BRACKET__Repeat_Open();
                     let a = DF_ACTION__SetVariable_GetListValue(self.inner.to_opaque(), a_i0 + i);
                     let b = DF_ACTION__SetVariable_GetListValue(rhs.inner.to_opaque(), column + (i - 1usize) * B_COLUMNS);
-                    DF_ACTION__SetVariable_SpecialcharplusSpecialcharequals(cell.to_opaque(), a * b);
+                    DF_ACTION__SetVariable_SpecialcharplusSpecialcharequals(cell, a * b);
                 DF_BRACKET__Repeat_Close();
                 DF_ACTION__SetVariable_AppendValue(inner.to_opaque(), cell);
             DF_BRACKET__Repeat_Close();

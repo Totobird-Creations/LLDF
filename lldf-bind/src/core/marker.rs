@@ -45,3 +45,9 @@ pub unsafe auto trait Sync {}
 
 #[lang = "unpin"]
 pub auto trait Unpin {}
+
+
+#[lang = "tuple_trait"]
+#[diagnostic::on_unimplemented(message = "`{Self}` is not a tuple")]
+#[rustc_deny_explicit_impl(implement_via_object = false)]
+pub trait Tuple {}

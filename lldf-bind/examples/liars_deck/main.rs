@@ -3,31 +3,27 @@
 #![no_core]
 #![no_main]
 
+use lldf_bind::prelude::*;
 
-mod queue;
+
 mod items;
 
-use lldf_bind::prelude::*;
+mod queue;
+mod games;
 
 
 #[event(PlotStart)]
 fn plot_start() {
-    queue::setup();
     items::setup();
+    queue::setup();
+    games::setup();
 }
-
 
 #[event(PlayerJoin)]
 fn player_join(default : PlayerSel) {
     default.set_gamemode_adventure();
     default.set_item_in_slot(5usize, items::queue_disabled().clone());
 }
-
-//#[event(PlayerLeave)]
-//fn player_leave(default : PlayerSel) {
-//    queue::remove(&default);
-//}
-
 
 #[event(PlayerRightClick)]
 fn player_right_click(default : PlayerSel, item : Item) {
@@ -36,4 +32,10 @@ fn player_right_click(default : PlayerSel, item : Item) {
     } else if (item == items::queue_enabled()) {
         queue::remove(&default);
     }
+}
+
+#[event(PlayerLeave)]
+fn player_leave(default : PlayerSel) {
+    queue::remove(&default);
+    games::remove(&default);
 }

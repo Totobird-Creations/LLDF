@@ -75,14 +75,27 @@ pub trait _VectorMethods<const LANES : usize> : DFValue {
     #[doc(hidden)]
     fn clone(&self) -> Self;
 
+    #[doc(hidden)]
+    fn to_string(&self) -> String;
+    #[doc(hidden)]
+    fn to_text(&self) -> Text;
+
 }
 impl<const LANES : usize> Clone for Vector<LANES> {
     fn clone(&self) -> Self { _VectorMethods::<LANES>::clone(self) }
 }
 
 unsafe impl<const LANES : usize> DFValue for Vector<LANES> {
+
     #[inline(always)]
     unsafe fn to_opaque(&self) -> DFOpaqueValue { unsafe {
         self.inner.to_opaque()
     } }
+
+    #[inline(always)]
+    fn to_string(&self) -> String { _VectorMethods::to_string(self) }
+
+    #[inline(always)]
+    fn to_text(&self) -> Text { _VectorMethods::to_text(self) }
+
 }

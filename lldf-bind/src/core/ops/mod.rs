@@ -4,6 +4,8 @@ mod bit;
 pub use bit::*;
 mod deref;
 pub use deref::*;
+mod function;
+pub use function::*;
 mod index;
 pub use index::*;
 

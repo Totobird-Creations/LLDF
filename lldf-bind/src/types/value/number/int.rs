@@ -15,22 +15,27 @@ impl From<i128  > for Int { #[inline(always)] fn from(value : i128  ) -> Self { 
 impl From<isize > for Int { #[inline(always)] fn from(value : isize ) -> Self { unsafe { *(&value as *const _ as *const _) } } }
 
 unsafe impl DFValue for Int {
+
     unsafe fn to_opaque(&self) -> DFOpaqueValue { unsafe {
         transmute_unchecked(self._opaque_type)
     } }
-}
 
-
-impl ToString for Int {
     #[inline(always)]
     fn to_string(&self) -> String { unsafe {
-        DF_ACTION__SetVariable_String(self.to_opaque())
+        DF_ACTION__SetVariable_String_TextValueMerging_NoSpaces(self)
     } }
+
+    #[inline(always)]
+    fn to_text(&self) -> Text { unsafe {
+        DF_ACTION__SetVariable_StyledText_InheritStyles_False_TextValueMerging_NoSpaces(self)
+    } }
+
 }
 
 
 extern "C" {
 
-    fn DF_ACTION__SetVariable_String( from : DFOpaqueValue ) -> String;
+    fn DF_ACTION__SetVariable_String_TextValueMerging_NoSpaces( ... ) -> String;
+    fn DF_ACTION__SetVariable_StyledText_InheritStyles_False_TextValueMerging_NoSpaces( ... ) -> Text;
 
 }

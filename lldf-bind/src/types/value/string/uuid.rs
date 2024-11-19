@@ -15,7 +15,16 @@ impl Clone for Uuid {
 }
 
 unsafe impl DFValue for Uuid {
+
+    #[inline(always)]
     unsafe fn to_opaque(&self) -> DFOpaqueValue { self.uuid.to_opaque() }
+
+    #[inline(always)]
+    fn to_string(&self) -> String { self.uuid.clone() }
+
+    #[inline(always)]
+    fn to_text(&self) -> Text { self.uuid.to_text() }
+
 }
 
 

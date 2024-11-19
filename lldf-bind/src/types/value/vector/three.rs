@@ -85,10 +85,25 @@ impl _VectorMethods<3> for Vector<3> {
     #[inline(always)]
     fn clone(&self) -> Self { unsafe { transmute_unchecked(self.inner._opaque_type) } }
 
+    #[doc(hidden)]
+    #[inline(always)]
+    fn to_string(&self) -> String { unsafe {
+        DF_ACTION__SetVariable_String_TextValueMerging_NoSpaces(&self.inner)
+    } }
+
+    #[doc(hidden)]
+    #[inline(always)]
+    fn to_text(&self) -> Text { unsafe {
+        DF_ACTION__SetVariable_StyledText_InheritStyles_False_TextValueMerging_NoSpaces(&self.inner)
+    } }
+
 }
 
 
 extern "C" {
+
+    fn DF_ACTION__SetVariable_String_TextValueMerging_NoSpaces( ... ) -> String;
+    fn DF_ACTION__SetVariable_StyledText_InheritStyles_False_TextValueMerging_NoSpaces( ... ) -> Text;
 
     fn DF_ACTION__SetVariable_Specialcharplus( a : UInt, b : UInt ) -> UInt;
 

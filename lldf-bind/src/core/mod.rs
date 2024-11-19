@@ -7,6 +7,7 @@ pub mod cmp;
 pub mod convert;
 pub mod float;
 pub mod int;
+pub mod intrinsics;
 pub mod macros;
 pub mod marker;
 pub mod mem;

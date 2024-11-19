@@ -5,6 +5,7 @@ use super::ops::*;
 use super::option::Option;
 use super::string::ToString;
 use super::convert::From;
+use super::intrinsics;
 use crate::types::{ String, UInt, Int };
 
 impl Clone for bool  { #[inline(never)] fn clone(&self) -> Self { *self } }
@@ -98,19 +99,26 @@ impl PartialEq for i128  { #[inline(never)] fn eq(&self, _ : &Self) -> bool { lo
 impl PartialEq for usize { #[inline(never)] fn eq(&self, _ : &Self) -> bool { loop { /* compiler built-in */ } } }
 impl PartialEq for isize { #[inline(never)] fn eq(&self, _ : &Self) -> bool { loop { /* compiler built-in */ } } }
 
-impl PartialOrd for bool  { #[inline(never)] fn partial_cmp(&self, _ : &Self) -> Option<Ordering> { loop { /* compiler built-in */ } } }
-impl PartialOrd for u8    { #[inline(never)] fn partial_cmp(&self, _ : &Self) -> Option<Ordering> { loop { /* compiler built-in */ } } }
-impl PartialOrd for i8    { #[inline(never)] fn partial_cmp(&self, _ : &Self) -> Option<Ordering> { loop { /* compiler built-in */ } } }
-impl PartialOrd for u16   { #[inline(never)] fn partial_cmp(&self, _ : &Self) -> Option<Ordering> { loop { /* compiler built-in */ } } }
-impl PartialOrd for i16   { #[inline(never)] fn partial_cmp(&self, _ : &Self) -> Option<Ordering> { loop { /* compiler built-in */ } } }
-impl PartialOrd for u32   { #[inline(never)] fn partial_cmp(&self, _ : &Self) -> Option<Ordering> { loop { /* compiler built-in */ } } }
-impl PartialOrd for i32   { #[inline(never)] fn partial_cmp(&self, _ : &Self) -> Option<Ordering> { loop { /* compiler built-in */ } } }
-impl PartialOrd for u64   { #[inline(never)] fn partial_cmp(&self, _ : &Self) -> Option<Ordering> { loop { /* compiler built-in */ } } }
-impl PartialOrd for i64   { #[inline(never)] fn partial_cmp(&self, _ : &Self) -> Option<Ordering> { loop { /* compiler built-in */ } } }
-impl PartialOrd for u128  { #[inline(never)] fn partial_cmp(&self, _ : &Self) -> Option<Ordering> { loop { /* compiler built-in */ } } }
-impl PartialOrd for i128  { #[inline(never)] fn partial_cmp(&self, _ : &Self) -> Option<Ordering> { loop { /* compiler built-in */ } } }
-impl PartialOrd for usize { #[inline(never)] fn partial_cmp(&self, _ : &Self) -> Option<Ordering> { loop { /* compiler built-in */ } } }
-impl PartialOrd for isize { #[inline(never)] fn partial_cmp(&self, _ : &Self) -> Option<Ordering> { loop { /* compiler built-in */ } } }
+impl PartialOrd for bool  { #[inline(always)] fn partial_cmp(&self, other : &Self) -> Option<Ordering> {
+    Option::Some(match (*self as i8) - (*other as i8) {
+        -1 => Ordering::Less,
+        0  => Ordering::Equal,
+        1  => Ordering::Greater,
+        _  => unsafe{ intrinsics::unreachable() }
+    })
+} }
+impl PartialOrd for u8    { #[inline(always)] fn partial_cmp(&self, other : &Self) -> Option<Ordering> { Option::Some(intrinsics::three_way_compare(*self, *other)) } }
+impl PartialOrd for i8    { #[inline(always)] fn partial_cmp(&self, other : &Self) -> Option<Ordering> { Option::Some(intrinsics::three_way_compare(*self, *other)) } }
+impl PartialOrd for u16   { #[inline(always)] fn partial_cmp(&self, other : &Self) -> Option<Ordering> { Option::Some(intrinsics::three_way_compare(*self, *other)) } }
+impl PartialOrd for i16   { #[inline(always)] fn partial_cmp(&self, other : &Self) -> Option<Ordering> { Option::Some(intrinsics::three_way_compare(*self, *other)) } }
+impl PartialOrd for u32   { #[inline(always)] fn partial_cmp(&self, other : &Self) -> Option<Ordering> { Option::Some(intrinsics::three_way_compare(*self, *other)) } }
+impl PartialOrd for i32   { #[inline(always)] fn partial_cmp(&self, other : &Self) -> Option<Ordering> { Option::Some(intrinsics::three_way_compare(*self, *other)) } }
+impl PartialOrd for u64   { #[inline(always)] fn partial_cmp(&self, other : &Self) -> Option<Ordering> { Option::Some(intrinsics::three_way_compare(*self, *other)) } }
+impl PartialOrd for i64   { #[inline(always)] fn partial_cmp(&self, other : &Self) -> Option<Ordering> { Option::Some(intrinsics::three_way_compare(*self, *other)) } }
+impl PartialOrd for u128  { #[inline(always)] fn partial_cmp(&self, other : &Self) -> Option<Ordering> { Option::Some(intrinsics::three_way_compare(*self, *other)) } }
+impl PartialOrd for i128  { #[inline(always)] fn partial_cmp(&self, other : &Self) -> Option<Ordering> { Option::Some(intrinsics::three_way_compare(*self, *other)) } }
+impl PartialOrd for usize { #[inline(always)] fn partial_cmp(&self, other : &Self) -> Option<Ordering> { Option::Some(intrinsics::three_way_compare(*self, *other)) } }
+impl PartialOrd for isize { #[inline(always)] fn partial_cmp(&self, other : &Self) -> Option<Ordering> { Option::Some(intrinsics::three_way_compare(*self, *other)) } }
 
 impl ToString for bool { #[inline(always)] fn to_string(&self) -> String {
     String::from(if (*self) { "true" } else { "false" })

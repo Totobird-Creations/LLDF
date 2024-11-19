@@ -124,11 +124,24 @@ impl Float {
 }
 
 unsafe impl DFValue for Float {
+
     unsafe fn to_opaque(&self) -> DFOpaqueValue { unsafe {
         //DFOpaqueValue { f64 : self._opaque_type }
         transmute_unchecked(self._opaque_type)
     } }
+
+    #[inline(always)]
+    fn to_string(&self) -> String { unsafe {
+        DF_ACTION__SetVariable_String_TextValueMerging_NoSpaces(self)
+    } }
+
+    #[inline(always)]
+    fn to_text(&self) -> Text { unsafe {
+        DF_ACTION__SetVariable_StyledText_InheritStyles_False_TextValueMerging_NoSpaces(self)
+    } }
+
 }
+
 impl Into<Float> for Float {
     #[inline(always)]
     fn into(self) -> Float { self }
@@ -136,6 +149,9 @@ impl Into<Float> for Float {
 
 
 extern "C" {
+
+    fn DF_ACTION__SetVariable_String_TextValueMerging_NoSpaces( ... ) -> String;
+    fn DF_ACTION__SetVariable_StyledText_InheritStyles_False_TextValueMerging_NoSpaces( ... ) -> Text;
 
     fn DF_ASSERT__NoOptF64( from : f64 ) -> f64;
 
